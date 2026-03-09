@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PB业务业绩分析</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      background: #f5f5f5;
+    }
+    .card-shadow { box-shadow: 0 2px 12px rgba(0,0,0,0.08); }
+    .message-enter { animation: slideIn 0.3s ease-out; }
+    @keyframes slideIn {
+      from { opacity:0; transform:translateY(8px); }
+      to   { opacity:1; transform:translateY(0); }
+    }
+    @keyframes pulse { 0%,100%{opacity:.5} 50%{opacity:1} }
+    @keyframes spin  { from{transform:rotate(0deg)} to{transform:rotate(360deg)} }
+    .loading-spinner { animation: spin 1s linear infinite; }
+    .loading-text    { animation: pulse 1.5s ease-in-out infinite; }
+    .card-hover { transition: all 0.2s ease; }
+    .card-hover:hover { transform: translateY(-1px); box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+  </style>
+</head>
+<body class="min-h-screen">
+  <div class="min-h-screen flex flex-col max-w-lg mx-auto bg-[#f5f5f5]">
+
+    <!-- 顶部导航栏 -->
+    <header class="sticky top-0 bg-white px-4 py-3 flex items-center justify-between z-20 border-b border-gray-100">
+      <a href="组织者-index.html" class="w-10 h-10 flex items-center justify-center text-gray-700">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+        </svg>
+      </a>
+      <h1 class="text-base font-semibold text-[#4f46e5]">机构经纪组织者智能体</h1>
+      <button class="w-10 h-10 flex items-center justify-center text-gray-700">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"/>
+        </svg>
+      </button>
+    </header>
+
+    <!-- 主内容区 -->
+    <div class="flex-1 px-4 py-4 pb-24 space-y-4">
+
+      <div class="flex items-center justify-center text-xs text-[#64748B] bg-white/50 backdrop-blur-sm rounded-full px-3 py-1 card-shadow w-fit mx-auto">今天 09:00</div>
+
+      <!-- AI消息1：业绩数据展示 -->
+      <div class="flex items-start gap-2 message-enter">
+        <div class="w-8 h-8 rounded-full flex-shrink-0 mt-1 flex items-center justify-center" style="background:linear-gradient(135deg,#667eea,#764ba2);box-shadow:0 4px 15px rgba(102,126,234,.3)">
+          <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C10.9 2 10 2.9 10 4c0 .74.4 1.38 1 1.73V7h-1c-1.1 0-2 .9-2 2v1H6c-.55 0-1 .45-1 1v3c0 .55.45 1 1 1h1v1c0 1.1.9 2 2 2h6c1.1 0 2-.9 2-2v-1h1c.55 0 1-.45 1-1v-3c0-.55-.45-1-1-1h-2V9c0-1.1-.9-2-2-2h-1V5.73c.6-.35 1-.99 1-1.73 0-1.1-.9-2-2-2z"/><circle cx="9" cy="11" r="1"/><circle cx="15" cy="11" r="1"/><path d="M12 15c.83 0 1.5-.67 1.5-1.5S12.83 12 12 12s-1.5.67-1.5 1.5.67 1.5 1.5 1.5z"/></svg>
+        </div>
+        <div class="flex-1">
+          <div class="text-xs text-[#64748B] mb-1 ml-1">机构经纪组织者智能体</div>
+          <div class="bg-white rounded-2xl px-4 py-3 card-shadow max-w-[90%]">
+            <p class="text-sm text-[#1E293B] leading-relaxed mb-4">
+              我司PB系统1月产生交易量<span class="font-semibold text-[#2563EB]">848.63亿元</span>，同比<span class="font-semibold text-[#EF4444]">增加193.19%</span>；佣金收入<span class="font-semibold text-[#2563EB]">1,246.40万元</span>，同比<span class="font-semibold text-[#EF4444]">增加146.15%</span>。
+            </p>
+            <div id="analyzing-status" class="flex items-center gap-2">
+              <div class="loading-spinner">
+                <svg class="w-4 h-4 text-[#2563EB]" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
+                </svg>
+              </div>
+              <span class="text-sm text-[#1E293B] loading-text">正在分析各分支机构业绩情况...</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- AI消息2：交易量佣金整体分析 -->
+      <div id="overall-analysis" class="flex items-start gap-2 message-enter" style="display: none;">
+        <div class="w-8 h-8 rounded-full flex-shrink-0 mt-1 flex items-center justify-center" style="background:linear-gradient(135deg,#667eea,#764ba2);box-shadow:0 4px 15px rgba(102,126,234,.3)">
+          <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C10.9 2 10 2.9 10 4c0 .74.4 1.38 1 1.73V7h-1c-1.1 0-2 .9-2 2v1H6c-.55 0-1 .45-1 1v3c0 .55.45 1 1 1h1v1c0 1.1.9 2 2 2h6c1.1 0 2-.9 2-2v-1h1c.55 0 1-.45 1-1v-3c0-.55-.45-1-1-1h-2V9c0-1.1-.9-2-2-2h-1V5.73c.6-.35 1-.99 1-1.73 0-1.1-.9-2-2-2z"/><circle cx="9" cy="11" r="1"/><circle cx="15" cy="11" r="1"/><path d="M12 15c.83 0 1.5-.67 1.5-1.5S12.83 12 12 12s-1.5.67-1.5 1.5.67 1.5 1.5 1.5z"/></svg>
+        </div>
+        <div class="flex-1">
+          <div class="text-xs text-[#64748B] mb-1 ml-1">机构经纪组织者智能体</div>
+          <div class="bg-white rounded-2xl px-4 py-3 card-shadow max-w-[90%]">
+            <p class="text-sm text-[#1E293B] leading-relaxed mb-3">
+              已基于PB系统数据，对<span class="font-semibold text-[#2563EB]">全体分支机构的交易量与佣金收入</span>完成一次整体分析，分析报告如下。
+            </p>
+            <div id="overall-analysis-content" class="space-y-2 text-xs text-[#475569]">
+              <!-- 动态生成整体分析内容 -->
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- AI消息3：业绩排名分析结果 -->
+      <div id="ranking-result" class="flex items-start gap-2 message-enter" style="display: none;">
+        <div class="w-8 h-8 rounded-full flex-shrink-0 mt-1 flex items-center justify-center" style="background:linear-gradient(135deg,#667eea,#764ba2);box-shadow:0 4px 15px rgba(102,126,234,.3)">
+          <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C10.9 2 10 2.9 10 4c0 .74.4 1.38 1 1.73V7h-1c-1.1 0-2 .9-2 2v1H6c-.55 0-1 .45-1 1v3c0 .55.45 1 1 1h1v1c0 1.1.9 2 2 2h6c1.1 0 2-.9 2-2v-1h1c.55 0 1-.45 1-1v-3c0-.55-.45-1-1-1h-2V9c0-1.1-.9-2-2-2h-1V5.73c.6-.35 1-.99 1-1.73 0-1.1-.9-2-2-2z"/><circle cx="9" cy="11" r="1"/><circle cx="15" cy="11" r="1"/><path d="M12 15c.83 0 1.5-.67 1.5-1.5S12.83 12 12 12s-1.5.67-1.5 1.5.67 1.5 1.5 1.5z"/></svg>
+        </div>
+        <div class="flex-1">
+          <div class="text-xs text-[#64748B] mb-1 ml-1">机构经纪组织者智能体</div>
+          <div class="bg-white rounded-2xl px-4 py-3 card-shadow max-w-[90%]">
+            
+            <!-- 业绩前三名 -->
+            <div class="mb-4">
+              <div class="flex items-center gap-2 mb-3">
+                <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-[#10B981] to-[#059669] flex items-center justify-center shadow-md">
+                  <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M12.395 2.553a1 1 0 00-1.45-.385c-.345.23-.614.558-.822.88-.214.33-.403.713-.57 1.116-.334.804-.614 1.768-.84 2.734a31.365 31.365 0 00-.613 3.58 2.64 2.64 0 01-.945-1.067c-.328-.68-.398-1.534-.398-2.654A1 1 0 005.05 6.05 6.981 6.981 0 003 11a7 7 0 1011.95-4.95c-.592-.591-.98-.985-1.348-1.467-.363-.476-.724-1.063-1.207-2.03zM12.12 15.12A3 3 0 017 13s.879.5 2.5.5c0-1 .5-4 1.25-4.5.5 1 .786 1.293 1.371 1.879A2.99 2.99 0 0113 13a2.99 2.99 0 01-.879 2.121z" clip-rule="evenodd"/>
+                  </svg>
+                </div>
+                <span class="text-base font-bold text-[#1E293B]">业绩前三名</span>
+              </div>
+              <div id="top-three-list" class="space-y-2.5">
+                <!-- 动态生成 -->
+              </div>
+            </div>
+
+            <!-- 业绩后三名 -->
+            <div>
+              <div class="flex items-center gap-2 mb-3">
+                <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-[#EF4444] to-[#DC2626] flex items-center justify-center shadow-md">
+                  <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/>
+                  </svg>
+                </div>
+                <span class="text-base font-bold text-[#1E293B]">业绩后三名</span>
+              </div>
+              <div id="bottom-three-list" class="space-y-2.5">
+                <!-- 动态生成 -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- AI消息3：任务下发 -->
+      <div id="task-send" class="flex items-start gap-2 message-enter" style="display: none;">
+        <div class="w-8 h-8 rounded-full flex-shrink-0 mt-1 flex items-center justify-center" style="background:linear-gradient(135deg,#667eea,#764ba2);box-shadow:0 4px 15px rgba(102,126,234,.3)">
+          <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C10.9 2 10 2.9 10 4c0 .74.4 1.38 1 1.73V7h-1c-1.1 0-2 .9-2 2v1H6c-.55 0-1 .45-1 1v3c0 .55.45 1 1 1h1v1c0 1.1.9 2 2 2h6c1.1 0 2-.9 2-2v-1h1c.55 0 1-.45 1-1v-3c0-.55-.45-1-1-1h-2V9c0-1.1-.9-2-2-2h-1V5.73c.6-.35 1-.99 1-1.73 0-1.1-.9-2-2-2z"/><circle cx="9" cy="11" r="1"/><circle cx="15" cy="11" r="1"/><path d="M12 15c.83 0 1.5-.67 1.5-1.5S12.83 12 12 12s-1.5.67-1.5 1.5.67 1.5 1.5 1.5z"/></svg>
+        </div>
+        <div class="flex-1">
+          <div class="text-xs text-[#64748B] mb-1 ml-1">机构经纪组织者智能体</div>
+          <div class="bg-white rounded-2xl px-4 py-3 card-shadow max-w-[90%]">
+            <p class="text-sm text-[#1E293B] leading-relaxed mb-4">
+              对业绩后三名的分支机构，下发任务要求反馈真实原因。
+            </p>
+            
+            <!-- 任务列表 -->
+            <div class="bg-white rounded-xl p-5 border border-[#E5E7EB] shadow-md">
+              <div class="flex items-center gap-2.5 mb-4 pb-3 border-b border-[#E5E7EB]">
+                <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-[#3B82F6] to-[#2563EB] flex items-center justify-center shadow-sm">
+                  <svg class="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z"/>
+                    <path fill-rule="evenodd" d="M4 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v11a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm3 4a1 1 0 000 2h.01a1 1 0 100-2H7zm3 0a1 1 0 000 2h3a1 1 0 100-2h-3zm-3 4a1 1 0 100 2h.01a1 1 0 100-2H7zm3 0a1 1 0 100 2h3a1 1 0 100-2h-3z" clip-rule="evenodd"/>
+                  </svg>
+                </div>
+                <p class="text-sm font-bold text-[#1E293B]">任务已下发</p>
+              </div>
+              <div id="task-list" class="space-y-2.5">
+                <!-- 动态生成 -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- AI消息4：成都营业部反馈 -->
+      <div id="chengdu-feedback" class="flex items-start gap-2 message-enter justify-end" style="display: none;">
+        <div class="flex-1"></div>
+        <div class="flex items-end gap-2">
+          <div class="bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-2xl px-4 py-3 card-shadow max-w-[80%] text-sm leading-relaxed">
+            业绩下降的主要原因是：近期重点客户流失，部分机构客户因市场环境变化调整了交易策略，导致交易量下降。同时，新客户拓展进度较慢，需要总部支持。
+          </div>
+          <div class="flex flex-col items-center gap-1">
+            <div class="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0" style="background:linear-gradient(135deg,#0ea5e9,#2563eb);box-shadow:0 2px 8px rgba(37,99,235,.3);">
+              <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C10.9 2 10 2.9 10 4c0 .74.4 1.38 1 1.73V7h-1c-1.1 0-2 .9-2 2v1H6c-.55 0-1 .45-1 1v3c0 .55.45 1 1 1h1v1c0 1.1.9 2 2 2h6c1.1 0 2-.9 2-2v-1h1c.55 0 1-.45 1-1v-3c0-.55-.45-1-1-1h-2V9c0-1.1-.9-2-2-2h-1V5.73c.6-.35 1-.99 1-1.73 0-1.1-.9-2-2-2z"/><circle cx="9" cy="11" r="1"/><circle cx="15" cy="11" r="1"/><path d="M12 15c.83 0 1.5-.67 1.5-1.5S12.83 12 12 12s-1.5.67-1.5 1.5.67 1.5 1.5 1.5z"/></svg>
+            </div>
+            <span style="font-size:9px;color:#64748b;white-space:nowrap;">成都营业部负责人</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- AI消息5：展业建议 -->
+      <div id="assessment" class="flex items-start gap-2 message-enter" style="display: none;">
+        <div class="w-8 h-8 rounded-full flex-shrink-0 mt-1 flex items-center justify-center" style="background:linear-gradient(135deg,#667eea,#764ba2);box-shadow:0 4px 15px rgba(102,126,234,.3)">
+          <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C10.9 2 10 2.9 10 4c0 .74.4 1.38 1 1.73V7h-1c-1.1 0-2 .9-2 2v1H6c-.55 0-1 .45-1 1v3c0 .55.45 1 1 1h1v1c0 1.1.9 2 2 2h6c1.1 0 2-.9 2-2v-1h1c.55 0 1-.45 1-1v-3c0-.55-.45-1-1-1h-2V9c0-1.1-.9-2-2-2h-1V5.73c.6-.35 1-.99 1-1.73 0-1.1-.9-2-2-2z"/><circle cx="9" cy="11" r="1"/><circle cx="15" cy="11" r="1"/><path d="M12 15c.83 0 1.5-.67 1.5-1.5S12.83 12 12 12s-1.5.67-1.5 1.5.67 1.5 1.5 1.5z"/></svg>
+        </div>
+        <div class="flex-1">
+          <div class="text-xs text-[#64748B] mb-1 ml-1">机构经纪组织者智能体</div>
+          <div class="bg-white rounded-2xl px-4 py-3 card-shadow max-w-[90%]">
+            <p class="text-sm text-[#1E293B] font-semibold mb-2">展业建议</p>
+            <p class="text-xs text-[#10B981] mb-3" style="font-weight: 600;">✓ 已推送到成都营业部负责人员工端</p>
+            <ul class="list-disc pl-5 space-y-1 text-xs text-[#475569]">
+              <li>充分利用<span class="font-semibold text-[#2563EB]">客户服务超数字员工</span>，对流失重点客户开展回访，梳理高价值客户名单，设计分层维护策略。</li>
+              <li>联合<span class="font-semibold text-[#2563EB]">财富管理组织者智能体</span>，围绕机构客户资产配置与交易策略，策划小型路演或线上沙龙，提升客户黏性。</li>
+              <li>将PB系统中的高频交易客户画像与区域潜在客户名单匹配，锁定一批高匹配度目标客户，制定“一户一策”的拓展计划。</li>
+              <li>建立月度跟踪机制，由总部与成都营业部共同复盘展业进度与成交转化情况，及时迭代策略。</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- AI消息6：一个月后经营情况 -->
+      <div id="sync-send" class="flex items-start gap-2 message-enter" style="display: none;">
+        <div class="w-8 h-8 rounded-full flex-shrink-0 mt-1 flex items-center justify-center" style="background:linear-gradient(135deg,#667eea,#764ba2);box-shadow:0 4px 15px rgba(102,126,234,.3)">
+          <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C10.9 2 10 2.9 10 4c0 .74.4 1.38 1 1.73V7h-1c-1.1 0-2 .9-2 2v1H6c-.55 0-1 .45-1 1v3c0 .55.45 1 1 1h1v1c0 1.1.9 2 2 2h6c1.1 0 2-.9 2-2v-1h1c.55 0 1-.45 1-1v-3c0-.55-.45-1-1-1h-2V9c0-1.1-.9-2-2-2h-1V5.73c.6-.35 1-.99 1-1.73 0-1.1-.9-2-2-2z"/><circle cx="9" cy="11" r="1"/><circle cx="15" cy="11" r="1"/><path d="M12 15c.83 0 1.5-.67 1.5-1.5S12.83 12 12 12s-1.5.67-1.5 1.5.67 1.5 1.5 1.5z"/></svg>
+        </div>
+        <div class="flex-1">
+          <div class="text-xs text-[#64748B] mb-1 ml-1">公司自动驾驶大模型 · 一个月后</div>
+          <div class="bg-white rounded-2xl px-4 py-3 card-shadow max-w-[90%]">
+            <p class="text-sm text-[#1E293B] leading-relaxed mb-3">
+              成都营业部<span class="font-semibold text-[#0F172A]">最新经营数据</span>：
+            </p>
+            <div class="bg-white rounded-xl p-4 border border-[#E5E7EB] shadow-md mt-1 space-y-2 text-xs text-[#475569]">
+              <p>· 佣金收入从<span class="font-semibold text-[#DC2626]">38.6万元</span>提升至<span class="font-semibold text-[#16A34A]">52.3万元</span>，同比跌幅收窄并转为小幅正增长。</p>
+              <p>· 机构客户有效户数恢复至原有水平的<span class="font-semibold text-[#2563EB]">105%</span>，高价值客户占比提升。</p>
+              <p>· 交易量较前一月提升约<span class="font-semibold text-[#16A34A]">28%</span>，在原样本中由第<span class="font-semibold">9</span>位升至第<span class="font-semibold">6</span>位，基本完成“追赶并略有赶超”的目标。</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- 底部输入栏 -->
+    <footer class="sticky bottom-0 bg-white border-t border-gray-100 px-4 py-3">
+      <div class="flex items-center gap-3 bg-gray-100 rounded-2xl px-4 py-3">
+        <button class="flex-shrink-0 text-gray-500">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+          </svg>
+        </button>
+        <input type="text" class="flex-1 bg-transparent border-0 outline-none text-[#374151] placeholder-gray-400 text-sm" placeholder="输入您的问题或选择智能体..."/>
+        <button class="flex-shrink-0 w-8 h-8 rounded-full bg-gray-300 flex items-center justify-center text-gray-600">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
+          </svg>
+        </button>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    (function() {
+      // 分支机构业绩数据
+      const branchData = [
+        { name: '上海营业部', revenue: 285.6, change: 245.3, changePercent: 608.5, rank: 1, reason: '新增重点客户3家，量化策略交易活跃，系统对接及时', satisfaction: true },
+        { name: '北京营业部', revenue: 198.4, change: 156.2, changePercent: 370.2, rank: 2, reason: '机构客户交易量大幅提升，两融业务增长明显', satisfaction: true },
+        { name: '深圳营业部', revenue: 165.8, change: 98.5, changePercent: 146.3, rank: 3, reason: '私募基金客户增加，程序化交易需求旺盛', satisfaction: true },
+        { name: '广州营业部', revenue: 45.2, change: -12.8, changePercent: -22.1, rank: 8, reason: '可能因客户流失或市场环境变化导致', satisfaction: false },
+        { name: '成都营业部', revenue: 38.6, change: -18.5, changePercent: -32.4, rank: 9, reason: '可能因业务拓展不足或客户维护不到位', satisfaction: false },
+        { name: '杭州营业部', revenue: 32.1, change: -25.3, changePercent: -44.1, rank: 10, reason: '可能因竞争加剧或服务能力不足', satisfaction: false }
+      ];
+
+      const topThree = branchData.filter(b => b.rank <= 3).sort((a, b) => a.rank - b.rank);
+      const bottomThree = branchData.filter(b => b.rank >= 8).sort((a, b) => a.rank - b.rank);
+      const unsatisfiedBranches = branchData.filter(b => !b.satisfaction);
+
+      // 构建交易量佣金整体分析内容
+      function buildOverallAnalysis() {
+        const totalRevenue = branchData.reduce((sum, b) => sum + b.revenue, 0);
+        const avgChangePercent = branchData.reduce((sum, b) => sum + b.changePercent, 0) / branchData.length;
+        const positiveCount = branchData.filter(b => b.change >= 0).length;
+        const negativeCount = branchData.length - positiveCount;
+        const topShare = topThree.reduce((sum, b) => sum + b.revenue, 0) / totalRevenue * 100;
+        const bottomShare = bottomThree.reduce((sum, b) => sum + b.revenue, 0) / totalRevenue * 100;
+
+        return `
+          <div class="bg-white rounded-lg p-3 border border-[#E2E8F0] shadow-sm card-hover">
+            <p class="mb-1">
+              <span class="font-semibold text-[#0F172A]">整体规模：</span>
+              全部分支机构合计佣金收入约
+              <span class="font-semibold text-[#2563EB]">${totalRevenue.toFixed(1)}万元</span>。
+            </p>
+            <p class="mb-1">
+              <span class="font-semibold text-[#0F172A]">整体增速：</span>
+              各机构佣金收入同比平均变化约
+              <span class="font-semibold ${avgChangePercent >= 0 ? 'text-[#EF4444]' : 'text-[#10B981]'}">
+                ${avgChangePercent >= 0 ? '↑' : '↓'} ${Math.abs(avgChangePercent).toFixed(1)}%
+              </span>。
+            </p>
+            <p class="mb-1">
+              <span class="font-semibold text-[#0F172A]">结构分布：</span>
+              业绩<span class="font-semibold text-[#16A34A]">改善</span>的机构有
+              <span class="font-semibold">${positiveCount}家</span>，
+              业绩<span class="font-semibold text-[#DC2626]">下滑</span>的机构有
+              <span class="font-semibold">${negativeCount}家</span>。
+            </p>
+            <p>
+              <span class="font-semibold text-[#0F172A]">集中度：</span>
+              业绩前三名贡献了约
+              <span class="font-semibold text-[#2563EB]">${topShare.toFixed(1)}%</span>的佣金，
+              后三名仅贡献约
+              <span class="font-semibold text-[#64748B]">${bottomShare.toFixed(1)}%</span>，
+              说明佣金收入呈现<span class="font-semibold text-[#F97316]">头部集中</span>特征。
+            </p>
+          </div>
+        `;
+      }
+
+      // 创建业绩卡片（整合模型分析原因）
+      function createPerformanceCard(branch, isTop) {
+        const isPositive = branch.change >= 0;
+        const medalEmojis = ['🥇', '🥈', '🥉'];
+        
+        return `
+          <div class="bg-white rounded-lg p-3 border ${isTop ? 'border-[#A7F3D0]' : 'border-[#FECACA]'} shadow-sm card-hover">
+            <div class="flex items-start justify-between mb-2">
+              <div class="flex items-center gap-2.5">
+                ${isTop ? `<span class="text-xl">${medalEmojis[branch.rank - 1]}</span>` : ''}
+                <div>
+                  <p class="text-xs font-bold text-[#1E293B]">${branch.name}</p>
+                  <p class="text-xs text-[#64748B] mt-0.5">排名第${branch.rank}位</p>
+                </div>
+              </div>
+              <div class="text-right">
+                <p class="text-xs font-bold text-[#1E293B]">${branch.revenue.toFixed(1)}万元</p>
+                <div class="flex items-center gap-1 mt-0.5">
+                  <span class="text-xs ${isPositive ? 'text-[#EF4444]' : 'text-[#10B981]'}">
+                    ${isPositive ? '↑' : '↓'} ${Math.abs(branch.changePercent).toFixed(1)}%
+                  </span>
+                </div>
+              </div>
+            </div>
+            <div class="pt-2 border-t border-[#F1F5F9] mb-2">
+              <p class="text-xs text-[#64748B] mb-2">
+                <span class="font-medium">变化：</span>
+                <span class="${isPositive ? 'text-[#EF4444]' : 'text-[#10B981]'}">
+                  ${isPositive ? '+' : ''}${branch.change.toFixed(1)}万元
+                </span>
+              </p>
+              <div class="flex items-start justify-between mb-1.5">
+                <p class="text-xs font-medium text-[#1E293B]">模型分析原因：</p>
+                <span class="text-xs px-2 py-0.5 rounded-full ${branch.satisfaction ? 'bg-[#F0FDF4] text-[#10B981] border border-[#A7F3D0]' : 'bg-[#FEF2F2] text-[#EF4444] border border-[#FECACA]'}">
+                  ${branch.satisfaction ? '✓ 满意' : '⚠ 需反馈'}
+                </span>
+              </div>
+              <div class="bg-gradient-to-br from-[#F8FAFC] to-[#F1F5F9] rounded-lg p-2 border border-[#E5E7EB]">
+                <p class="text-xs text-[#64748B] leading-relaxed">${branch.reason}</p>
+              </div>
+            </div>
+          </div>
+        `;
+      }
+
+      // 创建任务项
+      function createTaskItem(branch, index) {
+        return `
+          <div class="flex items-start gap-3 p-3 bg-gradient-to-r from-[#EFF6FF] to-[#F8FAFC] rounded-lg border-l-3 border-[#3B82F6] card-hover">
+            <div class="flex-shrink-0 w-8 h-8 rounded-full bg-gradient-to-br from-[#3B82F6] to-[#2563EB] flex items-center justify-center text-white text-sm font-semibold shadow-sm">
+              ${branch.name.charAt(0)}
+            </div>
+            <div class="flex-1 min-w-0">
+              <p class="text-xs font-semibold text-[#1E40AF] mb-1">${branch.name}负责人</p>
+              <p class="text-xs text-[#64748B] leading-relaxed">请反馈业绩变化的真实原因，模型分析结果：${branch.reason}</p>
+            </div>
+            <div class="flex-shrink-0">
+              <svg class="w-4 h-4 text-[#10B981]" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+              </svg>
+            </div>
+          </div>
+        `;
+      }
+
+      // 显示业绩排名
+      function showRanking() {
+        const topList = document.getElementById('top-three-list');
+        const bottomList = document.getElementById('bottom-three-list');
+        
+        topThree.forEach((branch, index) => {
+          setTimeout(() => {
+            topList.innerHTML += createPerformanceCard(branch, true);
+          }, index * 300);
+        });
+
+        bottomThree.forEach((branch, index) => {
+          setTimeout(() => {
+            bottomList.innerHTML += createPerformanceCard(branch, false);
+          }, (topThree.length + index) * 300);
+        });
+      }
+
+      // 显示任务下发
+      function showTaskSend() {
+        const taskList = document.getElementById('task-list');
+        unsatisfiedBranches.forEach((branch, index) => {
+          setTimeout(() => {
+            taskList.innerHTML += createTaskItem(branch, index);
+          }, index * 300);
+        });
+      }
+
+      // 滚动到底部
+      function scrollToBottom() {
+        setTimeout(() => {
+          window.scrollTo({
+            top: document.body.scrollHeight,
+            behavior: 'smooth'
+          });
+        }, 100);
+      }
+
+      // 启动流程
+      setTimeout(() => {
+        document.getElementById('analyzing-status').innerHTML = `
+          <svg class="w-4 h-4 text-[#10B981]" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+          </svg>
+          <span class="text-sm text-[#1E293B]">分析完成</span>
+        `;
+        
+        setTimeout(() => {
+          // 先展示交易量佣金整体分析
+          const overallBlock = document.getElementById('overall-analysis');
+          const overallContent = document.getElementById('overall-analysis-content');
+          if (overallBlock && overallContent) {
+            overallBlock.style.display = 'flex';
+            overallContent.innerHTML = buildOverallAnalysis();
+            scrollToBottom();
+          }
+
+          // 再展示业绩排名结果（已整合模型分析原因）
+          setTimeout(() => {
+            document.getElementById('ranking-result').style.display = 'flex';
+            showRanking();
+            
+            // 显示任务下发
+            setTimeout(() => {
+              if (unsatisfiedBranches.length > 0) {
+                document.getElementById('task-send').style.display = 'flex';
+                showTaskSend();
+                
+                // 显示成都营业部反馈（仅针对成都营业部）
+                setTimeout(() => {
+                  const chengduBranch = unsatisfiedBranches.find(b => b.name === '成都营业部');
+                  if (chengduBranch) {
+                    document.getElementById('chengdu-feedback').style.display = 'flex';
+                    scrollToBottom();
+                    
+                    // 显示机构经纪组织者智能体展业建议
+                    setTimeout(() => {
+                      document.getElementById('assessment').style.display = 'flex';
+                      scrollToBottom();
+                      
+                      // 再显示一个月后经营情况（模拟）
+                      setTimeout(() => {
+                        document.getElementById('sync-send').style.display = 'flex';
+                        scrollToBottom();
+                      }, 2000);
+                    }, 2000);
+                  }
+                }, 3000);
+              }
+            }, 2500);
+          }, 2000);
+        }, 800);
+      }, 3000);
+    })();
+  </script>
+</body>
+</html>

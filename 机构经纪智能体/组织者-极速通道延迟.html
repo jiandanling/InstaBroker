@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>极速交易通道延迟异常</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      background: #f5f5f5;
+    }
+    .card-shadow { box-shadow: 0 2px 12px rgba(0,0,0,0.08); }
+    .message-enter { animation: slideIn 0.3s ease-out; }
+    @keyframes slideIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+    @keyframes pulse { 0%,100% { opacity:0.5; } 50% { opacity:1; } }
+    .loading-spinner { animation: spin 1s linear infinite; }
+    .loading-text    { animation: pulse 1.5s ease-in-out infinite; }
+  </style>
+</head>
+<body class="min-h-screen">
+  <div class="min-h-screen flex flex-col max-w-lg mx-auto bg-[#f5f5f5]">
+
+    <!-- 顶部导航栏 -->
+    <header class="sticky top-0 bg-white px-4 py-3 flex items-center justify-between z-20 border-b border-gray-100">
+      <a id="backLink" href="组织者-应急组织.html" class="w-10 h-10 flex items-center justify-center text-gray-700">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+        </svg>
+      </a>
+      <h1 class="text-base font-semibold text-[#4f46e5]">极速通道延迟-紧急处置</h1>
+      <button class="w-10 h-10 flex items-center justify-center text-gray-700">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"/>
+        </svg>
+      </button>
+    </header>
+
+    <!-- 对话区 -->
+    <main id="main-content" class="flex-1 flex flex-col gap-4 px-4 py-4 pb-24">
+
+      <!-- 时间戳 -->
+      <div class="flex items-center justify-center text-xs text-[#64748B] bg-white/50 backdrop-blur-sm rounded-full px-3 py-1 shadow-sm w-fit mx-auto">
+        今天 09:32
+      </div>
+
+      <!-- 消息1：告警检测 -->
+      <div class="flex items-start gap-2 message-enter">
+        <div class="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 mt-1" style="background:linear-gradient(135deg,#667eea,#764ba2);box-shadow:0 4px 15px rgba(102,126,234,.3);">
+          <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C10.9 2 10 2.9 10 4c0 .74.4 1.38 1 1.73V7h-1c-1.1 0-2 .9-2 2v1H6c-.55 0-1 .45-1 1v3c0 .55.45 1 1 1h1v1c0 1.1.9 2 2 2h6c1.1 0 2-.9 2-2v-1h1c.55 0 1-.45 1-1v-3c0-.55-.45-1-1-1h-2V9c0-1.1-.9-2-2-2h-1V5.73c.6-.35 1-.99 1-1.73 0-1.1-.9-2-2-2z"/><circle cx="9" cy="11" r="1"/><circle cx="15" cy="11" r="1"/><path d="M12 15c.83 0 1.5-.67 1.5-1.5S12.83 12 12 12s-1.5.67-1.5 1.5.67 1.5 1.5 1.5z"/></svg>
+        </div>
+        <div class="flex-1">
+          <div class="text-xs text-[#64748B] mb-1 ml-1">机构经纪组织者智能体</div>
+          <div class="bg-white rounded-2xl px-4 py-3 card-shadow max-w-[90%]">
+            <div class="flex items-center gap-2 mb-3">
+              <span class="text-sm font-semibold text-[#1E293B]">⚡ 极速通道延迟告警</span>
+              <span class="bg-[#ef4444] text-white text-xs font-medium px-2 py-0.5 rounded-lg">紧急</span>
+            </div>
+            <p class="text-sm text-[#374151] leading-relaxed mb-3">监测到<span class="font-semibold text-[#ef4444]">上海极速通道</span>延迟异常，当前延迟 <span class="font-bold text-[#ef4444]">6.3ms</span>，超过阈值（2ms），影响高频量化策略正常执行。</p>
+            <div class="space-y-2">
+              <div class="flex items-center justify-between p-2.5 bg-red-50 rounded-xl border border-red-100">
+                <span class="text-xs text-[#1E293B] font-medium">当前延迟</span>
+                <span class="text-xs font-bold text-[#ef4444]">6.3ms ↑</span>
+              </div>
+              <div class="flex items-center justify-between p-2.5 bg-gray-50 rounded-xl border border-gray-100">
+                <span class="text-xs text-[#1E293B] font-medium">正常基线</span>
+                <span class="text-xs font-medium text-[#059669]">≤ 2ms</span>
+              </div>
+              <div class="flex items-center justify-between p-2.5 bg-gray-50 rounded-xl border border-gray-100">
+                <span class="text-xs text-[#1E293B] font-medium">告警触发时间</span>
+                <span class="text-xs text-[#64748B]">09:31:07</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </main>
+
+    <!-- 底部输入栏 -->
+    <footer class="sticky bottom-0 bg-white border-t border-gray-100 px-4 py-3">
+      <div class="flex items-center gap-3 bg-gray-100 rounded-2xl px-4 py-3">
+        <button class="flex-shrink-0 text-gray-500">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+        </button>
+        <input type="text" class="flex-1 bg-transparent border-0 outline-none text-[#374151] placeholder-gray-400 text-sm" placeholder="输入您的问题或选择智能体..." />
+        <button class="flex-shrink-0 w-8 h-8 rounded-full bg-gray-300 flex items-center justify-center text-gray-600">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+        </button>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    var mc = document.getElementById('main-content');
+
+    function avatar() {
+      return '<div class="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 mt-1" style="background:linear-gradient(135deg,#667eea,#764ba2);box-shadow:0 4px 15px rgba(102,126,234,.3);"><svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C10.9 2 10 2.9 10 4c0 .74.4 1.38 1 1.73V7h-1c-1.1 0-2 .9-2 2v1H6c-.55 0-1 .45-1 1v3c0 .55.45 1 1 1h1v1c0 1.1.9 2 2 2h6c1.1 0 2-.9 2-2v-1h1c.55 0 1-.45 1-1v-3c0-.55-.45-1-1-1h-2V9c0-1.1-.9-2-2-2h-1V5.73c.6-.35 1-.99 1-1.73 0-1.1-.9-2-2-2z"/><circle cx="9" cy="11" r="1"/><circle cx="15" cy="11" r="1"/><path d="M12 15c.83 0 1.5-.67 1.5-1.5S12.83 12 12 12s-1.5.67-1.5 1.5.67 1.5 1.5 1.5z"/></svg></div>';
+    }
+
+    function msg(content) {
+      return '<div class="flex items-start gap-2 message-enter">' + avatar() +
+        '<div class="flex-1"><div class="text-xs text-[#64748B] mb-1 ml-1">机构经纪组织者智能体</div>' +
+        '<div class="bg-white rounded-2xl px-4 py-3 card-shadow max-w-[90%] text-sm text-[#374151] leading-relaxed">' + content + '</div></div></div>';
+    }
+
+    function addMsg(html) {
+      var el = document.createElement('div');
+      el.innerHTML = html;
+      mc.appendChild(el);
+      setTimeout(function(){ window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' }); }, 100);
+      return el;
+    }
+
+    function loading(text) {
+      return msg('<div class="flex items-center gap-2 loading-text"><svg class="w-4 h-4 loading-spinner text-[#2563eb]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg><span class="text-[#64748B] text-sm">' + text + '</span></div>');
+    }
+
+    // 消息2：排查受影响客户
+    setTimeout(function() {
+      var load = addMsg(loading('正在排查受影响客户…'));
+      setTimeout(function() {
+        load.remove();
+        addMsg(msg(
+          '<div class="flex items-center gap-2 mb-3"><span class="font-semibold text-[#1E293B]">📋 受影响客户排查</span><span class="bg-[#f97316] text-white text-xs px-2 py-0.5 rounded-lg">3家</span></div>' +
+          '<div class="space-y-2">' +
+            '<div class="flex items-center justify-between p-2.5 bg-red-50 rounded-xl border border-red-100"><div><p class="text-xs font-semibold text-[#1E293B]">鸣石投资</p><p class="text-xs text-[#64748B]">高频CTA策略 · 日均委托5万笔</p></div><span class="text-xs font-bold text-[#ef4444]">严重影响</span></div>' +
+            '<div class="flex items-center justify-between p-2.5 bg-orange-50 rounded-xl border border-orange-100"><div><p class="text-xs font-semibold text-[#1E293B]">启林投资</p><p class="text-xs text-[#64748B]">统计套利策略 · 日均委托2万笔</p></div><span class="text-xs font-bold text-[#f97316]">中度影响</span></div>' +
+            '<div class="flex items-center justify-between p-2.5 bg-yellow-50 rounded-xl border border-yellow-100"><div><p class="text-xs font-semibold text-[#1E293B]">诚奇资产</p><p class="text-xs text-[#64748B]">日内T+0策略 · 日均委托8千笔</p></div><span class="text-xs font-bold text-[#ca8a04]">轻度影响</span></div>' +
+          '</div>'
+        ));
+
+        // 消息3：联系技术运维
+        setTimeout(function() {
+          addMsg(msg(
+            '<div class="text-sm text-[#374151]">检测到通道延迟超阈值，已<span class="font-semibold text-[#2563eb]">自动通知技术部与运维中心</span>负责人，要求立即介入排查，同步通知客户经理向受影响客户说明情况。</div>'
+          ));
+
+          // 消息4：诊断结果
+          setTimeout(function() {
+            var load2 = addMsg(loading('技术部正在诊断链路节点…'));
+            setTimeout(function() {
+              load2.remove();
+              addMsg(msg(
+                '<div class="flex items-center gap-2 mb-3"><span class="font-semibold text-[#1E293B]">🔍 链路诊断结果</span><span class="bg-[#2563eb] text-white text-xs px-2 py-0.5 rounded-lg">已定位</span></div>' +
+                '<div class="space-y-2 text-sm text-[#374151]">' +
+                  '<div class="p-3 bg-red-50 rounded-xl border border-red-100"><p class="font-semibold text-[#ef4444] mb-1">根因：上海IDC核心交换机端口拥塞</p><p class="text-xs text-[#64748B]">09:28 起流量突增，导致报文转发队列积压，延迟异常上升至6.3ms。</p></div>' +
+                  '<div class="p-3 bg-blue-50 rounded-xl border border-blue-100"><p class="font-semibold text-[#2563eb] mb-1">处置措施</p><ul class="text-xs text-[#64748B] space-y-1"><li>· 已将流量切换至备用端口（预计2分钟生效）</li><li>· 对拥塞端口进行带宽扩容配置</li><li>· 启用备用极速通道分流</li></ul></div>' +
+                '</div>'
+              ));
+
+              // 消息5：恢复确认
+              setTimeout(function() {
+                addMsg(msg(
+                  '<div class="flex items-center gap-2 mb-2"><span class="font-semibold text-[#1E293B]">✅ 通道恢复正常</span><span class="bg-[#059669] text-white text-xs px-2 py-0.5 rounded-lg">已解决</span></div>' +
+                  '<div class="space-y-2">' +
+                    '<div class="flex items-center justify-between p-2.5 bg-emerald-50 rounded-xl border border-emerald-100"><span class="text-xs font-medium text-[#1E293B]">当前延迟</span><span class="text-xs font-bold text-[#059669]">1.4ms ✓</span></div>' +
+                    '<div class="flex items-center justify-between p-2.5 bg-emerald-50 rounded-xl border border-emerald-100"><span class="text-xs font-medium text-[#1E293B]">恢复时间</span><span class="text-xs text-[#64748B]">09:36:22（历时约5分钟）</span></div>' +
+                  '</div>' +
+                  '<p class="text-sm text-[#374151] mt-2">已通知三家受影响客户通道已恢复，并向客户致歉。复盘报告将于今日收盘后发送。</p>'
+                ));
+              }, 2500);
+            }, 2000);
+          }, 1500);
+        }, 1200);
+      }, 1800);
+    }, 900);
+
+    // 从请示事项进入时，返回按钮指向请示事项页面
+    (function() {
+      var back = document.getElementById('backLink');
+      if (back && document.referrer && document.referrer.indexOf('请示事项') !== -1) {
+        back.href = '组织者-请示事项.html';
+      }
+    })();
+  </script>
+</body>
+</html>

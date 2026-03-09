@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>机构经纪组织者智能体</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      background: #f5f5f5;
+    }
+    .card-shadow { box-shadow: 0 2px 12px rgba(0,0,0,0.08); }
+    .ai-avatar {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      box-shadow: 0 4px 15px rgba(102,126,234,0.3);
+    }
+    .message-enter { animation: slideIn 0.3s ease-out; }
+    @keyframes slideIn {
+      from { opacity:0; transform:translateY(8px); }
+      to   { opacity:1; transform:translateY(0); }
+    }
+    @keyframes spin { from{transform:rotate(0deg)} to{transform:rotate(360deg)} }
+    @keyframes pulse { 0%,100%{opacity:.5} 50%{opacity:1} }
+    .loading-spinner { animation: spin 1s linear infinite; }
+    .loading-text    { animation: pulse 1.5s ease-in-out infinite; }
+  </style>
+</head>
+<body class="min-h-screen">
+  <div class="min-h-screen flex flex-col max-w-lg mx-auto bg-[#f5f5f5]">
+
+    <!-- 顶部导航栏 -->
+    <header class="sticky top-0 bg-white px-4 py-3 flex items-center justify-between z-20 border-b border-gray-100">
+      <a href="组织者-index.html" class="w-10 h-10 flex items-center justify-center text-gray-700">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+        </svg>
+      </a>
+      <h1 class="text-base font-semibold text-[#4f46e5]">机构经纪组织者智能体</h1>
+      <button class="w-10 h-10 flex items-center justify-center text-gray-700">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"/>
+        </svg>
+      </button>
+    </header>
+
+    <!-- 对话区 -->
+    <main id="main-content" class="flex-1 flex flex-col gap-4 px-4 py-4 pb-24">
+      <div class="flex items-center justify-center text-xs text-[#64748B] bg-white/50 backdrop-blur-sm rounded-full px-3 py-1 shadow-sm w-fit mx-auto">今天 09:00</div>
+
+      <!-- 初始加载消息 -->
+      <div class="flex items-start gap-2 message-enter">
+        <div class="w-8 h-8 rounded-full ai-avatar flex items-center justify-center flex-shrink-0 mt-1">
+          <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M12 2C10.9 2 10 2.9 10 4c0 .74.4 1.38 1 1.73V7h-1c-1.1 0-2 .9-2 2v1H6c-.55 0-1 .45-1 1v3c0 .55.45 1 1 1h1v1c0 1.1.9 2 2 2h6c1.1 0 2-.9 2-2v-1h1c.55 0 1-.45 1-1v-3c0-.55-.45-1-1-1h-2V9c0-1.1-.9-2-2-2h-1V5.73c.6-.35 1-.99 1-1.73 0-1.1-.9-2-2-2z"/>
+            <circle cx="9" cy="11" r="1"/><circle cx="15" cy="11" r="1"/>
+            <path d="M12 15c.83 0 1.5-.67 1.5-1.5S12.83 12 12 12s-1.5.67-1.5 1.5.67 1.5 1.5 1.5z"/>
+          </svg>
+        </div>
+        <div class="flex-1">
+          <div class="text-xs text-[#64748B] mb-1 ml-1">机构经纪组织者智能体</div>
+          <div id="init-bubble" class="bg-white rounded-2xl px-4 py-3 card-shadow max-w-[85%]">
+            <div class="flex items-center gap-2">
+              <svg class="w-4 h-4 text-[#2563eb] loading-spinner" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
+              </svg>
+              <span class="text-sm text-[#374151] loading-text">正在分析团队成员产出情况...</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- 底部输入栏 -->
+    <footer class="sticky bottom-0 bg-white border-t border-gray-100 px-4 py-3">
+      <div class="flex items-center gap-3 bg-gray-100 rounded-2xl px-4 py-3">
+        <button class="flex-shrink-0 text-gray-500">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+          </svg>
+        </button>
+        <input type="text" class="flex-1 bg-transparent border-0 outline-none text-[#374151] placeholder-gray-400 text-sm" placeholder="输入您的问题或选择智能体..."/>
+        <button class="flex-shrink-0 w-8 h-8 rounded-full bg-gray-300 flex items-center justify-center text-gray-600">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
+          </svg>
+        </button>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    var mainContent = document.getElementById('main-content');
+
+    var teamMembers = [
+      { name:'张明', target:7, completed:7, progress:100, isLagging:false, reason:'' },
+      { name:'李华', target:7, completed:3, progress:43,  isLagging:true,  reason:'负责的私募机构尽调材料收集困难，部分机构配合度较低' },
+      { name:'王芳', target:6, completed:5, progress:83,  isLagging:false, reason:'' }
+    ];
+
+    function aiAvatar() {
+      return '<div class="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 mt-1" style="background:linear-gradient(135deg,#667eea,#764ba2);box-shadow:0 4px 15px rgba(102,126,234,.3);">' +
+        '<svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24">' +
+          '<path d="M12 2C10.9 2 10 2.9 10 4c0 .74.4 1.38 1 1.73V7h-1c-1.1 0-2 .9-2 2v1H6c-.55 0-1 .45-1 1v3c0 .55.45 1 1 1h1v1c0 1.1.9 2 2 2h6c1.1 0 2-.9 2-2v-1h1c.55 0 1-.45 1-1v-3c0-.55-.45-1-1-1h-2V9c0-1.1-.9-2-2-2h-1V5.73c.6-.35 1-.99 1-1.73 0-1.1-.9-2-2-2z"/>' +
+          '<circle cx="9" cy="11" r="1"/><circle cx="15" cy="11" r="1"/>' +
+          '<path d="M12 15c.83 0 1.5-.67 1.5-1.5S12.83 12 12 12s-1.5.67-1.5 1.5.67 1.5 1.5 1.5z"/>' +
+        '</svg></div>';
+    }
+
+    function msgWrap(label, content) {
+      return '<div class="flex items-start gap-2 message-enter">' +
+        aiAvatar() +
+        '<div class="flex-1"><div class="text-xs text-[#64748B] mb-1 ml-1">' + label + '</div>' +
+        '<div class="bg-white rounded-2xl px-4 py-3 card-shadow max-w-[90%] text-sm text-[#374151] leading-relaxed">' + content + '</div></div></div>';
+    }
+
+    function scrollToBottom() {
+      setTimeout(function(){ window.scrollTo({ top:document.body.scrollHeight, behavior:'smooth' }); }, 100);
+    }
+
+    function addMsg(html) {
+      var el = document.createElement('div');
+      el.innerHTML = html;
+      mainContent.appendChild(el);
+      scrollToBottom();
+      return el;
+    }
+
+    function memberRow(m) {
+      var isLag = m.isLagging;
+      var color = isLag ? '#ef4444' : '#10b981';
+      var borderColor = isLag ? '#ef4444' : '#10b981';
+      var statusBg = isLag ? '#fef2f2' : '#f0fdf4';
+      var statusText = isLag ? '进度落后' : '进度正常';
+      return '<div class="flex items-center justify-between py-2.5 border-b border-gray-100 last:border-0">' +
+        '<div class="flex items-center gap-3">' +
+          '<div class="w-8 h-8 rounded-full flex items-center justify-center text-white text-sm font-bold flex-shrink-0" style="background:linear-gradient(135deg,#3b82f6,#2563eb)">' + m.name.charAt(0) + '</div>' +
+          '<div>' +
+            '<div class="font-semibold text-[#1E293B] text-sm">' + m.name + '</div>' +
+            '<div class="text-xs text-[#64748B]">目标 <b>' + m.target + '</b> 家 · 完成 <b style="color:' + color + '">' + m.completed + '</b> 家 (' + m.progress + '%)</div>' +
+          '</div>' +
+        '</div>' +
+        '<span class="text-xs font-semibold px-2 py-1 rounded-lg" style="background:' + statusBg + ';color:' + color + ';border:1px solid ' + borderColor + '20">' + statusText + '</span>' +
+      '</div>';
+    }
+
+    setTimeout(function() {
+      // 1. 分析完成
+      var bubble = document.getElementById('init-bubble');
+      if (bubble) {
+        bubble.innerHTML =
+          '<div class="flex items-center gap-2">' +
+            '<svg class="w-4 h-4 text-green-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>' +
+            '<span class="text-sm text-[#374151]">分析完成</span>' +
+          '</div>';
+      }
+
+      // 2. 团队成员产出卡片
+      setTimeout(function() {
+        addMsg(msgWrap('机构经纪组织者智能体',
+          '<div class="flex items-center gap-2 mb-3">' +
+            '<span class="font-semibold text-[#1E293B] text-sm">团队成员产出情况</span>' +
+            '<span class="bg-[#2563eb] text-white text-xs font-medium px-2 py-0.5 rounded-lg">3名成员</span>' +
+          '</div>' +
+          teamMembers.map(memberRow).join('')
+        ));
+
+        // 3. 处理进度落后成员
+        var lagging = teamMembers.filter(function(m){ return m.isLagging; });
+        if (lagging.length > 0) {
+          setTimeout(function(){ processLagging(lagging, 0); }, 1500);
+        }
+      }, 500);
+    }, 2000);
+
+    function processLagging(members, index) {
+      if (index >= members.length) return;
+      var m = members[index];
+
+      setTimeout(function() {
+        // 下发任务
+        addMsg(msgWrap('机构经纪组织者智能体',
+          '<div class="text-sm text-[#374151]">下发任务给<strong>' + m.name + '</strong>：请其反馈进度落后的原因，并制定追改进度计划。</div>'
+        ));
+
+        setTimeout(function() {
+          // 任务已下发状态
+          addMsg(msgWrap('机构经纪组织者智能体',
+            '<div class="flex items-center gap-2 mb-2">' +
+              '<svg class="w-4 h-4 text-green-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>' +
+              '<span class="font-semibold text-sm text-[#1E293B]">任务已下发</span>' +
+            '</div>' +
+            '<div class="text-sm text-[#374151]">任务已下发给<strong>' + m.name + '</strong>，当前状态：<span class="text-orange-500 font-medium">待反馈</span></div>'
+          ));
+
+          setTimeout(function() {
+            // 成员反馈（用户侧气泡）
+            var el = document.createElement('div');
+            el.innerHTML =
+              '<div class="flex items-start gap-2 message-enter justify-end">' +
+                '<div class="flex-1"></div>' +
+                '<div class="flex items-end gap-2">' +
+                  '<div class="bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-2xl px-4 py-3 card-shadow max-w-[80%] text-sm leading-relaxed">' +
+                    '进度落后原因：' + m.reason + '<br>追改计划：优先推进配合度较高的机构，梳理标准化尽调材料清单，每天更新进度。' +
+                  '</div>' +
+                  '<div class="flex flex-col items-center gap-1">' +
+                    '<div class="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0" style="background:linear-gradient(135deg,#0ea5e9,#2563eb);box-shadow:0 2px 8px rgba(37,99,235,.3);">' +
+                      '<svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C10.9 2 10 2.9 10 4c0 .74.4 1.38 1 1.73V7h-1c-1.1 0-2 .9-2 2v1H6c-.55 0-1 .45-1 1v3c0 .55.45 1 1 1h1v1c0 1.1.9 2 2 2h6c1.1 0 2-.9 2-2v-1h1c.55 0 1-.45 1-1v-3c0-.55-.45-1-1-1h-2V9c0-1.1-.9-2-2-2h-1V5.73c.6-.35 1-.99 1-1.73 0-1.1-.9-2-2-2z"/><circle cx="9" cy="11" r="1"/><circle cx="15" cy="11" r="1"/><path d="M12 15c.83 0 1.5-.67 1.5-1.5S12.83 12 12 12s-1.5.67-1.5 1.5.67 1.5 1.5 1.5z"/></svg>' +
+                    '</div>' +
+                    '<span style="font-size:9px;color:#64748b;white-space:nowrap;">' + m.name + '</span>' +
+                  '</div>' +
+                '</div>' +
+              '</div>';
+            mainContent.appendChild(el);
+            scrollToBottom();
+
+            setTimeout(function() {
+              // 工作指导意见
+              addMsg(msgWrap('机构经纪组织者智能体',
+                '<div class="font-semibold text-[#1E293B] text-sm mb-3">基于您的反馈，给出以下工作指导意见：</div>' +
+                '<div class="bg-green-50 rounded-lg px-3 py-1.5 text-xs text-green-600 mb-3 font-medium">✓ 已推送到' + m.name + '的员工端</div>' +
+                '<div class="space-y-3 text-sm text-[#374151]">' +
+                  '<div>' +
+                    '<div class="font-semibold text-[#1E293B] mb-1">1. 高效利用研究超级数字员工</div>' +
+                    '<ul class="space-y-1 text-xs text-[#64748B]">' +
+                      '<li class="flex items-start gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-[#2563eb] flex-shrink-0 mt-1"></span>将标准化尽调模板交由研究超级数字员工处理，协助完成尽调报告初稿</li>' +
+                      '<li class="flex items-start gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-[#2563eb] flex-shrink-0 mt-1"></span>每日跟进进度，及时识别并反馈阻碍点</li>' +
+                    '</ul>' +
+                  '</div>' +
+                  '<div>' +
+                    '<div class="font-semibold text-[#1E293B] mb-1">2. 利用组织者智能体协调资源</div>' +
+                    '<ul class="space-y-1 text-xs text-[#64748B]">' +
+                      '<li class="flex items-start gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-[#2563eb] flex-shrink-0 mt-1"></span>由组织者智能体识别配合度较低机构，安排客户经理协助联系</li>' +
+                      '<li class="flex items-start gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-[#2563eb] flex-shrink-0 mt-1"></span>基于CRM客户画像优先匹配最合适的客户经理对接</li>' +
+                    '</ul>' +
+                  '</div>' +
+                '</div>'
+              ));
+
+              setTimeout(function() {
+                // 一个月后进度更新
+                addMsg(msgWrap('公司自动驾驶大模型 · 一个月后',
+                  '<div class="font-semibold text-[#1E293B] text-sm mb-3">' + m.name + ' 最新工作进度：</div>' +
+                  '<div class="space-y-2 text-xs text-[#64748B]">' +
+                    '<div class="flex items-start gap-2"><span class="w-1.5 h-1.5 rounded-full bg-green-500 flex-shrink-0 mt-1.5"></span><span>已完成尽调机构数从 <span class="text-red-500 font-semibold">' + m.completed + ' 家</span>提升至<span class="text-green-600 font-semibold"> ' + m.target + ' 家</span>，完成率 <span class="text-green-600 font-semibold">100%</span></span></div>' +
+                    '<div class="flex items-start gap-2"><span class="w-1.5 h-1.5 rounded-full bg-green-500 flex-shrink-0 mt-1.5"></span><span>通过研究超级数字员工协助，尽调报告初稿完成效率提升约<span class="text-green-600 font-semibold"> 40%</span></span></div>' +
+                    '<div class="flex items-start gap-2"><span class="w-1.5 h-1.5 rounded-full bg-green-500 flex-shrink-0 mt-1.5"></span><span>客户经理成功协调了<span class="text-[#2563eb] font-semibold"> 3 家</span>配合度较低的私募机构，尽调时间已落实</span></div>' +
+                    '<div class="flex items-start gap-2"><span class="w-1.5 h-1.5 rounded-full bg-green-500 flex-shrink-0 mt-1.5"></span><span>工作进度已<span class="text-green-600 font-semibold">追赶上来</span>，达到预期目标</span></div>' +
+                  '</div>'
+                ));
+
+                setTimeout(function(){ processLagging(members, index + 1); }, 2000);
+              }, 2000);
+            }, 2000);
+          }, 1200);
+        }, 1800);
+      }, index === 0 ? 500 : 3000);
+    }
+  </script>
+</body>
+</html>

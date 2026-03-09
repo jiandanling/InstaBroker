@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>员工端-我的客户</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; background: #f5f5f5; }
+    .card-shadow { box-shadow: 0 2px 12px rgba(0,0,0,0.08); }
+  </style>
+</head>
+<body class="min-h-screen">
+  <div class="min-h-screen flex flex-col max-w-lg mx-auto bg-[#f5f5f5]">
+    <!-- 顶部导航栏 - 与超级员工index风格一致 -->
+    <header class="sticky top-0 bg-white px-4 py-3 flex items-center justify-between z-20 border-b border-gray-100">
+      <a href="index.html" class="w-10 h-10 flex items-center justify-center text-gray-700" aria-label="返回">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+        </svg>
+      </a>
+      <h1 class="text-lg font-semibold text-[#4f46e5]">我的客户</h1>
+      <button class="w-10 h-10 flex items-center justify-center text-gray-700" aria-label="通知">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"/>
+        </svg>
+      </button>
+    </header>
+
+    <main class="flex-1 overflow-y-auto px-4 py-4">
+      <!-- 统计概览 -->
+      <div class="grid grid-cols-3 gap-3 mb-4">
+        <div class="bg-white rounded-xl card-shadow px-4 py-3 text-center">
+          <div class="text-xs text-[#64748B]">全部客户</div>
+          <div class="text-lg font-bold text-[#1E293B] mt-0.5">12</div>
+        </div>
+        <div class="bg-white rounded-xl card-shadow px-4 py-3 text-center">
+          <div class="text-xs text-[#64748B]">跟进中</div>
+          <div class="text-lg font-bold text-[#2563eb] mt-0.5">5</div>
+        </div>
+        <div class="bg-white rounded-xl card-shadow px-4 py-3 text-center">
+          <div class="text-xs text-[#64748B]">已合作</div>
+          <div class="text-lg font-bold text-[#059669] mt-0.5">3</div>
+        </div>
+      </div>
+
+      <!-- 客户列表 -->
+      <div class="space-y-3">
+        <!-- 北京博达富通基金 -->
+        <a href="员工-博达富通-客户详情.html" class="block bg-white rounded-2xl card-shadow overflow-hidden">
+          <div class="p-4 flex items-center gap-4">
+            <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center flex-shrink-0 text-white font-bold text-sm">博</div>
+            <div class="flex-1 min-w-0">
+              <div class="font-semibold text-[#1E293B] text-sm">北京博达富通基金</div>
+              <div class="text-xs text-[#64748B] mt-0.5">金融机构客户 | 管理规模85亿</div>
+              <div class="flex flex-wrap gap-1.5 mt-2">
+                <span class="px-2 py-0.5 rounded-full bg-[#dbeafe] text-[#2563eb] text-xs">需求对接</span>
+                <span class="px-2 py-0.5 rounded-full bg-[#f5f3ff] text-[#7c3aed] text-xs">方案沟通</span>
+                <span class="px-2 py-0.5 rounded-full bg-[#ecfdf5] text-[#059669] text-xs">账户开立</span>
+              </div>
+            </div>
+            <svg class="w-5 h-5 text-[#94A3B8] flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+            </svg>
+          </div>
+        </a>
+
+        <!-- 示例客户2 -->
+        <a href="#" class="block bg-white rounded-2xl card-shadow overflow-hidden">
+          <div class="p-4 flex items-center gap-4">
+            <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-amber-500 to-orange-600 flex items-center justify-center flex-shrink-0 text-white font-bold text-sm">华</div>
+            <div class="flex-1 min-w-0">
+              <div class="font-semibold text-[#1E293B] text-sm">华创资产管理</div>
+              <div class="text-xs text-[#64748B] mt-0.5">金融机构客户 | 管理规模120亿</div>
+              <div class="flex flex-wrap gap-1.5 mt-2">
+                <span class="px-2 py-0.5 rounded-full bg-[#dbeafe] text-[#2563eb] text-xs">线索跟进</span>
+              </div>
+            </div>
+            <svg class="w-5 h-5 text-[#94A3B8] flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+            </svg>
+          </div>
+        </a>
+
+        <!-- 示例客户3 -->
+        <a href="#" class="block bg-white rounded-2xl card-shadow overflow-hidden">
+          <div class="p-4 flex items-center gap-4">
+            <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-emerald-500 to-teal-600 flex items-center justify-center flex-shrink-0 text-white font-bold text-sm">正</div>
+            <div class="flex-1 min-w-0">
+              <div class="font-semibold text-[#1E293B] text-sm">正赢投资</div>
+              <div class="text-xs text-[#64748B] mt-0.5">私募机构 | 综合评估中</div>
+              <div class="flex flex-wrap gap-1.5 mt-2">
+                <span class="px-2 py-0.5 rounded-full bg-[#f5f3ff] text-[#7c3aed] text-xs">圆桌协同</span>
+              </div>
+            </div>
+            <svg class="w-5 h-5 text-[#94A3B8] flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+            </svg>
+          </div>
+        </a>
+      </div>
+    </main>
+
+    <!-- 底部输入栏 -->
+    <footer class="mt-auto w-full bg-white border-t border-gray-100 px-4 py-3 safe-area-inset-bottom">
+      <div class="flex items-center gap-3 bg-gray-100 rounded-2xl px-4 py-3">
+        <button class="flex-shrink-0 text-gray-500" aria-label="图片">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+          </svg>
+        </button>
+        <input type="text" class="flex-1 bg-transparent border-0 outline-none text-[#374151] placeholder-gray-400 text-base" placeholder="输入您的问题或选择智能体..." />
+        <button class="flex-shrink-0 w-8 h-8 rounded-full bg-gray-300 flex items-center justify-center text-gray-600" aria-label="添加">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
+          </svg>
+        </button>
+      </div>
+    </footer>
+  </div>
+</body>
+</html>

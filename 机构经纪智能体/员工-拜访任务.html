@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>员工端-拜访任务</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body { 
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; 
+      background: #f5f5f5;
+    }
+    .card-hover {
+      transition: all 0.3s ease;
+    }
+    .card-hover:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    }
+    .gradient-border {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      padding: 1px;
+      border-radius: 0.75rem;
+    }
+    .gradient-border > div {
+      background: white;
+      border-radius: 0.75rem;
+    }
+    .priority-badge {
+      background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%);
+      color: white;
+      box-shadow: 0 2px 8px rgba(238, 90, 36, 0.3);
+    }
+    .ai-avatar {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+    }
+    .task-item {
+      transition: all 0.2s ease;
+    }
+    .task-item:hover {
+      background: rgba(59, 130, 246, 0.05);
+      border-radius: 0.5rem;
+      padding: 0.25rem;
+      margin: -0.25rem;
+    }
+    .flow-step { display: none; }
+    .flow-step.active { display: block; }
+    .section-card {
+      background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+      border: 1px solid rgba(59, 130, 246, 0.2);
+    }
+    .status-card {
+      background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+      border: 1px solid rgba(148, 163, 184, 0.2);
+    }
+  </style>
+</head>
+<body class="min-h-screen">
+  <div class="min-h-screen flex flex-col max-w-lg mx-auto bg-[#f5f5f5]">
+    <!-- 顶部导航栏 - 与超级员工index风格一致 -->
+    <header class="sticky top-0 bg-white px-4 py-3 flex items-center justify-between z-20 border-b border-gray-100">
+      <a href="index.html" class="w-10 h-10 flex items-center justify-center text-gray-700" aria-label="返回">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+        </svg>
+      </a>
+      <h1 class="text-lg font-semibold text-[#4f46e5]">拜访任务</h1>
+      <button class="w-10 h-10 flex items-center justify-center text-gray-700" aria-label="通知">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"/>
+        </svg>
+      </button>
+    </header>
+    
+    <!-- 对话区 -->
+    <main class="flex-1 flex flex-col gap-4 px-4 py-4">
+      <div class="flex items-center justify-center text-xs text-[#64748B] mt-0.5 bg-white/50 backdrop-blur-sm rounded-full px-3 py-1 shadow-sm">2025-07-17 09:00</div>
+      
+      <!-- 智能体推送推荐卡片 -->
+      <div class="flex items-start gap-2">
+        <div class="w-8 h-8 rounded-full ai-avatar flex items-center justify-center mt-1">
+          <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M12 2C10.9 2 10 2.9 10 4c0 .74.4 1.38 1 1.73V7h-1c-1.1 0-2 .9-2 2v1H6c-.55 0-1 .45-1 1v3c0 .55.45 1 1 1h1v1c0 1.1.9 2 2 2h6c1.1 0 2-.9 2-2v-1h1c.55 0 1-.45 1-1v-3c0-.55-.45-1-1-1h-2V9c0-1.1-.9-2-2-2h-1V5.73c.6-.35 1-.99 1-1.73 0-1.1-.9-2-2-2z"/>
+            <circle cx="9" cy="11" r="1"/>
+            <circle cx="15" cy="11" r="1"/>
+            <path d="M12 15c.83 0 1.5-.67 1.5-1.5S12.83 12 12 12s-1.5.67-1.5 1.5.67 1.5 1.5 1.5z"/>
+          </svg>
+        </div>
+        <div class="flex-1">
+          <!-- 商机来源 -->
+          <div class="flex items-center gap-2 px-2.5 py-1.5 rounded-lg bg-gradient-to-r from-blue-50 to-purple-50 border border-blue-100 mb-3">
+            <svg class="w-4 h-4 text-[#6366f1]" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M13 7H7v6h6V7z"/>
+              <path fill-rule="evenodd" d="M7 2a1 1 0 012 0v1a7 7 0 014.95 11.95l1.414-1.414A5 5 0 0017 8V3a1 1 0 10-2 0v5a5 5 0 01-8.485 4.485L5.05 12.95A7 7 0 017 2z" clip-rule="evenodd"/>
+            </svg>
+            <span class="font-medium text-[#4f46e5] text-sm">商机来自公司自动驾驶大模型</span>
+          </div>
+          <!-- 推荐卡片 -->
+          <div class="gradient-border card-hover">
+            <div class="p-4 flex flex-col gap-4">
+              <div class="flex items-center justify-between">
+                <div class="flex items-center gap-2">
+                  <div class="w-6 h-6 bg-gradient-to-br from-blue-500 to-purple-600 rounded flex items-center justify-center shadow-md">
+                    <svg class="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
+                      <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"/>
+                    </svg>
+                  </div>
+                  <span class="font-bold text-[#1E293B] text-base">客户拜访任务</span>
+                </div>
+                <span class="rounded-lg bg-[#2563eb] text-white text-xs px-2.5 py-1 font-medium">了解需求</span>
+              </div>
+              
+              <!-- 客户信息区 -->
+              <div class="flex items-center gap-3 bg-gradient-to-r from-blue-50 to-purple-50 rounded-lg p-3 border border-blue-100">
+                <div class="w-12 h-12 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center shadow-md">
+                  <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"/>
+                  </svg>
+                </div>
+                <div class="flex-1">
+                  <div class="font-bold text-[#1E293B] text-base">北京博达富通基金管理有限公司</div>
+                  <div class="text-sm text-[#64748B]">金融机构客户 | 未合作</div>
+                </div>
+              </div>
+              
+              <!-- 拜访要点 -->
+              <div class="bg-gradient-to-r from-blue-50 to-indigo-50 border-l-4 border-blue-400 p-3 rounded-lg shadow-sm">
+                <div class="space-y-3">
+                  <div class="flex items-center gap-2 task-item">
+                    <div class="w-1.5 h-1.5 bg-blue-600 rounded-full shadow-sm"></div>
+                    <div class="text-sm text-blue-600">
+                      <span class="font-medium">邀约客户，确定拜访时间</span>
+                    </div>
+                  </div>
+                  <div class="flex items-center gap-2 task-item">
+                    <div class="w-1.5 h-1.5 bg-blue-600 rounded-full shadow-sm"></div>
+                    <div class="text-sm text-blue-600">
+                      <span class="font-medium">了解客户需求</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              <!-- 主要沟通内容 -->
+              <div class="space-y-3">
+                <div class="font-bold text-[#1E293B] text-sm bg-gradient-to-r from-purple-50 to-pink-50 px-3 py-2 rounded-lg border border-purple-100">合作机会分析</div>
+                <div class="text-sm text-[#374151] space-y-1 bg-white/50 rounded-lg p-3 border border-gray-100">
+                  <div class="flex items-start gap-2">
+                    <span class="text-blue-600 font-bold">•</span>
+                    <span><strong>代销服务</strong> - 过往业绩优秀，风险收益满足公司代销条件，合作后可以推代销 </span>
+                  </div>
+                  <div class="flex items-start gap-2">
+                    <span class="text-blue-600 font-bold">•</span>
+                    <span><strong>极速交易系统</strong> - 量化对冲策略对交易时延要求高，介绍公司极速交易系统，目前属于行业第一梯队</span>
+                  </div>
+                  <div class="flex items-start gap-2">
+                    <span class="text-blue-600 font-bold">•</span>
+                    <span><strong>两融</strong> - 量化对冲策略，需要匹配融资、融券，满足策略需求的同时提升资金利用率</span>
+                  </div>
+                  <div class="flex items-start gap-2">
+                    <span class="text-blue-600 font-bold">•</span>
+                    <span><strong>投研</strong> - 借助公司投研能力，帮助客户优化投资决策并规避风险，提升策略投资潜力</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- 文件下载区 -->
+          <div class="flex flex-col gap-2 mt-3">
+            <div class="flex items-start mt-0">
+              <div class="flex-1">
+                <div class="bg-gradient-to-r from-blue-50 to-purple-50 rounded-xl px-4 py-3 flex items-center gap-3 shadow-lg border border-blue-100 card-hover">
+                  <svg class="w-7 h-7 text-[#2563EB] flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <rect x="4" y="2" width="16" height="20" rx="2" fill="#fff" stroke="#2563EB"/>
+                    <path d="M8 6h8M8 10h8M8 14h4" stroke="#2563EB" stroke-width="1.5" stroke-linecap="round"/>
+                    <rect x="7" y="17" width="6" height="2" rx="1" fill="#2563EB"/>
+                  </svg>
+                  <div class="flex-1 min-w-0">
+                    <div class="text-sm text-[#1E293B] font-bold truncate">华创机构经纪业务一页纸.pdf</div>
+                    <div class="text-xs text-[#64748B] mt-0.5">PDF文件 · 1.2MB</div>
+                  </div>
+                  <a href="#" class="text-[#2563EB] text-sm font-bold hover:underline transition bg-white px-3 py-1 rounded-lg shadow-sm">下载</a>
+                </div>
+              </div>
+            </div>
+            
+            <div class="flex items-start mt-2">
+              <div class="flex-1">
+                <div class="bg-gradient-to-r from-green-50 to-blue-50 rounded-xl px-4 py-3 flex items-center gap-3 shadow-lg border border-green-100 card-hover">
+                  <svg class="w-7 h-7 text-[#2563EB] flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <rect x="4" y="2" width="16" height="20" rx="2" fill="#fff" stroke="#2563EB"/>
+                    <path d="M8 6h8M8 10h8M8 14h4" stroke="#2563EB" stroke-width="1.5" stroke-linecap="round"/>
+                    <rect x="7" y="17" width="6" height="2" rx="1" fill="#2563EB"/>
+                  </svg>
+                  <div class="flex-1 min-w-0">
+                    <div class="text-sm text-[#1E293B] font-bold truncate">北京博达富通基金管理有限公司拜访提纲.pdf</div>
+                    <div class="text-xs text-[#64748B] mt-0.5">PDF文件 · 0.6MB</div>
+                  </div>
+                  <a href="#" class="text-[#2563EB] text-sm font-bold hover:underline transition bg-white px-3 py-1 rounded-lg shadow-sm">下载</a>
+                </div>
+              </div>
+            </div>
+            
+            <div class="flex items-start mt-2">
+              <div class="flex-1">
+                <div class="bg-gradient-to-r from-purple-50 to-pink-50 rounded-xl px-4 py-3 flex items-center gap-3 shadow-lg border border-purple-100 card-hover">
+                  <svg class="w-7 h-7 text-[#2563EB] flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <rect x="4" y="2" width="16" height="20" rx="2" fill="#fff" stroke="#2563EB"/>
+                    <path d="M8 6h8M8 10h8M8 14h4" stroke="#2563EB" stroke-width="1.5" stroke-linecap="round"/>
+                    <rect x="7" y="17" width="6" height="2" rx="1" fill="#2563EB"/>
+                  </svg>
+                  <div class="flex-1 min-w-0">
+                    <div class="text-sm text-[#1E293B] font-bold truncate">北京博达富通基金管理有限公司分析报告.pdf</div>
+                    <div class="text-xs text-[#64748B] mt-0.5">PDF文件 · 1.8MB</div>
+                  </div>
+                  <a href="#" class="text-[#2563EB] text-sm font-bold hover:underline transition bg-white px-3 py-1 rounded-lg shadow-sm">下载</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+    
+    <!-- 底部输入栏 - 与超级员工index一致 -->
+    <footer class="mt-auto w-full bg-white border-t border-gray-100 px-4 py-3 safe-area-inset-bottom">
+      <div class="flex items-center gap-3 bg-gray-100 rounded-2xl px-4 py-3">
+        <button class="flex-shrink-0 text-gray-500 hover:text-gray-700" aria-label="图片">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+          </svg>
+        </button>
+        <input type="text" class="flex-1 bg-transparent border-0 outline-none text-[#374151] placeholder-gray-400 text-base" placeholder="输入您的问题或选择智能体..." />
+        <button class="flex-shrink-0 w-8 h-8 rounded-full bg-gray-300 flex items-center justify-center text-gray-600 hover:bg-gray-400 transition-colors" aria-label="添加">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
+          </svg>
+        </button>
+      </div>
+    </footer>
+  </div>
+</body>
+</html> 

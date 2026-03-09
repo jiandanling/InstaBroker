@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>机构经纪经营数据概览</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; background: #f5f5f5; }
+    .card-shadow { box-shadow: 0 2px 12px rgba(0,0,0,0.08); }
+    .card-hover:hover { box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+  </style>
+</head>
+<body class="min-h-screen">
+  <div class="min-h-screen flex flex-col max-w-lg mx-auto bg-[#f5f5f5]">
+    <header class="sticky top-0 bg-white px-4 py-3 flex items-center justify-between z-20 border-b border-gray-100">
+      <a href="组织者-index.html" class="w-10 h-10 flex items-center justify-center text-gray-700">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+        </svg>
+      </a>
+      <h1 class="text-base font-semibold text-[#4f46e5]">经营数据概览</h1>
+      <button class="w-10 h-10 flex items-center justify-center text-gray-700">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"/>
+        </svg>
+      </button>
+    </header>
+
+    <main class="flex-1 px-4 py-4 pb-24 overflow-y-auto">
+      <div class="flex items-center justify-center text-xs text-[#64748B] bg-white/50 backdrop-blur-sm rounded-full px-3 py-1 card-shadow w-fit mx-auto mb-4">机构经纪业务月度报告 · 2026年1月</div>
+
+      <!-- 1、PB系统产品及资产分布 -->
+      <div class="bg-white rounded-2xl card-shadow overflow-hidden mb-4">
+        <div class="bg-gradient-to-r from-[#1d4ed8] to-[#2563eb] text-white px-4 py-3">
+          <span class="font-bold text-sm">1、PB系统产品及资产分布</span>
+        </div>
+        <div class="p-4 overflow-x-auto">
+          <table class="w-full text-xs border-collapse min-w-[320px]">
+            <thead>
+              <tr class="bg-gray-50">
+                <th class="border border-gray-200 px-2 py-2 text-left font-medium">PB系统</th>
+                <th class="border border-gray-200 px-2 py-2 text-right">产品只数</th>
+                <th class="border border-gray-200 px-2 py-2 text-right">期末总资产(亿)</th>
+                <th class="border border-gray-200 px-2 py-2 text-right">较去年底</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td class="border border-gray-200 px-2 py-2">TradeX</td><td class="border border-gray-200 px-2 py-2 text-right">203</td><td class="border border-gray-200 px-2 py-2 text-right">211.45</td><td class="border border-gray-200 px-2 py-2 text-right text-green-600">5.23%</td></tr>
+              <tr><td class="border border-gray-200 px-2 py-2">PB</td><td class="border border-gray-200 px-2 py-2 text-right">41</td><td class="border border-gray-200 px-2 py-2 text-right">18.71</td><td class="border border-gray-200 px-2 py-2 text-right text-red-600">-0.21%</td></tr>
+              <tr><td class="border border-gray-200 px-2 py-2">FixStation</td><td class="border border-gray-200 px-2 py-2 text-right">133</td><td class="border border-gray-200 px-2 py-2 text-right">89.71</td><td class="border border-gray-200 px-2 py-2 text-right text-green-600">4.86%</td></tr>
+              <tr><td class="border border-gray-200 px-2 py-2">PTrade</td><td class="border border-gray-200 px-2 py-2 text-right">8</td><td class="border border-gray-200 px-2 py-2 text-right">2.16</td><td class="border border-gray-200 px-2 py-2 text-right text-red-600">-25.26%</td></tr>
+              <tr><td class="border border-gray-200 px-2 py-2">委托交易执行</td><td class="border border-gray-200 px-2 py-2 text-right">9</td><td class="border border-gray-200 px-2 py-2 text-right">95.94</td><td class="border border-gray-200 px-2 py-2 text-right text-green-600">7.12%</td></tr>
+              <tr><td class="border border-gray-200 px-2 py-2">华创资管产品</td><td class="border border-gray-200 px-2 py-2 text-right">12</td><td class="border border-gray-200 px-2 py-2 text-right">4.93</td><td class="border border-gray-200 px-2 py-2 text-right text-green-600">17.38%</td></tr>
+              <tr><td class="border border-gray-200 px-2 py-2">恒生PB</td><td class="border border-gray-200 px-2 py-2 text-right">164</td><td class="border border-gray-200 px-2 py-2 text-right">131.50</td><td class="border border-gray-200 px-2 py-2 text-right text-green-600">4.74%</td></tr>
+              <tr><td class="border border-gray-200 px-2 py-2">迅投</td><td class="border border-gray-200 px-2 py-2 text-right">135</td><td class="border border-gray-200 px-2 py-2 text-right">40.70</td><td class="border border-gray-200 px-2 py-2 text-right text-green-600">10.84%</td></tr>
+              <tr class="bg-blue-50 font-medium"><td class="border border-gray-200 px-2 py-2">合计</td><td class="border border-gray-200 px-2 py-2 text-right">502</td><td class="border border-gray-200 px-2 py-2 text-right">383.65</td><td class="border border-gray-200 px-2 py-2 text-right text-green-600">5.62%</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- 2、1月PB系统产品新增情况 -->
+      <div class="bg-white rounded-2xl card-shadow overflow-hidden mb-4">
+        <div class="bg-gradient-to-r from-[#1d4ed8] to-[#2563eb] text-white px-4 py-3">
+          <span class="font-bold text-sm">2、1月PB系统产品新增情况</span>
+        </div>
+        <div class="p-4 overflow-x-auto">
+          <table class="w-full text-xs border-collapse min-w-[280px]">
+            <thead>
+              <tr class="bg-gray-50">
+                <th class="border border-gray-200 px-2 py-2 text-left font-medium">指标</th>
+                <th class="border border-gray-200 px-2 py-2 text-right">1月新增</th>
+                <th class="border border-gray-200 px-2 py-2 text-right">环比12月</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td class="border border-gray-200 px-2 py-2">新增产品只数</td><td class="border border-gray-200 px-2 py-2 text-right font-medium">17只</td><td class="border border-gray-200 px-2 py-2 text-right text-green-600">+3只</td></tr>
+              <tr><td class="border border-gray-200 px-2 py-2">新增资产</td><td class="border border-gray-200 px-2 py-2 text-right font-medium">15.82亿元</td><td class="border border-gray-200 px-2 py-2 text-right text-green-600">+12.5%</td></tr>
+              <tr><td class="border border-gray-200 px-2 py-2">新增管理人</td><td class="border border-gray-200 px-2 py-2 text-right font-medium">5家</td><td class="border border-gray-200 px-2 py-2 text-right text-green-600">+2家</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- 3、1月PB系统资产变动情况 -->
+      <div class="bg-white rounded-2xl card-shadow overflow-hidden mb-4">
+        <div class="bg-gradient-to-r from-[#1d4ed8] to-[#2563eb] text-white px-4 py-3">
+          <span class="font-bold text-sm">3、1月PB系统资产变动情况</span>
+        </div>
+        <div class="p-4 overflow-x-auto">
+          <table class="w-full text-xs border-collapse min-w-[320px]">
+            <thead>
+              <tr class="bg-gray-50">
+                <th class="border border-gray-200 px-2 py-2 text-left font-medium">变动类型</th>
+                <th class="border border-gray-200 px-2 py-2 text-right">金额(亿)</th>
+                <th class="border border-gray-200 px-2 py-2 text-right">产品数</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td class="border border-gray-200 px-2 py-2">资产增加产品合计</td><td class="border border-gray-200 px-2 py-2 text-right text-green-600 font-medium">+35.84</td><td class="border border-gray-200 px-2 py-2 text-right">128只</td></tr>
+              <tr><td class="border border-gray-200 px-2 py-2">资产减少产品合计</td><td class="border border-gray-200 px-2 py-2 text-right text-red-600">-15.40</td><td class="border border-gray-200 px-2 py-2 text-right">89只</td></tr>
+              <tr class="bg-blue-50 font-medium"><td class="border border-gray-200 px-2 py-2">净增加</td><td class="border border-gray-200 px-2 py-2 text-right text-green-600">+20.44</td><td class="border border-gray-200 px-2 py-2 text-right">—</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- 4、1月PB系统交易量及佣金 -->
+      <div class="bg-white rounded-2xl card-shadow overflow-hidden mb-4">
+        <div class="bg-gradient-to-r from-[#1d4ed8] to-[#2563eb] text-white px-4 py-3">
+          <span class="font-bold text-sm">4、1月PB系统交易量及佣金</span>
+        </div>
+        <div class="p-4 overflow-x-auto">
+          <table class="w-full text-xs border-collapse min-w-[320px]">
+            <thead>
+              <tr class="bg-gray-50">
+                <th class="border border-gray-200 px-2 py-2 text-left font-medium">指标</th>
+                <th class="border border-gray-200 px-2 py-2 text-right">1月数据</th>
+                <th class="border border-gray-200 px-2 py-2 text-right">同比</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td class="border border-gray-200 px-2 py-2">交易量</td><td class="border border-gray-200 px-2 py-2 text-right font-medium">848.63亿元</td><td class="border border-gray-200 px-2 py-2 text-right text-green-600">+193.19%</td></tr>
+              <tr><td class="border border-gray-200 px-2 py-2">佣金收入</td><td class="border border-gray-200 px-2 py-2 text-right font-medium">1,246.40万元</td><td class="border border-gray-200 px-2 py-2 text-right text-green-600">+146.15%</td></tr>
+              <tr><td class="border border-gray-200 px-2 py-2">日均交易量</td><td class="border border-gray-200 px-2 py-2 text-right font-medium">38.57亿元</td><td class="border border-gray-200 px-2 py-2 text-right text-green-600">+185.32%</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- 5、1月PB系统资产量排名营业部 -->
+      <div class="bg-white rounded-2xl card-shadow overflow-hidden mb-4">
+        <div class="bg-gradient-to-r from-[#1d4ed8] to-[#2563eb] text-white px-4 py-3">
+          <span class="font-bold text-sm">5、1月PB系统资产量排名营业部（前十）</span>
+        </div>
+        <div class="p-4 overflow-x-auto">
+          <table class="w-full text-xs border-collapse min-w-[320px]">
+            <thead><tr class="bg-gray-50"><th class="border border-gray-200 px-2 py-2 text-left font-medium">排名</th><th class="border border-gray-200 px-2 py-2 text-left">落地营业部</th><th class="border border-gray-200 px-2 py-2 text-right">资产量(亿)</th><th class="border border-gray-200 px-2 py-2 text-right">佣金(万)</th></tr></thead>
+            <tbody>
+              <tr><td class="border border-gray-200 px-2 py-2 text-center">1</td><td class="border border-gray-200 px-2 py-2">北京西直门</td><td class="border border-gray-200 px-2 py-2 text-right">204.21</td><td class="border border-gray-200 px-2 py-2 text-right">785.02</td></tr>
+              <tr><td class="border border-gray-200 px-2 py-2 text-center">2</td><td class="border border-gray-200 px-2 py-2">贵阳中山西路</td><td class="border border-gray-200 px-2 py-2 text-right">80.88</td><td class="border border-gray-200 px-2 py-2 text-right">3.78</td></tr>
+              <tr><td class="border border-gray-200 px-2 py-2 text-center">3</td><td class="border border-gray-200 px-2 py-2">贵阳新华路</td><td class="border border-gray-200 px-2 py-2 text-right">24.13</td><td class="border border-gray-200 px-2 py-2 text-right">268.04</td></tr>
+              <tr><td class="border border-gray-200 px-2 py-2 text-center">4</td><td class="border border-gray-200 px-2 py-2">上海第二分公司</td><td class="border border-gray-200 px-2 py-2 text-right">10.19</td><td class="border border-gray-200 px-2 py-2 text-right">47.42</td></tr>
+              <tr><td class="border border-gray-200 px-2 py-2 text-center">5</td><td class="border border-gray-200 px-2 py-2">贵阳北京路</td><td class="border border-gray-200 px-2 py-2 text-right">8.30</td><td class="border border-gray-200 px-2 py-2 text-right">30.94</td></tr>
+              <tr><td class="border border-gray-200 px-2 py-2 text-center">6</td><td class="border border-gray-200 px-2 py-2">上海申港大道</td><td class="border border-gray-200 px-2 py-2 text-right">8.17</td><td class="border border-gray-200 px-2 py-2 text-right">0.74</td></tr>
+              <tr><td class="border border-gray-200 px-2 py-2 text-center">7</td><td class="border border-gray-200 px-2 py-2">绵竹飞凫路</td><td class="border border-gray-200 px-2 py-2 text-right">5.50</td><td class="border border-gray-200 px-2 py-2 text-right">0.13</td></tr>
+              <tr><td class="border border-gray-200 px-2 py-2 text-center">8</td><td class="border border-gray-200 px-2 py-2">北京白石桥</td><td class="border border-gray-200 px-2 py-2 text-right">4.55</td><td class="border border-gray-200 px-2 py-2 text-right">0.44</td></tr>
+              <tr><td class="border border-gray-200 px-2 py-2 text-center">9</td><td class="border border-gray-200 px-2 py-2">成都天府大道</td><td class="border border-gray-200 px-2 py-2 text-right">4.35</td><td class="border border-gray-200 px-2 py-2 text-right">11.49</td></tr>
+              <tr><td class="border border-gray-200 px-2 py-2 text-center">10</td><td class="border border-gray-200 px-2 py-2">安徽分公司</td><td class="border border-gray-200 px-2 py-2 text-right">3.80</td><td class="border border-gray-200 px-2 py-2 text-right">7.77</td></tr>
+              <tr class="bg-blue-50 font-medium"><td class="border border-gray-200 px-2 py-2" colspan="2">前十合计占比</td><td class="border border-gray-200 px-2 py-2 text-right" colspan="2">92.29%</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- 6、1月PB系统交易量排名管理人 -->
+      <div class="bg-white rounded-2xl card-shadow overflow-hidden mb-4">
+        <div class="bg-gradient-to-r from-[#1d4ed8] to-[#2563eb] text-white px-4 py-3">
+          <span class="font-bold text-sm">6、1月PB系统交易量排名管理人（前十）</span>
+        </div>
+        <div class="p-4 overflow-x-auto">
+          <table class="w-full text-xs border-collapse min-w-[320px]">
+            <thead><tr class="bg-gray-50"><th class="border border-gray-200 px-2 py-2 text-left font-medium">排名</th><th class="border border-gray-200 px-2 py-2 text-left">管理人</th><th class="border border-gray-200 px-2 py-2 text-right">交易量(亿)</th><th class="border border-gray-200 px-2 py-2 text-right">佣金(万)</th></tr></thead>
+            <tbody>
+              <tr><td class="border border-gray-200 px-2 py-2 text-center">1</td><td class="border border-gray-200 px-2 py-2">灵均投资</td><td class="border border-gray-200 px-2 py-2 text-right">288.34</td><td class="border border-gray-200 px-2 py-2 text-right">326.96</td></tr>
+              <tr><td class="border border-gray-200 px-2 py-2 text-center">2</td><td class="border border-gray-200 px-2 py-2">衍复投资</td><td class="border border-gray-200 px-2 py-2 text-right">98.25</td><td class="border border-gray-200 px-2 py-2 text-right">123.70</td></tr>
+              <tr><td class="border border-gray-200 px-2 py-2 text-center">3</td><td class="border border-gray-200 px-2 py-2">歌汝私募基金</td><td class="border border-gray-200 px-2 py-2 text-right">87.99</td><td class="border border-gray-200 px-2 py-2 text-right">77.08</td></tr>
+              <tr><td class="border border-gray-200 px-2 py-2 text-center">4</td><td class="border border-gray-200 px-2 py-2">运舟私募基金</td><td class="border border-gray-200 px-2 py-2 text-right">44.04</td><td class="border border-gray-200 px-2 py-2 text-right">103.06</td></tr>
+              <tr><td class="border border-gray-200 px-2 py-2 text-center">5</td><td class="border border-gray-200 px-2 py-2">鸣石私募基金</td><td class="border border-gray-200 px-2 py-2 text-right">26.44</td><td class="border border-gray-200 px-2 py-2 text-right">32.85</td></tr>
+              <tr><td class="border border-gray-200 px-2 py-2 text-center">6</td><td class="border border-gray-200 px-2 py-2">诚奇资产</td><td class="border border-gray-200 px-2 py-2 text-right">21.71</td><td class="border border-gray-200 px-2 py-2 text-right">14.31</td></tr>
+              <tr><td class="border border-gray-200 px-2 py-2 text-center">7</td><td class="border border-gray-200 px-2 py-2">聚鸣投资</td><td class="border border-gray-200 px-2 py-2 text-right">18.57</td><td class="border border-gray-200 px-2 py-2 text-right">27.53</td></tr>
+              <tr><td class="border border-gray-200 px-2 py-2 text-center">8</td><td class="border border-gray-200 px-2 py-2">青骊投资</td><td class="border border-gray-200 px-2 py-2 text-right">15.60</td><td class="border border-gray-200 px-2 py-2 text-right">40.95</td></tr>
+              <tr><td class="border border-gray-200 px-2 py-2 text-center">9</td><td class="border border-gray-200 px-2 py-2">外贸信托</td><td class="border border-gray-200 px-2 py-2 text-right">14.30</td><td class="border border-gray-200 px-2 py-2 text-right">32.89</td></tr>
+              <tr><td class="border border-gray-200 px-2 py-2 text-center">10</td><td class="border border-gray-200 px-2 py-2">宽德私募基金</td><td class="border border-gray-200 px-2 py-2 text-right">14.22</td><td class="border border-gray-200 px-2 py-2 text-right">19.33</td></tr>
+              <tr class="bg-blue-50 font-medium"><td class="border border-gray-200 px-2 py-2" colspan="2">前十合计占比</td><td class="border border-gray-200 px-2 py-2 text-right" colspan="2">74.17%</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </main>
+
+    <footer class="sticky bottom-0 bg-white border-t border-gray-100 px-4 py-3">
+      <div class="flex items-center gap-3 bg-gray-100 rounded-2xl px-4 py-3">
+        <button class="flex-shrink-0 text-gray-500">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+          </svg>
+        </button>
+        <input type="text" class="flex-1 bg-transparent border-0 outline-none text-[#374151] placeholder-gray-400 text-base" placeholder="输入您的问题或选择智能体..." />
+        <button class="flex-shrink-0 w-8 h-8 rounded-full bg-gray-300 flex items-center justify-center text-gray-600">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
+          </svg>
+        </button>
+      </div>
+    </footer>
+  </div>
+</body>
+</html>

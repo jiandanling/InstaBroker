@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>机构经纪组织者智能体</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      background: #f5f5f5;
+    }
+    .card-shadow {
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+    }
+    .ai-avatar {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+    }
+    .message-enter {
+      animation: slideIn 0.3s ease-out;
+    }
+    @keyframes slideIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes spin {
+      from { transform: rotate(0deg); }
+      to   { transform: rotate(360deg); }
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 0.5; }
+      50%       { opacity: 1; }
+    }
+    .loading-spinner { animation: spin 1s linear infinite; }
+    .loading-text    { animation: pulse 1.5s ease-in-out infinite; }
+  </style>
+</head>
+<body class="min-h-screen">
+  <div class="min-h-screen flex flex-col max-w-lg mx-auto bg-[#f5f5f5]">
+
+    <!-- 顶部导航栏 -->
+    <header class="sticky top-0 bg-white px-4 py-3 flex items-center justify-between z-20 border-b border-gray-100">
+      <a href="组织者-index.html" class="w-10 h-10 flex items-center justify-center text-gray-700">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+        </svg>
+      </a>
+      <h1 class="text-base font-semibold text-[#4f46e5]">灵均投资-风险处理</h1>
+      <button class="w-10 h-10 flex items-center justify-center text-gray-700">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"/>
+        </svg>
+      </button>
+    </header>
+
+    <!-- 对话区 -->
+    <main id="main-content" class="flex-1 flex flex-col gap-4 px-4 py-4 pb-24">
+
+      <!-- 时间戳 -->
+      <div class="flex items-center justify-center text-xs text-[#64748B] bg-white/50 backdrop-blur-sm rounded-full px-3 py-1 shadow-sm w-fit mx-auto">
+        今天 09:00
+      </div>
+
+      <!-- 1. 我司产品交易情况 - 优先显示 -->
+      <div id="trading-status" class="flex items-start gap-2 message-enter">
+        <div class="w-8 h-8 rounded-full ai-avatar flex items-center justify-center flex-shrink-0 mt-1">
+          <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M12 2C10.9 2 10 2.9 10 4c0 .74.4 1.38 1 1.73V7h-1c-1.1 0-2 .9-2 2v1H6c-.55 0-1 .45-1 1v3c0 .55.45 1 1 1h1v1c0 1.1.9 2 2 2h6c1.1 0 2-.9 2-2v-1h1c.55 0 1-.45 1-1v-3c0-.55-.45-1-1-1h-2V9c0-1.1-.9-2-2-2h-1V5.73c.6-.35 1-.99 1-1.73 0-1.1-.9-2-2-2z"/>
+            <circle cx="9" cy="11" r="1"/><circle cx="15" cy="11" r="1"/>
+            <path d="M12 15c.83 0 1.5-.67 1.5-1.5S12.83 12 12 12s-1.5.67-1.5 1.5.67 1.5 1.5 1.5z"/>
+          </svg>
+        </div>
+        <div class="flex-1">
+          <div class="text-xs text-[#64748B] mb-1 ml-1">机构经纪组织者智能体</div>
+          <div class="bg-white rounded-2xl px-4 py-3 card-shadow max-w-[90%]">
+            <p class="text-sm text-[#1E293B] font-semibold mb-3">灵均投资在我司产品交易情况</p>
+            <div class="space-y-2">
+              <div class="flex items-center justify-between p-3 bg-[#ECFDF5] rounded-xl border border-[#A7F3D0]">
+                <span class="text-sm text-[#1E293B] font-medium">创黔1号</span>
+                <span class="text-xs font-semibold text-[#059669] px-2.5 py-1 rounded-lg bg-white border border-[#10B981]">交易正常</span>
+              </div>
+              <div class="flex items-center justify-between p-3 bg-[#FEF2F2] rounded-xl border border-[#FECACA]">
+                <span class="text-sm text-[#1E293B] font-medium">创黔2号</span>
+                <span class="text-xs font-semibold text-[#EF4444] px-2.5 py-1 rounded-lg bg-white border border-[#F87171]">限制交易</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </main>
+
+    <!-- 底部输入栏 -->
+    <footer class="sticky bottom-0 bg-white border-t border-gray-100 px-4 py-3">
+      <div class="flex items-center gap-3 bg-gray-100 rounded-2xl px-4 py-3">
+        <button class="flex-shrink-0 text-gray-500" aria-label="图片">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+          </svg>
+        </button>
+        <input type="text" class="flex-1 bg-transparent border-0 outline-none text-[#374151] placeholder-gray-400 text-sm" placeholder="输入您的问题或选择智能体..." />
+        <button class="flex-shrink-0 w-8 h-8 rounded-full bg-gray-300 flex items-center justify-center text-gray-600">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
+          </svg>
+        </button>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    var mainContent = document.getElementById('main-content');
+
+    function aiAvatar() {
+      return '<div class="w-8 h-8 rounded-full ai-avatar flex items-center justify-center flex-shrink-0 mt-1" style="background:linear-gradient(135deg,#667eea,#764ba2);box-shadow:0 4px 15px rgba(102,126,234,.3);">' +
+        '<svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24">' +
+          '<path d="M12 2C10.9 2 10 2.9 10 4c0 .74.4 1.38 1 1.73V7h-1c-1.1 0-2 .9-2 2v1H6c-.55 0-1 .45-1 1v3c0 .55.45 1 1 1h1v1c0 1.1.9 2 2 2h6c1.1 0 2-.9 2-2v-1h1c.55 0 1-.45 1-1v-3c0-.55-.45-1-1-1h-2V9c0-1.1-.9-2-2-2h-1V5.73c.6-.35 1-.99 1-1.73 0-1.1-.9-2-2-2z"/>' +
+          '<circle cx="9" cy="11" r="1"/><circle cx="15" cy="11" r="1"/>' +
+          '<path d="M12 15c.83 0 1.5-.67 1.5-1.5S12.83 12 12 12s-1.5.67-1.5 1.5.67 1.5 1.5 1.5z"/>' +
+        '</svg>' +
+      '</div>';
+    }
+
+    function msgWrap(label, content) {
+      return '<div class="flex items-start gap-2 message-enter">' +
+        aiAvatar() +
+        '<div class="flex-1">' +
+          '<div class="text-xs text-[#64748B] mb-1 ml-1">' + label + '</div>' +
+          '<div class="bg-white rounded-2xl px-4 py-3 card-shadow max-w-[90%] text-sm text-[#374151] leading-relaxed">' +
+            content +
+          '</div>' +
+        '</div>' +
+      '</div>';
+    }
+
+    function scrollToBottom() {
+      setTimeout(function() {
+        window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+      }, 100);
+    }
+
+    function addMsg(html) {
+      var el = document.createElement('div');
+      el.innerHTML = html;
+      mainContent.appendChild(el);
+      scrollToBottom();
+      return el;
+    }
+
+    var deps = ['财富管理业务支持中心','机构经纪部','风险管理部','合规与法律事务部','信息技术部','运维中心'];
+
+    setTimeout(function() {
+      // 2. 自动拉起圆桌会议
+      addMsg(msgWrap('机构经纪组织者智能体',
+        '<div class="text-sm text-[#374151] leading-relaxed">检测到创黔2号限制交易，涉及多部门协同处置，<span class="font-semibold text-[#2563eb]">自动拉起圆桌会议</span>。</div>'
+      ));
+
+      setTimeout(function() {
+        // 3. 相关组织者智能体反馈风险处置意见
+        addMsg(msgWrap('机构经纪组织者智能体',
+          '<div class="flex items-center gap-2 mb-3">' +
+            '<span class="font-semibold text-[#1E293B] text-sm">🔄 圆桌会议 · 风险处置意见</span>' +
+            '<span class="bg-[#2563eb] text-white text-xs font-medium px-2 py-0.5 rounded-lg">已反馈</span>' +
+          '</div>' +
+          '<div class="space-y-2.5">' +
+            '<div class="flex items-start gap-3 p-3 bg-[#FEF2F2] rounded-lg border border-[#FECACA]">' +
+              '<div class="flex-shrink-0 w-9 h-9 rounded-lg bg-gradient-to-br from-[#EF4444] to-[#DC2626] flex items-center justify-center text-white text-lg">⚠️</div>' +
+              '<div class="flex-1 min-w-0"><p class="text-xs font-bold text-[#1E293B] mb-1">风险管理组织者智能体</p><p class="text-xs text-[#64748B] leading-relaxed">下一个交易日密切监测其交易行为，在保证交易策略的前提下，严格限制其交易速率和报单笔数。</p></div>' +
+            '</div>' +
+            '<div class="flex items-start gap-3 p-3 bg-[#FEF2F2] rounded-lg border border-[#FECACA]">' +
+              '<div class="flex-shrink-0 w-9 h-9 rounded-lg bg-gradient-to-br from-[#EF4444] to-[#DC2626] flex items-center justify-center text-white text-lg">📋</div>' +
+              '<div class="flex-1 min-w-0"><p class="text-xs font-bold text-[#1E293B] mb-1">机构经纪组织者智能体</p><p class="text-xs text-[#64748B] leading-relaxed">由客户经理与灵均提前做好沟通，说明限制原因及后续安排。</p></div>' +
+            '</div>' +
+          '</div>'
+        ));
+
+        setTimeout(function() {
+          // 4. 创建易信会议，通知部门
+          addMsg(msgWrap('机构经纪组织者智能体',
+            '<div class="flex items-center gap-2 mb-3">' +
+              '<span class="font-semibold text-[#1E293B] text-sm">📞 易信会议</span>' +
+              '<span class="bg-[#2563eb] text-white text-xs font-medium px-2 py-0.5 rounded-lg">已创建</span>' +
+            '</div>' +
+            '<div class="text-sm text-[#374151] mb-2">已创建易信会议，通知以下部门相关负责人及经办人召开线上会议，对风险处置意见进行确认：</div>' +
+            '<ul class="space-y-1 text-sm text-[#374151]">' +
+              deps.map(function(d){ return '<li class="flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-[#2563eb] flex-shrink-0"></span>' + d + '</li>'; }).join('') +
+            '</ul>'
+          ));
+
+          setTimeout(function() {
+            // 5. 对风险处置意见进行确认
+            addMsg(msgWrap('机构经纪组织者智能体',
+              '<div class="flex items-center gap-2 mb-2">' +
+                '<span class="font-semibold text-[#1E293B] text-sm">✅ 风险处置意见确认</span>' +
+                '<span class="bg-[#059669] text-white text-xs font-medium px-2 py-0.5 rounded-lg">已确认</span>' +
+              '</div>' +
+              '<div class="text-sm text-[#374151] mb-2">参会部门已对风险处置意见进行确认，会议决策如下：</div>' +
+              '<ul class="space-y-2 text-sm text-[#374151]">' +
+                '<li class="flex items-start gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-[#2563eb] flex-shrink-0 mt-1.5"></span>下一个交易日密切监测其交易行为</li>' +
+                '<li class="flex items-start gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-[#2563eb] flex-shrink-0 mt-1.5"></span>在保证交易策略的前提下，严格限制其交易速率和报单笔数</li>' +
+                '<li class="flex items-start gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-[#2563eb] flex-shrink-0 mt-1.5"></span>由客户经理与灵均提前做好沟通</li>' +
+              '</ul>'
+            ));
+
+            setTimeout(function() {
+              // 6. 形成会议纪要
+              addMsg(msgWrap('机构经纪组织者智能体',
+                '<div class="flex items-center gap-2 mb-2">' +
+                  '<span class="font-semibold text-[#1E293B] text-sm">📝 会议纪要</span>' +
+                  '<span class="bg-[#2563eb] text-white text-xs font-medium px-2 py-0.5 rounded-lg">已完成</span>' +
+                '</div>' +
+                '<div class="text-sm text-[#374151]">机构经纪组织者智能体已完成会议纪要，记录风险处置意见及会议决策。</div>'
+              ));
+
+              setTimeout(function() {
+                // 7. 发送参会人确认
+                addMsg(msgWrap('机构经纪组织者智能体',
+                  '<div class="flex items-center gap-2 mb-2">' +
+                    '<span class="font-semibold text-[#1E293B] text-sm">📤 发送参会人确认</span>' +
+                    '<span class="bg-[#059669] text-white text-xs font-medium px-2 py-0.5 rounded-lg">已发送</span>' +
+                  '</div>' +
+                  '<div class="text-sm text-[#374151]">会议纪要已同步发送参会人确认，抄送公司分管领导。</div>'
+                ));
+              }, 1800);
+            }, 2000);
+          }, 2200);
+        }, 2000);
+      }, 1500);
+    }, 800);
+  </script>
+</body>
+</html>
