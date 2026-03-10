@@ -361,7 +361,11 @@ body {
   padding: 8px 0 2px;
 }
 
-/* 固定首页任务卡片区域高度，减少切换时底部内容跳动感 */
+/* 固定首页任务卡片区域高度，减少切换时底部内容跳动感（略微放大以展示完整内容） */
+.task-cards-wrapper {
+  min-height: 260px;
+}
+
 .phone-screen .task-cards-wrapper {
   height: 260px;
   display: flex;
@@ -650,7 +654,7 @@ form.subpage-footer-input-wrap {
 }
 
 .index-card-uniform {
-  min-height: 220px;
+  min-height: 215px;
   display: flex;
   flex-direction: column;
   overflow: hidden;
@@ -677,6 +681,9 @@ form.subpage-footer-input-wrap {
   -webkit-box-orient: vertical;
   overflow: hidden;
   font-size: 13px;
+  line-height: 1.5;
+  /* 保证首页四个任务卡片描述区高度一致（3 行文本的高度），方便下方区域对齐 */
+  min-height: 3.75rem;
 }
 
 .index-section-title {
@@ -739,18 +746,20 @@ form.subpage-footer-input-wrap {
 }
 
 .card-pagination-dot {
-  width: 6px;
-  height: 6px;
+  width: 8px;
+  height: 8px;
   border-radius: 50%;
   background: #cbd5e1;
-  transition: all 0.2s ease;
   cursor: pointer;
+  transform: scale(1);
+  transition:
+    background-color 0.2s ease,
+    transform 0.2s ease;
 }
 
 .card-pagination-dot.active {
   background: #6366f1;
-  width: 8px;
-  height: 8px;
+  transform: scale(1.33); /* 仅用 transform 放大，不改变布局高度 */
 }
 
 /* ========== 适应性布局通用规则 ========== */
