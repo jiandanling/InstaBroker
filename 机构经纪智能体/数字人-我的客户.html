@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>数字人-交易服务</title>
+  <title>员工端-我的客户</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="css/common.css">
 </head>
@@ -16,7 +16,7 @@
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
           </svg>
         </a>
-        <h1 class="subpage-header-title">交易服务数字人</h1>
+        <h1 class="subpage-header-title">我的客户</h1>
         <button class="subpage-header-btn" aria-label="通知">
           <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"/>
@@ -26,29 +26,44 @@
     </header>
 
     <main class="subpage-main">
-      <!-- 数字人头像 -->
-      <div class="flex flex-col items-center mb-6">
-        <img src="images/交易服务数字人.jpg" alt="交易服务数字人" class="w-24 h-24 rounded-full object-cover border-4 border-violet-200 shadow-lg" />
-        <p class="text-sm text-[#64748B] mt-2">交易服务智能体 · PB系统、算法交易、极速通道</p>
+      <h2 class="subpage-section-title mb-4">
+        <span class="w-1 h-3.5 rounded-full bg-indigo-500"></span>
+        客户概览
+      </h2>
+      <!-- 统计概览 -->
+      <div class="grid grid-cols-3 gap-3 mb-5">
+        <div class="bg-white rounded-xl subpage-card-shadow px-4 py-3.5 text-center hover:shadow-md transition-shadow">
+          <div class="text-xs text-[#64748B]">全部客户</div>
+          <div class="text-lg font-bold text-[#1E293B] mt-0.5">12</div>
+        </div>
+        <div class="bg-white rounded-xl subpage-card-shadow px-4 py-3.5 text-center hover:shadow-md transition-shadow">
+          <div class="text-xs text-[#64748B]">跟进中</div>
+          <div class="text-lg font-bold text-[#2563eb] mt-0.5">5</div>
+        </div>
+        <div class="bg-white rounded-xl subpage-card-shadow px-4 py-3.5 text-center hover:shadow-md transition-shadow">
+          <div class="text-xs text-[#64748B]">已合作</div>
+          <div class="text-lg font-bold text-[#059669] mt-0.5">3</div>
+        </div>
       </div>
 
-      <h2 class="text-base font-semibold text-[#1e293b] mb-4 flex items-center gap-2">
-        <span class="w-1 h-4 rounded-full bg-violet-500"></span>
-        服务入口
+      <!-- 客户列表 -->
+      <h2 class="subpage-section-title mb-3 mt-6">
+        <span class="w-1 h-3.5 rounded-full bg-indigo-500"></span>
+        客户列表
       </h2>
-      <div class="text-xs text-[#64748B] text-center mb-5">PB系统申请 · 算法交易 · 极速通道 · 交易咨询</div>
-
       <div class="space-y-3">
-        <a href="员工-标准化业务.html" class="block bg-white rounded-xl subpage-card-shadow overflow-hidden hover:shadow-lg transition-shadow">
+        <!-- 北京博达富通基金 -->
+        <a href="员工-博达富通-客户详情.html" class="block bg-white rounded-xl subpage-card-shadow overflow-hidden hover:shadow-lg transition-shadow">
           <div class="p-4 flex items-center gap-4">
-            <div class="w-12 h-12 rounded-xl bg-violet-50 flex items-center justify-center flex-shrink-0">
-              <svg class="w-6 h-6 text-violet-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
-              </svg>
-            </div>
+            <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center flex-shrink-0 text-white font-bold text-sm">博</div>
             <div class="flex-1 min-w-0">
-              <div class="font-semibold text-[#1E293B] text-sm">PB交易系统申请</div>
-              <div class="text-xs text-[#64748B] mt-0.5">TradeX、FixStation、恒生PB等</div>
+              <div class="font-semibold text-[#1E293B] text-sm">北京博达富通基金</div>
+              <div class="text-xs text-[#64748B] mt-0.5">金融机构客户 | 管理规模85亿</div>
+              <div class="flex flex-wrap gap-1.5 mt-2">
+                <span class="px-2 py-0.5 rounded-full bg-[#dbeafe] text-[#2563eb] text-xs">需求对接</span>
+                <span class="px-2 py-0.5 rounded-full bg-[#f5f3ff] text-[#7c3aed] text-xs">方案沟通</span>
+                <span class="px-2 py-0.5 rounded-full bg-[#ecfdf5] text-[#059669] text-xs">账户开立</span>
+              </div>
             </div>
             <svg class="w-5 h-5 text-[#94A3B8] flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
@@ -56,33 +71,33 @@
           </div>
         </a>
 
-        <a href="员工-标准化业务.html" class="block bg-white rounded-xl subpage-card-shadow overflow-hidden hover:shadow-lg transition-shadow">
-          <div class="p-4 flex items-center gap-4">
-            <div class="w-12 h-12 rounded-xl bg-violet-50 flex items-center justify-center flex-shrink-0">
-              <svg class="w-6 h-6 text-violet-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
-              </svg>
-            </div>
-            <div class="flex-1 min-w-0">
-              <div class="font-semibold text-[#1E293B] text-sm">算法交易系统申请</div>
-              <div class="text-xs text-[#64748B] mt-0.5">量化交易、智能算法接入</div>
-            </div>
-            <svg class="w-5 h-5 text-[#94A3B8] flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
-            </svg>
-          </div>
-        </a>
-
+        <!-- 示例客户2 -->
         <a href="#" class="block bg-white rounded-xl subpage-card-shadow overflow-hidden hover:shadow-lg transition-shadow">
           <div class="p-4 flex items-center gap-4">
-            <div class="w-12 h-12 rounded-xl bg-violet-50 flex items-center justify-center flex-shrink-0">
-              <svg class="w-6 h-6 text-violet-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/>
-              </svg>
-            </div>
+            <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-amber-500 to-orange-600 flex items-center justify-center flex-shrink-0 text-white font-bold text-sm">华</div>
             <div class="flex-1 min-w-0">
-              <div class="font-semibold text-[#1E293B] text-sm">极速通道咨询</div>
-              <div class="text-xs text-[#64748B] mt-0.5">低延迟通道、托管接入说明</div>
+              <div class="font-semibold text-[#1E293B] text-sm">华创资产管理</div>
+              <div class="text-xs text-[#64748B] mt-0.5">金融机构客户 | 管理规模120亿</div>
+              <div class="flex flex-wrap gap-1.5 mt-2">
+                <span class="px-2 py-0.5 rounded-full bg-[#dbeafe] text-[#2563eb] text-xs">线索跟进</span>
+              </div>
+            </div>
+            <svg class="w-5 h-5 text-[#94A3B8] flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+            </svg>
+          </div>
+        </a>
+
+        <!-- 示例客户3 -->
+        <a href="#" class="block bg-white rounded-xl subpage-card-shadow overflow-hidden hover:shadow-lg transition-shadow">
+          <div class="p-4 flex items-center gap-4">
+            <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-emerald-500 to-teal-600 flex items-center justify-center flex-shrink-0 text-white font-bold text-sm">正</div>
+            <div class="flex-1 min-w-0">
+              <div class="font-semibold text-[#1E293B] text-sm">正赢投资</div>
+              <div class="text-xs text-[#64748B] mt-0.5">私募机构 | 综合评估中</div>
+              <div class="flex flex-wrap gap-1.5 mt-2">
+                <span class="px-2 py-0.5 rounded-full bg-[#f5f3ff] text-[#7c3aed] text-xs">圆桌协同</span>
+              </div>
             </div>
             <svg class="w-5 h-5 text-[#94A3B8] flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
@@ -92,7 +107,8 @@
       </div>
     </main>
 
-        <footer class="subpage-footer flex-shrink-0">
+    <!-- 底部：与主界面一致 -->
+    <footer class="subpage-footer flex-shrink-0">
       <div class="subpage-footer-inner">
         <div class="subpage-footer-btns">
           <a href="员工-高净值客户经纪.html" class="subpage-footer-btn">
@@ -109,7 +125,7 @@
           </a>
         </div>
         <div class="subpage-footer-input-wrap">
-          <input type="text" class="subpage-footer-input" placeholder="请输入您的问题或选择智能体" autocomplete="off" />
+          <input type="text" class="subpage-footer-input" placeholder="请输入您的问题或选择智能体" />
           <button type="button" class="flex-shrink-0 p-1.5 text-slate-500 hover:text-slate-700 transition-colors rounded-full hover:bg-slate-300/50" aria-label="发送">
             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"/></svg>
           </button>
