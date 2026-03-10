@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>数字人-预警服务</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="css/common.css">
+  <style>
+    .card-shadow { box-shadow: 0 4px 14px rgba(0,0,0,0.06); }
+  </style>
+</head>
+<body class="min-h-screen bg-[#f8fafc]">
+  <div class="min-h-screen flex flex-col w-full max-w-5xl mx-auto bg-[#f8fafc]">
+    <header class="app-header sticky top-0 bg-white px-4 py-3.5 flex items-center justify-between z-20 border-b border-gray-200">
+      <a href="index.html" class="w-10 h-10 flex items-center justify-center text-gray-700" aria-label="返回">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+        </svg>
+      </a>
+      <h1 class="text-lg font-semibold text-amber-600">预警服务数字人</h1>
+      <button class="w-10 h-10 flex items-center justify-center text-gray-700" aria-label="通知">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"/>
+        </svg>
+      </button>
+    </header>
+
+    <main class="flex-1 overflow-y-auto px-4 py-5 md:px-6 md:py-6">
+      <!-- 数字人头像 -->
+      <div class="flex flex-col items-center mb-6">
+        <img src="images/预警服务数字人.jpg" alt="预警服务数字人" class="w-24 h-24 rounded-full object-cover border-4 border-amber-200 shadow-lg" />
+        <p class="text-sm text-[#64748B] mt-2">预警服务智能体 · 风险提示、合规预警、异常监控</p>
+      </div>
+
+      <h2 class="text-base font-semibold text-[#1e293b] mb-4 flex items-center gap-2">
+        <span class="w-1 h-4 rounded-full bg-amber-500"></span>
+        服务入口
+      </h2>
+      <div class="text-xs text-[#64748B] text-center mb-5">风险提示 · 合规预警 · 异常监控 · 处置建议</div>
+
+      <div class="space-y-3">
+        <a href="组织者-博达富通-风险处理.html" class="block bg-white rounded-2xl card-shadow overflow-hidden hover:shadow-lg transition-shadow">
+          <div class="p-4 flex items-center gap-4">
+            <div class="w-12 h-12 rounded-xl bg-amber-50 flex items-center justify-center flex-shrink-0">
+              <svg class="w-6 h-6 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/>
+              </svg>
+            </div>
+            <div class="flex-1 min-w-0">
+              <div class="font-semibold text-[#1E293B] text-sm">风险提示</div>
+              <div class="text-xs text-[#64748B] mt-0.5">客户风险事件、交易所监管动态</div>
+            </div>
+            <svg class="w-5 h-5 text-[#94A3B8] flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+            </svg>
+          </div>
+        </a>
+
+        <a href="#" class="block bg-white rounded-2xl card-shadow overflow-hidden hover:shadow-lg transition-shadow">
+          <div class="p-4 flex items-center gap-4">
+            <div class="w-12 h-12 rounded-xl bg-amber-50 flex items-center justify-center flex-shrink-0">
+              <svg class="w-6 h-6 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+              </svg>
+            </div>
+            <div class="flex-1 min-w-0">
+              <div class="font-semibold text-[#1E293B] text-sm">合规预警</div>
+              <div class="text-xs text-[#64748B] mt-0.5">合规要求、监管政策解读</div>
+            </div>
+            <svg class="w-5 h-5 text-[#94A3B8] flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+            </svg>
+          </div>
+        </a>
+
+        <a href="#" class="block bg-white rounded-2xl card-shadow overflow-hidden hover:shadow-lg transition-shadow">
+          <div class="p-4 flex items-center gap-4">
+            <div class="w-12 h-12 rounded-xl bg-amber-50 flex items-center justify-center flex-shrink-0">
+              <svg class="w-6 h-6 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
+              </svg>
+            </div>
+            <div class="flex-1 min-w-0">
+              <div class="font-semibold text-[#1E293B] text-sm">异常监控</div>
+              <div class="text-xs text-[#64748B] mt-0.5">交易异常、持仓异常监控</div>
+            </div>
+            <svg class="w-5 h-5 text-[#94A3B8] flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+            </svg>
+          </div>
+        </a>
+      </div>
+    </main>
+
+    <footer class="mt-auto w-full bg-white border-t border-gray-200 px-4 py-3 md:px-6 safe-area-inset-bottom">
+      <div class="flex items-center gap-3 bg-gray-100 rounded-2xl px-4 py-3">
+        <input type="text" class="flex-1 bg-transparent border-0 outline-none text-[#374151] placeholder-gray-400 text-base" placeholder="向预警服务数字人提问..." />
+        <button class="flex-shrink-0 w-8 h-8 rounded-full bg-amber-500 flex items-center justify-center text-white" aria-label="发送">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"/>
+          </svg>
+        </button>
+      </div>
+    </footer>
+  </div>
+</body>
+</html>

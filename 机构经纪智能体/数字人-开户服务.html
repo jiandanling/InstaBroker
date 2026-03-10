@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>数字人-开户服务</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="css/common.css">
+  <style>
+    .card-shadow { box-shadow: 0 4px 14px rgba(0,0,0,0.06); }
+  </style>
+</head>
+<body class="min-h-screen bg-[#f8fafc]">
+  <div class="min-h-screen flex flex-col w-full max-w-5xl mx-auto bg-[#f8fafc]">
+    <header class="app-header sticky top-0 bg-white px-4 py-3.5 flex items-center justify-between z-20 border-b border-gray-200">
+      <a href="index.html" class="w-10 h-10 flex items-center justify-center text-gray-700" aria-label="返回">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+        </svg>
+      </a>
+      <h1 class="text-lg font-semibold text-emerald-600">开户服务数字人</h1>
+      <button class="w-10 h-10 flex items-center justify-center text-gray-700" aria-label="通知">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"/>
+        </svg>
+      </button>
+    </header>
+
+    <main class="flex-1 overflow-y-auto px-4 py-5 md:px-6 md:py-6">
+      <!-- 数字人头像 -->
+      <div class="flex flex-col items-center mb-6">
+        <img src="images/开户数字人.jpg" alt="开户服务数字人" class="w-24 h-24 rounded-full object-cover border-4 border-emerald-200 shadow-lg" />
+        <p class="text-sm text-[#64748B] mt-2">开户服务智能体 · 机构客户开户全流程指引</p>
+      </div>
+
+      <h2 class="text-base font-semibold text-[#1e293b] mb-4 flex items-center gap-2">
+        <span class="w-1 h-4 rounded-full bg-emerald-500"></span>
+        服务入口
+      </h2>
+      <div class="text-xs text-[#64748B] text-center mb-5">机构开户指引 · 材料清单 · 办理进度查询</div>
+
+      <div class="space-y-3">
+        <a href="员工-办理任务.html" class="block bg-white rounded-2xl card-shadow overflow-hidden hover:shadow-lg transition-shadow">
+          <div class="p-4 flex items-center gap-4">
+            <div class="w-12 h-12 rounded-xl bg-emerald-50 flex items-center justify-center flex-shrink-0">
+              <svg class="w-6 h-6 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+              </svg>
+            </div>
+            <div class="flex-1 min-w-0">
+              <div class="font-semibold text-[#1E293B] text-sm">机构客户开户指引</div>
+              <div class="text-xs text-[#64748B] mt-0.5">开户流程、所需材料、办理时限</div>
+            </div>
+            <svg class="w-5 h-5 text-[#94A3B8] flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+            </svg>
+          </div>
+        </a>
+
+        <a href="#" class="block bg-white rounded-2xl card-shadow overflow-hidden hover:shadow-lg transition-shadow">
+          <div class="p-4 flex items-center gap-4">
+            <div class="w-12 h-12 rounded-xl bg-emerald-50 flex items-center justify-center flex-shrink-0">
+              <svg class="w-6 h-6 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/>
+              </svg>
+            </div>
+            <div class="flex-1 min-w-0">
+              <div class="font-semibold text-[#1E293B] text-sm">开户材料清单</div>
+              <div class="text-xs text-[#64748B] mt-0.5">机构开户所需材料一览</div>
+            </div>
+            <svg class="w-5 h-5 text-[#94A3B8] flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+            </svg>
+          </div>
+        </a>
+
+        <a href="#" class="block bg-white rounded-2xl card-shadow overflow-hidden hover:shadow-lg transition-shadow">
+          <div class="p-4 flex items-center gap-4">
+            <div class="w-12 h-12 rounded-xl bg-emerald-50 flex items-center justify-center flex-shrink-0">
+              <svg class="w-6 h-6 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/>
+              </svg>
+            </div>
+            <div class="flex-1 min-w-0">
+              <div class="font-semibold text-[#1E293B] text-sm">办理进度查询</div>
+              <div class="text-xs text-[#64748B] mt-0.5">查询客户开户办理进度</div>
+            </div>
+            <svg class="w-5 h-5 text-[#94A3B8] flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+            </svg>
+          </div>
+        </a>
+      </div>
+    </main>
+
+    <footer class="mt-auto w-full bg-white border-t border-gray-200 px-4 py-3 md:px-6 safe-area-inset-bottom">
+      <div class="flex items-center gap-3 bg-gray-100 rounded-2xl px-4 py-3">
+        <input type="text" class="flex-1 bg-transparent border-0 outline-none text-[#374151] placeholder-gray-400 text-base" placeholder="向开户服务数字人提问..." />
+        <button class="flex-shrink-0 w-8 h-8 rounded-full bg-emerald-500 flex items-center justify-center text-white" aria-label="发送">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"/>
+          </svg>
+        </button>
+      </div>
+    </footer>
+  </div>
+</body>
+</html>
