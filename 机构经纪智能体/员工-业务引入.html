@@ -5,50 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>业务引入</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-      body {
-        font-family:
-          -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-          "Helvetica Neue", Arial, sans-serif;
-        background: #f5f5f5;
+    <link rel="stylesheet" href="css/common.css" />
+    <script src="js/spa-wrapper.js"></script>
+    <script>
+      if (
+        window.__InstaBrokerSPA__ &&
+        window.__InstaBrokerSPA__.ensureWrappedInIndex
+      ) {
+        window.__InstaBrokerSPA__.ensureWrappedInIndex("员工-业务引入.html");
       }
-      .card-hover {
-        transition: all 0.3s ease;
-      }
-      .card-hover:hover {
-        transform: translateY(-1px);
-        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
-      }
-      .gradient-border {
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        padding: 1px;
-        border-radius: 0.75rem;
-      }
-      .gradient-border > div {
-        background: white;
-        border-radius: 0.75rem;
-      }
-      .ai-avatar {
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
-      }
-      .flow-step {
-        display: none;
-      }
-      .flow-step.active {
-        display: block;
-      }
-      .section-card {
-        background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
-        border: 1px solid rgba(59, 130, 246, 0.2);
-      }
-      .status-card {
-        background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
-        border: 1px solid rgba(148, 163, 184, 0.2);
-      }
-    </style>
+    </script>
   </head>
-  <body class="min-h-screen">
+  <body>
     <div class="min-h-screen flex flex-col max-w-lg mx-auto bg-[#f5f5f5]">
       <header
         class="sticky top-0 bg-white px-4 py-3 flex items-center justify-between z-20 border-b border-gray-100"
@@ -93,13 +61,10 @@
         </button>
       </header>
 
-      <main class="flex-1 flex flex-col gap-4 px-4 py-4">
-        <div
-          class="flex items-center justify-center text-xs text-[#64748B] mt-0.5 bg-white/50 backdrop-blur-sm rounded-full px-3 py-1 shadow-sm"
-        >
-          北京博达富通基金 · 上传拜访纪要
-        </div>
-
+      <main class="subpage-main">
+        <div class="visit-page-root flex flex-col gap-3 px-4 py-4">
+          <div class="message-list-column">
+        <section class="min-w-0">
         <div class="flex items-start gap-2">
           <div
             class="w-8 h-8 rounded-full ai-avatar flex items-center justify-center mt-1"
@@ -171,7 +136,7 @@
                       北京博达富通基金管理有限公司
                     </div>
                     <div class="text-sm text-[#64748B]">
-                      金融机构客户 | 首次拜访已完成
+                      金融机构客户 | 首次拜访
                     </div>
                   </div>
                 </div>
@@ -200,8 +165,26 @@
               </svg>
               上传拜访纪要
             </button>
+          </div>
+        </div>
+        </section>
 
-            <div id="feedbackForm" class="flow-step mt-4">
+        <section id="feedbackForm" class="flow-step mt-4 min-w-0">
+          <div class="flex items-start gap-2">
+            <div
+              class="w-8 h-8 rounded-full ai-avatar flex items-center justify-center flex-shrink-0 mt-1"
+            >
+              <svg
+                class="w-5 h-5 text-white"
+                fill="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M12 2C10.9 2 10 2.9 10 4c0 .74.4 1.38 1 1.73V7h-1c-1.1 0-2 .9-2 2v1H6c-.55 0-1 .45-1 1v3c0 .55.45 1 1 1h1v1c0 1.1.9 2 2 2h6c1.1 0 2-.9 2-2v-1h1c.55 0 1-.45 1-1v-3c0-.55-.45-1-1-1h-2V9c0-1.1-.9-2-2-2h-1V5.73c.6-.35 1-.99 1-1.73 0-1.1-.9-2-2-2z"
+                />
+              </svg>
+            </div>
+            <div class="flex-1">
               <div class="gradient-border card-hover">
                 <div class="p-4 space-y-4">
                   <div class="font-bold text-[#1E293B]">上传拜访纪要</div>
@@ -319,8 +302,9 @@
                 </div>
               </div>
             </div>
+        </section>
 
-            <div id="stepParseComplete" class="flow-step mt-4">
+        <section id="stepParseComplete" class="flow-step mt-4 min-w-0">
               <div class="flex items-start gap-2">
                 <div
                   class="w-8 h-8 rounded-full ai-avatar flex items-center justify-center flex-shrink-0 mt-1"
@@ -363,9 +347,9 @@
                   </div>
                 </div>
               </div>
-            </div>
+        </section>
 
-            <div id="stepVisitSummary" class="flow-step mt-4">
+        <section id="stepVisitSummary" class="flow-step mt-4 min-w-0">
               <div class="flex items-start gap-2">
                 <div
                   class="w-8 h-8 rounded-full ai-avatar flex items-center justify-center flex-shrink-0 mt-1"
@@ -558,9 +542,9 @@
                   </div>
                 </div>
               </div>
-            </div>
+        </section>
 
-            <div id="stepGenerating" class="flow-step mt-4">
+        <section id="stepGenerating" class="flow-step mt-4 min-w-0">
               <div class="flex items-start gap-2">
                 <div
                   class="w-8 h-8 rounded-full ai-avatar flex items-center justify-center flex-shrink-0 mt-1"
@@ -588,9 +572,9 @@
                   </div>
                 </div>
               </div>
-            </div>
+        </section>
 
-            <div id="stepResult" class="flow-step mt-4">
+        <section id="stepResult" class="flow-step mt-4 min-w-0">
               <div class="flex items-start gap-2">
                 <div
                   class="w-8 h-8 rounded-full ai-avatar flex items-center justify-center flex-shrink-0 mt-1"
@@ -671,7 +655,39 @@
                   </div>
                 </div>
               </div>
-            </div>
+        </section>
+
+        <section id="stepCustomerConfirm" class="flow-step mt-4 min-w-0">
+              <div class="flex items-start gap-2">
+                <div
+                  class="w-8 h-8 rounded-full ai-avatar flex items-center justify-center flex-shrink-0 mt-1"
+                >
+                  <svg
+                    class="w-5 h-5 text-white"
+                    fill="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M16.707 5.293a1 1 0 010 1.414L10 13.414 7.293 10.707a1 1 0 00-1.414 1.414l3.0 3a1 1 0 001.414 0l7-7a1 1 0 011.414 0z"
+                      clip-rule="evenodd"
+                    />
+                  </svg>
+                </div>
+                <div class="flex-1">
+                  <div class="status-card rounded-xl px-4 py-3">
+                    <div class="flex items-center gap-2">
+                      <span class="text-sm font-medium text-[#1E293B]"
+                        >客户已确认方案</span
+                      >
+                    </div>
+                    <div class="text-xs text-[#64748B] mt-1">
+                      已记录客户确认结果，后续将进入办理任务与交易服务等下一步流程。
+                    </div>
+                  </div>
+                </div>
+              </div>
+        </section>
           </div>
         </div>
       </main>
@@ -727,6 +743,40 @@
 
     <script>
       var fromEditMode = false;
+
+      function scrollToBottom() {
+        try {
+          // 在独立打开子页面时：滚动 subpage-main 自己
+          var container = document.querySelector(".subpage-main");
+
+          // 在通过 index.html 手机壳打开时：真实滚动容器是手机壳里的 main
+          if (!container) {
+            var phoneMain = document.querySelector(".phone-screen main");
+            if (phoneMain) container = phoneMain;
+          }
+
+          // 兜底：页面本身的滚动容器
+          if (!container) {
+            container =
+              document.scrollingElement ||
+              document.documentElement ||
+              document.body;
+          }
+
+          if (!container) return;
+
+          // 等待一帧，让新消息完成渲染后再滚动
+          setTimeout(function () {
+            try {
+              container.scrollTo({
+                top: container.scrollHeight,
+                behavior: "smooth",
+              });
+            } catch (e2) {}
+          }, 50);
+        } catch (e) {}
+      }
+
       function showUploadSuccess(name) {
         var placeholder = document.getElementById("uploadPlaceholder");
         var progress = document.getElementById("uploadProgress");
@@ -749,21 +799,23 @@
             .getElementById("uploadZone")
             .classList.add("border-green-200", "bg-green-50/50");
         }, 1200);
+        scrollToBottom();
       }
-      function handleAudioUpload(input) {
+      window.handleAudioUpload = function (input) {
         var file = input.files && input.files[0];
         if (!file) return;
         showUploadSuccess(file.name);
-      }
-      function simulateAudioUpload() {
+      };
+      window.simulateAudioUpload = function () {
         showUploadSuccess("北京博达富通基金拜访录音.mp3");
-      }
-      function showFeedbackForm() {
+      };
+      window.showFeedbackForm = function () {
         fromEditMode = false;
         document.getElementById("btnFeedback").style.display = "none";
         document.getElementById("feedbackForm").classList.add("active");
-      }
-      function cancelFeedbackForm() {
+        scrollToBottom();
+      };
+      window.cancelFeedbackForm = function () {
         document.getElementById("feedbackForm").classList.remove("active");
         if (fromEditMode) {
           fromEditMode = false;
@@ -773,39 +825,47 @@
         } else {
           document.getElementById("btnFeedback").style.display = "flex";
         }
-      }
-      function submitFeedback() {
+      };
+      window.submitFeedback = function () {
         document.getElementById("btnFeedback").style.display = "none";
         document.getElementById("stepParseComplete").classList.add("active");
-        document
-          .getElementById("stepParseComplete")
-          .scrollIntoView({ behavior: "smooth", block: "center" });
+        scrollToBottom();
         setTimeout(function () {
           document.getElementById("stepVisitSummary").classList.add("active");
-          document
-            .getElementById("stepVisitSummary")
-            .scrollIntoView({ behavior: "smooth", block: "center" });
+          scrollToBottom();
         }, 1500);
-      }
-      function backToEditSummary() {
+      };
+      window.backToEditSummary = function () {
         fromEditMode = true;
         document.getElementById("feedbackForm").classList.add("active");
-        document
-          .getElementById("feedbackForm")
-          .scrollIntoView({ behavior: "smooth", block: "center" });
-      }
-      function confirmVisitSummary() {
-        document.getElementById("stepGenerating").classList.add("active");
-        document
-          .getElementById("stepGenerating")
-          .scrollIntoView({ behavior: "smooth", block: "center" });
+        scrollToBottom();
+      };
+      window.confirmVisitSummary = function () {
+        var gen = document.getElementById("stepGenerating");
+        if (gen) {
+          gen.classList.add("active");
+          scrollToBottom();
+        }
         setTimeout(function () {
-          document.getElementById("stepResult").classList.add("active");
-          document
-            .getElementById("stepResult")
-            .scrollIntoView({ behavior: "smooth", block: "center" });
+          // 生成结果时，停止“生成中”状态展示
+          if (gen) {
+            gen.classList.remove("active");
+          }
+          var result = document.getElementById("stepResult");
+          if (result) {
+            result.classList.add("active");
+            scrollToBottom();
+          }
+          // 结果展示后，追加一条“客户已确认方案”
+          setTimeout(function () {
+            var confirm = document.getElementById("stepCustomerConfirm");
+            if (confirm) {
+              confirm.classList.add("active");
+              scrollToBottom();
+            }
+          }, 1500);
         }, 2000);
-      }
+      };
     </script>
   </body>
 </html>
