@@ -514,10 +514,12 @@
                   />
                   <button
                     type="submit"
+                    id="bottomSendButton"
                     class="subpage-footer-send-btn"
                     aria-label="发送"
                   >
-                    <img src="images/icons/icon-footer-send.svg" alt="" />
+                    <span id="bottomSendPlus" class="text-base font-semibold">+</span>
+                    <span id="bottomSendText" class="text-sm font-medium text-[#2563EB] hidden">发送</span>
                   </button>
                 </form>
               </div>
@@ -560,12 +562,28 @@
       })();
 
       // 底部输入框：输入"北京博达富通"或"博达富通"跳转到博达富通客户详情页（带模拟交互）
-      document
-        .getElementById("bottomInputForm")
-        .addEventListener("submit", function (e) {
+      (function () {
+        var form = document.getElementById("bottomInputForm");
+        var input = document.getElementById("bottomInput");
+        var plusEl = document.getElementById("bottomSendPlus");
+        var textEl = document.getElementById("bottomSendText");
+
+        if (!form || !input) return;
+
+        function updateSendVisual() {
+          var value = (input.value || "").trim();
+          var hasText = value.length > 0;
+          if (plusEl) plusEl.style.display = hasText ? "none" : "inline";
+          if (textEl) textEl.style.display = hasText ? "inline" : "none";
+        }
+
+        input.addEventListener("input", updateSendVisual);
+        // 初始化一次
+        updateSendVisual();
+
+        form.addEventListener("submit", function (e) {
           e.preventDefault();
-          const input = document.getElementById("bottomInput");
-          const value = (input.value || "").trim();
+          var value = (input.value || "").trim();
           if (
             value === "博达富通" ||
             value.includes("博达富通") ||
@@ -574,6 +592,7 @@
             navigateToPage("员工-博达富通-客户详情.html?from=search");
           }
         });
+      })();
     </script>
     <script>
       (function () {
