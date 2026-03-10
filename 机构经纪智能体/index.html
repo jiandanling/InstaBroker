@@ -47,6 +47,16 @@
       color: #64748b;
       letter-spacing: 0.03em;
     }
+    /* 平板：待办卡片 2 列网格 */
+    @media (min-width: 768px) and (max-width: 1023px) {
+      #cardScroller { display: grid; grid-template-columns: repeat(2, 1fr); overflow: visible; gap: 1rem; }
+      #cardScroller .scroll-snap-item { min-width: 0; max-width: none; }
+    }
+    /* 大屏：待办卡片 4 列网格 */
+    @media (min-width: 1024px) {
+      #cardScroller { display: grid; grid-template-columns: repeat(4, 1fr); overflow: visible; gap: 1rem; }
+      #cardScroller .scroll-snap-item { min-width: 0; max-width: none; }
+    }
   </style>
 </head>
 <body class="h-screen overflow-hidden bg-[#f1f5f9]">
@@ -69,14 +79,14 @@
     </header>
 
     <!-- 主内容区：滚动条仅在此区域内，不延伸到底部固定区 -->
-    <main class="flex-1 min-h-0 overflow-y-auto overflow-x-hidden px-4 py-3 pb-6">
+    <main class="flex-1 min-h-0 overflow-y-auto overflow-x-hidden px-4 py-4 pb-6">
       <!-- 区块：待办事项 -->
-      <section class="mb-4">
+      <section class="mb-6">
         <h2 class="section-title flex items-center gap-2 mb-2">
           <span class="w-1 h-3.5 rounded-full bg-indigo-500"></span>
           待办事项
         </h2>
-        <div id="cardScroller" class="overflow-x-auto scroll-snap-x flex gap-2.5 pb-1 -mx-4 px-4 scrollbar-hide" style="scrollbar-width: none; -ms-overflow-style: none;">
+        <div id="cardScroller" class="overflow-x-auto scroll-snap-x flex gap-2.5 pb-1 -mx-4 px-4 lg:mx-0 lg:px-0 scrollbar-hide" style="scrollbar-width: none; -ms-overflow-style: none;">
 
         <!-- 卡片1：博达富通基金 - 拓客准备 -->
         <div class="scroll-snap-item flex-shrink-0 flex-1 min-w-[240px] max-w-[300px] bg-white rounded-xl border-l-4 border-l-indigo-500 border border-slate-100 overflow-hidden card-uniform">
@@ -221,104 +231,109 @@
         </div>
       </section>
 
-      <!-- 区块：快捷入口 -->
-      <section class="mb-4">
-        <h2 class="section-title flex items-center gap-2 mb-2">
-          <span class="w-1 h-3.5 rounded-full bg-indigo-500"></span>
-          快捷入口
-        </h2>
-        <div class="grid grid-cols-1 sm:grid-cols-3 gap-2">
-        <!-- 我的客户 -->
-        <a href="员工-我的客户.html" class="block bg-white rounded-lg border border-slate-100 overflow-hidden transition-all duration-200 hover:shadow-md hover:border-slate-200">
-          <div class="p-3">
-            <div class="flex items-center gap-2 mb-2">
-              <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-indigo-500 to-violet-600 flex items-center justify-center text-white text-sm">👥</div>
-              <span class="font-semibold text-slate-800 text-sm">我的客户</span>
-            </div>
-            <div class="grid grid-cols-3 gap-1.5">
-              <div class="text-center py-1.5 rounded bg-slate-50">
-                <div class="text-xs font-bold text-slate-800">12</div>
-                <div class="text-[10px] text-slate-500">全部</div>
+      <!-- 区块：快捷入口 + 数字人入口（同一行） -->
+      <section class="mb-6 grid grid-cols-1 lg:grid-cols-[1.8fr_0.7fr] gap-8 lg:gap-10">
+        <!-- 快捷入口 -->
+        <div>
+          <h2 class="section-title flex items-center gap-2 mb-2">
+            <span class="w-1 h-3.5 rounded-full bg-indigo-500"></span>
+            快捷入口
+          </h2>
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-2">
+            <a href="员工-我的客户.html" class="block bg-white rounded-lg border border-slate-100 overflow-hidden transition-all duration-200 hover:shadow-md hover:border-slate-200">
+              <div class="p-3">
+                <div class="flex items-center gap-2 mb-2">
+                  <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-indigo-500 to-violet-600 flex items-center justify-center text-white text-sm">👥</div>
+                  <span class="font-semibold text-slate-800 text-sm">我的客户</span>
+                </div>
+                <div class="grid grid-cols-3 gap-1.5">
+                  <div class="text-center py-1.5 rounded bg-slate-50">
+                    <div class="text-xs font-bold text-slate-800">12</div>
+                    <div class="text-[10px] text-slate-500">全部</div>
+                  </div>
+                  <div class="text-center py-1.5 rounded bg-indigo-50">
+                    <div class="text-xs font-bold text-indigo-600">5</div>
+                    <div class="text-[10px] text-slate-500">跟进中</div>
+                  </div>
+                  <div class="text-center py-1.5 rounded bg-emerald-50">
+                    <div class="text-xs font-bold text-emerald-600">3</div>
+                    <div class="text-[10px] text-slate-500">已合作</div>
+                  </div>
+                </div>
               </div>
-              <div class="text-center py-1.5 rounded bg-indigo-50">
-                <div class="text-xs font-bold text-indigo-600">5</div>
-                <div class="text-[10px] text-slate-500">跟进中</div>
+            </a>
+            <a href="员工-我的任务.html" class="block bg-white rounded-lg border border-slate-100 overflow-hidden transition-all duration-200 hover:shadow-md hover:border-slate-200">
+              <div class="p-3">
+                <div class="flex items-center gap-2 mb-2">
+                  <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-amber-500 to-orange-600 flex items-center justify-center text-white text-sm">📋</div>
+                  <span class="font-semibold text-slate-800 text-sm">我的任务</span>
+                </div>
+                <div class="grid grid-cols-3 gap-1.5">
+                  <div class="text-center py-1.5 rounded bg-amber-50">
+                    <div class="text-xs font-bold text-amber-600">2</div>
+                    <div class="text-[10px] text-slate-500">待处理</div>
+                  </div>
+                  <div class="text-center py-1.5 rounded bg-indigo-50">
+                    <div class="text-xs font-bold text-indigo-600">1</div>
+                    <div class="text-[10px] text-slate-500">进行中</div>
+                  </div>
+                  <div class="text-center py-1.5 rounded bg-emerald-50">
+                    <div class="text-xs font-bold text-emerald-600">1</div>
+                    <div class="text-[10px] text-slate-500">已完成</div>
+                  </div>
+                </div>
               </div>
-              <div class="text-center py-1.5 rounded bg-emerald-50">
-                <div class="text-xs font-bold text-emerald-600">3</div>
-                <div class="text-[10px] text-slate-500">已合作</div>
+            </a>
+            <a href="员工-圆桌会议.html" class="block bg-white rounded-lg border border-slate-100 overflow-hidden transition-all duration-200 hover:shadow-md hover:border-slate-200">
+              <div class="p-3">
+                <div class="flex items-center gap-2 mb-2">
+                  <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-emerald-500 to-teal-600 flex items-center justify-center text-white text-sm">🔄</div>
+                  <span class="font-semibold text-slate-800 text-sm">圆桌会议</span>
+                </div>
+                <div class="grid grid-cols-2 gap-1.5">
+                  <div class="text-center py-1.5 rounded bg-violet-50">
+                    <div class="text-xs font-bold text-violet-600">1</div>
+                    <div class="text-[10px] text-slate-500">圆桌协同</div>
+                  </div>
+                  <div class="text-center py-1.5 rounded bg-amber-50">
+                    <div class="text-xs font-bold text-amber-600">2</div>
+                    <div class="text-[10px] text-slate-500">风险处置</div>
+                  </div>
+                </div>
               </div>
-            </div>
+            </a>
           </div>
-        </a>
-        <!-- 我的任务 -->
-        <a href="员工-我的任务.html" class="block bg-white rounded-lg border border-slate-100 overflow-hidden transition-all duration-200 hover:shadow-md hover:border-slate-200">
-          <div class="p-3">
-            <div class="flex items-center gap-2 mb-2">
-              <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-amber-500 to-orange-600 flex items-center justify-center text-white text-sm">📋</div>
-              <span class="font-semibold text-slate-800 text-sm">我的任务</span>
-            </div>
-            <div class="grid grid-cols-3 gap-1.5">
-              <div class="text-center py-1.5 rounded bg-amber-50">
-                <div class="text-xs font-bold text-amber-600">2</div>
-                <div class="text-[10px] text-slate-500">待处理</div>
-              </div>
-              <div class="text-center py-1.5 rounded bg-indigo-50">
-                <div class="text-xs font-bold text-indigo-600">1</div>
-                <div class="text-[10px] text-slate-500">进行中</div>
-              </div>
-              <div class="text-center py-1.5 rounded bg-emerald-50">
-                <div class="text-xs font-bold text-emerald-600">1</div>
-                <div class="text-[10px] text-slate-500">已完成</div>
-              </div>
-            </div>
+        </div>
+        <!-- 数字人入口 -->
+        <div>
+          <h2 class="section-title flex items-center gap-2 mb-2">
+            <span class="w-1 h-3.5 rounded-full bg-indigo-500"></span>
+            数字人入口
+          </h2>
+          <div class="flex items-center justify-center gap-8 lg:justify-end lg:gap-10 mt-4 lg:mt-6">
+            <a href="数字人-开户服务.html" class="flex flex-col items-center gap-2 transition-transform hover:scale-110" title="开户服务">
+              <img src="images/开户数字人.jpg" alt="开户数字人" class="w-16 h-16 rounded-full object-cover border-2 border-emerald-200/80" />
+              <span class="text-xs text-slate-500">开户服务</span>
+            </a>
+            <a href="数字人-交易服务.html" class="flex flex-col items-center gap-2 transition-transform hover:scale-110" title="交易服务">
+              <img src="images/交易服务数字人.jpg" alt="交易服务数字人" class="w-16 h-16 rounded-full object-cover border-2 border-violet-200/80" />
+              <span class="text-xs text-slate-500">交易服务</span>
+            </a>
+            <a href="数字人-预警服务.html" class="flex flex-col items-center gap-2 transition-transform hover:scale-110" title="预警服务">
+              <img src="images/预警服务数字人.jpg" alt="预警服务数字人" class="w-16 h-16 rounded-full object-cover border-2 border-amber-200/80" />
+              <span class="text-xs text-slate-500">预警服务</span>
+            </a>
           </div>
-        </a>
-        <!-- 圆桌会议 -->
-        <a href="员工-圆桌会议.html" class="block bg-white rounded-lg border border-slate-100 overflow-hidden transition-all duration-200 hover:shadow-md hover:border-slate-200">
-          <div class="p-3">
-            <div class="flex items-center gap-2 mb-2">
-              <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-emerald-500 to-teal-600 flex items-center justify-center text-white text-sm">🔄</div>
-              <span class="font-semibold text-slate-800 text-sm">圆桌会议</span>
-            </div>
-            <div class="grid grid-cols-2 gap-1.5">
-              <div class="text-center py-1.5 rounded bg-violet-50">
-                <div class="text-xs font-bold text-violet-600">1</div>
-                <div class="text-[10px] text-slate-500">圆桌协同</div>
-              </div>
-              <div class="text-center py-1.5 rounded bg-amber-50">
-                <div class="text-xs font-bold text-amber-600">2</div>
-                <div class="text-[10px] text-slate-500">风险处置</div>
-              </div>
-            </div>
-          </div>
-        </a>
         </div>
       </section>
 
     </main>
 
-    <!-- 底部固定区域：数字人 + 输入框 + 工具按钮 -->
+    <!-- 底部固定区域：输入框 + 工具按钮 -->
     <div class="flex-shrink-0 border-t border-slate-200/60">
       <div class="px-4 py-2 max-w-7xl mx-auto">
-        <!-- 数字人服务：选择智能体入口 -->
-        <div class="flex items-center justify-center gap-6 mb-2">
-          <a href="数字人-开户服务.html" class="flex flex-col items-center gap-1 transition-transform hover:scale-110" title="开户服务">
-            <img src="images/开户数字人.jpg" alt="开户数字人" class="w-11 h-11 rounded-full object-cover border-2 border-emerald-200/80" />
-            <span class="text-[11px] text-slate-500">开户服务</span>
-          </a>
-          <a href="数字人-交易服务.html" class="flex flex-col items-center gap-1 transition-transform hover:scale-110" title="交易服务">
-            <img src="images/交易服务数字人.jpg" alt="交易服务数字人" class="w-11 h-11 rounded-full object-cover border-2 border-violet-200/80" />
-            <span class="text-[11px] text-slate-500">交易服务</span>
-          </a>
-          <a href="数字人-预警服务.html" class="flex flex-col items-center gap-1 transition-transform hover:scale-110" title="预警服务">
-            <img src="images/预警服务数字人.jpg" alt="预警服务数字人" class="w-11 h-11 rounded-full object-cover border-2 border-amber-200/80" />
-            <span class="text-[11px] text-slate-500">预警服务</span>
-          </a>
-        </div>
-        <!-- 输入栏：胶囊形，图标在右侧 -->
-        <footer class="safe-area-inset-bottom mb-2">
-          <form id="bottomInputForm" class="flex items-center gap-2 rounded-full bg-slate-200/60 px-3 py-2">
+        <!-- 输入栏 -->
+        <form id="bottomInputForm" class="flex items-center gap-2 rounded-full bg-slate-200/60 px-3 py-2 mb-2">
             <input id="bottomInput" type="text" class="flex-1 bg-transparent border-0 outline-none text-slate-800 placeholder-slate-500 text-sm" placeholder="请输入您的问题或选择智能体" autocomplete="off" />
             <button type="submit" class="flex-shrink-0 p-1.5 text-slate-500 hover:text-slate-700 transition-colors rounded-full hover:bg-slate-300/50" aria-label="发送">
               <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -326,7 +341,6 @@
               </svg>
             </button>
           </form>
-        </footer>
         <!-- 工具按钮：图标+标题，同一行 -->
         <div class="flex items-center justify-center gap-2 overflow-x-auto scrollbar-hide py-1" style="scrollbar-width: none; -ms-overflow-style: none;">
           <a href="员工-高净值客户经纪.html" class="inline-flex items-center gap-2 px-2.5 py-1 rounded-lg bg-slate-100/80 border border-slate-200/80 text-slate-600 hover:bg-slate-200/60 hover:border-slate-300/80 transition-all flex-shrink-0">
