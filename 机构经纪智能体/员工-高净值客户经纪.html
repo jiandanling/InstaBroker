@@ -1,74 +1,164 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="zh-CN">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>员工端-高净值客户经纪</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="css/common.css">
-  <script src="js/spa-wrapper.js"></script>
-  <script>
-    if (window.__InstaBrokerSPA__ && window.__InstaBrokerSPA__.ensureWrappedInIndex) {
-      window.__InstaBrokerSPA__.ensureWrappedInIndex("员工-高净值客户经纪.html");
-    }
-  </script>
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>高净值客户经纪</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="css/common.css" />
+    <script src="js/spa-wrapper.js"></script>
+    <script>
+      if (
+        window.__InstaBrokerSPA__ &&
+        window.__InstaBrokerSPA__.ensureWrappedInIndex
+      ) {
+        window.__InstaBrokerSPA__.ensureWrappedInIndex(
+          "员工-高净值客户经纪.html",
+        );
+      }
+    </script>
+  </head>
+  <body>
     <main class="subpage-main">
       <h2 class="subpage-section-title mb-4">
         <span class="w-1 h-3.5 rounded-full bg-indigo-500"></span>
         业务入口
       </h2>
-      <div class="text-xs text-[#64748B] text-center mb-5">高净值个人客户 · 私募基金 · 家族办公室 · 财富管理</div>
+      <div class="text-xs text-[#64748B] text-center mb-5">
+        高净值个人客户 · 私募基金 · 家族办公室 · 财富管理
+      </div>
 
       <div class="space-y-3">
-        <a href="员工-我的客户.html" class="block bg-white rounded-xl subpage-card-shadow overflow-hidden hover:shadow-lg transition-shadow">
+        <a
+          href="员工-我的客户.html"
+          class="block bg-white rounded-xl subpage-card-shadow overflow-hidden hover:shadow-lg transition-shadow"
+        >
           <div class="p-4 flex items-center gap-4">
-            <div class="w-12 h-12 rounded-xl bg-indigo-50 flex items-center justify-center flex-shrink-0">
-              <svg class="w-6 h-6 text-indigo-600" fill="currentColor" viewBox="0 0 20 20">
-                <path d="M9 6a3 3 0 11-6 0 3 3 0 016 0zM17 6a3 3 0 11-6 0 3 3 0 016 0zM12.93 17c.046-.327.07-.66.07-1a6.97 6.97 0 00-1.5-4.33A5 5 0 0119 16v1h-6.07zM6 11a5 5 0 015 5v1H1v-1a5 5 0 015-5z"/>
+            <div
+              class="w-12 h-12 rounded-xl bg-indigo-50 flex items-center justify-center flex-shrink-0"
+            >
+              <svg
+                class="w-6 h-6 text-indigo-600"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+              >
+                <path
+                  d="M9 6a3 3 0 11-6 0 3 3 0 016 0zM17 6a3 3 0 11-6 0 3 3 0 016 0zM12.93 17c.046-.327.07-.66.07-1a6.97 6.97 0 00-1.5-4.33A5 5 0 0119 16v1h-6.07zM6 11a5 5 0 015 5v1H1v-1a5 5 0 015-5z"
+                />
               </svg>
             </div>
             <div class="flex-1 min-w-0">
-              <div class="font-semibold text-[#1E293B] text-sm">高净值客户管理</div>
-              <div class="text-xs text-[#64748B] mt-0.5">个人客户、私募基金、家族办公室客户</div>
+              <div class="font-semibold text-[#1E293B] text-sm">
+                高净值客户管理
+              </div>
+              <div class="text-xs text-[#64748B] mt-0.5">
+                个人客户、私募基金、家族办公室客户
+              </div>
             </div>
-            <svg class="w-5 h-5 text-[#94A3B8] flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+            <svg
+              class="w-5 h-5 text-[#94A3B8] flex-shrink-0"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M9 5l7 7-7 7"
+              />
             </svg>
           </div>
         </a>
 
-        <a href="#" class="block bg-white rounded-xl subpage-card-shadow overflow-hidden hover:shadow-lg transition-shadow">
+        <a
+          href="#"
+          class="block bg-white rounded-xl subpage-card-shadow overflow-hidden hover:shadow-lg transition-shadow"
+        >
           <div class="p-4 flex items-center gap-4">
-            <div class="w-12 h-12 rounded-xl bg-indigo-50 flex items-center justify-center flex-shrink-0">
-              <svg class="w-6 h-6 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            <div
+              class="w-12 h-12 rounded-xl bg-indigo-50 flex items-center justify-center flex-shrink-0"
+            >
+              <svg
+                class="w-6 h-6 text-indigo-600"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                />
               </svg>
             </div>
             <div class="flex-1 min-w-0">
-              <div class="font-semibold text-[#1E293B] text-sm">财富顾问服务</div>
-              <div class="text-xs text-[#64748B] mt-0.5">资产配置、产品推介、专属服务</div>
+              <div class="font-semibold text-[#1E293B] text-sm">
+                财富顾问服务
+              </div>
+              <div class="text-xs text-[#64748B] mt-0.5">
+                资产配置、产品推介、专属服务
+              </div>
             </div>
-            <svg class="w-5 h-5 text-[#94A3B8] flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+            <svg
+              class="w-5 h-5 text-[#94A3B8] flex-shrink-0"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M9 5l7 7-7 7"
+              />
             </svg>
           </div>
         </a>
 
-        <a href="#" class="block bg-white rounded-xl subpage-card-shadow overflow-hidden hover:shadow-lg transition-shadow">
+        <a
+          href="#"
+          class="block bg-white rounded-xl subpage-card-shadow overflow-hidden hover:shadow-lg transition-shadow"
+        >
           <div class="p-4 flex items-center gap-4">
-            <div class="w-12 h-12 rounded-xl bg-indigo-50 flex items-center justify-center flex-shrink-0">
-              <svg class="w-6 h-6 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/>
+            <div
+              class="w-12 h-12 rounded-xl bg-indigo-50 flex items-center justify-center flex-shrink-0"
+            >
+              <svg
+                class="w-6 h-6 text-indigo-600"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"
+                />
               </svg>
             </div>
             <div class="flex-1 min-w-0">
-              <div class="font-semibold text-[#1E293B] text-sm">私募基金对接</div>
-              <div class="text-xs text-[#64748B] mt-0.5">私募机构开户、系统申请、托管服务</div>
+              <div class="font-semibold text-[#1E293B] text-sm">
+                私募基金对接
+              </div>
+              <div class="text-xs text-[#64748B] mt-0.5">
+                私募机构开户、系统申请、托管服务
+              </div>
             </div>
-            <svg class="w-5 h-5 text-[#94A3B8] flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+            <svg
+              class="w-5 h-5 text-[#94A3B8] flex-shrink-0"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M9 5l7 7-7 7"
+              />
             </svg>
           </div>
         </a>
