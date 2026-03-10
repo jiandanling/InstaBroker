@@ -672,8 +672,8 @@ form.subpage-footer-input-wrap {
 
 .index-card-desc {
   display: -webkit-box;
-  -webkit-line-clamp: 2;
-  line-clamp: 2;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
   font-size: 13px;

@@ -98,17 +98,7 @@
                           <span class="text-[11px] text-slate-400">两天前</span>
                         </div>
                         <div class="text-xs text-slate-500">
-                          金融机构客户 | 未合作
-                        </div>
-                        <div class="flex flex-wrap gap-1.5">
-                          <span
-                            class="px-2 py-0.5 rounded bg-slate-100 text-slate-600 text-xs"
-                            >线索跟进</span
-                          >
-                          <span
-                            class="px-2 py-0.5 rounded bg-slate-100 text-slate-600 text-xs"
-                            >首次拜访</span
-                          >
+                          金融机构客户 | 未合作 | 线索跟进
                         </div>
                         <div
                           class="text-slate-600 leading-relaxed index-card-desc"
@@ -145,8 +135,8 @@
                             >
                             <span
                             class="inline-flex items-center bg-white/80 border border-indigo-200/80 rounded-full px-2 py-0.5 text-[11px] font-medium text-indigo-600/90"
-                            title="北京博达富通管理有限公司分析报告"
-                            >拜北京博达富通管理有限公司分析报告</span
+                            title="分析报告"
+                            >分析报告</span
                           >
                           </div>
                         </div>
@@ -181,13 +171,7 @@
                           <span class="text-[11px] text-slate-400">一天前</span>
                         </div>
                         <div class="text-xs text-slate-500">
-                          金融机构客户 | 首次拜访已完成
-                        </div>
-                        <div class="flex flex-wrap gap-1.5">
-                          <span
-                            class="px-2 py-0.5 rounded bg-violet-100 text-violet-700 text-xs"
-                            >二次拜访</span
-                          >
+                          金融机构客户 | 首次拜访
                         </div>
                         <div
                           class="text-slate-600 leading-relaxed index-card-desc"
@@ -261,17 +245,7 @@
                           <span class="text-[11px] text-slate-400">今天</span>
                         </div>
                         <div class="text-xs text-slate-500">
-                          金融机构客户 | 已认可综合服务方案
-                        </div>
-                        <div class="flex flex-wrap gap-1.5">
-                          <span
-                            class="px-2 py-0.5 rounded bg-emerald-100 text-emerald-700 text-xs"
-                            >开户</span
-                          >
-                          <span
-                            class="px-2 py-0.5 rounded bg-emerald-100 text-emerald-700 text-xs"
-                            >系统申请</span
-                          >
+                          金融机构客户 | 已认可综合服务方案 | 业务办理
                         </div>
                         <div
                           class="text-slate-600 leading-relaxed index-card-desc"
@@ -343,20 +317,6 @@
                         </div>
                         <div class="text-xs text-slate-500">
                           交易所发函 | 多部门协同处置
-                        </div>
-                        <div class="flex flex-wrap gap-1.5">
-                          <span
-                            class="px-2 py-0.5 rounded bg-red-100 text-red-600 text-xs font-medium"
-                            >紧急</span
-                          >
-                          <span
-                            class="px-2 py-0.5 rounded bg-slate-100 text-slate-600 text-xs"
-                            >风险处理</span
-                          >
-                          <span
-                            class="px-2 py-0.5 rounded bg-slate-100 text-slate-600 text-xs"
-                            >易信会议</span
-                          >
                         </div>
                         <div
                           class="text-slate-600 leading-relaxed index-card-desc"
@@ -742,7 +702,21 @@
             // 重新绑定首页卡片翻页逻辑
             setupCardPagination();
             if (pushHistory) {
-              history.pushState({ url: "index.html" }, "", "index.html");
+              try {
+                var homePath = window.location.pathname || "";
+                var lastSlashHome = homePath.lastIndexOf("/");
+                var baseHome =
+                  lastSlashHome >= 0
+                    ? homePath.substring(0, lastSlashHome + 1)
+                    : "/";
+                history.pushState(
+                  { url: "index.html" },
+                  "",
+                  baseHome + "index.html"
+                );
+              } catch (e) {
+                history.pushState({ url: "index.html" }, "", "index.html");
+              }
             }
             return;
           }
@@ -772,7 +746,19 @@
               executeScriptsFromDoc(doc);
 
               if (pushHistory) {
-                history.pushState({ url: url }, "", url);
+                try {
+                  var currentPath = window.location.pathname || "";
+                  var lastSlash = currentPath.lastIndexOf("/");
+                  var base =
+                    lastSlash >= 0
+                      ? currentPath.substring(0, lastSlash + 1)
+                      : "/";
+                  var displayUrl =
+                    base + "index.html?page=" + encodeURIComponent(url);
+                  history.pushState({ url: url }, "", displayUrl);
+                } catch (e) {
+                  history.pushState({ url: url }, "", url);
+                }
               }
 
               updateBackButton(url);
@@ -785,6 +771,17 @@
 
         // 对外暴露一个函数，给其他脚本调用（如底部输入框跳转）
         window.navigateToPage = loadPage;
+
+        // 如果带有 ?page=xxx 参数，首次进入时直接加载对应子页面
+        try {
+          var searchParams = new URLSearchParams(window.location.search || "");
+          var initialPage = searchParams.get("page");
+          if (initialPage) {
+            loadPage(initialPage, { pushHistory: false });
+          }
+        } catch (e) {
+          // 忽略 URLSearchParams 相关错误
+        }
 
         // 拦截所有 a 标签点击，做单页跳转
         document.addEventListener("click", function (e) {
