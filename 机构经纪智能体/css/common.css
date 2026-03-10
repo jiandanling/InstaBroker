@@ -20,8 +20,8 @@
   --spacing-md: 16px;
   --spacing-lg: 24px;
   --spacing-xl: 32px;
-  /* 统一内容区最大宽度 896px，与 Tailwind max-w-4xl 一致 */
-  --layout-max-width: 896px;
+  /* 统一内容区最大宽度，模拟手机壳宽度 414px */
+  --layout-max-width: 414px;
 }
 
 html {
@@ -350,7 +350,7 @@ body {
 }
 
 .phone-screen main {
-  padding: 8px 14px 10px;
+  padding: 8px 10px 10px;
 }
 
 .phone-screen #cardScroller {
@@ -374,6 +374,19 @@ body {
 
 .phone-screen section {
   margin-bottom: 10px;
+}
+
+/* 消息列表在手机壳内的左右边距略收紧，气泡尽量占满宽度 */
+.phone-screen .message-list-column {
+  padding-left: 2px;
+  padding-right: 2px;
+}
+
+/* 覆盖子页面中用于控制气泡宽度的 max-w 百分比，在手机演示中贴近左右边缘一些 */
+.phone-screen .max-w-\[92\%\],
+.phone-screen .max-w-\[90\%\],
+.phone-screen .max-w-\[85\%\] {
+  max-width: 98% !important;
 }
 
 /* 输入栏容器：支持 div 或 form */
@@ -760,4 +773,12 @@ form.subpage-footer-input-wrap {
     white-space: normal;
     overflow: visible;
   }
+}
+
+/* 独立打开子页面时，使用与手机壳一致的版心宽度 */
+.visit-page-root {
+  max-width: var(--layout-max-width);
+  margin: 0 auto;
+  width: 100%;
+  box-sizing: border-box;
 }

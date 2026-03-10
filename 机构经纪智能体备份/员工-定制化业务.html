@@ -5,10 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>员工端-定制化业务</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="css/common.css">
   <style>
-    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; background: #f8fafc; }
-    .card-shadow { box-shadow: 0 4px 14px rgba(0,0,0,0.06); }
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; background: #f5f5f5; }
+    .card-shadow { box-shadow: 0 2px 12px rgba(0,0,0,0.08); }
     .module-tag { cursor: pointer; transition: all 0.2s ease; user-select: none; }
     .module-tag:hover { transform: scale(1.02); }
     .module-tag.selected { background: linear-gradient(135deg, #7c3aed 0%, #6d28d9 100%); color: white; border-color: transparent; box-shadow: 0 2px 8px rgba(124, 58, 237, 0.3); }
@@ -21,9 +20,9 @@
   </style>
 </head>
 <body class="min-h-screen">
-  <div class="min-h-screen flex flex-col w-full max-w-5xl mx-auto bg-[#f8fafc]">
+  <div class="min-h-screen flex flex-col max-w-lg mx-auto bg-[#f5f5f5]">
     <!-- 顶部导航栏 -->
-    <header class="app-header sticky top-0 bg-white px-4 py-3.5 flex items-center justify-between z-20 border-b border-gray-200">
+    <header class="sticky top-0 bg-white px-4 py-3 flex items-center justify-between z-20 border-b border-gray-100">
       <a href="index.html" id="headerBack" class="w-10 h-10 flex items-center justify-center text-gray-700" aria-label="返回">
         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
@@ -37,7 +36,7 @@
       </button>
     </header>
 
-    <main class="flex-1 overflow-y-auto px-4 py-4 md:px-6 md:py-6">
+    <main class="flex-1 overflow-y-auto px-4 py-4">
       <!-- 步骤1：选择服务模块 -->
       <div id="stepSelect" class="step-panel active">
         <div class="text-xs text-[#64748B] text-center mb-4">根据客户的需求定制专属综合服务方案</div>

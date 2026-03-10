@@ -49,6 +49,7 @@
                   </svg>
                 </button>
                 <h1
+                  id="pageHeaderTitle"
                   class="text-base font-semibold text-slate-800 tracking-tight"
                 >
                   机构经纪超级数字员工
@@ -142,6 +143,11 @@
                               title="拜访提纲"
                               >拜访提纲</span
                             >
+                            <span
+                            class="inline-flex items-center bg-white/80 border border-indigo-200/80 rounded-full px-2 py-0.5 text-[11px] font-medium text-indigo-600/90"
+                            title="北京博达富通管理有限公司分析报告"
+                            >拜北京博达富通管理有限公司分析报告</span
+                          >
                           </div>
                         </div>
                         <a
@@ -600,6 +606,44 @@
         var initialHTML = contentContainer.innerHTML;
         var initialTitle = document.title;
         var backButton = document.getElementById("backButton");
+        var headerTitleEl = document.getElementById("pageHeaderTitle");
+        var initialHeaderTitle = headerTitleEl
+          ? headerTitleEl.textContent.trim()
+          : "";
+
+        function setupCardPagination() {
+          var scroller = document.getElementById("cardScroller");
+          var dots = document.querySelectorAll(".card-pagination-dot");
+          if (!scroller || !dots.length) return;
+
+          function getPageWidth() {
+            return scroller.offsetWidth - 16;
+          }
+
+          function updateDots() {
+            var scrollLeft = scroller.scrollLeft;
+            var pageWidth = getPageWidth();
+            var index = pageWidth > 0 ? Math.round(scrollLeft / pageWidth) : 0;
+            index = Math.min(Math.max(index, 0), dots.length - 1);
+            dots.forEach(function (d, i) {
+              d.classList.toggle("active", i === index);
+            });
+          }
+
+          scroller.addEventListener("scroll", updateDots);
+          window.addEventListener("resize", updateDots);
+
+          dots.forEach(function (dot) {
+            dot.addEventListener("click", function () {
+              var i = parseInt(dot.dataset.index, 10);
+              var pageWidth = getPageWidth();
+              scroller.scrollTo({ left: i * pageWidth, behavior: "smooth" });
+            });
+          });
+
+          // 初始化一次
+          updateDots();
+        }
 
         function updateBackButton(url) {
           if (!backButton) return;
@@ -617,6 +661,39 @@
             backButton.style.pointerEvents = "auto";
             backButton.tabIndex = 0;
           }
+        }
+
+        function updateHeaderTitle(url, doc) {
+          if (!headerTitleEl) return;
+          var isHome =
+            !url ||
+            url === "index.html" ||
+            url === "./index.html" ||
+            url === location.pathname.split("/").pop();
+
+          if (isHome) {
+            headerTitleEl.textContent = initialHeaderTitle || "机构经纪超级数字员工";
+            return;
+          }
+
+          // 特殊：拜访任务页面标题固定为“客户拜访任务”
+          if (url.indexOf("员工-拜访任务") !== -1) {
+            headerTitleEl.textContent = "客户拜访任务";
+            return;
+          }
+
+          // 其余页面：优先使用子页面的 <title> 去掉“员工端-”前缀
+          if (doc) {
+            var titleEl = doc.querySelector("title");
+            if (titleEl && titleEl.textContent) {
+              var t = titleEl.textContent.trim();
+              t = t.replace(/^员工端-/, "");
+              headerTitleEl.textContent = t || initialHeaderTitle;
+              return;
+            }
+          }
+
+          headerTitleEl.textContent = initialHeaderTitle;
         }
 
         // 首次进入首页时隐藏返回按钮
@@ -661,6 +738,9 @@
             contentContainer.innerHTML = initialHTML;
             document.title = initialTitle;
             updateBackButton("index.html");
+            updateHeaderTitle("index.html");
+            // 重新绑定首页卡片翻页逻辑
+            setupCardPagination();
             if (pushHistory) {
               history.pushState({ url: "index.html" }, "", "index.html");
             }
@@ -696,6 +776,7 @@
               }
 
               updateBackButton(url);
+              updateHeaderTitle(url, doc);
             })
             .catch(function (err) {
               console.error("页面加载出错", err);

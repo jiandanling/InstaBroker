@@ -8,286 +8,13 @@
     <link rel="stylesheet" href="css/common.css" />
   </head>
   <body>
-      <main class="subpage-main flex flex-col gap-4">
-        <!-- 上下文信息 -->
-        <div class="flex items-center justify-center">
-          <div
-            class="text-xs text-[#64748B] mt-0.5 bg-white/70 backdrop-blur-sm rounded-full px-3 py-1 shadow-sm"
-          >
-            北京博达富通基金 · 首次拜访任务
-          </div>
-        </div>
-
-        <!-- 消息流：所有屏幕尺寸均上下堆叠（聊天风格） -->
+    <main class="subpage-main">
+      <div class="visit-page-root flex flex-col gap-3">
+        <!-- 消息流：聊天风格 -->
         <div class="message-list-column">
-          <!-- 智能体消息：任务材料 -->
+          <!-- 智能体推送推荐卡片 -->
           <section class="min-w-0">
-            <div class="flex items-start gap-3 message-enter min-w-0 w-full">
-              <div
-                class="w-8 h-8 rounded-full ai-avatar flex items-center justify-center flex-shrink-0 mt-1"
-              >
-                <svg
-                  class="w-5 h-5 text-white"
-                  fill="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    d="M12 2C10.9 2 10 2.9 10 4c0 .74.4 1.38 1 1.73V7h-1c-1.1 0-2 .9-2 2v1H6c-.55 0-1 .45-1 1v3c0 .55.45 1 1 1h1v1c0 1.1.9 2 2 2h6c1.1 0 2-.9 2-2v-1h1c.55 0 1-.45 1-1v-3c0-.55-.45-1-1-1h-2V9c0-1.1-.9-2-2-2h-1V5.73c.6-.35 1-.99 1-1.73 0-1.1-.9-2-2-2z"
-                  />
-                  <circle cx="9" cy="11" r="1" />
-                  <circle cx="15" cy="11" r="1" />
-                  <path
-                    d="M12 15c.83 0 1.5-.67 1.5-1.5S12.83 12 12 12s-1.5.67-1.5 1.5.67 1.5 1.5 1.5z"
-                  />
-                </svg>
-              </div>
-              <div class="min-w-0 w-full">
-                <div class="text-xs text-slate-500 mb-1 ml-1">
-                  机构经纪组织者智能体
-                </div>
-                <div
-                  class="visit-task-block rounded-2xl bg-white overflow-hidden shadow-sm w-full max-w-[92%] sm:max-w-[92%] md:max-w-[90%]"
-                >
-                <div
-                  class="bg-gradient-to-r from-blue-500 to-indigo-600 text-white px-4 py-2.5 flex items-center gap-2"
-                >
-                  <span class="font-bold text-sm">拜访任务</span>
-                  <span class="text-xs text-white/80">任务信息与拜访材料</span>
-                </div>
-                <div class="p-4 flex flex-col gap-3">
-                  <div
-                    class="bg-slate-50/60 rounded-xl p-4 card-hover hover:shadow-lg transition-shadow"
-                  >
-                    <div class="flex flex-col gap-3">
-                      <!-- 客户信息区：紧凑横向布局 -->
-                      <div
-                        class="flex items-center gap-3 bg-gradient-to-r from-blue-50 to-purple-50 rounded-lg p-2.5"
-                      >
-                        <div
-                          class="w-10 h-10 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center shadow-md flex-shrink-0"
-                        >
-                          <svg
-                            class="w-6 h-6 text-white"
-                            fill="currentColor"
-                            viewBox="0 0 20 20"
-                          >
-                            <path
-                              fill-rule="evenodd"
-                              d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"
-                              clip-rule="evenodd"
-                            />
-                          </svg>
-                        </div>
-                        <div class="flex-1 min-w-0">
-                          <div
-                            class="font-bold text-[#1E293B] text-sm leading-tight"
-                          >
-                            北京博达富通基金管理有限公司
-                          </div>
-                          <div class="text-xs text-[#64748B] mt-0.5">
-                            金融机构客户 | 未合作
-                          </div>
-                        </div>
-                      </div>
-                      <!-- 拜访要点 + 合作机会分析：响应式双列 -->
-                      <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                        <!-- 拜访要点 -->
-                        <div
-                          class="bg-gradient-to-r from-blue-50 to-indigo-50 border-l-4 border-blue-300/70 p-2.5 rounded-lg"
-                        >
-                          <div class="font-medium text-[#1E293B] text-xs mb-2">
-                            拜访要点
-                          </div>
-                          <div class="space-y-1.5">
-                            <div class="flex items-center gap-2 task-item">
-                              <div
-                                class="w-1.5 h-1.5 bg-blue-600 rounded-full flex-shrink-0"
-                              ></div>
-                              <span class="text-sm text-blue-600 font-medium"
-                                >邀约客户，确定拜访时间</span
-                              >
-                            </div>
-                            <div class="flex items-center gap-2 task-item">
-                              <div
-                                class="w-1.5 h-1.5 bg-blue-600 rounded-full flex-shrink-0"
-                              ></div>
-                              <span class="text-sm text-blue-600 font-medium"
-                                >了解客户需求</span
-                              >
-                            </div>
-                          </div>
-                        </div>
-                        <!-- 合作机会分析 -->
-                        <div
-                          class="bg-white/50 rounded-lg p-2.5"
-                        >
-                          <div class="font-medium text-[#1E293B] text-xs mb-2">
-                            合作机会分析
-                          </div>
-                          <div class="text-sm text-[#374151] space-y-1">
-                            <div class="flex items-start gap-1.5">
-                              <span
-                                class="text-blue-600 font-bold flex-shrink-0"
-                                >•</span
-                              >
-                              <span
-                                ><strong>代销服务</strong> -
-                                过往业绩优秀，合作后可推代销</span
-                              >
-                            </div>
-                            <div class="flex items-start gap-1.5">
-                              <span
-                                class="text-blue-600 font-bold flex-shrink-0"
-                                >•</span
-                              >
-                              <span
-                                ><strong>极速交易系统</strong> -
-                                量化策略对时延要求高</span
-                              >
-                            </div>
-                            <div class="flex items-start gap-1.5">
-                              <span
-                                class="text-blue-600 font-bold flex-shrink-0"
-                                >•</span
-                              >
-                              <span
-                                ><strong>两融</strong> -
-                                匹配融资融券，提升资金利用率</span
-                              >
-                            </div>
-                            <div class="flex items-start gap-1.5">
-                              <span
-                                class="text-blue-600 font-bold flex-shrink-0"
-                                >•</span
-                              >
-                              <span
-                                ><strong>投研</strong> -
-                                优化决策、规避风险</span
-                              >
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <!-- 文件下载区 -->
-                  <div class="flex flex-col gap-2 mt-3">
-                    <div
-                      class="bg-white rounded-xl px-4 py-3 flex items-center gap-3 shadow-sm border border-slate-100 card-hover hover:shadow-md transition-shadow"
-                    >
-                      <svg
-                        class="w-7 h-7 text-[#2563EB] flex-shrink-0"
-                        fill="none"
-                        stroke="currentColor"
-                        stroke-width="2"
-                        viewBox="0 0 24 24"
-                      >
-                        <rect
-                          x="4"
-                          y="2"
-                          width="16"
-                          height="20"
-                          rx="2"
-                          fill="#fff"
-                          stroke="#2563EB"
-                        />
-                        <path
-                          d="M8 6h8M8 10h8M8 14h4"
-                          stroke="#2563EB"
-                          stroke-width="1.5"
-                          stroke-linecap="round"
-                        />
-                        <rect
-                          x="7"
-                          y="17"
-                          width="6"
-                          height="2"
-                          rx="1"
-                          fill="#2563EB"
-                        />
-                      </svg>
-                      <div class="flex-1 min-w-0">
-                        <div class="text-sm text-[#1E293B] font-bold truncate">
-                          华创机构经纪业务一页纸.pdf
-                        </div>
-                        <div class="text-xs text-[#64748B] mt-0.5">
-                          PDF文件 · 1.2MB
-                        </div>
-                      </div>
-                      <a
-                        href="#"
-                        class="text-[#2563EB] text-sm font-bold hover:underline transition bg-white px-3 py-1 rounded-lg shadow-sm"
-                        >下载</a
-                      >
-                    </div>
-
-                    <div
-                      class="bg-white rounded-xl px-4 py-3 flex items-center gap-3 shadow-sm border border-slate-100 card-hover hover:shadow-md transition-shadow"
-                    >
-                      <svg
-                        class="w-7 h-7 text-[#2563EB] flex-shrink-0"
-                        fill="none"
-                        stroke="currentColor"
-                        stroke-width="2"
-                        viewBox="0 0 24 24"
-                      >
-                        <rect
-                          x="4"
-                          y="2"
-                          width="16"
-                          height="20"
-                          rx="2"
-                          fill="#fff"
-                          stroke="#2563EB"
-                        />
-                        <path
-                          d="M8 6h8M8 10h8M8 14h4"
-                          stroke="#2563EB"
-                          stroke-width="1.5"
-                          stroke-linecap="round"
-                        />
-                        <rect
-                          x="7"
-                          y="17"
-                          width="6"
-                          height="2"
-                          rx="1"
-                          fill="#2563EB"
-                        />
-                      </svg>
-                      <div class="flex-1 min-w-0">
-                        <div class="text-sm text-[#1E293B] font-bold truncate">
-                          北京博达富通基金管理有限公司拜访提纲.pdf
-                        </div>
-                        <div class="text-xs text-[#64748B] mt-0.5">
-                          PDF文件 · 0.6MB
-                        </div>
-                      </div>
-                      <a
-                        href="#"
-                        class="text-[#2563EB] text-sm font-bold hover:underline transition bg-white px-3 py-1 rounded-lg shadow-sm"
-                        >下载</a
-                      >
-                    </div>
-                  </div>
-
-                  <div class="pt-2">
-                    <button
-                      type="button"
-                      onclick="showCompleteVisitSection()"
-                      class="w-full py-3 bg-gradient-to-r from-indigo-500 to-purple-600 text-white rounded-xl font-medium shadow-md hover:shadow-lg transition-all"
-                    >
-                      完成拜访
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </section>
-
-          <!-- 智能体消息：完成拜访回传（与办理任务页一致，放在智能体消息流） -->
-          <section id="completeVisitSection" class="min-w-0 hidden">
-            <div class="flex items-start gap-3 message-enter min-w-0 w-full">
+            <div class="flex items-start gap-2 message-enter min-w-0 w-full">
               <div
                 class="w-8 h-8 rounded-full ai-avatar flex items-center justify-center mt-1 flex-shrink-0"
               >
@@ -306,212 +33,416 @@
                   />
                 </svg>
               </div>
-              <div class="min-w-0 w-full">
-                <div
-                  class="visit-complete-block rounded-2xl bg-white overflow-hidden shadow-sm w-full max-w-[92%] sm:max-w-[92%] md:max-w-[90%]"
-                >
-                <div
-                  class="bg-gradient-to-r from-blue-500 to-indigo-600 text-white px-4 py-2.5 flex items-center gap-2"
-                >
-                  <span class="font-bold text-sm">完成拜访</span>
-                  <span class="text-xs text-white/80"
-                    >上传摘要或录音后提交</span
-                  >
-                </div>
-                <div class="p-4 flex flex-col gap-3">
-                  <div
-                    class="bg-slate-50/50 rounded-xl border border-slate-200 overflow-hidden"
-                  >
+              <div class="flex-1 min-w-0">
+                <div class="gradient-border card-hover">
+                  <div class="bg-white rounded-2xl p-3 flex flex-col gap-3">
+                    <!-- 客户信息区 -->
                     <div
-                      class="bg-slate-100 px-4 py-2 border-b border-slate-200"
+                      class="flex items-center gap-3 bg-gradient-to-r from-blue-50 to-purple-50 rounded-lg p-2.5 border border-blue-100"
                     >
-                      <span class="font-medium text-sm text-slate-700"
-                        >拜访回传</span
+                      <div
+                        class="w-10 h-10 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center shadow-md flex-shrink-0"
                       >
-                      <span class="text-xs text-slate-500 ml-2">至少一项</span>
-                    </div>
-                    <div class="p-4 space-y-4">
-                      <div>
-                        <div class="text-sm font-medium text-[#1E293B] mb-2">
-                          拜访摘要
+                        <svg
+                          class="w-6 h-6 text-white"
+                          fill="currentColor"
+                          viewBox="0 0 20 20"
+                        >
+                          <path
+                            fill-rule="evenodd"
+                            d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"
+                            clip-rule="evenodd"
+                          />
+                        </svg>
+                      </div>
+                      <div class="flex-1 min-w-0">
+                        <div
+                          class="font-bold text-[#1E293B] text-sm leading-tight truncate"
+                        >
+                          北京博达富通基金管理有限公司
                         </div>
-                        <div class="flex flex-col sm:flex-row gap-2">
-                          <textarea
-                            id="visitSummary"
-                            rows="3"
-                            placeholder="请输入拜访要点、客户反馈、后续跟进建议等..."
-                            class="flex-1 border border-slate-200 rounded-lg p-3 text-sm resize-none focus:ring-2 focus:ring-blue-400 focus:border-blue-400"
-                            oninput="checkCanComplete()"
-                          ></textarea>
-                          <div class="flex flex-col gap-1 sm:w-32">
-                            <input
-                              type="file"
-                              id="fileSummary"
-                              accept=".pdf,.doc,.docx,.txt"
-                              class="hidden"
-                              onchange="handleSummaryUpload(this)"
-                            />
-                            <button
-                              type="button"
-                              onclick="
-                                document.getElementById('fileSummary').click()
-                              "
-                              class="py-2 px-3 border border-slate-200 rounded-lg text-xs text-slate-600 hover:bg-slate-50 transition-colors"
-                            >
-                              上传文档
-                            </button>
-                            <span
-                              id="summaryStatus"
-                              class="text-xs text-slate-500 hidden"
-                              >已上传</span
+                        <div class="text-xs text-[#64748B] mt-0.5">
+                          金融机构客户 · 未合作
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- 拜访要点 -->
+                    <div
+                      class="bg-gradient-to-r from-blue-50 to-indigo-50 border-l-4 border-blue-400 p-2.5 rounded-lg"
+                    >
+                      <div class="space-y-2">
+                        <div class="flex items-center gap-2 task-item">
+                          <div
+                            class="w-1.5 h-1.5 bg-blue-600 rounded-full shadow-sm flex-shrink-0"
+                          ></div>
+                          <div class="text-sm text-blue-600">
+                            <span class="font-medium"
+                              >邀约客户，确定拜访时间</span
                             >
                           </div>
                         </div>
-                      </div>
-                      <div>
-                        <div class="text-sm font-medium text-[#1E293B] mb-2">
-                          拜访录音
+                        <div class="flex items-center gap-2 task-item">
+                          <div
+                            class="w-1.5 h-1.5 bg-blue-600 rounded-full shadow-sm flex-shrink-0"
+                          ></div>
+                          <div class="text-sm text-blue-600">
+                            <span class="font-medium">了解客户需求</span>
+                          </div>
                         </div>
-                        <div class="flex items-center gap-2">
-                          <input
-                            type="file"
-                            id="fileRecording"
-                            accept=".mp3,.m4a,.wav,.ogg"
-                            class="hidden"
-                            onchange="handleRecordingUpload(this)"
-                          />
-                          <button
-                            type="button"
-                            onclick="
-                              document.getElementById('fileRecording').click()
-                            "
-                            class="py-2 px-3 border border-slate-200 rounded-lg text-xs text-slate-600 hover:bg-slate-50 transition-colors flex items-center gap-1.5"
-                          >
-                            <svg
-                              class="w-4 h-4 text-blue-500"
-                              fill="currentColor"
-                              viewBox="0 0 20 20"
-                            >
-                              <path
-                                fill-rule="evenodd"
-                                d="M7 4a3 3 0 016 0v4a3 3 0 11-6 0V4zm4 10.93A7.001 7.001 0 0017 8a1 1 0 10-2 0A5 5 0 015 8a1 1 0 00-2 0 7.001 7.001 0 006 6.93V17H6a1 1 0 100 2h8a1 1 0 100-2h-3v-2.07z"
-                                clip-rule="evenodd"
-                              />
-                            </svg>
-                            上传录音
-                          </button>
+                      </div>
+                    </div>
+
+                    <!-- 合作机会分析 -->
+                    <div class="space-y-2">
+                      <div
+                        class="font-bold text-[#1E293B] text-xs bg-gradient-to-r from-purple-50 to-pink-50 px-3 py-1.5 rounded-lg border border-purple-100"
+                      >
+                        合作机会分析
+                      </div>
+                      <div
+                        class="text-sm text-[#374151] space-y-1.5 bg-white/60 rounded-lg p-3 border border-gray-100"
+                      >
+                        <div class="flex items-start gap-2">
+                          <span class="text-blue-600 font-bold">•</span>
                           <span
-                            id="recordingStatus"
-                            class="text-xs text-slate-500 hidden"
-                            >已上传</span
+                            ><strong>代销服务</strong> ·
+                            过往业绩优秀，风险收益满足公司代销条件，合作后可以推代销。</span
+                          >
+                        </div>
+                        <div class="flex items-start gap-2">
+                          <span class="text-blue-600 font-bold">•</span>
+                          <span
+                            ><strong>极速交易系统</strong> ·
+                            量化对冲策略对交易时延要求高，可介绍公司极速交易系统，处于行业第一梯队。</span
+                          >
+                        </div>
+                        <div class="flex items-start gap-2">
+                          <span class="text-blue-600 font-bold">•</span>
+                          <span
+                            ><strong>两融</strong> ·
+                            匹配融资、融券，满足策略需求同时提升资金利用率。</span
+                          >
+                        </div>
+                        <div class="flex items-start gap-2">
+                          <span class="text-blue-600 font-bold">•</span>
+                          <span
+                            ><strong>投研</strong> ·
+                            借助公司投研能力，优化投资决策并帮助规避风险。</span
                           >
                         </div>
                       </div>
                     </div>
-                  </div>
-                  <div
-                    id="completeVisitBar"
-                    class="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-xl px-4 py-3 border border-blue-100 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 card-hover"
-                  >
-                    <div class="text-sm text-[#1E293B] font-medium">
-                      上传摘要或录音后，点击完成拜访
-                    </div>
-                    <button
-                      type="button"
-                      onclick="handleCompleteVisit()"
-                      id="btnCompleteVisit"
-                      disabled
-                      class="px-4 py-2 bg-gray-300 text-gray-500 text-sm font-medium rounded-lg cursor-not-allowed"
-                    >
-                      完成拜访
-                    </button>
-                  </div>
-                  <div
-                    id="visitCompleteCard"
-                    class="hidden bg-gradient-to-r from-green-50 to-emerald-50 rounded-xl px-4 py-4 border border-green-200"
-                  >
-                    <div class="flex items-center gap-2 mb-2">
-                      <svg
-                        class="w-5 h-5 text-green-600"
-                        fill="currentColor"
-                        viewBox="0 0 20 20"
+
+                    <!-- 文件下载区 -->
+                    <div class="flex flex-col gap-2 mt-1">
+                      <div
+                        class="bg-white rounded-xl px-3 py-2.5 flex items-center gap-3 shadow-sm border border-slate-100 card-hover hover:shadow-md transition-shadow"
                       >
-                        <path
-                          fill-rule="evenodd"
-                          d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                          clip-rule="evenodd"
-                        />
-                      </svg>
-                      <span class="font-medium text-green-700 text-sm"
-                        >拜访已完成</span
+                        <svg
+                          class="w-7 h-7 text-[#2563EB] flex-shrink-0"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="2"
+                          viewBox="0 0 24 24"
+                        >
+                          <rect
+                            x="4"
+                            y="2"
+                            width="16"
+                            height="20"
+                            rx="2"
+                            fill="#fff"
+                            stroke="#2563EB"
+                          />
+                          <path
+                            d="M8 6h8M8 10h8M8 14h4"
+                            stroke="#2563EB"
+                            stroke-width="1.5"
+                            stroke-linecap="round"
+                          />
+                          <rect
+                            x="7"
+                            y="17"
+                            width="6"
+                            height="2"
+                            rx="1"
+                            fill="#2563EB"
+                          />
+                        </svg>
+                        <div class="flex-1 min-w-0">
+                          <div
+                            class="text-sm text-[#1E293B] font-bold truncate"
+                          >
+                            华创机构经纪业务一页纸.pdf
+                          </div>
+                          <div class="text-xs text-[#64748B] mt-0.5">
+                            PDF文件 · 1.2MB
+                          </div>
+                        </div>
+                        <a
+                          href="#"
+                          class="text-[#2563EB] text-xs font-bold hover:underline transition bg-white px-2.5 py-1 rounded-lg shadow-sm"
+                          >下载</a
+                        >
+                      </div>
+
+                      <div
+                        class="bg-white rounded-xl px-3 py-2.5 flex items-center gap-3 shadow-sm border border-slate-100 card-hover hover:shadow-md transition-shadow"
                       >
+                        <svg
+                          class="w-7 h-7 text-[#2563EB] flex-shrink-0"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="2"
+                          viewBox="0 0 24 24"
+                        >
+                          <rect
+                            x="4"
+                            y="2"
+                            width="16"
+                            height="20"
+                            rx="2"
+                            fill="#fff"
+                            stroke="#2563EB"
+                          />
+                          <path
+                            d="M8 6h8M8 10h8M8 14h4"
+                            stroke="#2563EB"
+                            stroke-width="1.5"
+                            stroke-linecap="round"
+                          />
+                          <rect
+                            x="7"
+                            y="17"
+                            width="6"
+                            height="2"
+                            rx="1"
+                            fill="#2563EB"
+                          />
+                        </svg>
+                        <div class="flex-1 min-w-0">
+                          <div
+                            class="text-sm text-[#1E293B] font-bold truncate"
+                          >
+                            北京博达富通基金管理有限公司拜访提纲.pdf
+                          </div>
+                          <div class="text-xs text-[#64748B] mt-0.5">
+                            PDF文件 · 0.6MB
+                          </div>
+                        </div>
+                        <a
+                          href="#"
+                          class="text-[#2563EB] text-xs font-bold hover:underline transition bg-white px-2.5 py-1 rounded-lg shadow-sm"
+                          >下载</a
+                        >
+                      </div>
+
+                      <div
+                        class="bg-white rounded-xl px-3 py-2.5 flex items-center gap-3 shadow-sm border border-slate-100 card-hover hover:shadow-md transition-shadow"
+                      >
+                        <svg
+                          class="w-7 h-7 text-[#2563EB] flex-shrink-0"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="2"
+                          viewBox="0 0 24 24"
+                        >
+                          <rect
+                            x="4"
+                            y="2"
+                            width="16"
+                            height="20"
+                            rx="2"
+                            fill="#fff"
+                            stroke="#2563EB"
+                          />
+                          <path
+                            d="M8 6h8M8 10h8M8 14h4"
+                            stroke="#2563EB"
+                            stroke-width="1.5"
+                            stroke-linecap="round"
+                          />
+                          <rect
+                            x="7"
+                            y="17"
+                            width="6"
+                            height="2"
+                            rx="1"
+                            fill="#2563EB"
+                          />
+                        </svg>
+                        <div class="flex-1 min-w-0">
+                          <div
+                            class="text-sm text-[#1E293B] font-bold truncate"
+                          >
+                            北京博达富通基金管理有限公司分析报告.pdf
+                          </div>
+                          <div class="text-xs text-[#64748B] mt-0.5">
+                            PDF文件 · 1.8MB
+                          </div>
+                        </div>
+                        <a
+                          href="#"
+                          class="text-[#2563EB] text-xs font-bold hover:underline transition bg-white px-2.5 py-1 rounded-lg shadow-sm"
+                          >下载</a
+                        >
+                      </div>
                     </div>
-                    <p class="text-sm text-[#374151]">
-                      首次拜访任务已完成。若客户有合作意向，组织者智能体将为您生成综合服务方案，届时可进入「方案沟通」进行二次拜访。
-                    </p>
+
+                    <div class="pt-1.5">
+                      <button
+                        type="button"
+                        class="w-full py-2.5 bg-gradient-to-r from-slate-800 to-slate-600 text-white rounded-xl font-medium shadow-md hover:shadow-lg transition-all text-sm"
+                      >
+                        呼叫业务支持
+                      </button>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
           </section>
         </div>
-      </main>
-    <script>
-      var hasSummary = false;
-      var hasRecording = false;
-
-      function checkCanComplete() {
-        var summary = document.getElementById("visitSummary");
-        var btn = document.getElementById("btnCompleteVisit");
-        if (!btn) return;
-        var canComplete =
-          (summary && summary.value.trim().length > 0) ||
-          hasSummary ||
-          hasRecording;
-        btn.disabled = !canComplete;
-        if (canComplete) {
-          btn.className =
-            "px-4 py-2 bg-gradient-to-r from-blue-500 to-indigo-600 text-white text-sm font-medium rounded-lg shadow-md hover:shadow-lg transition-all";
-        } else {
-          btn.className =
-            "px-4 py-2 bg-gray-300 text-gray-500 text-sm font-medium rounded-lg cursor-not-allowed";
-        }
-      }
-
-      function handleSummaryUpload(input) {
-        var file = input.files && input.files[0];
-        if (!file) return;
-        hasSummary = true;
-        document.getElementById("summaryStatus").classList.remove("hidden");
-        document.getElementById("summaryStatus").textContent = file.name;
-        checkCanComplete();
-      }
-
-      function handleRecordingUpload(input) {
-        var file = input.files && input.files[0];
-        if (!file) return;
-        hasRecording = true;
-        var status = document.getElementById("recordingStatus");
-        status.classList.remove("hidden");
-        status.textContent = file.name;
-        checkCanComplete();
-      }
-
-      function showCompleteVisitSection() {
-        var section = document.getElementById("completeVisitSection");
-        if (!section) return;
-        section.classList.remove("hidden");
-        section.scrollIntoView({ behavior: "smooth", block: "start" });
-      }
-
-      function handleCompleteVisit() {
-        var btn = document.getElementById("btnCompleteVisit");
-        var card = document.getElementById("visitCompleteCard");
-        if (!btn || !card || btn.disabled) return;
-        document.getElementById("completeVisitBar").style.display = "none";
-        card.classList.remove("hidden");
-        card.scrollIntoView({ behavior: "smooth", block: "start" });
-      }
-    </script>
+      </div>
+    </main>
   </body>
 </html>
+        <div class="w-8 h-8 rounded-full ai-avatar flex items-center justify-center mt-1">
+          <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M12 2C10.9 2 10 2.9 10 4c0 .74.4 1.38 1 1.73V7h-1c-1.1 0-2 .9-2 2v1H6c-.55 0-1 .45-1 1v3c0 .55.45 1 1 1h1v1c0 1.1.9 2 2 2h6c1.1 0 2-.9 2-2v-1h1c.55 0 1-.45 1-1v-3c0-.55-.45-1-1-1h-2V9c0-1.1-.9-2-2-2h-1V5.73c.6-.35 1-.99 1-1.73 0-1.1-.9-2-2-2z"/>
+            <circle cx="9" cy="11" r="1"/>
+            <circle cx="15" cy="11" r="1"/>
+            <path d="M12 15c.83 0 1.5-.67 1.5-1.5S12.83 12 12 12s-1.5.67-1.5 1.5.67 1.5 1.5 1.5z"/>
+          </svg>
+        </div>
+        <div class="flex-1">
+          <!-- 推荐卡片 -->
+          <div class="gradient-border card-hover">
+            <div class="p-4 flex flex-col gap-4">
+              <div class="flex items-center justify-between">
+                <div class="flex items-center gap-2">
+                  <div class="w-6 h-6 bg-gradient-to-br from-blue-500 to-purple-600 rounded flex items-center justify-center shadow-md">
+                    <svg class="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
+                      <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"/>
+                    </svg>
+                  </div>
+                  <span class="font-bold text-[#1E293B] text-base">客户拜访任务</span>
+                </div>
+              </div>
+              
+              <!-- 客户信息区 -->
+              <div class="flex items-center gap-3 bg-gradient-to-r from-blue-50 to-purple-50 rounded-lg p-3 border border-blue-100">
+                <div class="w-12 h-12 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center shadow-md">
+                  <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"/>
+                  </svg>
+                </div>
+                <div class="flex-1">
+                  <div class="font-bold text-[#1E293B] text-base">北京博达富通基金管理有限公司</div>
+                  <div class="text-sm text-[#64748B]">金融机构客户 | 未合作</div>
+                </div>
+              </div>
+              
+              <!-- 拜访要点 -->
+              <div class="bg-gradient-to-r from-blue-50 to-indigo-50 border-l-4 border-blue-400 p-3 rounded-lg shadow-sm">
+                <div class="space-y-3">
+                  <div class="flex items-center gap-2 task-item">
+                    <div class="w-1.5 h-1.5 bg-blue-600 rounded-full shadow-sm"></div>
+                    <div class="text-sm text-blue-600">
+                      <span class="font-medium">邀约客户，确定拜访时间</span>
+                    </div>
+                  </div>
+                  <div class="flex items-center gap-2 task-item">
+                    <div class="w-1.5 h-1.5 bg-blue-600 rounded-full shadow-sm"></div>
+                    <div class="text-sm text-blue-600">
+                      <span class="font-medium">了解客户需求</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              <!-- 主要沟通内容 -->
+              <div class="space-y-3">
+                <div class="font-bold text-[#1E293B] text-sm bg-gradient-to-r from-purple-50 to-pink-50 px-3 py-2 rounded-lg border border-purple-100">合作机会分析</div>
+                <div class="text-sm text-[#374151] space-y-1 bg-white/50 rounded-lg p-3 border border-gray-100">
+                  <div class="flex items-start gap-2">
+                    <span class="text-blue-600 font-bold">•</span>
+                    <span><strong>代销服务</strong> - 过往业绩优秀，风险收益满足公司代销条件，合作后可以推代销 </span>
+                  </div>
+                  <div class="flex items-start gap-2">
+                    <span class="text-blue-600 font-bold">•</span>
+                    <span><strong>极速交易系统</strong> - 量化对冲策略对交易时延要求高，介绍公司极速交易系统，目前属于行业第一梯队</span>
+                  </div>
+                  <div class="flex items-start gap-2">
+                    <span class="text-blue-600 font-bold">•</span>
+                    <span><strong>两融</strong> - 量化对冲策略，需要匹配融资、融券，满足策略需求的同时提升资金利用率</span>
+                  </div>
+                  <div class="flex items-start gap-2">
+                    <span class="text-blue-600 font-bold">•</span>
+                    <span><strong>投研</strong> - 借助公司投研能力，帮助客户优化投资决策并规避风险，提升策略投资潜力</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- 文件下载区 -->
+          <div class="flex flex-col gap-2 mt-3">
+            <div class="flex items-start mt-0">
+              <div class="flex-1">
+                <div class="bg-gradient-to-r from-blue-50 to-purple-50 rounded-xl px-4 py-3 flex items-center gap-3 shadow-lg border border-blue-100 card-hover">
+                  <svg class="w-7 h-7 text-[#2563EB] flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <rect x="4" y="2" width="16" height="20" rx="2" fill="#fff" stroke="#2563EB"/>
+                    <path d="M8 6h8M8 10h8M8 14h4" stroke="#2563EB" stroke-width="1.5" stroke-linecap="round"/>
+                    <rect x="7" y="17" width="6" height="2" rx="1" fill="#2563EB"/>
+                  </svg>
+                  <div class="flex-1 min-w-0">
+                    <div class="text-sm text-[#1E293B] font-bold truncate">华创机构经纪业务一页纸.pdf</div>
+                    <div class="text-xs text-[#64748B] mt-0.5">PDF文件 · 1.2MB</div>
+                  </div>
+                  <a href="#" class="text-[#2563EB] text-sm font-bold hover:underline transition bg-white px-3 py-1 rounded-lg shadow-sm">下载</a>
+                </div>
+              </div>
+            </div>
+            
+            <div class="flex items-start mt-2">
+              <div class="flex-1">
+                <div class="bg-gradient-to-r from-green-50 to-blue-50 rounded-xl px-4 py-3 flex items-center gap-3 shadow-lg border border-green-100 card-hover">
+                  <svg class="w-7 h-7 text-[#2563EB] flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <rect x="4" y="2" width="16" height="20" rx="2" fill="#fff" stroke="#2563EB"/>
+                    <path d="M8 6h8M8 10h8M8 14h4" stroke="#2563EB" stroke-width="1.5" stroke-linecap="round"/>
+                    <rect x="7" y="17" width="6" height="2" rx="1" fill="#2563EB"/>
+                  </svg>
+                  <div class="flex-1 min-w-0">
+                    <div class="text-sm text-[#1E293B] font-bold truncate">北京博达富通基金管理有限公司拜访提纲.pdf</div>
+                    <div class="text-xs text-[#64748B] mt-0.5">PDF文件 · 0.6MB</div>
+                  </div>
+                  <a href="#" class="text-[#2563EB] text-sm font-bold hover:underline transition bg-white px-3 py-1 rounded-lg shadow-sm">下载</a>
+                </div>
+              </div>
+            </div>
+            
+            <div class="flex items-start mt-2">
+              <div class="flex-1">
+                <div class="bg-gradient-to-r from-purple-50 to-pink-50 rounded-xl px-4 py-3 flex items-center gap-3 shadow-lg border border-purple-100 card-hover">
+                  <svg class="w-7 h-7 text-[#2563EB] flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <rect x="4" y="2" width="16" height="20" rx="2" fill="#fff" stroke="#2563EB"/>
+                    <path d="M8 6h8M8 10h8M8 14h4" stroke="#2563EB" stroke-width="1.5" stroke-linecap="round"/>
+                    <rect x="7" y="17" width="6" height="2" rx="1" fill="#2563EB"/>
+                  </svg>
+                  <div class="flex-1 min-w-0">
+                    <div class="text-sm text-[#1E293B] font-bold truncate">北京博达富通基金管理有限公司分析报告.pdf</div>
+                    <div class="text-xs text-[#64748B] mt-0.5">PDF文件 · 1.8MB</div>
+                  </div>
+                  <a href="#" class="text-[#2563EB] text-sm font-bold hover:underline transition bg-white px-3 py-1 rounded-lg shadow-sm">下载</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>  
+  </div>
+</body>
+</html> 
