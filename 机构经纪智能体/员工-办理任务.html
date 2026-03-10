@@ -7,11 +7,14 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="css/common.css">
 </head>
-<body>
-    <main class="subpage-main flex flex-col gap-3">
-      <div class="flex items-center justify-center text-xs text-[#64748B] mt-0.5 bg-white/50 backdrop-blur-sm rounded-full px-3 py-1 shadow-sm">北京博达富通基金 · 办理任务</div>
-      
+  <body>
+    <main class="subpage-main">
+      <div class="visit-page-root flex flex-col gap-3">
+        <div class="flex items-center justify-center text-xs text-[#64748B] mt-0.5 bg-white/50 backdrop-blur-sm rounded-full px-3 py-1 shadow-sm">北京博达富通基金 · 办理任务</div>
+        
+        <div class="message-list-column">
       <!-- 步骤1：开户与PB系统申请流程图 -->
+      <section class="min-w-0">
       <div class="flex items-start gap-2 min-w-0">
         <div class="w-8 h-8 rounded-full ai-avatar flex items-center justify-center mt-1 flex-shrink-0">
           <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C10.9 2 10 2.9 10 4c0 .74.4 1.38 1 1.73V7h-1c-1.1 0-2 .9-2 2v1H6c-.55 0-1 .45-1 1v3c0 .55.45 1 1 1h1v1c0 1.1.9 2 2 2h6c1.1 0 2-.9 2-2v-1h1c.55 0 1-.45 1-1v-3c0-.55-.45-1-1-1h-2V9c0-1.1-.9-2-2-2h-1V5.73c.6-.35 1-.99 1-1.73 0-1.1-.9-2-2-2z"/></svg>
@@ -54,8 +57,10 @@
           </div>
         </div>
       </div>
+      </section>
 
       <!-- 步骤2：材料上传引导 -->
+      <section class="min-w-0">
       <div class="flex items-start gap-2 min-w-0">
         <div class="w-8 h-8 rounded-full ai-avatar flex items-center justify-center mt-1 flex-shrink-0">
           <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C10.9 2 10 2.9 10 4c0 .74.4 1.38 1 1.73V7h-1c-1.1 0-2 .9-2 2v1H6c-.55 0-1 .45-1 1v3c0 .55.45 1 1 1h1v1c0 1.1.9 2 2 2h6c1.1 0 2-.9 2-2v-1h1c.55 0 1-.45 1-1v-3c0-.55-.45-1-1-1h-2V9c0-1.1-.9-2-2-2h-1V5.73c.6-.35 1-.99 1-1.73 0-1.1-.9-2-2-2z"/></svg>
@@ -130,9 +135,10 @@
           </div>
         </div>
       </div>
+      </section>
 
       <!-- 步骤3：并行下达任务（初始隐藏） -->
-      <div id="taskDispatch" class="hidden">
+      <section id="taskDispatch" class="min-w-0 hidden">
         <div class="flex items-start gap-2">
           <div class="w-8 h-8 rounded-full ai-avatar flex items-center justify-center mt-1 flex-shrink-0">
             <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C10.9 2 10 2.9 10 4c0 .74.4 1.38 1 1.73V7h-1c-1.1 0-2 .9-2 2v1H6c-.55 0-1 .45-1 1v3c0 .55.45 1 1 1h1v1c0 1.1.9 2 2 2h6c1.1 0 2-.9 2-2v-1h1c.55 0 1-.45 1-1v-3c0-.55-.45-1-1-1h-2V9c0-1.1-.9-2-2-2h-1V5.73c.6-.35 1-.99 1-1.73 0-1.1-.9-2-2-2z"/></svg>
@@ -143,7 +149,7 @@
                 <div class="w-6 h-6 bg-blue-600 rounded-full flex items-center justify-center">
                   <svg class="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
                 </div>
-                <span class="font-bold text-[#1E293B]">材料校验通过，已并行下达任务</span>
+                <span class="font-bold text-[#1E293B]">材料大模型已经校验通过，已并行下达二次确认任务</span>
               </div>
               <div class="space-y-2">
                 <div class="flex items-center justify-between py-2.5 px-3 bg-white/70 rounded-lg">
@@ -162,7 +168,7 @@
                 </div>
                 <div class="flex items-center justify-between py-2.5 px-3 bg-white/70 rounded-lg">
                   <div class="flex items-center gap-4">
-                    <span class="font-medium text-[#1E293B] text-sm">机构交易业务专家</span>
+                    <span class="font-medium text-[#1E293B] text-sm">机构经纪部</span>
                     <span class="text-sm text-[#64748B]">郗平</span>
                   </div>
                   <span id="role3" class="text-xs text-amber-600 font-medium">待反馈</span>
@@ -178,10 +184,10 @@
             </div>
           </div>
         </div>
-      </div>
+      </section>
 
       <!-- 步骤4：账户开立完成、PB系统申请完成（初始隐藏） -->
-      <div id="completion" class="hidden">
+      <section id="completion" class="min-w-0 hidden">
         <div class="flex items-start gap-2">
           <div class="w-8 h-8 rounded-full ai-avatar flex items-center justify-center mt-1 flex-shrink-0">
             <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C10.9 2 10 2.9 10 4c0 .74.4 1.38 1 1.73V7h-1c-1.1 0-2 .9-2 2v1H6c-.55 0-1 .45-1 1v3c0 .55.45 1 1 1h1v1c0 1.1.9 2 2 2h6c1.1 0 2-.9 2-2v-1h1c.55 0 1-.45 1-1v-3c0-.55-.45-1-1-1h-2V9c0-1.1-.9-2-2-2h-1V5.73c.6-.35 1-.99 1-1.73 0-1.1-.9-2-2-2z"/></svg>
@@ -217,6 +223,8 @@
             </div>
           </div>
         </div>
+      </section>
+        </div>
       </div>
     </main>
   <script>
@@ -229,10 +237,10 @@
         if (el) { el.textContent = '已获取'; el.classList.remove('text-amber-600'); el.classList.add('text-green-600'); }
       });
       modelDone = true;
-      checkCanSubmit();
+      window.checkCanSubmit && window.checkCanSubmit();
     }, 1500);
 
-    function handleFileUpload(input, spanId) {
+    window.handleFileUpload = function(input, spanId) {
       var file = input.files && input.files[0];
       if (!file) return;
       var num = spanId.replace('f','');
@@ -240,46 +248,56 @@
       var span = document.getElementById(spanId);
       if (btn) btn.classList.add('hidden');
       if (span) { span.classList.remove('hidden'); span.textContent = '已上传'; }
-      checkCanSubmit();
-    }
+      window.checkCanSubmit && window.checkCanSubmit();
+    };
 
-    function simulateAllUpload() {
+    window.simulateAllUpload = function() {
       [1,2,3].forEach(function(n) {
         var btn = document.getElementById('btn' + n);
         var span = document.getElementById('f' + n);
         if (btn && !btn.classList.contains('hidden')) { btn.classList.add('hidden'); }
         if (span) { span.classList.remove('hidden'); span.textContent = '已上传'; }
       });
-      checkCanSubmit();
-    }
+      window.checkCanSubmit && window.checkCanSubmit();
+    };
 
-    function checkCanSubmit() {
-      var allManual = !document.getElementById('f1').classList.contains('hidden') &&
-        !document.getElementById('f2').classList.contains('hidden') &&
-        !document.getElementById('f3').classList.contains('hidden');
+    window.checkCanSubmit = function() {
+      var el1 = document.getElementById('f1');
+      var el2 = document.getElementById('f2');
+      var el3 = document.getElementById('f3');
+      if (!el1 || !el2 || !el3) return;
+      var allManual = !el1.classList.contains('hidden') &&
+        !el2.classList.contains('hidden') &&
+        !el3.classList.contains('hidden');
       if (modelDone && allManual) {
         var btn = document.getElementById('btnSubmit');
+        if (!btn) return;
         btn.disabled = false;
         btn.className = 'w-full py-3 bg-gradient-to-r from-[#059669] to-[#047857] text-white rounded-xl font-medium shadow-md hover:shadow-lg transition-all';
         btn.textContent = '提交材料并校验';
       }
-    }
+    };
 
-    function handleSubmitMaterials() {
+    window.handleSubmitMaterials = function() {
       var btn = document.getElementById('btnSubmit');
-      if (btn.disabled) return;
+      if (!btn || btn.disabled) return;
       btn.disabled = true;
       btn.textContent = '校验中...';
       btn.className = 'w-full py-3 bg-gray-300 text-gray-500 rounded-xl font-medium cursor-not-allowed';
       setTimeout(function() {
-        document.getElementById('submitArea').innerHTML = '<div class="flex items-center gap-2 text-green-600 text-sm py-2"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg><span class="font-medium">校验通过</span></div>';
-        document.getElementById('taskDispatch').classList.remove('hidden');
-        document.getElementById('taskDispatch').scrollIntoView({ behavior: 'smooth', block: 'start' });
-        simulateRoleFeedback();
+        var area = document.getElementById('submitArea');
+        if (!area) return;
+        area.innerHTML = '<div class="flex items-center gap-2 text-green-600 text-sm py-2"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg><span class="font-medium">校验通过</span></div>';
+        var dispatch = document.getElementById('taskDispatch');
+        if (dispatch) {
+          dispatch.classList.remove('hidden');
+          dispatch.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+        window.simulateRoleFeedback && window.simulateRoleFeedback();
       }, 1200);
-    }
+    };
 
-    function simulateRoleFeedback() {
+    window.simulateRoleFeedback = function() {
       var roles = ['role1','role2','role3','role4'];
       var delay = 800;
       roles.forEach(function(id, i) {
@@ -292,13 +310,16 @@
           }
           if (i === roles.length - 1) {
             setTimeout(function() {
-              document.getElementById('completion').classList.remove('hidden');
-              document.getElementById('completion').scrollIntoView({ behavior: 'smooth', block: 'start' });
+              var completion = document.getElementById('completion');
+              if (completion) {
+                completion.classList.remove('hidden');
+                completion.scrollIntoView({ behavior: 'smooth', block: 'start' });
+              }
             }, 500);
           }
         }, delay * (i + 1));
       });
-    }
+    };
   </script>
   </body>
 </html>
