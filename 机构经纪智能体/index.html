@@ -15,23 +15,31 @@
     .card-tag-status { font-size: 11px; }
     .card-tag-meta { font-size: 11px; }
     .card-tag-pill { font-size: 11px; padding: 4px 8px; }
+    .card-stage-header {
+      font-size: 11px;
+      font-weight: 600;
+      padding: 4px 8px;
+      border-radius: 6px;
+    }
     .card-uniform {
-      min-height: 340px;
-      max-height: 340px;
+      min-height: 320px;
       display: flex;
       flex-direction: column;
       overflow: hidden;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.06), 0 4px 12px rgba(0,0,0,0.04);
-      transition: box-shadow 0.2s ease, border-color 0.2s ease;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+      transition: box-shadow 0.2s ease;
+      border-radius: 12px;
     }
     .card-uniform:hover {
-      box-shadow: 0 4px 12px rgba(0,0,0,0.08), 0 12px 24px rgba(0,0,0,0.06);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
     }
     .card-desc {
       display: -webkit-box;
       -webkit-line-clamp: 3;
+      line-clamp: 3;
       -webkit-box-orient: vertical;
       overflow: hidden;
+      font-size: 13px;
     }
     .section-title {
       font-size: 12px;
@@ -39,15 +47,13 @@
       color: #64748b;
       letter-spacing: 0.03em;
     }
-    .dot-btn { transition: all 0.2s ease; }
-    .dot-btn:hover { transform: scale(1.2); }
   </style>
 </head>
 <body class="h-screen overflow-hidden bg-[#f1f5f9]">
-  <div class="h-full flex flex-col w-full max-w-4xl mx-auto">
+  <div class="h-full flex flex-col w-full max-w-7xl mx-auto">
     <!-- 顶部导航栏 -->
     <header class="sticky top-0 z-20 bg-white/95 backdrop-blur-md border-b border-slate-200/80 safe-area-inset-top">
-      <div class="px-4 py-3.5 flex items-center justify-between">
+      <div class="px-4 py-2.5 flex items-center justify-between">
         <button class="w-9 h-9 rounded-lg flex items-center justify-center text-slate-600 hover:bg-slate-100 transition-colors" aria-label="菜单">
           <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
@@ -63,349 +69,226 @@
     </header>
 
     <!-- 主内容区：滚动条仅在此区域内，不延伸到底部固定区 -->
-    <main class="flex-1 min-h-0 overflow-y-auto overflow-x-hidden px-4 py-4 pb-8">
+    <main class="flex-1 min-h-0 overflow-y-auto overflow-x-hidden px-4 py-3 pb-6">
       <!-- 区块：待办事项 -->
-      <section class="mb-5">
-        <h2 class="section-title flex items-center gap-2 mb-2.5">
+      <section class="mb-4">
+        <h2 class="section-title flex items-center gap-2 mb-2">
           <span class="w-1 h-3.5 rounded-full bg-indigo-500"></span>
           待办事项
         </h2>
         <div id="cardScroller" class="overflow-x-auto scroll-snap-x flex gap-2.5 pb-1 -mx-4 px-4 scrollbar-hide" style="scrollbar-width: none; -ms-overflow-style: none;">
 
-        <!-- 卡片1：博达富通基金 - 公司自动驾驶大模型推进 -->
-        <div class="scroll-snap-item flex-shrink-0 w-[calc(33.333%-8px)] min-w-[260px] max-w-[320px] bg-white rounded-xl border border-slate-100 overflow-hidden card-uniform">
-          <div class="p-3 space-y-3 flex-1 flex flex-col min-h-0">
-            <!-- 商机来源：公司自动驾驶大模型 -->
-            <div class="flex items-center gap-2 px-2.5 py-1.5 rounded-lg bg-indigo-50/80 border border-indigo-100 min-w-0">
-              <svg class="w-4 h-4 text-[#6366f1] flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                <path d="M13 7H7v6h6V7z"/>
-                <path fill-rule="evenodd" d="M7 2a1 1 0 012 0v1a7 7 0 014.95 11.95l1.414-1.414A5 5 0 0017 8V3a1 1 0 10-2 0v5a5 5 0 01-8.485 4.485L5.05 12.95A7 7 0 017 2z" clip-rule="evenodd"/>
-              </svg>
-              <span class="card-tag-source font-medium text-indigo-600 truncate min-w-0" title="商机来自公司自动驾驶大模型">商机来自公司自动驾驶大模型</span>
-            </div>
-            <div class="flex flex-col gap-2">
-              <div class="flex items-start justify-between gap-2">
-                <h2 class="font-bold text-slate-800 text-sm leading-snug flex-1">北京博达富通基金</h2>
-                <span class="rounded-lg bg-indigo-500 text-white card-tag-status font-medium px-2.5 py-1 flex-shrink-0 whitespace-nowrap">了解需求</span>
+        <!-- 卡片1：博达富通基金 - 拓客准备 -->
+        <div class="scroll-snap-item flex-shrink-0 flex-1 min-w-[240px] max-w-[300px] bg-white rounded-xl border-l-4 border-l-indigo-500 border border-slate-100 overflow-hidden card-uniform">
+          <div class="p-3 space-y-2 flex-1 flex flex-col min-h-0">
+            <div class="flex items-center justify-between gap-2 flex-wrap">
+              <div class="flex items-center gap-2">
+                <div class="card-stage-header bg-indigo-500 text-white">拓客准备</div>
+                <h2 class="font-semibold text-slate-800 text-sm">北京博达富通基金</h2>
               </div>
-              <div class="card-tag-meta text-slate-500">金融机构客户 | 未合作</div>
-              <div class="flex flex-nowrap gap-1.5 overflow-x-auto" style="scrollbar-width: none; -ms-overflow-style: none;">
-                <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-white border border-gray-200 text-gray-500 card-tag-meta whitespace-nowrap flex-shrink-0">
-                  <svg class="w-3.5 h-3.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-                  两天前
-                </span>
-                <span class="px-2.5 py-1 rounded-full bg-white border border-gray-200 text-gray-500 card-tag-meta whitespace-nowrap flex-shrink-0">线索跟进</span>
-                <span class="px-2.5 py-1 rounded-full bg-white border border-gray-200 text-gray-500 card-tag-meta whitespace-nowrap flex-shrink-0">初步了解</span>
+              <span class="text-[11px] text-slate-400">两天前</span>
+            </div>
+            <div class="text-xs text-slate-500">金融机构客户 | 未合作</div>
+            <div class="flex flex-wrap gap-1.5">
+              <span class="px-2 py-0.5 rounded bg-slate-100 text-slate-600 text-xs">线索跟进</span>
+              <span class="px-2 py-0.5 rounded bg-slate-100 text-slate-600 text-xs">初步了解</span>
+            </div>
+            <div class="text-slate-600 leading-relaxed card-desc" title="管理规模85亿，全天候量化策略。代表产品近三年收益28%、最大回撤6.2%。待办：首次拜访，了解需求并推介机构经纪服务。">
+              管理规模85亿，全天候量化策略。代表产品近三年收益28%、最大回撤6.2%。待办：首次拜访，了解需求并推介机构经纪服务。
+            </div>
+            <div class="bg-slate-50/70 rounded-lg px-2.5 py-2 border border-slate-100 flex-shrink-0">
+              <div class="text-[11px] text-slate-500 truncate mb-1.5">商机来自公司自动驾驶大模型</div>
+              <div class="flex items-center gap-1.5 text-slate-600 text-xs font-medium mb-1.5">
+                <svg class="w-3.5 h-3.5 flex-shrink-0 text-slate-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z" clip-rule="evenodd"/></svg>
+                智能体已为您准备好：
               </div>
-            </div>
-            <div class="text-sm text-slate-600 leading-relaxed card-desc" title="北京博达富通基金管理有限公司，管理规模85亿，全天候量化策略。代表产品近三年收益28%，最大回撤6.2%，超额收益10%，风险收益比属于市场头部。">
-              北京博达富通基金管理有限公司，管理规模85亿，全天候量化策略。代表产品近三年收益28%，最大回撤6.2%，超额收益10%，风险收益比属于市场头部。
-            </div>
-            <!-- 智能体支持清单 -->
-            <div class="bg-slate-50 rounded-xl px-3 py-3 space-y-3 flex-shrink-0">
-              <div>
-                <div class="flex items-center gap-1.5 card-tag-meta text-slate-500 mb-2">
-                  <svg class="w-3.5 h-3.5 text-amber-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z" clip-rule="evenodd"/></svg>
-                  <span class="font-medium">智能体已为您准备好：</span>
-                </div>
-                <div class="flex flex-wrap gap-2">
-                  <span class="inline-flex items-center bg-white border border-green-200 rounded-full card-tag-pill font-medium text-[#059669]" title="华创机构经纪业务一页纸">华创机构经纪业务一页纸</span>
-                  <span class="inline-flex items-center bg-white border border-green-200 rounded-full card-tag-pill font-medium text-[#059669]" title="拜访提纲">拜访提纲</span>
-                </div>
+              <div class="flex flex-wrap gap-1.5">
+                <span class="inline-flex items-center bg-white/80 border border-indigo-200/80 rounded-full px-2 py-0.5 text-[11px] font-medium text-indigo-600/90" title="华创机构经纪业务一页纸">华创机构经纪业务一页纸</span>
+                <span class="inline-flex items-center bg-white/80 border border-indigo-200/80 rounded-full px-2 py-0.5 text-[11px] font-medium text-indigo-600/90" title="拜访提纲">拜访提纲</span>
               </div>
             </div>
-            <div class="flex justify-end flex-shrink-0">
-              <a href="员工-拜访任务.html" class="inline-flex items-center gap-1 text-indigo-600 font-medium text-sm hover:text-indigo-700">
-                立即处理
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
-              </a>
+            <a href="员工-拜访任务.html" class="inline-flex items-center gap-1 text-indigo-600 font-medium text-xs mt-auto self-end">
+              立即处理 →
+            </a>
+          </div>
+        </div>
+        <!-- 卡片2：机构经纪组织者智能体 - 业务引入 -->
+        <div class="scroll-snap-item flex-shrink-0 flex-1 min-w-[240px] max-w-[300px] bg-white rounded-xl border-l-4 border-l-violet-500 border border-slate-100 overflow-hidden card-uniform">
+          <div class="p-3 space-y-2 flex-1 flex flex-col min-h-0">
+            <div class="flex items-center justify-between gap-2 flex-wrap">
+              <div class="flex items-center gap-2">
+                <div class="card-stage-header bg-violet-500 text-white">业务引入</div>
+                <h2 class="font-semibold text-slate-800 text-sm">北京博达富通基金</h2>
+              </div>
+              <span class="text-[11px] text-slate-400">一天前</span>
             </div>
+            <div class="text-xs text-slate-500">金融机构客户 | 首次拜访已完成</div>
+            <div class="flex flex-wrap gap-1.5">
+              <span class="px-2 py-0.5 rounded bg-violet-100 text-violet-700 text-xs">二次拜访</span>
+            </div>
+            <div class="text-slate-600 leading-relaxed card-desc" title="智能体已解析纪要并更新客户画像。专属综合服务方案初版已生成，涵盖代销、极速交易、两融、投研。待办：二次拜访，呈现方案并确认。">
+              智能体已解析纪要并更新客户画像。专属综合服务方案初版已生成，涵盖代销、极速交易、两融、投研。待办：二次拜访，呈现方案并确认。
+            </div>
+            <div class="bg-slate-50/70 rounded-lg px-2.5 py-2 border border-slate-100 flex-shrink-0">
+              <div class="text-[11px] text-slate-500 truncate mb-1.5">方案来自机构经纪组织者智能体</div>
+              <div class="flex items-center gap-1.5 text-slate-600 text-xs font-medium mb-1.5">
+                <svg class="w-3.5 h-3.5 flex-shrink-0 text-slate-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z" clip-rule="evenodd"/></svg>
+                智能体已为您准备：
+              </div>
+              <div class="flex flex-wrap gap-1.5">
+                <span class="inline-flex items-center bg-white/80 border border-violet-200/80 rounded-full px-2 py-0.5 text-[11px] font-medium text-violet-600/90" title="综合服务方案">综合服务方案</span>
+                <span class="inline-flex items-center bg-white/80 border border-violet-200/80 rounded-full px-2 py-0.5 text-[11px] font-medium text-violet-600/90" title="沟通要点">沟通要点</span>
+                <span class="inline-flex items-center bg-white/80 border border-violet-200/80 rounded-full px-2 py-0.5 text-[11px] font-medium text-violet-600/90" title="拜访提纲">拜访提纲</span>
+              </div>
+            </div>
+            <a href="员工-方案沟通.html" class="inline-flex items-center gap-1 text-violet-600 font-medium text-xs mt-auto self-end">
+              立即处理 →
+            </a>
           </div>
         </div>
 
-        <!-- 卡片2：北京博达富通基金 - 更新客户情况（上传拜访纪要并分析） -->
-        <div class="scroll-snap-item flex-shrink-0 w-[calc(33.333%-8px)] min-w-[260px] max-w-[320px] bg-white rounded-xl border border-slate-100 overflow-hidden card-uniform">
-          <div class="p-3 space-y-3 flex-1 flex flex-col min-h-0">
-            <div class="flex items-center gap-2 px-2.5 py-1.5 rounded-lg bg-indigo-50/80 border border-indigo-100 min-w-0">
-              <svg class="w-4 h-4 text-[#6366f1] flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                <path d="M13 7H7v6h6V7z"/>
-                <path fill-rule="evenodd" d="M7 2a1 1 0 012 0v1a7 7 0 014.95 11.95l1.414-1.414A5 5 0 0017 8V3a1 1 0 10-2 0v5a5 5 0 01-8.485 4.485L5.05 12.95A7 7 0 017 2z" clip-rule="evenodd"/>
-              </svg>
-              <span class="card-tag-source font-medium text-indigo-600 truncate min-w-0" title="下一步动作来自公司自动驾驶大模型">下一步动作来自公司自动驾驶大模型</span>
-            </div>
-            <div class="flex flex-col gap-2">
-              <div class="flex items-start justify-between gap-2">
-                <h2 class="font-bold text-slate-800 text-sm leading-snug flex-1">北京博达富通基金</h2>
-                <span class="rounded-lg bg-indigo-500 text-white card-tag-status font-medium px-2.5 py-1 flex-shrink-0 whitespace-nowrap">更新客户情况</span>
+        <!-- 卡片3：综合服务方案获认可 - 交易服务 -->
+        <div class="scroll-snap-item flex-shrink-0 flex-1 min-w-[240px] max-w-[300px] bg-white rounded-xl border-l-4 border-l-emerald-500 border border-slate-100 overflow-hidden card-uniform">
+          <div class="p-3 space-y-2 flex-1 flex flex-col min-h-0">
+            <div class="flex items-center justify-between gap-2 flex-wrap">
+              <div class="flex items-center gap-2">
+                <div class="card-stage-header bg-emerald-500 text-white">交易服务</div>
+                <h2 class="font-semibold text-slate-800 text-sm">北京博达富通基金</h2>
               </div>
-              <div class="card-tag-meta text-slate-500">金融机构客户 | 首次拜访已完成</div>
-              <div class="flex flex-nowrap gap-1.5 overflow-x-auto" style="scrollbar-width: none; -ms-overflow-style: none;">
-                <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-white border border-gray-200 text-gray-500 card-tag-meta whitespace-nowrap flex-shrink-0">
-                  <svg class="w-3.5 h-3.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-                  一天前
-                </span>
-                <span class="px-2.5 py-1 rounded-full bg-[#dbeafe] text-[#2563eb] card-tag-meta whitespace-nowrap flex-shrink-0">待上传纪要</span>
+              <span class="text-[11px] text-slate-400">今天</span>
+            </div>
+            <div class="text-xs text-slate-500">金融机构客户 | 已认可综合服务方案</div>
+            <div class="flex flex-wrap gap-1.5">
+              <span class="px-2 py-0.5 rounded bg-emerald-100 text-emerald-700 text-xs">开户</span>
+              <span class="px-2 py-0.5 rounded bg-emerald-100 text-emerald-700 text-xs">系统申请</span>
+            </div>
+            <div class="text-slate-600 leading-relaxed card-desc" title="客户已认可方案，愿意到华创开户，申请TradeX极速交易系统和算法交易系统。待办：协助办理开户及系统开通。">
+              客户已认可方案，愿意到华创开户，申请TradeX极速交易系统和算法交易系统。待办：协助办理开户及系统开通。
+            </div>
+            <div class="bg-slate-50/70 rounded-lg px-2.5 py-2 border border-slate-100 flex-shrink-0">
+              <div class="text-[11px] text-slate-500 truncate mb-1.5">下一步工作来自机构经纪组织者智能体</div>
+              <div class="flex items-center gap-1.5 text-slate-600 text-xs font-medium mb-1.5">
+                <svg class="w-3.5 h-3.5 flex-shrink-0 text-slate-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z" clip-rule="evenodd"/></svg>
+                智能体已为您准备好：
               </div>
-            </div>
-            <div class="text-sm text-slate-600 leading-relaxed card-desc" title="北京博达富通基金已完成首次拜访，请上传拜访纪要或录音，智能体将自动解析并更新客户情况，为后续方案沟通提供依据。">
-              北京博达富通基金已完成首次拜访，请上传拜访纪要或录音，智能体将自动解析并更新客户情况，为后续方案沟通提供依据。
-            </div>
-            <div class="bg-slate-50 rounded-xl px-3 py-3 space-y-3 flex-shrink-0">
-              <div>
-                <div class="flex items-center gap-1.5 card-tag-meta text-slate-500 mb-2">
-                  <svg class="w-3.5 h-3.5 text-amber-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z" clip-rule="evenodd"/></svg>
-                  <span class="font-medium">待您完成：</span>
-                </div>
-                <div class="flex flex-wrap gap-2">
-                  <span class="inline-flex items-center bg-white border border-amber-200 rounded-full card-tag-pill font-medium text-[#d97706]" title="上传拜访纪要">上传拜访纪要</span>
-                  <span class="inline-flex items-center bg-white border border-amber-200 rounded-full card-tag-pill font-medium text-[#d97706]" title="智能体分析">智能体分析</span>
-                </div>
+              <div class="flex flex-wrap gap-1.5">
+                <span class="inline-flex items-center bg-white/80 border border-emerald-200/80 rounded-full px-2 py-0.5 text-[11px] font-medium text-emerald-600/90" title="机构客户开户指引">机构客户开户指引</span>
+                <span class="inline-flex items-center bg-white/80 border border-emerald-200/80 rounded-full px-2 py-0.5 text-[11px] font-medium text-emerald-600/90" title="PB系统申请指南">PB系统申请指南</span>
               </div>
             </div>
-            <div class="flex justify-end flex-shrink-0">
-              <a href="员工-博达富通-更新客户情况.html" class="inline-flex items-center gap-1 text-indigo-600 font-medium text-sm hover:text-indigo-700">
-                立即处理
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
-              </a>
-            </div>
+            <a href="员工-办理任务.html" class="inline-flex items-center gap-1 text-emerald-600 font-medium text-xs mt-auto self-end">
+              立即处理 →
+            </a>
           </div>
         </div>
 
-        <!-- 卡片3：机构经纪组织者智能体 - 综合服务方案二次拜访 -->
-        <div class="scroll-snap-item flex-shrink-0 w-[calc(33.333%-8px)] min-w-[260px] max-w-[320px] bg-white rounded-xl border border-slate-100 overflow-hidden card-uniform">
-          <div class="p-3 space-y-3 flex-1 flex flex-col min-h-0">
-            <!-- 任务来源：方案来自机构经纪组织者智能体 -->
-            <div class="flex items-center gap-2 px-2.5 py-1.5 rounded-lg bg-violet-50/80 border border-violet-100 min-w-0">
-              <svg class="w-4 h-4 text-[#7c3aed] flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                <path d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3zM6 8a2 2 0 11-4 0 2 2 0 014 0zM16 18v-3a5.972 5.972 0 00-.75-2.906A3.005 3.005 0 0119 15v3h-3zM4.75 12.094A5.973 5.973 0 004 15v3H1v-3a3 3 0 013.75-2.906z"/>
-              </svg>
-              <span class="card-tag-source font-medium text-violet-600 truncate min-w-0" title="方案来自机构经纪组织者智能体">方案来自机构经纪组织者智能体</span>
-            </div>
-            <div class="flex flex-col gap-2">
-              <div class="flex items-start justify-between gap-2">
-                <h2 class="font-bold text-slate-800 text-sm leading-snug flex-1 truncate" title="北京博达富通基金">北京博达富通基金</h2>
-                <span class="rounded-lg bg-violet-500 text-white card-tag-status font-medium px-2.5 py-1 flex-shrink-0 whitespace-nowrap">方案沟通</span>
+        <!-- 卡片4：北京博达富通基金 - 跟踪服务 -->
+        <div class="scroll-snap-item flex-shrink-0 flex-1 min-w-[240px] max-w-[300px] bg-white rounded-xl border-l-4 border-l-red-500 border border-slate-100 overflow-hidden card-uniform">
+          <div class="p-3 space-y-2 flex-1 flex flex-col min-h-0">
+            <div class="flex items-center justify-between gap-2 flex-wrap">
+              <div class="flex items-center gap-2">
+                <div class="card-stage-header bg-red-500 text-white">跟踪服务</div>
+                <h2 class="font-semibold text-slate-800 text-sm">北京博达富通基金</h2>
               </div>
-              <div class="card-tag-meta text-slate-500">金融机构客户 | 首次拜访已完成</div>
-              <div class="flex flex-nowrap gap-1.5 overflow-x-auto" style="scrollbar-width: none; -ms-overflow-style: none;">
-                <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-white border border-gray-200 text-gray-500 card-tag-meta whitespace-nowrap flex-shrink-0">
-                  <svg class="w-3.5 h-3.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-                  一天前
-                </span>
-                <span class="px-2.5 py-1 rounded-full bg-[#f5f3ff] text-[#7c3aed] card-tag-meta whitespace-nowrap flex-shrink-0">二次拜访</span>
+              <span class="text-[11px] text-slate-400">今天 09:00</span>
+            </div>
+            <div class="text-xs text-slate-500">交易所谴责 | 多部门协同</div>
+            <div class="flex flex-wrap gap-1.5">
+              <span class="px-2 py-0.5 rounded bg-red-100 text-red-600 text-xs font-medium">紧急</span>
+              <span class="px-2 py-0.5 rounded bg-slate-100 text-slate-600 text-xs">风险处理</span>
+              <span class="px-2 py-0.5 rounded bg-slate-100 text-slate-600 text-xs">易信会议</span>
+            </div>
+            <div class="text-slate-600 leading-relaxed card-desc" title="客户被上交所、深交所发函谴责，部分产品被限制交易。待办：落实在我司产品的交易情况；组织者智能体协同多部门召开易信会议，形成处理方案。">
+              客户被上交所、深交所发函谴责，部分产品被限制交易。待办：落实在我司产品的交易情况；组织者智能体协同多部门召开易信会议，形成处理方案。
+            </div>
+            <div class="bg-slate-50/70 rounded-lg px-2.5 py-2 border border-slate-100 flex-shrink-0">
+              <div class="text-[11px] text-slate-500 truncate mb-1.5">风险提示来自公司自动驾驶大模型</div>
+              <div class="flex items-center gap-1.5 text-slate-600 text-xs font-medium mb-1.5">
+                <svg class="w-3.5 h-3.5 flex-shrink-0 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg>
+                智能体已为您准备好：
               </div>
-            </div>
-            <div class="text-sm text-slate-600 leading-relaxed card-desc" title="机构经纪组织者智能体已完成北京博达富通基金管理有限公司专属综合服务方案初版，涵盖代销、极速交易、两融、投研等服务。请进行二次拜访，向客户呈现并确认。">
-              机构经纪组织者智能体已完成北京博达富通基金管理有限公司专属综合服务方案初版，涵盖代销、极速交易、两融、投研等服务。请进行二次拜访，向客户呈现并确认。
-            </div>
-            <!-- 智能体支持清单 -->
-            <div class="bg-slate-50 rounded-xl px-3 py-3 space-y-3 flex-shrink-0">
-              <div>
-                <div class="flex items-center gap-1.5 card-tag-meta text-slate-500 mb-2">
-                  <svg class="w-3.5 h-3.5 text-amber-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z" clip-rule="evenodd"/></svg>
-                  <span class="font-medium">智能体已为您准备：</span>
-                </div>
-                <div class="flex flex-wrap gap-2">
-                  <span class="inline-flex items-center bg-white border border-green-200 rounded-full card-tag-pill font-medium text-[#059669]" title="综合服务方案（初版）">综合服务方案（初版）</span>
-                  <span class="inline-flex items-center bg-white border border-green-200 rounded-full card-tag-pill font-medium text-[#059669]" title="沟通要点">沟通要点</span>
-                  <span class="inline-flex items-center bg-white border border-green-200 rounded-full card-tag-pill font-medium text-[#059669]" title="拜访提纲">拜访提纲</span>
-                </div>
+              <div class="flex flex-wrap gap-1.5">
+                <span class="inline-flex items-center bg-white/80 border border-red-200/80 rounded-full px-2 py-0.5 text-[11px] font-medium text-red-600/90" title="风险处理方案">风险处理方案</span>
+                <span class="inline-flex items-center bg-white/80 border border-red-200/80 rounded-full px-2 py-0.5 text-[11px] font-medium text-red-600/90" title="会议决策">会议决策</span>
               </div>
             </div>
-            <div class="flex justify-end flex-shrink-0">
-              <a href="员工-方案沟通.html" class="inline-flex items-center gap-1 text-violet-600 font-medium text-sm hover:text-violet-700">
-                立即处理
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
-              </a>
-            </div>
+            <a href="组织者-博达富通-风险处理.html" class="inline-flex items-center gap-1 text-red-600 font-medium text-xs mt-auto self-end">
+              立即处理 →
+            </a>
           </div>
         </div>
 
-        <!-- 卡片4：综合服务方案获认可 - 开户及系统申请 -->
-        <div class="scroll-snap-item flex-shrink-0 w-[calc(33.333%-8px)] min-w-[260px] max-w-[320px] bg-white rounded-xl border border-slate-100 overflow-hidden card-uniform">
-          <div class="p-3 space-y-3 flex-1 flex flex-col min-h-0">
-            <!-- 任务来源：下一步工作来自机构经纪组织者智能体 -->
-            <div class="flex items-center gap-2 px-2.5 py-1.5 rounded-lg bg-violet-50/80 border border-violet-100 min-w-0">
-              <svg class="w-4 h-4 text-[#7c3aed] flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                <path d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3zM6 8a2 2 0 11-4 0 2 2 0 014 0zM16 18v-3a5.972 5.972 0 00-.75-2.906A3.005 3.005 0 0119 15v3h-3zM4.75 12.094A5.973 5.973 0 004 15v3H1v-3a3 3 0 013.75-2.906z"/>
-              </svg>
-              <span class="card-tag-source font-medium text-violet-600 truncate min-w-0" title="下一步工作来自机构经纪组织者智能体">下一步工作来自机构经纪组织者智能体</span>
-            </div>
-            <div class="flex flex-col gap-2">
-              <div class="flex items-start justify-between gap-2">
-                <h2 class="font-bold text-slate-800 text-sm leading-snug flex-1">北京博达富通基金</h2>
-                <span class="rounded-lg bg-emerald-500 text-white card-tag-status font-medium px-2.5 py-1 flex-shrink-0 whitespace-nowrap">账户开立</span>
-              </div>
-              <div class="card-tag-meta text-slate-500">金融机构客户 | 已认可综合服务方案</div>
-              <div class="flex flex-nowrap gap-1.5 overflow-x-auto" style="scrollbar-width: none; -ms-overflow-style: none;">
-                <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-white border border-gray-200 text-gray-500 card-tag-meta whitespace-nowrap flex-shrink-0">
-                  <svg class="w-3.5 h-3.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-                  今天
-                </span>
-                <span class="px-2.5 py-1 rounded-full bg-[#ecfdf5] text-[#059669] card-tag-meta whitespace-nowrap flex-shrink-0">开户</span>
-                <span class="px-2.5 py-1 rounded-full bg-[#ecfdf5] text-[#059669] card-tag-meta whitespace-nowrap flex-shrink-0">系统申请</span>
-              </div>
-            </div>
-            <div class="text-sm text-slate-600 leading-relaxed card-desc" title="北京博达富通基金管理有限公司对综合服务方案表示认可，愿意到华创开户。同时申请TradeX极速交易系统和算法交易系统，请协助办理开户及系统开通事宜。">
-              北京博达富通基金管理有限公司对综合服务方案表示认可，愿意到华创开户。同时申请TradeX极速交易系统和算法交易系统，请协助办理开户及系统开通事宜。
-            </div>
-            <!-- 智能体支持清单 -->
-            <div class="bg-slate-50 rounded-xl px-3 py-3 space-y-3 flex-shrink-0">
-              <div>
-                <div class="flex items-center gap-1.5 card-tag-meta text-slate-500 mb-2">
-                  <svg class="w-3.5 h-3.5 text-amber-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z" clip-rule="evenodd"/></svg>
-                  <span class="font-medium">智能体已为您准备好：</span>
-                </div>
-                <div class="flex flex-wrap gap-2">
-                  <span class="inline-flex items-center bg-white border border-green-200 rounded-full card-tag-pill font-medium text-[#059669]" title="机构客户开户指引">机构客户开户指引</span>
-                  <span class="inline-flex items-center bg-white border border-green-200 rounded-full card-tag-pill font-medium text-[#059669]" title="PB系统申请指南">PB系统申请指南</span>
-                </div>
-              </div>
-            </div>
-            <div class="flex justify-end flex-shrink-0">
-              <a href="员工-办理任务.html" class="inline-flex items-center gap-1 text-emerald-600 font-medium text-sm hover:text-emerald-700">
-                立即处理
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <!-- 卡片5：北京博达富通基金 - 交易所谴责风险处理 -->
-        <div class="scroll-snap-item flex-shrink-0 w-[calc(33.333%-8px)] min-w-[260px] max-w-[320px] bg-white rounded-xl border border-slate-100 overflow-hidden card-uniform">
-          <div class="p-3 space-y-3 flex-1 flex flex-col min-h-0">
-            <div class="flex items-center gap-2 px-2.5 py-1.5 rounded-lg bg-indigo-50/80 border border-indigo-100 min-w-0">
-              <svg class="w-4 h-4 text-[#6366f1] flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                <path d="M13 7H7v6h6V7z"/>
-                <path fill-rule="evenodd" d="M7 2a1 1 0 012 0v1a7 7 0 014.95 11.95l1.414-1.414A5 5 0 0017 8V3a1 1 0 10-2 0v5a5 5 0 01-8.485 4.485L5.05 12.95A7 7 0 017 2z" clip-rule="evenodd"/>
-              </svg>
-              <span class="card-tag-source font-medium text-indigo-600 truncate min-w-0" title="风险提示来自公司自动驾驶大模型">风险提示来自公司自动驾驶大模型</span>
-            </div>
-            <div class="flex flex-col gap-2">
-              <div class="flex items-start justify-between gap-2">
-                <h2 class="font-bold text-slate-800 text-sm leading-snug flex-1 truncate" title="北京博达富通基金">北京博达富通基金</h2>
-                <span class="rounded-lg bg-red-500 text-white text-xs font-medium px-2.5 py-1 flex-shrink-0 whitespace-nowrap">风险提示</span>
-              </div>
-              <div class="card-tag-meta text-slate-500">交易所谴责 | 多部门协同</div>
-              <div class="flex flex-nowrap gap-1.5 overflow-x-auto" style="scrollbar-width: none; -ms-overflow-style: none;">
-                <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-white border border-gray-200 text-gray-500 card-tag-meta whitespace-nowrap flex-shrink-0">
-                  <svg class="w-3.5 h-3.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-                  今天 09:00
-                </span>
-                <span class="px-2.5 py-1 rounded-full bg-red-50 border border-red-200 text-red-600 card-tag-meta whitespace-nowrap flex-shrink-0">紧急</span>
-                <span class="px-2.5 py-1 rounded-full bg-white border border-gray-200 text-gray-500 card-tag-meta whitespace-nowrap flex-shrink-0">风险处理</span>
-                <span class="px-2.5 py-1 rounded-full bg-white border border-gray-200 text-gray-500 card-tag-meta whitespace-nowrap flex-shrink-0">易信会议</span>
-              </div>
-            </div>
-            <div class="text-sm text-slate-600 leading-relaxed card-desc" title="「北京博达富通基金」被上交所、深交所发函谴责，部分产品被限制交易。需尽快落实其在我司产品的交易情况，组织者智能体将协同财富、机构经纪、风控、合规、信息技术等多部门召开易信会议，形成处理方案。">
-              <span class="font-semibold text-red-500">「北京博达富通基金」</span>被<span class="font-medium text-slate-800">上交所、深交所</span>发函谴责，部分产品被限制交易。需尽快落实其在我司产品的交易情况，组织者智能体将协同<span class="font-medium text-indigo-600">财富、机构经纪、风控、合规、信息技术</span>等多部门召开易信会议，形成处理方案。
-            </div>
-            <div class="bg-red-50 rounded-xl px-3 py-3 space-y-3 border border-red-100 flex-shrink-0">
-              <div>
-                <div class="flex items-center gap-1.5 card-tag-meta text-slate-500 mb-2">
-                  <svg class="w-3.5 h-3.5 text-[#ef4444]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg>
-                  <span class="font-medium">智能体已为您准备好：</span>
-                </div>
-                <div class="flex flex-wrap gap-2">
-                  <span class="inline-flex items-center gap-1.5 bg-white border border-red-200 rounded-full card-tag-pill font-medium text-[#ef4444]" title="风险处理方案">
-                    <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
-                    风险处理方案
-                  </span>
-                  <span class="inline-flex items-center gap-1.5 bg-white border border-red-200 rounded-full card-tag-pill font-medium text-[#ef4444]" title="会议决策">
-                    <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
-                    会议决策
-                  </span>
-                </div>
-              </div>
-            </div>
-            <div class="flex justify-end flex-shrink-0">
-              <a href="组织者-博达富通-风险处理.html" class="inline-flex items-center gap-1 text-red-600 font-medium text-sm hover:text-red-700">
-                立即处理
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
-              </a>
-            </div>
-          </div>
-        </div>
-
-        </div>
-        <!-- 分页小圆点 -->
-        <div class="flex justify-center gap-2 py-3" id="dotContainer">
-          <button onclick="scrollToCard(0)" class="dot-btn w-2 h-2 rounded-full bg-indigo-500" data-dot="0"></button>
-          <button onclick="scrollToCard(1)" class="dot-btn w-2 h-2 rounded-full bg-slate-200" data-dot="1"></button>
-          <button onclick="scrollToCard(2)" class="dot-btn w-2 h-2 rounded-full bg-slate-200" data-dot="2"></button>
-          <button onclick="scrollToCard(3)" class="dot-btn w-2 h-2 rounded-full bg-slate-200" data-dot="3"></button>
-          <button onclick="scrollToCard(4)" class="dot-btn w-2 h-2 rounded-full bg-slate-200" data-dot="4"></button>
         </div>
       </section>
 
       <!-- 区块：快捷入口 -->
-      <section class="mb-5">
-        <h2 class="section-title flex items-center gap-2 mb-2.5">
+      <section class="mb-4">
+        <h2 class="section-title flex items-center gap-2 mb-2">
           <span class="w-1 h-3.5 rounded-full bg-indigo-500"></span>
           快捷入口
         </h2>
-        <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-2">
         <!-- 我的客户 -->
-        <a href="员工-我的客户.html" class="block bg-white rounded-xl border border-slate-100 overflow-hidden transition-all duration-200 hover:shadow-md hover:border-slate-200">
-          <div class="p-4">
-            <div class="flex items-center gap-2.5 mb-3">
-              <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-indigo-500 to-violet-600 flex items-center justify-center text-white text-lg">👥</div>
+        <a href="员工-我的客户.html" class="block bg-white rounded-lg border border-slate-100 overflow-hidden transition-all duration-200 hover:shadow-md hover:border-slate-200">
+          <div class="p-3">
+            <div class="flex items-center gap-2 mb-2">
+              <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-indigo-500 to-violet-600 flex items-center justify-center text-white text-sm">👥</div>
               <span class="font-semibold text-slate-800 text-sm">我的客户</span>
             </div>
-            <div class="grid grid-cols-3 gap-2">
-              <div class="text-center py-2 rounded-lg bg-slate-50">
-                <div class="text-sm font-bold text-slate-800">12</div>
-                <div class="text-xs text-slate-500">全部</div>
+            <div class="grid grid-cols-3 gap-1.5">
+              <div class="text-center py-1.5 rounded bg-slate-50">
+                <div class="text-xs font-bold text-slate-800">12</div>
+                <div class="text-[10px] text-slate-500">全部</div>
               </div>
-              <div class="text-center py-2 rounded-lg bg-indigo-50">
-                <div class="text-sm font-bold text-indigo-600">5</div>
-                <div class="text-xs text-slate-500">跟进中</div>
+              <div class="text-center py-1.5 rounded bg-indigo-50">
+                <div class="text-xs font-bold text-indigo-600">5</div>
+                <div class="text-[10px] text-slate-500">跟进中</div>
               </div>
-              <div class="text-center py-2 rounded-lg bg-emerald-50">
-                <div class="text-sm font-bold text-emerald-600">3</div>
-                <div class="text-xs text-slate-500">已合作</div>
+              <div class="text-center py-1.5 rounded bg-emerald-50">
+                <div class="text-xs font-bold text-emerald-600">3</div>
+                <div class="text-[10px] text-slate-500">已合作</div>
               </div>
             </div>
           </div>
         </a>
         <!-- 我的任务 -->
-        <a href="员工-我的任务.html" class="block bg-white rounded-xl border border-slate-100 overflow-hidden transition-all duration-200 hover:shadow-md hover:border-slate-200">
-          <div class="p-4">
-            <div class="flex items-center gap-2.5 mb-3">
-              <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-amber-500 to-orange-600 flex items-center justify-center text-white text-lg">📋</div>
+        <a href="员工-我的任务.html" class="block bg-white rounded-lg border border-slate-100 overflow-hidden transition-all duration-200 hover:shadow-md hover:border-slate-200">
+          <div class="p-3">
+            <div class="flex items-center gap-2 mb-2">
+              <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-amber-500 to-orange-600 flex items-center justify-center text-white text-sm">📋</div>
               <span class="font-semibold text-slate-800 text-sm">我的任务</span>
             </div>
-            <div class="grid grid-cols-3 gap-2">
-              <div class="text-center py-2 rounded-lg bg-amber-50">
-                <div class="text-sm font-bold text-amber-600">2</div>
-                <div class="text-xs text-slate-500">待处理</div>
+            <div class="grid grid-cols-3 gap-1.5">
+              <div class="text-center py-1.5 rounded bg-amber-50">
+                <div class="text-xs font-bold text-amber-600">2</div>
+                <div class="text-[10px] text-slate-500">待处理</div>
               </div>
-              <div class="text-center py-2 rounded-lg bg-indigo-50">
-                <div class="text-sm font-bold text-indigo-600">1</div>
-                <div class="text-xs text-slate-500">进行中</div>
+              <div class="text-center py-1.5 rounded bg-indigo-50">
+                <div class="text-xs font-bold text-indigo-600">1</div>
+                <div class="text-[10px] text-slate-500">进行中</div>
               </div>
-              <div class="text-center py-2 rounded-lg bg-emerald-50">
-                <div class="text-sm font-bold text-emerald-600">1</div>
-                <div class="text-xs text-slate-500">已完成</div>
+              <div class="text-center py-1.5 rounded bg-emerald-50">
+                <div class="text-xs font-bold text-emerald-600">1</div>
+                <div class="text-[10px] text-slate-500">已完成</div>
               </div>
             </div>
           </div>
         </a>
         <!-- 圆桌会议 -->
-        <a href="员工-圆桌会议.html" class="block bg-white rounded-xl border border-slate-100 overflow-hidden transition-all duration-200 hover:shadow-md hover:border-slate-200">
-          <div class="p-4">
-            <div class="flex items-center gap-2.5 mb-3">
-              <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-emerald-500 to-teal-600 flex items-center justify-center text-white text-lg">🔄</div>
+        <a href="员工-圆桌会议.html" class="block bg-white rounded-lg border border-slate-100 overflow-hidden transition-all duration-200 hover:shadow-md hover:border-slate-200">
+          <div class="p-3">
+            <div class="flex items-center gap-2 mb-2">
+              <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-emerald-500 to-teal-600 flex items-center justify-center text-white text-sm">🔄</div>
               <span class="font-semibold text-slate-800 text-sm">圆桌会议</span>
             </div>
-            <div class="grid grid-cols-2 gap-2">
-              <div class="text-center py-2 rounded-lg bg-violet-50">
-                <div class="text-sm font-bold text-violet-600">1</div>
-                <div class="text-xs text-slate-500">圆桌协同</div>
+            <div class="grid grid-cols-2 gap-1.5">
+              <div class="text-center py-1.5 rounded bg-violet-50">
+                <div class="text-xs font-bold text-violet-600">1</div>
+                <div class="text-[10px] text-slate-500">圆桌协同</div>
               </div>
-              <div class="text-center py-2 rounded-lg bg-amber-50">
-                <div class="text-sm font-bold text-amber-600">2</div>
-                <div class="text-xs text-slate-500">风险处置</div>
+              <div class="text-center py-1.5 rounded bg-amber-50">
+                <div class="text-xs font-bold text-amber-600">2</div>
+                <div class="text-[10px] text-slate-500">风险处置</div>
               </div>
             </div>
           </div>
@@ -415,12 +298,27 @@
 
     </main>
 
-    <!-- 底部固定区域：输入框 + 工具按钮 -->
+    <!-- 底部固定区域：数字人 + 输入框 + 工具按钮 -->
     <div class="flex-shrink-0 border-t border-slate-200/60">
-      <div class="px-4 py-3 max-w-4xl mx-auto">
+      <div class="px-4 py-2 max-w-7xl mx-auto">
+        <!-- 数字人服务：选择智能体入口 -->
+        <div class="flex items-center justify-center gap-6 mb-2">
+          <a href="数字人-开户服务.html" class="flex flex-col items-center gap-1 transition-transform hover:scale-110" title="开户服务">
+            <img src="images/开户数字人.jpg" alt="开户数字人" class="w-11 h-11 rounded-full object-cover border-2 border-emerald-200/80" />
+            <span class="text-[11px] text-slate-500">开户服务</span>
+          </a>
+          <a href="数字人-交易服务.html" class="flex flex-col items-center gap-1 transition-transform hover:scale-110" title="交易服务">
+            <img src="images/交易服务数字人.jpg" alt="交易服务数字人" class="w-11 h-11 rounded-full object-cover border-2 border-violet-200/80" />
+            <span class="text-[11px] text-slate-500">交易服务</span>
+          </a>
+          <a href="数字人-预警服务.html" class="flex flex-col items-center gap-1 transition-transform hover:scale-110" title="预警服务">
+            <img src="images/预警服务数字人.jpg" alt="预警服务数字人" class="w-11 h-11 rounded-full object-cover border-2 border-amber-200/80" />
+            <span class="text-[11px] text-slate-500">预警服务</span>
+          </a>
+        </div>
         <!-- 输入栏：胶囊形，图标在右侧 -->
-        <footer class="safe-area-inset-bottom mb-3">
-          <form id="bottomInputForm" class="flex items-center gap-2 rounded-full bg-slate-200/60 px-4 py-3">
+        <footer class="safe-area-inset-bottom mb-2">
+          <form id="bottomInputForm" class="flex items-center gap-2 rounded-full bg-slate-200/60 px-3 py-2">
             <input id="bottomInput" type="text" class="flex-1 bg-transparent border-0 outline-none text-slate-800 placeholder-slate-500 text-sm" placeholder="请输入您的问题或选择智能体" autocomplete="off" />
             <button type="submit" class="flex-shrink-0 p-1.5 text-slate-500 hover:text-slate-700 transition-colors rounded-full hover:bg-slate-300/50" aria-label="发送">
               <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -429,54 +327,31 @@
             </button>
           </form>
         </footer>
-        <!-- 工具按钮：图标+标题+tag，同一行 -->
+        <!-- 工具按钮：图标+标题，同一行 -->
         <div class="flex items-center justify-center gap-2 overflow-x-auto scrollbar-hide py-1" style="scrollbar-width: none; -ms-overflow-style: none;">
-          <a href="员工-标准化业务.html" class="inline-flex items-center gap-2 px-2.5 py-1 rounded-lg bg-slate-100/80 border border-slate-200/80 text-slate-600 hover:bg-slate-200/60 hover:border-slate-300/80 transition-all flex-shrink-0">
+          <a href="员工-高净值客户经纪.html" class="inline-flex items-center gap-2 px-2.5 py-1 rounded-lg bg-slate-100/80 border border-slate-200/80 text-slate-600 hover:bg-slate-200/60 hover:border-slate-300/80 transition-all flex-shrink-0">
             <svg class="w-3.5 h-3.5 text-indigo-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M9 6a3 3 0 11-6 0 3 3 0 016 0zM17 6a3 3 0 11-6 0 3 3 0 016 0zM12.93 17c.046-.327.07-.66.07-1a6.97 6.97 0 00-1.5-4.33A5 5 0 0119 16v1h-6.07zM6 11a5 5 0 015 5v1H1v-1a5 5 0 015-5z"/>
+            </svg>
+            <span class="text-xs font-medium whitespace-nowrap">高净值客户经纪</span>
+          </a>
+          <a href="员工-金融产品经纪.html" class="inline-flex items-center gap-2 px-2.5 py-1 rounded-lg bg-slate-100/80 border border-slate-200/80 text-slate-600 hover:bg-slate-200/60 hover:border-slate-300/80 transition-all flex-shrink-0">
+            <svg class="w-3.5 h-3.5 text-violet-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M4 4a2 2 0 00-2 2v4a2 2 0 002 2V6h10a2 2 0 00-2-2H4zm2 6a2 2 0 012-2h8a2 2 0 012 2v4a2 2 0 01-2 2H8a2 2 0 01-2-2v-4zm6 4a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"/>
+            </svg>
+            <span class="text-xs font-medium whitespace-nowrap">金融产品经纪</span>
+          </a>
+          <a href="员工-金融机构经纪.html" class="inline-flex items-center gap-2 px-2.5 py-1 rounded-lg bg-slate-100/80 border border-slate-200/80 text-slate-600 hover:bg-slate-200/60 hover:border-slate-300/80 transition-all flex-shrink-0">
+            <svg class="w-3.5 h-3.5 text-emerald-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
               <path fill-rule="evenodd" d="M4 4a2 2 0 012-2h8a2 2 0 012 2v12a1 1 0 110 2h-3a1 1 0 01-1-1v-2a1 1 0 00-1-1H9a1 1 0 00-1 1v2a1 1 0 01-1 1H4a1 1 0 110-2V4zm3 1h2v2H7V5zm2 4H7v2h2V9zm2-4h2v2h-2V5zm2 4h-2v2h2V9z" clip-rule="evenodd"/>
             </svg>
-            <span class="text-xs font-medium whitespace-nowrap">标准化业务</span>
-            <span class="flex items-center gap-1">
-              <span class="px-1.5 py-0.5 rounded-md text-[11px] font-medium text-indigo-700 bg-indigo-100">PB</span>
-              <span class="px-1.5 py-0.5 rounded-md text-[11px] font-medium text-indigo-700 bg-indigo-100">算法</span>
-              <span class="px-1.5 py-0.5 rounded-md text-[11px] font-medium text-indigo-700 bg-indigo-100">托管</span>
-            </span>
-          </a>
-          <a href="员工-定制化业务.html" class="inline-flex items-center gap-2 px-2.5 py-1 rounded-lg bg-slate-100/80 border border-slate-200/80 text-slate-600 hover:bg-slate-200/60 hover:border-slate-300/80 transition-all flex-shrink-0">
-            <svg class="w-3.5 h-3.5 text-violet-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-              <path d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3zM6 8a2 2 0 11-4 0 2 2 0 014 0zM16 18v-3a5.972 5.972 0 00-.75-2.906A3.005 3.005 0 0119 15v3h-3zM4.75 12.094A5.973 5.973 0 004 15v3H1v-3a3 3 0 013.75-2.906z"/>
-            </svg>
-            <span class="text-xs font-medium whitespace-nowrap">定制化业务</span>
+            <span class="text-xs font-medium whitespace-nowrap">金融机构经纪</span>
           </a>
         </div>
       </div>
     </div>
   </div>
   <script>
-    const scroller = document.getElementById('cardScroller');
-    const dots = document.querySelectorAll('[data-dot]');
-
-    function updateDots(index) {
-      dots.forEach((dot, i) => {
-        dot.style.background = i === index ? '#6366f1' : '#e2e8f0';
-      });
-    }
-
-    function scrollToCard(index) {
-      const cards = scroller.querySelectorAll('.scroll-snap-item');
-      if (cards[index]) {
-        cards[index].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' });
-      }
-    }
-
-    scroller.addEventListener('scroll', () => {
-      const cards = scroller.querySelectorAll('.scroll-snap-item');
-      const scrollLeft = scroller.scrollLeft;
-      const cardWidth = cards[0] ? cards[0].offsetWidth + 12 : 280;
-      const index = Math.round(scrollLeft / cardWidth);
-      updateDots(Math.min(index, dots.length - 1));
-    });
-
     // 底部输入框：输入"北京博达富通"或"博达富通"跳转到博达富通客户详情页（带模拟交互）
     document.getElementById('bottomInputForm').addEventListener('submit', function(e) {
       e.preventDefault();
