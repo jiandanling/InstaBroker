@@ -465,6 +465,21 @@ form.subpage-footer-input-wrap {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06), 0 6px 16px rgba(0, 0, 0, 0.04);
 }
 
+/* 消息列表：强制上下排列（智能体在上、用户在下） */
+.message-list-column {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  width: 100%;
+  gap: 1.25rem;
+}
+
+.message-list-column > * {
+  flex: 0 0 auto;
+  width: 100%;
+  min-width: 0;
+}
+
 /* 消息入场动画 */
 .message-enter {
   animation: slideIn 0.3s ease-out;

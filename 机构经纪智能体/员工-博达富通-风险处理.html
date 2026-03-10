@@ -236,6 +236,16 @@
                   '</div>' +
                   '<div class="text-sm text-slate-600">会议纪要已同步发送参会人确认，抄送公司分管领导。</div>'
                 ));
+
+                  setTimeout(function() {
+                    addMsg('<div class="flex flex-col gap-2 py-4 px-4 bg-gradient-to-r from-green-50 to-emerald-50 rounded-xl border border-green-200 message-enter">' +
+                      '<div class="flex items-center gap-2">' +
+                        '<svg class="w-5 h-5 text-green-600" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>' +
+                        '<span class="font-medium text-green-700 text-sm">风险处置流程已完成</span>' +
+                      '</div>' +
+                      '<p class="text-sm text-slate-600">圆桌会议已结束，处置意见已确认并发送。客户经理将按会议决策与博达富通沟通。</p>' +
+                    '</div>');
+                  }, 800);
                 }, 1800);
               }, 2000);
             }, 2000);
