@@ -88,16 +88,62 @@
           0 0 0 2px white,
           0 2px 8px rgba(0, 0, 0, 0.08);
       }
-      /* 待办卡片：2 列网格，2 排 */
+      /* 手机：卡片单排横向滚动，每页一个 */
       #cardScroller {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        overflow: visible;
+        display: flex;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
         gap: 1rem;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+      }
+      #cardScroller::-webkit-scrollbar {
+        display: none;
       }
       #cardScroller .scroll-snap-item {
-        min-width: 0;
-        max-width: none;
+        flex: 0 0 100%;
+        min-width: 100%;
+        scroll-snap-align: start;
+      }
+      /* 翻页小点：仅手机显示 */
+      .card-pagination {
+        display: flex;
+        justify-content: center;
+        gap: 6px;
+        padding: 12px 0 4px;
+      }
+      .card-pagination-dot {
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: #cbd5e1;
+        transition: all 0.2s ease;
+        cursor: pointer;
+      }
+      .card-pagination-dot.active {
+        background: #6366f1;
+        width: 8px;
+        height: 8px;
+      }
+      @media (min-width: 768px) {
+        .card-pagination {
+          display: none;
+        }
+      }
+      /* 平板及以上：2 列网格 */
+      @media (min-width: 768px) {
+        #cardScroller {
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+          overflow: visible;
+          scroll-snap-type: none;
+        }
+        #cardScroller .scroll-snap-item {
+          width: auto;
+          min-width: 0;
+          max-width: none;
+        }
       }
     </style>
   </head>
@@ -475,11 +521,18 @@
               </div>
             </div>
           </div>
+          <!-- 翻页小点（仅手机） -->
+          <div id="cardPagination" class="card-pagination">
+            <span class="card-pagination-dot active" data-index="0" aria-label="第1页"></span>
+            <span class="card-pagination-dot" data-index="1" aria-label="第2页"></span>
+            <span class="card-pagination-dot" data-index="2" aria-label="第3页"></span>
+            <span class="card-pagination-dot" data-index="3" aria-label="第4页"></span>
+          </div>
         </section>
 
         <!-- 区块：6个圆形头像统一展示 -->
         <section class="mb-6">
-          <div class="flex flex-wrap items-center justify-start gap-6 sm:gap-8">
+          <div class="grid grid-cols-3 gap-4 sm:flex sm:flex-wrap sm:items-center sm:justify-start sm:gap-6 md:gap-8">
             <a
               href="员工-我的客户.html"
               class="flex flex-col items-center gap-2 transition-transform hover:scale-110"
@@ -656,6 +709,38 @@
       </div>
     </div>
     <script>
+      // 卡片翻页小点
+      (function () {
+        var scroller = document.getElementById("cardScroller");
+        var dots = document.querySelectorAll(".card-pagination-dot");
+        if (!scroller || !dots.length) return;
+
+        function getPageWidth() {
+          return scroller.offsetWidth - 16; // 卡片 min-w-[calc(100%-2rem)] + gap-4
+        }
+
+        function updateDots() {
+          var scrollLeft = scroller.scrollLeft;
+          var pageWidth = getPageWidth();
+          var index = pageWidth > 0 ? Math.round(scrollLeft / pageWidth) : 0;
+          index = Math.min(Math.max(index, 0), dots.length - 1);
+          dots.forEach(function (d, i) {
+            d.classList.toggle("active", i === index);
+          });
+        }
+
+        scroller.addEventListener("scroll", updateDots);
+        window.addEventListener("resize", updateDots);
+
+        dots.forEach(function (dot) {
+          dot.addEventListener("click", function () {
+            var i = parseInt(dot.dataset.index, 10);
+            var pageWidth = getPageWidth();
+            scroller.scrollTo({ left: i * pageWidth, behavior: "smooth" });
+          });
+        });
+      })();
+
       // 底部输入框：输入"北京博达富通"或"博达富通"跳转到博达富通客户详情页（带模拟交互）
       document
         .getElementById("bottomInputForm")
