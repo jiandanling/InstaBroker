@@ -7,37 +7,16 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="css/common.css">
 </head>
-<body class="h-screen overflow-hidden bg-gradient-to-b from-white to-slate-100/40">
-  <div class="h-full flex flex-col w-full max-w-4xl mx-auto min-w-0">
-    <!-- 顶部导航栏 - 与子页面统一 -->
-    <header class="subpage-header">
-      <div class="subpage-header-inner">
-        <div class="flex items-center gap-1">
-          <a href="index.html" class="subpage-header-btn" title="返回员工端">
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
-            </svg>
-          </a>
-          <a href="组织者-index.html" class="text-xs text-slate-500 hover:text-indigo-600 px-2 py-1 rounded transition-colors" title="返回组织者首页">组织者</a>
-        </div>
-        <h1 class="subpage-header-title">博达富通 · 风险处理</h1>
-        <button class="subpage-header-btn" aria-label="通知">
-          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"/>
-          </svg>
-        </button>
-      </div>
-    </header>
-
+<body>
     <!-- 对话区 -->
-    <main id="main-content" class="flex-1 min-h-0 flex flex-col gap-4 px-4 py-4 pb-28 sm:px-5 md:px-6 md:py-6 min-w-0 overflow-x-hidden overflow-y-auto" style="scrollbar-gutter: stable">
+    <main id="main-content" class="flex-1 min-h-0 flex flex-col gap-4 px-4 py-4 pb-4 sm:px-5 md:px-6 md:py-6 min-w-0 overflow-x-hidden overflow-y-auto" style="scrollbar-gutter: stable">
 
       <!-- 时间戳 -->
       <div class="flex items-center justify-center text-xs text-slate-500 bg-white/80 backdrop-blur-sm rounded-full px-3 py-1.5 shadow-sm w-fit mx-auto border border-slate-100">
         今天 09:00
       </div>
 
-      <!-- 1. 超级数字员工：查询请求 -->
+      <!-- 1. 超级数字员工：查询请求（示例内容，保持不变） -->
       <div class="flex items-start gap-2 message-enter flex-row-reverse">
         <div class="w-8 h-8 rounded-full user-avatar flex items-center justify-center flex-shrink-0 mt-1">
           <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"/></svg>
@@ -50,7 +29,7 @@
         </div>
       </div>
 
-      <!-- 2. 公司自动驾驶大模型：返回查询结果 -->
+      <!-- 2. 公司自动驾驶大模型：返回查询结果（示例内容，保持不变） -->
       <div class="flex items-start gap-2 message-enter">
         <div class="w-8 h-8 rounded-full model-avatar flex items-center justify-center flex-shrink-0 mt-1">
           <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20"><path d="M13 7H7v6h6V7z"/><path fill-rule="evenodd" d="M7 2a1 1 0 012 0v1a7 7 0 014.95 11.95l1.414-1.414A5 5 0 0017 8V3a1 1 0 10-2 0v5a5 5 0 01-8.485 4.485L5.05 12.95A7 7 0 017 2z" clip-rule="evenodd"/></svg>
@@ -74,33 +53,6 @@
       </div>
 
     </main>
-
-    <!-- 底部输入栏 - 与 index.html 一致 -->
-    <footer class="subpage-footer flex-shrink-0">
-      <div class="subpage-footer-inner">
-        <div class="subpage-footer-btns">
-          <a href="员工-高净值客户经纪.html" class="subpage-footer-btn">
-            <img src="images/icons/icon-footer-users.svg" alt="">
-            <span>高净值客户经纪</span>
-          </a>
-          <a href="员工-金融产品经纪.html" class="subpage-footer-btn">
-            <img src="images/icons/icon-footer-wallet.svg" alt="">
-            <span>金融产品经纪</span>
-          </a>
-          <a href="员工-金融机构经纪.html" class="subpage-footer-btn">
-            <img src="images/icons/icon-footer-building.svg" alt="">
-            <span>金融机构经纪</span>
-          </a>
-        </div>
-        <div class="subpage-footer-input-wrap">
-          <input type="text" class="subpage-footer-input" placeholder="请输入您的问题或选择智能体" autocomplete="off" />
-          <button type="button" class="subpage-footer-send-btn" aria-label="发送">
-            <img src="images/icons/icon-footer-send.svg" alt="">
-          </button>
-        </div>
-      </div>
-    </footer>
-  </div>
 
   <script>
     var mainContent = document.getElementById('main-content');
@@ -254,5 +206,5 @@
       }, 1500);
     }, 800);
   </script>
-</body>
+  </body>
 </html>

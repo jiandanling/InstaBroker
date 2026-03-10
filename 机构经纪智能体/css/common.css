@@ -8,9 +8,9 @@
   --color-text: #1e293b;
   --color-text-muted: #64748b;
   --color-border: #e2e8f0;
-  --shadow-sm: 0 1px 3px rgba(0,0,0,0.05);
-  --shadow-md: 0 4px 14px rgba(0,0,0,0.06);
-  --shadow-lg: 0 10px 40px rgba(0,0,0,0.08);
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 14px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 10px 40px rgba(0, 0, 0, 0.08);
   --radius-sm: 8px;
   --radius-md: 12px;
   --radius-lg: 16px;
@@ -30,7 +30,9 @@ html {
 }
 
 body {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "PingFang SC", "Microsoft YaHei", sans-serif;
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+    Arial, "PingFang SC", "Microsoft YaHei", sans-serif;
   background: var(--color-bg);
   color: var(--color-text);
   -webkit-font-smoothing: antialiased;
@@ -44,7 +46,9 @@ body {
   background: var(--color-bg-card);
   border-radius: var(--radius-xl);
   box-shadow: var(--shadow-md);
-  transition: box-shadow 0.2s ease, transform 0.2s ease;
+  transition:
+    box-shadow 0.2s ease,
+    transform 0.2s ease;
 }
 
 .card:hover {
@@ -178,7 +182,9 @@ body {
   align-items: center;
   justify-content: center;
   color: #475569;
-  transition: background 0.2s, color 0.2s;
+  transition:
+    background 0.2s,
+    color 0.2s;
 }
 
 .subpage-header-btn:hover {
@@ -264,6 +270,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: flex-start;
+  flex-wrap: nowrap;
   gap: 4px;
   overflow-x: auto;
   padding: 4px 0 8px;
@@ -303,8 +310,8 @@ body {
 
 /* 底部按钮内图标（独立 SVG 文件，颜色已内嵌） */
 .subpage-footer-btn img {
-  width: 0.75rem;
-  height: 0.75rem;
+  width: 0.65rem;
+  height: 0.65rem;
   flex-shrink: 0;
 }
 
@@ -319,6 +326,54 @@ body {
     width: 0.875rem;
     height: 0.875rem;
   }
+}
+
+/* ========== 手机壳演示：强制按手机尺寸显示（不受桌面媒体查询影响） ========== */
+.phone-screen .subpage-footer-inner {
+  padding: 12px;
+}
+
+.phone-screen .subpage-footer-btns {
+  gap: 4px;
+}
+
+.phone-screen .subpage-footer-btn {
+  gap: 6px;
+  padding: 4px 10px;
+  font-size: 12px;
+  border-radius: 10px;
+}
+
+.phone-screen .subpage-footer-btn img {
+  width: 0.75rem;
+  height: 0.75rem;
+}
+
+.phone-screen main {
+  padding: 8px 14px 10px;
+}
+
+.phone-screen #cardScroller {
+  gap: 0.75rem;
+}
+
+.phone-screen .card-pagination {
+  padding: 8px 0 2px;
+}
+
+/* 固定首页任务卡片区域高度，减少切换时底部内容跳动感 */
+.phone-screen .task-cards-wrapper {
+  height: 260px;
+  display: flex;
+  flex-direction: column;
+}
+
+.phone-screen .task-cards-wrapper #cardScroller {
+  flex: 1;
+}
+
+.phone-screen section {
+  margin-bottom: 10px;
 }
 
 /* 输入栏容器：支持 div 或 form */
@@ -353,7 +408,9 @@ form.subpage-footer-input-wrap {
   flex-shrink: 0;
   padding: 6px;
   color: #64748b;
-  transition: color 0.2s, background 0.2s;
+  transition:
+    color 0.2s,
+    background 0.2s;
   border-radius: 9999px;
   display: flex;
   align-items: center;
@@ -371,7 +428,9 @@ form.subpage-footer-input-wrap {
 }
 
 .subpage-card-shadow {
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06), 0 4px 12px rgba(0, 0, 0, 0.04);
+  box-shadow:
+    0 1px 3px rgba(0, 0, 0, 0.06),
+    0 4px 12px rgba(0, 0, 0, 0.04);
 }
 
 /* ========== 子页面通用组件样式（办理任务/方案沟通/拜访任务/博达富通等） ========== */
@@ -438,11 +497,23 @@ form.subpage-footer-input-wrap {
 }
 
 /* 流程图 */
-.flow-arrow { stroke: #94a3b8; stroke-width: 1.5; fill: none; }
-.flow-box { fill: #f1f5f9; stroke: #cbd5e1; stroke-width: 1; }
+.flow-arrow {
+  stroke: #94a3b8;
+  stroke-width: 1.5;
+  fill: none;
+}
+.flow-box {
+  fill: #f1f5f9;
+  stroke: #cbd5e1;
+  stroke-width: 1;
+}
 
-.flow-step { display: none; }
-.flow-step.active { display: block; }
+.flow-step {
+  display: none;
+}
+.flow-step.active {
+  display: block;
+}
 
 /* 任务项悬浮 */
 .task-item {
@@ -458,11 +529,15 @@ form.subpage-footer-input-wrap {
 
 /* 消息卡片（博达富通风险处理等） */
 .msg-card-shadow {
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06), 0 4px 12px rgba(0, 0, 0, 0.04);
+  box-shadow:
+    0 1px 3px rgba(0, 0, 0, 0.06),
+    0 4px 12px rgba(0, 0, 0, 0.04);
 }
 
 .msg-card-shadow:hover {
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06), 0 6px 16px rgba(0, 0, 0, 0.04);
+  box-shadow:
+    0 2px 8px rgba(0, 0, 0, 0.06),
+    0 6px 16px rgba(0, 0, 0, 0.04);
 }
 
 /* 消息列表：强制上下排列（智能体在上、用户在下） */
@@ -486,30 +561,53 @@ form.subpage-footer-input-wrap {
 }
 
 @keyframes slideIn {
-  from { opacity: 0; transform: translateY(8px); }
-  to   { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @keyframes spin {
-  from { transform: rotate(0deg); }
-  to   { transform: rotate(360deg); }
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 @keyframes pulse {
-  0%, 100% { opacity: 0.5; }
-  50%       { opacity: 1; }
+  0%,
+  100% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 1;
+  }
 }
 
-.loading-spinner { animation: spin 1s linear infinite; }
-.loading-text    { animation: pulse 1.5s ease-in-out infinite; }
+.loading-spinner {
+  animation: spin 1s linear infinite;
+}
+.loading-text {
+  animation: pulse 1.5s ease-in-out infinite;
+}
 
 /* ========== index 主页专用样式 ========== */
 .index-card-shadow {
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06), 0 4px 12px rgba(0, 0, 0, 0.04);
+  box-shadow:
+    0 1px 3px rgba(0, 0, 0, 0.06),
+    0 4px 12px rgba(0, 0, 0, 0.04);
 }
 
 .index-card-shadow-hover {
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08), 0 12px 24px rgba(0, 0, 0, 0.06);
+  box-shadow:
+    0 4px 12px rgba(0, 0, 0, 0.08),
+    0 12px 24px rgba(0, 0, 0, 0.06);
 }
 
 .index-scroll-snap-x {
@@ -543,13 +641,19 @@ form.subpage-footer-input-wrap {
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04), 0 6px 16px rgba(0, 0, 0, 0.04);
-  transition: box-shadow 0.25s ease, transform 0.2s ease;
-  border-radius: 14px;
+  box-shadow:
+    0 2px 6px rgba(15, 23, 42, 0.06),
+    0 10px 24px rgba(15, 23, 42, 0.06);
+  transition:
+    box-shadow 0.25s ease,
+    transform 0.2s ease;
+  border-radius: 16px;
 }
 
 .index-card-uniform:hover {
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06), 0 12px 28px rgba(0, 0, 0, 0.06);
+  box-shadow:
+    0 4px 18px rgba(15, 23, 42, 0.1),
+    0 16px 32px rgba(15, 23, 42, 0.08);
   transform: translateY(-1px);
 }
 
@@ -580,7 +684,17 @@ form.subpage-footer-input-wrap {
 }
 
 .index-avatar-ring {
-  box-shadow: 0 0 0 2px white, 0 2px 8px rgba(0, 0, 0, 0.08);
+  box-shadow:
+    0 0 0 2px white,
+    0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+/* 首页小图标统一样式（卡片内小闪电/箭头） */
+.index-icon-small {
+  width: 0.875rem;
+  height: 0.875rem;
+  flex-shrink: 0;
+  color: #64748b; /* 相当于 text-slate-500 */
 }
 
 #cardScroller {
@@ -624,25 +738,6 @@ form.subpage-footer-input-wrap {
   background: #6366f1;
   width: 8px;
   height: 8px;
-}
-
-@media (min-width: 768px) {
-  .card-pagination {
-    display: none;
-  }
-
-  #cardScroller {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    overflow: visible;
-    scroll-snap-type: none;
-  }
-
-  #cardScroller .index-scroll-snap-item {
-    width: auto;
-    min-width: 0;
-    max-width: none;
-  }
 }
 
 /* ========== 适应性布局通用规则 ========== */
