@@ -6,44 +6,6 @@
   <title>员工端-办理任务</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="css/common.css">
-  <style>
-    
-    .card-hover {
-      transition: all 0.3s ease;
-    }
-    .card-hover:hover {
-      transform: translateY(-1px);
-      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
-    }
-    .gradient-border {
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      padding: 1px;
-      border-radius: 0.75rem;
-    }
-    .gradient-border > div {
-      background: white;
-      border-radius: 0.75rem;
-    }
-    .priority-badge {
-      background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%);
-      color: white;
-      box-shadow: 0 2px 8px rgba(238, 90, 36, 0.3);
-    }
-    .ai-avatar {
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
-    }
-    .status-card {
-      background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
-      border: 1px solid rgba(148, 163, 184, 0.2);
-    }
-    .section-card {
-      background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
-      border: 1px solid rgba(59, 130, 246, 0.2);
-    }
-    .flow-arrow { stroke: #94a3b8; stroke-width: 1.5; fill: none; }
-    .flow-box { fill: #f1f5f9; stroke: #cbd5e1; stroke-width: 1; }
-  </style>
 </head>
 <body class="h-screen overflow-hidden bg-gradient-to-b from-white to-slate-100/40">
   <div class="subpage-layout h-full">
@@ -279,22 +241,22 @@
       <div class="subpage-footer-inner">
         <div class="subpage-footer-btns">
           <a href="员工-高净值客户经纪.html" class="subpage-footer-btn">
-            <svg class="w-3 h-3 sm:w-3.5 sm:h-3.5 text-indigo-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path d="M9 6a3 3 0 11-6 0 3 3 0 016 0zM17 6a3 3 0 11-6 0 3 3 0 016 0zM12.93 17c.046-.327.07-.66.07-1a6.97 6.97 0 00-1.5-4.33A5 5 0 0119 16v1h-6.07zM6 11a5 5 0 015 5v1H1v-1a5 5 0 015-5z"/></svg>
+            <img src="images/icons/icon-footer-users.svg" alt="">
             <span>高净值客户经纪</span>
           </a>
           <a href="员工-金融产品经纪.html" class="subpage-footer-btn">
-            <svg class="w-3 h-3 sm:w-3.5 sm:h-3.5 text-violet-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M4 4a2 2 0 00-2 2v4a2 2 0 002 2V6h10a2 2 0 00-2-2H4zm2 6a2 2 0 012-2h8a2 2 0 012 2v4a2 2 0 01-2 2H8a2 2 0 01-2-2v-4zm6 4a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"/></svg>
+            <img src="images/icons/icon-footer-wallet.svg" alt="">
             <span>金融产品经纪</span>
           </a>
           <a href="员工-金融机构经纪.html" class="subpage-footer-btn">
-            <svg class="w-3 h-3 sm:w-3.5 sm:h-3.5 text-emerald-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M4 4a2 2 0 012-2h8a2 2 0 012 2v12a1 1 0 110 2h-3a1 1 0 01-1-1v-2a1 1 0 00-1-1H9a1 1 0 00-1 1v2a1 1 0 01-1 1H4a1 1 0 110-2V4zm3 1h2v2H7V5zm2 4H7v2h2V9zm2-4h2v2h-2V5zm2 4h-2v2h2V9z" clip-rule="evenodd"/></svg>
+            <img src="images/icons/icon-footer-building.svg" alt="">
             <span>金融机构经纪</span>
           </a>
         </div>
         <div class="subpage-footer-input-wrap">
           <input type="text" class="subpage-footer-input" placeholder="请输入您的问题或选择智能体" autocomplete="off" />
           <button type="button" class="subpage-footer-send-btn" aria-label="发送">
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"/></svg>
+            <img src="images/icons/icon-footer-send.svg" alt="">
           </button>
         </div>
       </div>

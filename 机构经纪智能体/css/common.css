@@ -186,6 +186,11 @@ body {
   color: #334155;
 }
 
+.subpage-header-btn svg {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
 .subpage-header-title {
   font-size: 16px;
   font-weight: 600;
@@ -228,6 +233,7 @@ body {
   gap: 8px;
 }
 
+/* ========== 底部固定区域（各页面统一：index + 子页面） ========== */
 .subpage-footer {
   flex-shrink: 0;
   padding-bottom: env(safe-area-inset-bottom, 0);
@@ -295,15 +301,27 @@ body {
   border-color: rgba(203, 213, 225, 0.8);
 }
 
+/* 底部按钮内图标（独立 SVG 文件，颜色已内嵌） */
+.subpage-footer-btn img {
+  width: 0.75rem;
+  height: 0.75rem;
+  flex-shrink: 0;
+}
+
 @media (min-width: 640px) {
   .subpage-footer-btn {
     gap: 8px;
     padding: 6px 12px;
     font-size: 12px;
   }
+
+  .subpage-footer-btn img {
+    width: 0.875rem;
+    height: 0.875rem;
+  }
 }
 
-/* 与 index.html 输入栏一致，无背景色 */
+/* 输入栏容器：支持 div 或 form */
 .subpage-footer-input-wrap {
   display: flex;
   align-items: center;
@@ -313,8 +331,13 @@ body {
   padding: 10px 16px;
 }
 
+form.subpage-footer-input-wrap {
+  margin: 0;
+}
+
 .subpage-footer-input {
   flex: 1;
+  min-width: 0;
   background: transparent;
   border: 0;
   outline: none;
@@ -342,13 +365,269 @@ body {
   background: rgba(203, 213, 225, 0.5);
 }
 
-.subpage-footer-send-btn svg {
+.subpage-footer-send-btn img {
   width: 1.25rem;
   height: 1.25rem;
 }
 
 .subpage-card-shadow {
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06), 0 4px 12px rgba(0, 0, 0, 0.04);
+}
+
+/* ========== 子页面通用组件样式（办理任务/方案沟通/拜访任务/博达富通等） ========== */
+/* 卡片悬浮效果 */
+.card-hover {
+  transition: all 0.3s ease;
+}
+
+.card-hover:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+/* 渐变边框 */
+.gradient-border {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: 1px;
+  border-radius: 0.75rem;
+}
+
+.gradient-border > div {
+  background: white;
+  border-radius: 0.75rem;
+}
+
+/* 头像：AI / 用户 / 模型 */
+.ai-avatar {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+}
+
+.user-avatar {
+  background: linear-gradient(135deg, #0ea5e9 0%, #06b6d4 100%);
+  box-shadow: 0 4px 15px rgba(14, 165, 233, 0.3);
+}
+
+.model-avatar {
+  background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+  box-shadow: 0 2px 8px rgba(99, 102, 241, 0.25);
+}
+
+/* 优先级徽章 */
+.priority-badge {
+  background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%);
+  color: white;
+  box-shadow: 0 2px 8px rgba(238, 90, 36, 0.3);
+}
+
+/* 状态/区块卡片 */
+.status-card {
+  background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+  border: 1px solid rgba(148, 163, 184, 0.2);
+}
+
+.section-card {
+  background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+  border: 1px solid rgba(59, 130, 246, 0.2);
+}
+
+/* 音频卡片 */
+.audio-card {
+  background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+  box-shadow: 0 8px 25px rgba(59, 130, 246, 0.3);
+}
+
+/* 流程图 */
+.flow-arrow { stroke: #94a3b8; stroke-width: 1.5; fill: none; }
+.flow-box { fill: #f1f5f9; stroke: #cbd5e1; stroke-width: 1; }
+
+.flow-step { display: none; }
+.flow-step.active { display: block; }
+
+/* 任务项悬浮 */
+.task-item {
+  transition: all 0.2s ease;
+}
+
+.task-item:hover {
+  background: rgba(59, 130, 246, 0.05);
+  border-radius: 0.5rem;
+  padding: 0.25rem;
+  margin: -0.25rem;
+}
+
+/* 消息卡片（博达富通风险处理等） */
+.msg-card-shadow {
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06), 0 4px 12px rgba(0, 0, 0, 0.04);
+}
+
+.msg-card-shadow:hover {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06), 0 6px 16px rgba(0, 0, 0, 0.04);
+}
+
+/* 消息入场动画 */
+.message-enter {
+  animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 0.5; }
+  50%       { opacity: 1; }
+}
+
+.loading-spinner { animation: spin 1s linear infinite; }
+.loading-text    { animation: pulse 1.5s ease-in-out infinite; }
+
+/* ========== index 主页专用样式 ========== */
+.index-card-shadow {
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06), 0 4px 12px rgba(0, 0, 0, 0.04);
+}
+
+.index-card-shadow-hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08), 0 12px 24px rgba(0, 0, 0, 0.06);
+}
+
+.index-scroll-snap-x {
+  scroll-snap-type: x mandatory;
+}
+
+.index-scroll-snap-item {
+  scroll-snap-align: start;
+}
+
+.index-card-tag-source,
+.index-card-tag-status,
+.index-card-tag-meta,
+.index-card-tag-pill {
+  font-size: 11px;
+}
+
+.index-card-tag-pill {
+  padding: 4px 8px;
+}
+
+.index-card-stage-header {
+  font-size: 11px;
+  font-weight: 600;
+  padding: 4px 8px;
+  border-radius: 6px;
+}
+
+.index-card-uniform {
+  min-height: 220px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04), 0 6px 16px rgba(0, 0, 0, 0.04);
+  transition: box-shadow 0.25s ease, transform 0.2s ease;
+  border-radius: 14px;
+}
+
+.index-card-uniform:hover {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06), 0 12px 28px rgba(0, 0, 0, 0.06);
+  transform: translateY(-1px);
+}
+
+.index-card-desc {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  font-size: 13px;
+}
+
+.index-section-title {
+  font-size: 13px;
+  font-weight: 600;
+  color: #475569;
+  letter-spacing: 0.02em;
+}
+
+.index-quick-entry-card {
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+  transition: all 0.2s ease;
+}
+
+.index-quick-entry-card:hover {
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+  transform: translateY(-2px);
+}
+
+.index-avatar-ring {
+  box-shadow: 0 0 0 2px white, 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+#cardScroller {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  gap: 1rem;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+#cardScroller::-webkit-scrollbar {
+  display: none;
+}
+
+#cardScroller .index-scroll-snap-item {
+  flex: 0 0 100%;
+  min-width: 100%;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+}
+
+.card-pagination {
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+  padding: 12px 0 4px;
+}
+
+.card-pagination-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #cbd5e1;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.card-pagination-dot.active {
+  background: #6366f1;
+  width: 8px;
+  height: 8px;
+}
+
+@media (min-width: 768px) {
+  .card-pagination {
+    display: none;
+  }
+
+  #cardScroller {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    overflow: visible;
+    scroll-snap-type: none;
+  }
+
+  #cardScroller .index-scroll-snap-item {
+    width: auto;
+    min-width: 0;
+    max-width: none;
+  }
 }
 
 /* ========== 适应性布局通用规则 ========== */

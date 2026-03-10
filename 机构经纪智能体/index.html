@@ -6,147 +6,6 @@
     <title>机构经纪超级数字员工</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="css/common.css" />
-    <style>
-      .card-shadow {
-        box-shadow:
-          0 1px 3px rgba(0, 0, 0, 0.06),
-          0 4px 12px rgba(0, 0, 0, 0.04);
-      }
-      .card-shadow-hover {
-        box-shadow:
-          0 4px 12px rgba(0, 0, 0, 0.08),
-          0 12px 24px rgba(0, 0, 0, 0.06);
-      }
-      .scroll-snap-x {
-        scroll-snap-type: x mandatory;
-      }
-      .scroll-snap-item {
-        scroll-snap-align: start;
-      }
-      .card-tag-source {
-        font-size: 11px;
-      }
-      .card-tag-status {
-        font-size: 11px;
-      }
-      .card-tag-meta {
-        font-size: 11px;
-      }
-      .card-tag-pill {
-        font-size: 11px;
-        padding: 4px 8px;
-      }
-      .card-stage-header {
-        font-size: 11px;
-        font-weight: 600;
-        padding: 4px 8px;
-        border-radius: 6px;
-      }
-      .card-uniform {
-        min-height: 220px;
-        display: flex;
-        flex-direction: column;
-        overflow: hidden;
-        box-shadow:
-          0 1px 3px rgba(0, 0, 0, 0.04),
-          0 6px 16px rgba(0, 0, 0, 0.04);
-        transition:
-          box-shadow 0.25s ease,
-          transform 0.2s ease;
-        border-radius: 14px;
-      }
-      .card-uniform:hover {
-        box-shadow:
-          0 4px 16px rgba(0, 0, 0, 0.06),
-          0 12px 28px rgba(0, 0, 0, 0.06);
-        transform: translateY(-1px);
-      }
-      .card-desc {
-        display: -webkit-box;
-        -webkit-line-clamp: 2;
-        line-clamp: 2;
-        -webkit-box-orient: vertical;
-        overflow: hidden;
-        font-size: 13px;
-      }
-      .section-title {
-        font-size: 13px;
-        font-weight: 600;
-        color: #475569;
-        letter-spacing: 0.02em;
-      }
-      .quick-entry-card {
-        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
-        transition: all 0.2s ease;
-      }
-      .quick-entry-card:hover {
-        box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
-        transform: translateY(-2px);
-      }
-      .avatar-ring {
-        box-shadow:
-          0 0 0 2px white,
-          0 2px 8px rgba(0, 0, 0, 0.08);
-      }
-      /* 手机：卡片单排横向滚动，每页一个 */
-      #cardScroller {
-        display: flex;
-        overflow-x: auto;
-        scroll-snap-type: x mandatory;
-        gap: 1rem;
-        -webkit-overflow-scrolling: touch;
-        scrollbar-width: none;
-        -ms-overflow-style: none;
-      }
-      #cardScroller::-webkit-scrollbar {
-        display: none;
-      }
-      #cardScroller .scroll-snap-item {
-        flex: 0 0 100%;
-        min-width: 100%;
-        scroll-snap-align: start;
-        scroll-snap-stop: always; /* 手机端：每次滑动只切换一个卡片 */
-      }
-      /* 翻页小点：仅手机显示 */
-      .card-pagination {
-        display: flex;
-        justify-content: center;
-        gap: 6px;
-        padding: 12px 0 4px;
-      }
-      .card-pagination-dot {
-        width: 6px;
-        height: 6px;
-        border-radius: 50%;
-        background: #cbd5e1;
-        transition: all 0.2s ease;
-        cursor: pointer;
-      }
-      .card-pagination-dot.active {
-        background: #6366f1;
-        width: 8px;
-        height: 8px;
-      }
-      @media (min-width: 768px) {
-        .card-pagination {
-          display: none;
-        }
-      }
-      /* 平板及以上：2 列网格 */
-      @media (min-width: 768px) {
-        #cardScroller {
-          display: grid;
-          grid-template-columns: repeat(2, 1fr);
-          overflow: visible;
-          scroll-snap-type: none;
-        }
-        #cardScroller .scroll-snap-item {
-          width: auto;
-          min-width: 0;
-          max-width: none;
-        }
-      }
-    </style>
   </head>
   <body
     class="h-screen overflow-hidden bg-gradient-to-b from-white to-slate-100/40"
@@ -206,19 +65,19 @@
       >
         <!-- 区块：今日任务 -->
         <section class="mb-6">
-          <h2 class="section-title flex items-center gap-2 mb-2">
+          <h2 class="index-section-title flex items-center gap-2 mb-2">
             <span class="w-1 h-3.5 rounded-full bg-indigo-500"></span>
             今日任务
           </h2>
           <div id="cardScroller" class="scrollbar-hide">
             <!-- 卡片1：博达富通基金 - 拓客准备 -->
             <div
-              class="scroll-snap-item bg-white rounded-xl border-l-4 border-l-indigo-500 border border-slate-100/80 overflow-hidden card-uniform"
+              class="index-scroll-snap-item bg-white rounded-xl border-l-4 border-l-indigo-500 border border-slate-100/80 overflow-hidden index-card-uniform"
             >
               <div class="p-2.5 space-y-1.5 flex-1 flex flex-col min-h-0">
                 <div class="flex items-center justify-between gap-2 flex-wrap">
                   <div class="flex items-center gap-2">
-                    <div class="card-stage-header bg-indigo-500 text-white">
+                    <div class="index-card-stage-header bg-indigo-500 text-white">
                       拓客准备
                     </div>
                     <h2 class="font-semibold text-slate-800 text-sm">
@@ -239,7 +98,7 @@
                   >
                 </div>
                 <div
-                  class="text-slate-600 leading-relaxed card-desc"
+                  class="text-slate-600 leading-relaxed index-card-desc"
                   title="管理规模85亿，全天候量化策略。代表产品近三年收益28%、最大回撤6.2%。待办：首次拜访，了解需求并推介机构经纪服务。"
                 >
                   管理规模85亿，全天候量化策略。代表产品近三年收益28%、最大回撤6.2%。待办：首次拜访，了解需求并推介机构经纪服务。
@@ -287,12 +146,12 @@
             </div>
             <!-- 卡片2：机构经纪组织者智能体 - 业务引入 -->
             <div
-              class="scroll-snap-item bg-white rounded-xl border-l-4 border-l-violet-500 border border-slate-100/80 overflow-hidden card-uniform"
+              class="index-scroll-snap-item bg-white rounded-xl border-l-4 border-l-violet-500 border border-slate-100/80 overflow-hidden index-card-uniform"
             >
               <div class="p-2.5 space-y-1.5 flex-1 flex flex-col min-h-0">
                 <div class="flex items-center justify-between gap-2 flex-wrap">
                   <div class="flex items-center gap-2">
-                    <div class="card-stage-header bg-violet-500 text-white">
+                    <div class="index-card-stage-header bg-violet-500 text-white">
                       业务引入
                     </div>
                     <h2 class="font-semibold text-slate-800 text-sm">
@@ -311,7 +170,7 @@
                   >
                 </div>
                 <div
-                  class="text-slate-600 leading-relaxed card-desc"
+                  class="text-slate-600 leading-relaxed index-card-desc"
                   title="智能体已解析纪要并更新客户画像。专属综合服务方案初版已生成，涵盖代销、极速交易、两融、投研。待办：二次拜访，呈现方案并确认。"
                 >
                   智能体已解析纪要并更新客户画像。专属综合服务方案初版已生成，涵盖代销、极速交易、两融、投研。待办：二次拜访，呈现方案并确认。
@@ -365,12 +224,12 @@
 
             <!-- 卡片3：综合服务方案获认可 - 交易服务 -->
             <div
-              class="scroll-snap-item bg-white rounded-xl border-l-4 border-l-emerald-500 border border-slate-100/80 overflow-hidden card-uniform"
+              class="index-scroll-snap-item bg-white rounded-xl border-l-4 border-l-emerald-500 border border-slate-100/80 overflow-hidden index-card-uniform"
             >
               <div class="p-2.5 space-y-1.5 flex-1 flex flex-col min-h-0">
                 <div class="flex items-center justify-between gap-2 flex-wrap">
                   <div class="flex items-center gap-2">
-                    <div class="card-stage-header bg-emerald-500 text-white">
+                    <div class="index-card-stage-header bg-emerald-500 text-white">
                       交易服务
                     </div>
                     <h2 class="font-semibold text-slate-800 text-sm">
@@ -393,7 +252,7 @@
                   >
                 </div>
                 <div
-                  class="text-slate-600 leading-relaxed card-desc"
+                  class="text-slate-600 leading-relaxed index-card-desc"
                   title="客户已认可方案，愿意到华创开户，申请TradeX极速交易系统和算法交易系统。待办：协助办理开户及系统开通。"
                 >
                   客户已认可方案，愿意到华创开户，申请TradeX极速交易系统和算法交易系统。待办：协助办理开户及系统开通。
@@ -442,12 +301,12 @@
 
             <!-- 卡片4：北京博达富通基金 - 跟踪服务 -->
             <div
-              class="scroll-snap-item bg-white rounded-xl border-l-4 border-l-red-500 border border-slate-100/80 overflow-hidden card-uniform"
+              class="index-scroll-snap-item bg-white rounded-xl border-l-4 border-l-red-500 border border-slate-100/80 overflow-hidden index-card-uniform"
             >
               <div class="p-2.5 space-y-1.5 flex-1 flex flex-col min-h-0">
                 <div class="flex items-center justify-between gap-2 flex-wrap">
                   <div class="flex items-center gap-2">
-                    <div class="card-stage-header bg-red-500 text-white">
+                    <div class="index-card-stage-header bg-red-500 text-white">
                       跟踪服务
                     </div>
                     <h2 class="font-semibold text-slate-800 text-sm">
@@ -474,7 +333,7 @@
                   >
                 </div>
                 <div
-                  class="text-slate-600 leading-relaxed card-desc"
+                  class="text-slate-600 leading-relaxed index-card-desc"
                   title="客户被交易所谴责，部分产品限制交易。待办：落实交易情况，召开易信会议形成处理方案。"
                 >
                   客户被交易所发函谴责，部分产品限制交易。待办：落实交易情况，组织者智能体协同多部门召开易信会议形成处理方案。
@@ -543,7 +402,7 @@
               <img
                 src="images/我的客户.jpg"
                 alt="我的客户"
-                class="w-16 h-16 rounded-full object-cover border-2 border-indigo-200/80 avatar-ring"
+                class="w-16 h-16 rounded-full object-cover border-2 border-indigo-200/80 index-avatar-ring"
               />
               <span class="text-xs text-slate-500">我的客户</span>
             </a>
@@ -555,7 +414,7 @@
               <img
                 src="images/我的任务.jpg"
                 alt="我的任务"
-                class="w-16 h-16 rounded-full object-cover border-2 border-amber-200/80 avatar-ring"
+                class="w-16 h-16 rounded-full object-cover border-2 border-amber-200/80 index-avatar-ring"
               />
               <span class="text-xs text-slate-500">我的任务</span>
             </a>
@@ -567,7 +426,7 @@
               <img
                 src="images/圆桌会议.png"
                 alt="圆桌会议"
-                class="w-16 h-16 rounded-full object-cover border-2 border-emerald-200/80 avatar-ring"
+                class="w-16 h-16 rounded-full object-cover border-2 border-emerald-200/80 index-avatar-ring"
               />
               <span class="text-xs text-slate-500">圆桌会议</span>
             </a>
@@ -579,7 +438,7 @@
               <img
                 src="images/开户数字人.jpg"
                 alt="开户数字人"
-                class="w-16 h-16 rounded-full object-cover border-2 border-emerald-200/80 avatar-ring"
+                class="w-16 h-16 rounded-full object-cover border-2 border-emerald-200/80 index-avatar-ring"
               />
               <span class="text-xs text-slate-500">开户服务</span>
             </a>
@@ -591,7 +450,7 @@
               <img
                 src="images/交易服务数字人.jpg"
                 alt="交易服务数字人"
-                class="w-16 h-16 rounded-full object-cover border-2 border-violet-200/80 avatar-ring"
+                class="w-16 h-16 rounded-full object-cover border-2 border-violet-200/80 index-avatar-ring"
               />
               <span class="text-xs text-slate-500">交易服务</span>
             </a>
@@ -603,7 +462,7 @@
               <img
                 src="images/预警服务数字人.jpg"
                 alt="预警服务数字人"
-                class="w-16 h-16 rounded-full object-cover border-2 border-amber-200/80 avatar-ring"
+                class="w-16 h-16 rounded-full object-cover border-2 border-amber-200/80 index-avatar-ring"
               />
               <span class="text-xs text-slate-500">预警服务</span>
             </a>
@@ -616,43 +475,15 @@
         <div class="subpage-footer-inner">
           <div class="subpage-footer-btns">
             <a href="员工-高净值客户经纪.html" class="subpage-footer-btn">
-              <svg
-                class="w-3 h-3 sm:w-3.5 sm:h-3.5 text-indigo-500 flex-shrink-0"
-                fill="currentColor"
-                viewBox="0 0 20 20"
-              >
-                <path
-                  d="M9 6a3 3 0 11-6 0 3 3 0 016 0zM17 6a3 3 0 11-6 0 3 3 0 016 0zM12.93 17c.046-.327.07-.66.07-1a6.97 6.97 0 00-1.5-4.33A5 5 0 0119 16v1h-6.07zM6 11a5 5 0 015 5v1H1v-1a5 5 0 015-5z"
-                />
-              </svg>
+              <img src="images/icons/icon-footer-users.svg" alt="">
               <span>高净值客户经纪</span>
             </a>
             <a href="员工-金融产品经纪.html" class="subpage-footer-btn">
-              <svg
-                class="w-3 h-3 sm:w-3.5 sm:h-3.5 text-violet-500 flex-shrink-0"
-                fill="currentColor"
-                viewBox="0 0 20 20"
-              >
-                <path
-                  fill-rule="evenodd"
-                  d="M4 4a2 2 0 00-2 2v4a2 2 0 002 2V6h10a2 2 0 00-2-2H4zm2 6a2 2 0 012-2h8a2 2 0 012 2v4a2 2 0 01-2 2H8a2 2 0 01-2-2v-4zm6 4a2 2 0 100-4 2 2 0 000 4z"
-                  clip-rule="evenodd"
-                />
-              </svg>
+              <img src="images/icons/icon-footer-wallet.svg" alt="">
               <span>金融产品经纪</span>
             </a>
             <a href="员工-金融机构经纪.html" class="subpage-footer-btn">
-              <svg
-                class="w-3 h-3 sm:w-3.5 sm:h-3.5 text-emerald-500 flex-shrink-0"
-                fill="currentColor"
-                viewBox="0 0 20 20"
-              >
-                <path
-                  fill-rule="evenodd"
-                  d="M4 4a2 2 0 012-2h8a2 2 0 012 2v12a1 1 0 110 2h-3a1 1 0 01-1-1v-2a1 1 0 00-1-1H9a1 1 0 00-1 1v2a1 1 0 01-1 1H4a1 1 0 110-2V4zm3 1h2v2H7V5zm2 4H7v2h2V9zm2-4h2v2h-2V5zm2 4h-2v2h2V9z"
-                  clip-rule="evenodd"
-                />
-              </svg>
+              <img src="images/icons/icon-footer-building.svg" alt="">
               <span>金融机构经纪</span>
             </a>
           </div>
@@ -665,19 +496,7 @@
               autocomplete="off"
             />
             <button type="submit" class="subpage-footer-send-btn" aria-label="发送">
-              <svg
-                class="w-5 h-5"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M5 10l7-7m0 0l7 7m-7-7v18"
-                />
-              </svg>
+              <img src="images/icons/icon-footer-send.svg" alt="">
             </button>
           </form>
         </div>
