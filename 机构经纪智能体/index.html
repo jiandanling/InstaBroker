@@ -26,12 +26,13 @@
       display: flex;
       flex-direction: column;
       overflow: hidden;
-      box-shadow: 0 1px 4px rgba(0,0,0,0.05);
-      transition: box-shadow 0.2s ease;
-      border-radius: 12px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 6px 16px rgba(0,0,0,0.04);
+      transition: box-shadow 0.25s ease, transform 0.2s ease;
+      border-radius: 14px;
     }
     .card-uniform:hover {
-      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      box-shadow: 0 4px 16px rgba(0,0,0,0.06), 0 12px 28px rgba(0,0,0,0.06);
+      transform: translateY(-1px);
     }
     .card-desc {
       display: -webkit-box;
@@ -42,10 +43,21 @@
       font-size: 13px;
     }
     .section-title {
-      font-size: 12px;
+      font-size: 13px;
       font-weight: 600;
-      color: #64748b;
-      letter-spacing: 0.03em;
+      color: #475569;
+      letter-spacing: 0.02em;
+    }
+    .quick-entry-card {
+      box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+      transition: all 0.2s ease;
+    }
+    .quick-entry-card:hover {
+      box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+      transform: translateY(-2px);
+    }
+    .avatar-ring {
+      box-shadow: 0 0 0 2px white, 0 2px 8px rgba(0,0,0,0.08);
     }
     /* 平板：待办卡片 2 列网格 */
     @media (min-width: 768px) and (max-width: 1023px) {
@@ -59,11 +71,11 @@
     }
   </style>
 </head>
-<body class="h-screen overflow-hidden bg-[#f1f5f9]">
+<body class="h-screen overflow-hidden bg-gradient-to-b from-white to-slate-100/40">
   <div class="h-full flex flex-col w-full max-w-7xl mx-auto">
     <!-- 顶部导航栏 -->
-    <header class="sticky top-0 z-20 bg-white/95 backdrop-blur-md border-b border-slate-200/80 safe-area-inset-top">
-      <div class="px-4 py-2.5 flex items-center justify-between">
+    <header class="sticky top-0 z-20 bg-white/98 backdrop-blur-md border-b border-slate-200/80 shadow-sm safe-area-inset-top">
+      <div class="px-4 py-3 flex items-center justify-between">
         <button class="w-9 h-9 rounded-lg flex items-center justify-center text-slate-600 hover:bg-slate-100 transition-colors" aria-label="菜单">
           <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
@@ -80,16 +92,16 @@
 
     <!-- 主内容区：滚动条仅在此区域内，不延伸到底部固定区 -->
     <main class="flex-1 min-h-0 overflow-y-auto overflow-x-hidden px-4 py-4 pb-6">
-      <!-- 区块：待办事项 -->
+      <!-- 区块：今日任务 -->
       <section class="mb-6">
         <h2 class="section-title flex items-center gap-2 mb-2">
           <span class="w-1 h-3.5 rounded-full bg-indigo-500"></span>
-          待办事项
+          今日任务
         </h2>
         <div id="cardScroller" class="overflow-x-auto scroll-snap-x flex gap-2.5 pb-1 -mx-4 px-4 lg:mx-0 lg:px-0 scrollbar-hide" style="scrollbar-width: none; -ms-overflow-style: none;">
 
         <!-- 卡片1：博达富通基金 - 拓客准备 -->
-        <div class="scroll-snap-item flex-shrink-0 flex-1 min-w-[240px] max-w-[300px] bg-white rounded-xl border-l-4 border-l-indigo-500 border border-slate-100 overflow-hidden card-uniform">
+        <div class="scroll-snap-item flex-shrink-0 flex-1 min-w-[240px] max-w-[300px] bg-white rounded-xl border-l-4 border-l-indigo-500 border border-slate-100/80 overflow-hidden card-uniform">
           <div class="p-3 space-y-2 flex-1 flex flex-col min-h-0">
             <div class="flex items-center justify-between gap-2 flex-wrap">
               <div class="flex items-center gap-2">
@@ -123,7 +135,7 @@
           </div>
         </div>
         <!-- 卡片2：机构经纪组织者智能体 - 业务引入 -->
-        <div class="scroll-snap-item flex-shrink-0 flex-1 min-w-[240px] max-w-[300px] bg-white rounded-xl border-l-4 border-l-violet-500 border border-slate-100 overflow-hidden card-uniform">
+        <div class="scroll-snap-item flex-shrink-0 flex-1 min-w-[240px] max-w-[300px] bg-white rounded-xl border-l-4 border-l-violet-500 border border-slate-100/80 overflow-hidden card-uniform">
           <div class="p-3 space-y-2 flex-1 flex flex-col min-h-0">
             <div class="flex items-center justify-between gap-2 flex-wrap">
               <div class="flex items-center gap-2">
@@ -158,7 +170,7 @@
         </div>
 
         <!-- 卡片3：综合服务方案获认可 - 交易服务 -->
-        <div class="scroll-snap-item flex-shrink-0 flex-1 min-w-[240px] max-w-[300px] bg-white rounded-xl border-l-4 border-l-emerald-500 border border-slate-100 overflow-hidden card-uniform">
+        <div class="scroll-snap-item flex-shrink-0 flex-1 min-w-[240px] max-w-[300px] bg-white rounded-xl border-l-4 border-l-emerald-500 border border-slate-100/80 overflow-hidden card-uniform">
           <div class="p-3 space-y-2 flex-1 flex flex-col min-h-0">
             <div class="flex items-center justify-between gap-2 flex-wrap">
               <div class="flex items-center gap-2">
@@ -193,7 +205,7 @@
         </div>
 
         <!-- 卡片4：北京博达富通基金 - 跟踪服务 -->
-        <div class="scroll-snap-item flex-shrink-0 flex-1 min-w-[240px] max-w-[300px] bg-white rounded-xl border-l-4 border-l-red-500 border border-slate-100 overflow-hidden card-uniform">
+        <div class="scroll-snap-item flex-shrink-0 flex-1 min-w-[240px] max-w-[300px] bg-white rounded-xl border-l-4 border-l-red-500 border border-slate-100/80 overflow-hidden card-uniform">
           <div class="p-3 space-y-2 flex-1 flex flex-col min-h-0">
             <div class="flex items-center justify-between gap-2 flex-wrap">
               <div class="flex items-center gap-2">
@@ -240,10 +252,12 @@
             快捷入口
           </h2>
           <div class="grid grid-cols-1 sm:grid-cols-3 gap-2">
-            <a href="员工-我的客户.html" class="block bg-white rounded-lg border border-slate-100 overflow-hidden transition-all duration-200 hover:shadow-md hover:border-slate-200">
+            <a href="员工-我的客户.html" class="block bg-white rounded-xl border border-slate-100/80 overflow-hidden quick-entry-card">
               <div class="p-3">
                 <div class="flex items-center gap-2 mb-2">
-                  <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-indigo-500 to-violet-600 flex items-center justify-center text-white text-sm">👥</div>
+                  <div class="w-8 h-8 rounded-lg bg-indigo-50 flex items-center justify-center flex-shrink-0">
+                    <svg class="w-4 h-4 text-indigo-600" fill="currentColor" viewBox="0 0 20 20"><path d="M9 6a3 3 0 11-6 0 3 3 0 016 0zM17 6a3 3 0 11-6 0 3 3 0 016 0zM12.93 17c.046-.327.07-.66.07-1a6.97 6.97 0 00-1.5-4.33A5 5 0 0119 16v1h-6.07zM6 11a5 5 0 015 5v1H1v-1a5 5 0 015-5z"/></svg>
+                  </div>
                   <span class="font-semibold text-slate-800 text-sm">我的客户</span>
                 </div>
                 <div class="grid grid-cols-3 gap-1.5">
@@ -262,10 +276,12 @@
                 </div>
               </div>
             </a>
-            <a href="员工-我的任务.html" class="block bg-white rounded-lg border border-slate-100 overflow-hidden transition-all duration-200 hover:shadow-md hover:border-slate-200">
+            <a href="员工-我的任务.html" class="block bg-white rounded-xl border border-slate-100/80 overflow-hidden quick-entry-card">
               <div class="p-3">
                 <div class="flex items-center gap-2 mb-2">
-                  <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-amber-500 to-orange-600 flex items-center justify-center text-white text-sm">📋</div>
+                  <div class="w-8 h-8 rounded-lg bg-amber-100/80 flex items-center justify-center flex-shrink-0">
+                    <svg class="w-4 h-4 text-amber-600" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd"/></svg>
+                  </div>
                   <span class="font-semibold text-slate-800 text-sm">我的任务</span>
                 </div>
                 <div class="grid grid-cols-3 gap-1.5">
@@ -284,10 +300,12 @@
                 </div>
               </div>
             </a>
-            <a href="员工-圆桌会议.html" class="block bg-white rounded-lg border border-slate-100 overflow-hidden transition-all duration-200 hover:shadow-md hover:border-slate-200">
+            <a href="员工-圆桌会议.html" class="block bg-white rounded-xl border border-slate-100/80 overflow-hidden quick-entry-card">
               <div class="p-3">
                 <div class="flex items-center gap-2 mb-2">
-                  <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-emerald-500 to-teal-600 flex items-center justify-center text-white text-sm">🔄</div>
+                  <div class="w-8 h-8 rounded-lg bg-emerald-50 flex items-center justify-center flex-shrink-0">
+                    <svg class="w-4 h-4 text-emerald-600" fill="currentColor" viewBox="0 0 20 20"><path d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3zM6 8a2 2 0 11-4 0 2 2 0 014 0zM16 18v-3a5.972 5.972 0 00-.75-2.906A3.005 3.005 0 0119 15v3h-3zM4.75 12.094A5.973 5.973 0 004 15v3H1v-3a3 3 0 013.75-2.906z"/></svg>
+                  </div>
                   <span class="font-semibold text-slate-800 text-sm">圆桌会议</span>
                 </div>
                 <div class="grid grid-cols-2 gap-1.5">
@@ -312,15 +330,15 @@
           </h2>
           <div class="flex items-center justify-center gap-8 lg:justify-end lg:gap-10 mt-4 lg:mt-6">
             <a href="数字人-开户服务.html" class="flex flex-col items-center gap-2 transition-transform hover:scale-110" title="开户服务">
-              <img src="images/开户数字人.jpg" alt="开户数字人" class="w-16 h-16 rounded-full object-cover border-2 border-emerald-200/80" />
+              <img src="images/开户数字人.jpg" alt="开户数字人" class="w-16 h-16 rounded-full object-cover border-2 border-emerald-200/80 avatar-ring" />
               <span class="text-xs text-slate-500">开户服务</span>
             </a>
             <a href="数字人-交易服务.html" class="flex flex-col items-center gap-2 transition-transform hover:scale-110" title="交易服务">
-              <img src="images/交易服务数字人.jpg" alt="交易服务数字人" class="w-16 h-16 rounded-full object-cover border-2 border-violet-200/80" />
+              <img src="images/交易服务数字人.jpg" alt="交易服务数字人" class="w-16 h-16 rounded-full object-cover border-2 border-violet-200/80 avatar-ring" />
               <span class="text-xs text-slate-500">交易服务</span>
             </a>
             <a href="数字人-预警服务.html" class="flex flex-col items-center gap-2 transition-transform hover:scale-110" title="预警服务">
-              <img src="images/预警服务数字人.jpg" alt="预警服务数字人" class="w-16 h-16 rounded-full object-cover border-2 border-amber-200/80" />
+              <img src="images/预警服务数字人.jpg" alt="预警服务数字人" class="w-16 h-16 rounded-full object-cover border-2 border-amber-200/80 avatar-ring" />
               <span class="text-xs text-slate-500">预警服务</span>
             </a>
           </div>
@@ -329,11 +347,32 @@
 
     </main>
 
-    <!-- 底部固定区域：输入框 + 工具按钮 -->
-    <div class="flex-shrink-0 border-t border-slate-200/60">
-      <div class="px-4 py-2 max-w-7xl mx-auto">
+    <!-- 底部固定区域：工具按钮 + 输入框 -->
+    <div class="flex-shrink-0">
+      <div class="px-4 py-3 max-w-7xl mx-auto">
+        <!-- 工具按钮：输入框上方左侧 -->
+        <div class="flex items-center justify-start gap-2 overflow-x-auto scrollbar-hide py-1 mb-2" style="scrollbar-width: none; -ms-overflow-style: none;">
+          <a href="员工-高净值客户经纪.html" class="inline-flex items-center gap-2 px-3 py-1.5 rounded-xl bg-white/90 border border-slate-200/80 text-slate-600 hover:bg-slate-50 hover:border-slate-300/80 hover:shadow-md transition-all flex-shrink-0 shadow-sm">
+            <svg class="w-3.5 h-3.5 text-indigo-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M9 6a3 3 0 11-6 0 3 3 0 016 0zM17 6a3 3 0 11-6 0 3 3 0 016 0zM12.93 17c.046-.327.07-.66.07-1a6.97 6.97 0 00-1.5-4.33A5 5 0 0119 16v1h-6.07zM6 11a5 5 0 015 5v1H1v-1a5 5 0 015-5z"/>
+            </svg>
+            <span class="text-xs font-medium whitespace-nowrap">高净值客户经纪</span>
+          </a>
+          <a href="员工-金融产品经纪.html" class="inline-flex items-center gap-2 px-3 py-1.5 rounded-xl bg-white/90 border border-slate-200/80 text-slate-600 hover:bg-slate-50 hover:border-slate-300/80 hover:shadow-md transition-all flex-shrink-0 shadow-sm">
+            <svg class="w-3.5 h-3.5 text-violet-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M4 4a2 2 0 00-2 2v4a2 2 0 002 2V6h10a2 2 0 00-2-2H4zm2 6a2 2 0 012-2h8a2 2 0 012 2v4a2 2 0 01-2 2H8a2 2 0 01-2-2v-4zm6 4a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"/>
+            </svg>
+            <span class="text-xs font-medium whitespace-nowrap">金融产品经纪</span>
+          </a>
+          <a href="员工-金融机构经纪.html" class="inline-flex items-center gap-2 px-3 py-1.5 rounded-xl bg-white/90 border border-slate-200/80 text-slate-600 hover:bg-slate-50 hover:border-slate-300/80 hover:shadow-md transition-all flex-shrink-0 shadow-sm">
+            <svg class="w-3.5 h-3.5 text-emerald-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M4 4a2 2 0 012-2h8a2 2 0 012 2v12a1 1 0 110 2h-3a1 1 0 01-1-1v-2a1 1 0 00-1-1H9a1 1 0 00-1 1v2a1 1 0 01-1 1H4a1 1 0 110-2V4zm3 1h2v2H7V5zm2 4H7v2h2V9zm2-4h2v2h-2V5zm2 4h-2v2h2V9z" clip-rule="evenodd"/>
+            </svg>
+            <span class="text-xs font-medium whitespace-nowrap">金融机构经纪</span>
+          </a>
+        </div>
         <!-- 输入栏 -->
-        <form id="bottomInputForm" class="flex items-center gap-2 rounded-full bg-slate-200/60 px-3 py-2 mb-2">
+        <form id="bottomInputForm" class="flex items-center gap-2 rounded-xl bg-slate-100/90 border border-slate-200/60 px-4 py-2.5 shadow-sm">
             <input id="bottomInput" type="text" class="flex-1 bg-transparent border-0 outline-none text-slate-800 placeholder-slate-500 text-sm" placeholder="请输入您的问题或选择智能体" autocomplete="off" />
             <button type="submit" class="flex-shrink-0 p-1.5 text-slate-500 hover:text-slate-700 transition-colors rounded-full hover:bg-slate-300/50" aria-label="发送">
               <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -341,27 +380,6 @@
               </svg>
             </button>
           </form>
-        <!-- 工具按钮：图标+标题，同一行 -->
-        <div class="flex items-center justify-center gap-2 overflow-x-auto scrollbar-hide py-1" style="scrollbar-width: none; -ms-overflow-style: none;">
-          <a href="员工-高净值客户经纪.html" class="inline-flex items-center gap-2 px-2.5 py-1 rounded-lg bg-slate-100/80 border border-slate-200/80 text-slate-600 hover:bg-slate-200/60 hover:border-slate-300/80 transition-all flex-shrink-0">
-            <svg class="w-3.5 h-3.5 text-indigo-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-              <path d="M9 6a3 3 0 11-6 0 3 3 0 016 0zM17 6a3 3 0 11-6 0 3 3 0 016 0zM12.93 17c.046-.327.07-.66.07-1a6.97 6.97 0 00-1.5-4.33A5 5 0 0119 16v1h-6.07zM6 11a5 5 0 015 5v1H1v-1a5 5 0 015-5z"/>
-            </svg>
-            <span class="text-xs font-medium whitespace-nowrap">高净值客户经纪</span>
-          </a>
-          <a href="员工-金融产品经纪.html" class="inline-flex items-center gap-2 px-2.5 py-1 rounded-lg bg-slate-100/80 border border-slate-200/80 text-slate-600 hover:bg-slate-200/60 hover:border-slate-300/80 transition-all flex-shrink-0">
-            <svg class="w-3.5 h-3.5 text-violet-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-              <path fill-rule="evenodd" d="M4 4a2 2 0 00-2 2v4a2 2 0 002 2V6h10a2 2 0 00-2-2H4zm2 6a2 2 0 012-2h8a2 2 0 012 2v4a2 2 0 01-2 2H8a2 2 0 01-2-2v-4zm6 4a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"/>
-            </svg>
-            <span class="text-xs font-medium whitespace-nowrap">金融产品经纪</span>
-          </a>
-          <a href="员工-金融机构经纪.html" class="inline-flex items-center gap-2 px-2.5 py-1 rounded-lg bg-slate-100/80 border border-slate-200/80 text-slate-600 hover:bg-slate-200/60 hover:border-slate-300/80 transition-all flex-shrink-0">
-            <svg class="w-3.5 h-3.5 text-emerald-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-              <path fill-rule="evenodd" d="M4 4a2 2 0 012-2h8a2 2 0 012 2v12a1 1 0 110 2h-3a1 1 0 01-1-1v-2a1 1 0 00-1-1H9a1 1 0 00-1 1v2a1 1 0 01-1 1H4a1 1 0 110-2V4zm3 1h2v2H7V5zm2 4H7v2h2V9zm2-4h2v2h-2V5zm2 4h-2v2h2V9z" clip-rule="evenodd"/>
-            </svg>
-            <span class="text-xs font-medium whitespace-nowrap">金融机构经纪</span>
-          </a>
-        </div>
       </div>
     </div>
   </div>
