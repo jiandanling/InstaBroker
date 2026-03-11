@@ -48,35 +48,23 @@
                           金融机构客户
                         </span>
                         <span
-                          class="inline-flex items-center px-2 py-0.5 rounded-full bg-amber-50 border border-amber-200 text-[11px] font-medium text-amber-700"
-                        >
+                        class="inline-flex items-center px-2 py-0.5 rounded-full bg-blue-50 border border-blue-200 text-[11px] font-medium text-blue-700"
+                      >
                           未合作
                         </span>
                       </div>
                     </header>
 
-                    <!-- 拜访要点 -->
-                    <div
-                      class="bg-gradient-to-r from-blue-50 to-indigo-50 border-l-4 border-blue-400 p-2.5 rounded-lg"
-                    >
-                      <div class="space-y-2">
-                        <div class="flex items-center gap-2 task-item">
-                          <div
-                            class="w-1.5 h-1.5 bg-blue-600 rounded-full shadow-sm flex-shrink-0"
-                          ></div>
-                          <div class="text-sm text-blue-600">
-                            <span class="font-medium"
-                              >邀约客户，确定拜访时间</span
-                            >
-                          </div>
+                    <!-- 拜访要点（统一任务提示样式） -->
+                    <div class="task-hint-amber">
+                      <div class="space-y-1.5 task-hint-amber-body">
+                        <div>
+                          <span class="task-hint-amber-dot"></span>
+                          <span class="font-medium">邀约客户，确定拜访时间</span>
                         </div>
-                        <div class="flex items-center gap-2 task-item">
-                          <div
-                            class="w-1.5 h-1.5 bg-blue-600 rounded-full shadow-sm flex-shrink-0"
-                          ></div>
-                          <div class="text-sm text-blue-600">
-                            <span class="font-medium">了解客户需求</span>
-                          </div>
+                        <div>
+                          <span class="task-hint-amber-dot"></span>
+                          <span class="font-medium">了解客户需求</span>
                         </div>
                       </div>
                     </div>
@@ -90,7 +78,6 @@
                             合作机会分析
                           </div>
                         </div>
-                        <span class="text-[11px] text-slate-500">重点</span>
                       </div>
                       <div class="text-sm text-[#374151] space-y-1.5 leading-relaxed">
                         <div class="flex items-start gap-2">
@@ -270,8 +257,11 @@
                     <div class="pt-1.5">
                       <button
                         type="button"
-                        class="w-full py-2.5 bg-gradient-to-r from-slate-800 to-slate-600 text-white rounded-xl font-medium shadow-md hover:shadow-lg transition-all text-sm"
+                        class="btn-secondary-blue text-sm"
                       >
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+                          <path d="M2.003 5.884C2.003 4.844 2.84 4 3.878 4h1.222c.806 0 1.5.51 1.72 1.29l.558 2.01a1.6 1.6 0 01-.404 1.51l-1.02 1.02a9.35 9.35 0 004.42 4.42l1.02-1.02a1.6 1.6 0 011.51-.404l2.01.558A1.86 1.86 0 0116 14.9v1.222A1.88 1.88 0 0114.116 18C8.969 17.69 3.81 12.53 2.105 7.384A1.9 1.9 0 012.003 5.884z" />
+                        </svg>
                         呼叫业务支持
                       </button>
                     </div>
