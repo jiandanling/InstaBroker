@@ -124,6 +124,10 @@ body {
   display: none;
 }
 
+.scrollbar-gutter-stable {
+  scrollbar-gutter: stable;
+}
+
 /* ========== 子页面统一布局（与主界面一致） ========== */
 .subpage-layout {
   height: 100%;
@@ -530,6 +534,9 @@ form.subpage-footer-input-wrap {
 }
 
 /* 流程图 */
+.flow-diagram-svg {
+  max-height: 200px;
+}
 .flow-arrow {
   stroke: #94a3b8;
   stroke-width: 1.5;
