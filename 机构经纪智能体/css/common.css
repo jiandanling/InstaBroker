@@ -495,8 +495,7 @@ form.subpage-footer-input-wrap {
 
 /* 头像：AI / 用户 / 模型 */
 .ai-avatar {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+  /* 无背景色，仅作为头像图片容器 */
 }
 
 .user-avatar {
