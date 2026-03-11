@@ -125,7 +125,7 @@ body {
 }
 
 .scrollbar-gutter-stable {
-  scrollbar-gutter: stable;
+  scrollbar-gutter: stable both-edges;
 }
 
 /* ========== 子页面统一布局（与主界面一致） ========== */
@@ -338,19 +338,34 @@ body {
 }
 
 .phone-screen .subpage-footer-btns {
-  gap: 4px;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+  overflow: hidden;
+  padding: 4px 0 10px;
 }
 
 .phone-screen .subpage-footer-btn {
+  width: 100%;
+  justify-content: center;
   gap: 6px;
-  padding: 4px 10px;
+  padding: 6px 8px;
   font-size: 12px;
-  border-radius: 10px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.85);
+  border: 1px solid rgba(226, 232, 240, 0.9);
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04);
+  -webkit-tap-highlight-color: transparent;
 }
 
 .phone-screen .subpage-footer-btn img {
-  width: 0.75rem;
-  height: 0.75rem;
+  width: 1rem;
+  height: 1rem;
+}
+
+.phone-screen .subpage-footer-btn:active {
+  transform: translateY(1px);
+  background: rgba(248, 250, 252, 0.95);
 }
 
 .phone-screen main {
@@ -402,9 +417,9 @@ body {
   display: flex;
   align-items: center;
   gap: 8px;
-  border-radius: 12px;
+  border-radius: 16px;
   border: 1px solid rgba(226, 232, 240, 0.6);
-  padding: 10px 16px;
+  padding: 4px 12px;
 }
 
 form.subpage-footer-input-wrap {
@@ -702,11 +717,108 @@ form.subpage-footer-input-wrap {
   padding: 4px 8px;
 }
 
+/* 首页物料标签（pill）：抽取通用样式 + 颜色变体 */
+.index-material-pill {
+  display: inline-flex;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 9999px;
+  padding: 2px 8px;
+  font-size: 11px;
+  font-weight: 500;
+  border: 1px solid rgba(226, 232, 240, 0.8);
+}
+
+.index-material-pill--indigo {
+  border-color: rgba(199, 210, 254, 0.8); /* indigo-200/80 */
+  color: rgba(79, 70, 229, 0.9); /* indigo-600/90 */
+}
+.index-material-pill--blue {
+  border-color: rgba(191, 219, 254, 0.8); /* blue-200/80 */
+  color: rgba(37, 99, 235, 0.9); /* blue-600/90 */
+}
+.index-material-pill--emerald {
+  border-color: rgba(167, 243, 208, 0.8); /* emerald-200/80 */
+  color: rgba(5, 150, 105, 0.9); /* emerald-600/90 */
+}
+.index-material-pill--violet {
+  border-color: rgba(221, 214, 254, 0.8); /* violet-200/80 */
+  color: rgba(124, 58, 237, 0.9); /* violet-600/90 */
+}
+
 .index-card-stage-header {
   font-size: 11px;
   font-weight: 600;
   padding: 4px 8px;
   border-radius: 6px;
+}
+
+/* 首页任务卡片：四张卡片共用布局 */
+.index-task-card {
+  background: #ffffff;
+  border: 1px solid rgba(241, 245, 249, 0.8); /* slate-100/80 */
+  overflow: hidden;
+}
+
+.index-task-card-body {
+  padding: 10px; /* p-2.5 */
+  display: flex;
+  flex-direction: column;
+  gap: 6px; /* space-y-1.5 */
+  flex: 1 1 auto;
+  min-height: 0;
+}
+
+.index-task-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px; /* gap-2 */
+  flex-wrap: wrap;
+}
+
+.index-task-card-title {
+  font-weight: 600;
+  color: #1e293b; /* slate-800 */
+  font-size: 14px; /* text-sm */
+}
+
+.index-task-card-time {
+  font-size: 11px; /* text-[11px] */
+  color: #94a3b8; /* slate-400 */
+}
+
+.index-task-card-subline {
+  font-size: 12px; /* text-xs */
+  color: #64748b; /* slate-500 */
+}
+
+.index-task-card-panel {
+  background: rgba(248, 250, 252, 0.7); /* slate-50/70 */
+  border-radius: 8px; /* rounded-lg */
+  padding: 8px 10px; /* px-2.5 py-2 */
+  border: 1px solid #f1f5f9; /* slate-100 */
+  flex-shrink: 0;
+}
+
+.index-task-card-panel-topline {
+  font-size: 11px; /* text-[11px] */
+  color: #64748b; /* slate-500 */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  margin-bottom: 6px; /* mb-1.5 */
+}
+
+.index-task-card-action {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-weight: 500;
+  font-size: 12px; /* text-xs */
+  margin-top: auto;
+  align-self: flex-end;
+  transform: translateY(2px); /* translate-y-0.5 */
 }
 
 .index-card-uniform {
