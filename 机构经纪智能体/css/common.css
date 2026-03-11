@@ -527,6 +527,24 @@ form.subpage-footer-input-wrap {
   width: 100%;
 }
 
+/* 聊天消息：统一外框（用于智能体消息容器） */
+.chat-msg-shell {
+  background: #ffffff;
+  border: 1px solid rgba(226, 232, 240, 0.9); /* slate-200/90 */
+  border-radius: 1rem; /* rounded-2xl */
+  padding: 0.75rem; /* p-3 */
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.06);
+  transition: transform 0.2s ease, box-shadow 0.25s ease;
+}
+
+.chat-msg-shell:hover {
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+  transform: translateY(-1px);
+}
+
 /* 智能体头像容器（对话中左侧圆形头像） */
 .ai-avatar-wrap {
   width: 2.25rem;

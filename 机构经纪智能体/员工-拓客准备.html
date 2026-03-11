@@ -8,7 +8,10 @@
     <link rel="stylesheet" href="css/common.css" />
     <script src="js/spa-wrapper.js"></script>
     <script>
-      if (window.__InstaBrokerSPA__ && window.__InstaBrokerSPA__.ensureWrappedInIndex) {
+      if (
+        window.__InstaBrokerSPA__ &&
+        window.__InstaBrokerSPA__.ensureWrappedInIndex
+      ) {
         window.__InstaBrokerSPA__.ensureWrappedInIndex("员工-拓客准备.html");
       }
     </script>
@@ -22,41 +25,35 @@
           <section class="min-w-0">
             <div class="message-row message-enter w-full">
               <div class="ai-avatar-wrap ai-avatar">
-                <img src="images/icons/icon-ai-avatar.png" alt="" class="ai-avatar-img" aria-hidden="true" />
+                <img
+                  src="images/icons/icon-ai-avatar.png"
+                  alt=""
+                  class="ai-avatar-img"
+                  aria-hidden="true"
+                />
               </div>
               <div class="flex-1 min-w-0">
-                <div class="gradient-border card-hover">
-                  <div class="bg-white rounded-2xl p-3 flex flex-col gap-3">
-                    <!-- 客户信息区 -->
-                    <div
-                      class="flex items-center gap-3 bg-gradient-to-r from-blue-50 to-purple-50 rounded-lg p-2.5 border border-blue-100"
-                    >
+                <div class="chat-msg-shell">
+                    <!-- 客户信息（方案A：标题 + 标签） -->
+                    <header class="min-w-0">
                       <div
-                        class="w-10 h-10 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center shadow-md flex-shrink-0"
+                        class="font-bold text-slate-900 text-sm leading-tight truncate"
                       >
-                        <svg
-                          class="w-6 h-6 text-white"
-                          fill="currentColor"
-                          viewBox="0 0 20 20"
-                        >
-                          <path
-                            fill-rule="evenodd"
-                            d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"
-                            clip-rule="evenodd"
-                          />
-                        </svg>
+                        北京博达富通基金管理有限公司
                       </div>
-                      <div class="flex-1 min-w-0">
-                        <div
-                          class="font-bold text-[#1E293B] text-sm leading-tight truncate"
+                      <div class="mt-1 flex flex-wrap items-center gap-1.5">
+                        <span
+                          class="inline-flex items-center px-2 py-0.5 rounded-full bg-slate-50 border border-slate-200 text-[11px] font-medium text-slate-700"
                         >
-                          北京博达富通基金管理有限公司
-                        </div>
-                        <div class="text-xs text-[#64748B] mt-0.5">
-                          金融机构客户 · 未合作
-                        </div>
+                          金融机构客户
+                        </span>
+                        <span
+                          class="inline-flex items-center px-2 py-0.5 rounded-full bg-amber-50 border border-amber-200 text-[11px] font-medium text-amber-700"
+                        >
+                          未合作
+                        </span>
                       </div>
-                    </div>
+                    </header>
 
                     <!-- 拜访要点 -->
                     <div
@@ -84,47 +81,36 @@
                       </div>
                     </div>
 
-                    <!-- 合作机会分析 -->
-                    <div class="space-y-2">
-                      <div
-                        class="font-bold text-[#1E293B] text-xs bg-gradient-to-r from-purple-50 to-pink-50 px-3 py-1.5 rounded-lg border border-purple-100"
-                      >
-                        合作机会分析
+                    <!-- 合作机会分析（放到下方卡片） -->
+                    <div class="bg-white rounded-xl border border-slate-100 px-3 py-3 space-y-2">
+                      <div class="flex items-center justify-between">
+                        <div class="flex items-center gap-2">
+                          <span class="w-1 h-3.5 rounded-full bg-violet-500"></span>
+                          <div class="font-bold text-slate-900 text-sm">
+                            合作机会分析
+                          </div>
+                        </div>
+                        <span class="text-[11px] text-slate-500">重点</span>
                       </div>
-                      <div
-                        class="text-sm text-[#374151] space-y-1.5 bg-white/60 rounded-lg p-3 border border-gray-100"
-                      >
+                      <div class="text-sm text-[#374151] space-y-1.5 leading-relaxed">
                         <div class="flex items-start gap-2">
                           <span class="text-blue-600 font-bold">•</span>
-                          <span
-                            ><strong>代销服务</strong> ·
-                            过往业绩优秀，风险收益满足公司代销条件，合作后可以推代销。</span
-                          >
+                          <span><strong>代销服务</strong> · 过往业绩优秀，风险收益满足公司代销条件，合作后可以推代销。</span>
                         </div>
                         <div class="flex items-start gap-2">
                           <span class="text-blue-600 font-bold">•</span>
-                          <span
-                            ><strong>极速交易系统</strong> ·
-                            量化对冲策略对交易时延要求高，可介绍公司极速交易系统，处于行业第一梯队。</span
-                          >
+                          <span><strong>极速交易系统</strong> · 量化对冲策略对交易时延要求高，可介绍公司极速交易系统，处于行业第一梯队。</span>
                         </div>
                         <div class="flex items-start gap-2">
                           <span class="text-blue-600 font-bold">•</span>
-                          <span
-                            ><strong>两融</strong> ·
-                            匹配融资、融券，满足策略需求同时提升资金利用率。</span
-                          >
+                          <span><strong>两融</strong> · 匹配融资、融券，满足策略需求同时提升资金利用率。</span>
                         </div>
                         <div class="flex items-start gap-2">
                           <span class="text-blue-600 font-bold">•</span>
-                          <span
-                            ><strong>投研</strong> ·
-                            借助公司投研能力，优化投资决策并帮助规避风险。</span
-                          >
+                          <span><strong>投研</strong> · 借助公司投研能力，优化投资决策并帮助规避风险。</span>
                         </div>
                       </div>
                     </div>
-
                     <!-- 文件下载区 -->
                     <div class="flex flex-col gap-2 mt-1">
                       <div
@@ -216,7 +202,7 @@
                           <div
                             class="text-sm text-[#1E293B] font-bold truncate"
                           >
-                          北京博达富通拜访提纲.pdf
+                            北京博达富通拜访提纲.pdf
                           </div>
                           <div class="text-xs text-[#64748B] mt-0.5">
                             PDF文件 · 0.6MB
@@ -267,7 +253,7 @@
                           <div
                             class="text-sm text-[#1E293B] font-bold truncate"
                           >
-                          北京博达富通分析报告.pdf
+                            北京博达富通分析报告.pdf
                           </div>
                           <div class="text-xs text-[#64748B] mt-0.5">
                             PDF文件 · 1.8MB
@@ -289,7 +275,6 @@
                         呼叫业务支持
                       </button>
                     </div>
-                  </div>
                 </div>
               </div>
             </div>
@@ -299,136 +284,3 @@
     </main>
   </body>
 </html>
-        <div class="ai-avatar-wrap ai-avatar">
-          <img src="images/icons/icon-ai-avatar.png" alt="" class="ai-avatar-img" aria-hidden="true" />
-        </div>
-        <div class="flex-1">
-          <!-- 推荐卡片 -->
-          <div class="gradient-border card-hover">
-            <div class="p-4 flex flex-col gap-4">
-              <div class="flex items-center justify-between">
-                <div class="flex items-center gap-2">
-                  <div class="w-6 h-6 bg-gradient-to-br from-blue-500 to-purple-600 rounded flex items-center justify-center shadow-md">
-                    <svg class="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
-                      <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"/>
-                    </svg>
-                  </div>
-                  <span class="font-bold ">客户拜访任务</span>
-                </div>
-              </div>
-              
-              <!-- 客户信息区 -->
-              <div class="flex items-center gap-3 bg-gradient-to-r from-blue-50 to-purple-50 rounded-lg p-3 border border-blue-100">
-                <div class="w-12 h-12 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center shadow-md">
-                  <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
-                    <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"/>
-                  </svg>
-                </div>
-                <div class="flex-1">
-                  <div class="font-bold text-[#1E293B] text-base">北京博达富通基金管理有限公司</div>
-                  <div class="text-sm text-[#64748B]">金融机构客户 | 未合作</div>
-                </div>
-              </div>
-              
-              <!-- 拜访要点 -->
-              <div class="bg-gradient-to-r from-blue-50 to-indigo-50 border-l-4 border-blue-400 p-3 rounded-lg shadow-sm">
-                <div class="space-y-3">
-                  <div class="flex items-center gap-2 task-item">
-                    <div class="w-1.5 h-1.5 bg-blue-600 rounded-full shadow-sm"></div>
-                    <div class="text-sm text-blue-600">
-                      <span class="font-medium">邀约客户，确定拜访时间</span>
-                    </div>
-                  </div>
-                  <div class="flex items-center gap-2 task-item">
-                    <div class="w-1.5 h-1.5 bg-blue-600 rounded-full shadow-sm"></div>
-                    <div class="text-sm text-blue-600">
-                      <span class="font-medium">了解客户需求</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              
-              <!-- 主要沟通内容 -->
-              <div class="space-y-3">
-                <div class="font-bold text-[#1E293B] text-sm bg-gradient-to-r from-purple-50 to-pink-50 px-3 py-2 rounded-lg border border-purple-100">合作机会分析</div>
-                <div class="text-sm text-[#374151] space-y-1 bg-white/50 rounded-lg p-3 border border-gray-100">
-                  <div class="flex items-start gap-2">
-                    <span class="text-blue-600 font-bold">•</span>
-                    <span><strong>代销服务</strong> - 过往业绩优秀，风险收益满足公司代销条件，合作后可以推代销 </span>
-                  </div>
-                  <div class="flex items-start gap-2">
-                    <span class="text-blue-600 font-bold">•</span>
-                    <span><strong>极速交易系统</strong> - 量化对冲策略对交易时延要求高，介绍公司极速交易系统，目前属于行业第一梯队</span>
-                  </div>
-                  <div class="flex items-start gap-2">
-                    <span class="text-blue-600 font-bold">•</span>
-                    <span><strong>两融</strong> - 量化对冲策略，需要匹配融资、融券，满足策略需求的同时提升资金利用率</span>
-                  </div>
-                  <div class="flex items-start gap-2">
-                    <span class="text-blue-600 font-bold">•</span>
-                    <span><strong>投研</strong> - 借助公司投研能力，帮助客户优化投资决策并规避风险，提升策略投资潜力</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          
-          <!-- 文件下载区 -->
-          <div class="flex flex-col gap-2 mt-3">
-            <div class="flex items-start mt-0">
-              <div class="flex-1">
-                <div class="bg-gradient-to-r from-blue-50 to-purple-50 rounded-xl px-4 py-3 flex items-center gap-3 shadow-lg border border-blue-100 card-hover">
-                  <svg class="w-7 h-7 text-[#2563EB] flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                    <rect x="4" y="2" width="16" height="20" rx="2" fill="#fff" stroke="#2563EB"/>
-                    <path d="M8 6h8M8 10h8M8 14h4" stroke="#2563EB" stroke-width="1.5" stroke-linecap="round"/>
-                    <rect x="7" y="17" width="6" height="2" rx="1" fill="#2563EB"/>
-                  </svg>
-                  <div class="flex-1 min-w-0">
-                    <div class="text-sm text-[#1E293B] font-bold truncate">华创机构经纪业务一页纸.pdf</div>
-                    <div class="text-xs text-[#64748B] mt-0.5">PDF文件 · 1.2MB</div>
-                  </div>
-                  <a href="#" class="text-[#2563EB] text-sm font-bold hover:underline transition bg-white px-3 py-1 rounded-lg shadow-sm">下载</a>
-                </div>
-              </div>
-            </div>
-            
-            <div class="flex items-start mt-2">
-              <div class="flex-1">
-                <div class="bg-gradient-to-r from-green-50 to-blue-50 rounded-xl px-4 py-3 flex items-center gap-3 shadow-lg border border-green-100 card-hover">
-                  <svg class="w-7 h-7 text-[#2563EB] flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                    <rect x="4" y="2" width="16" height="20" rx="2" fill="#fff" stroke="#2563EB"/>
-                    <path d="M8 6h8M8 10h8M8 14h4" stroke="#2563EB" stroke-width="1.5" stroke-linecap="round"/>
-                    <rect x="7" y="17" width="6" height="2" rx="1" fill="#2563EB"/>
-                  </svg>
-                  <div class="flex-1 min-w-0">
-                    <div class="text-sm text-[#1E293B] font-bold truncate">北京博达富通基金管理有限公司拜访提纲.pdf</div>
-                    <div class="text-xs text-[#64748B] mt-0.5">PDF文件 · 0.6MB</div>
-                  </div>
-                  <a href="#" class="text-[#2563EB] text-sm font-bold hover:underline transition bg-white px-3 py-1 rounded-lg shadow-sm">下载</a>
-                </div>
-              </div>
-            </div>
-            
-            <div class="flex items-start mt-2">
-              <div class="flex-1">
-                <div class="bg-gradient-to-r from-purple-50 to-pink-50 rounded-xl px-4 py-3 flex items-center gap-3 shadow-lg border border-purple-100 card-hover">
-                  <svg class="w-7 h-7 text-[#2563EB] flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                    <rect x="4" y="2" width="16" height="20" rx="2" fill="#fff" stroke="#2563EB"/>
-                    <path d="M8 6h8M8 10h8M8 14h4" stroke="#2563EB" stroke-width="1.5" stroke-linecap="round"/>
-                    <rect x="7" y="17" width="6" height="2" rx="1" fill="#2563EB"/>
-                  </svg>
-                  <div class="flex-1 min-w-0">
-                    <div class="text-sm text-[#1E293B] font-bold truncate">北京博达富通基金管理有限公司分析报告.pdf</div>
-                    <div class="text-xs text-[#64748B] mt-0.5">PDF文件 · 1.8MB</div>
-                  </div>
-                  <a href="#" class="text-[#2563EB] text-sm font-bold hover:underline transition bg-white px-3 py-1 rounded-lg shadow-sm">下载</a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </main>  
-  </div>
-</body>
-</html> 
