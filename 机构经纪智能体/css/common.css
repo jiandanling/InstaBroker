@@ -922,6 +922,14 @@ form.subpage-footer-input-wrap {
   color: #64748b; /* slate-500 */
 }
 
+/* 卡片来源说明：紧接 subline 下方，弱化展示 */
+.index-task-card-source {
+  font-size: 11px;
+  color: #94a3b8; /* slate-400 */
+  margin-top: 2px;
+  margin-bottom: 4px;
+}
+
 .index-task-card-panel {
   background: rgba(248, 250, 252, 0.7); /* slate-50/70 */
   border-radius: 8px; /* rounded-lg */
@@ -972,15 +980,23 @@ form.subpage-footer-input-wrap {
 }
 
 .index-card-desc {
-  display: -webkit-box;
-  -webkit-line-clamp: 3;
-  line-clamp: 3;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
   font-size: 13px;
   line-height: 1.5;
-  /* 保证首页四个任务卡片描述区高度一致（3 行文本的高度），方便下方区域对齐 */
-  min-height: 3.75rem;
+}
+
+/* 任务行：用字重与主题色强调，无竖线（在物料卡片内时置顶） */
+.index-card-task {
+  display: block;
+  margin-top: 0.5rem;
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1.45;
+  color: inherit;
+}
+
+.index-task-card-panel .index-card-task {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
 }
 
 .index-section-title {

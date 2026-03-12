@@ -35,7 +35,7 @@
               <div class="flex-1 flex flex-col items-end min-w-0">
                 <div class="text-xs text-slate-500 mb-1 mr-1">机构经纪超级数字员工</div>
                 <div class="bg-indigo-50/80 border border-indigo-100 rounded-xl px-4 py-3 max-w-[90%] sm:max-w-[85%]">
-                  <p class="text-sm text-slate-700">查询北京博达富通基金在我司产品交易情况</p>
+                  <p class="text-sm text-slate-700">查询灵均投资在我司产品交易情况</p>
                 </div>
               </div>
             </div>
@@ -52,14 +52,14 @@
               <div class="flex-1 min-w-0">
                 <div class="text-xs text-slate-500 mb-1 ml-1">公司自动驾驶大模型</div>
                 <div class="chat-msg-shell">
-                  <div class="font-bold text-slate-800 text-sm mb-2">北京博达富通基金在我司产品交易情况</div>
+                  <div class="font-bold text-slate-800 text-sm mb-2">灵均投资在我司产品交易情况</div>
                   <div class="space-y-2">
                     <div class="flex items-center justify-between p-3 bg-emerald-50 rounded-lg border border-emerald-100">
-                      <span class="text-sm font-medium text-slate-800">博达全天候1号</span>
+                      <span class="text-sm font-medium text-slate-800">灵均量化1号</span>
                       <span class="text-xs font-semibold text-emerald-600 px-2.5 py-1 rounded-lg bg-white border border-emerald-200">交易正常</span>
                     </div>
                     <div class="flex items-center justify-between p-3 bg-red-50 rounded-lg border border-red-100">
-                      <span class="text-sm font-medium text-slate-800">博达全天候2号</span>
+                      <span class="text-sm font-medium text-slate-800">灵均量化2号</span>
                       <span class="text-xs font-semibold text-red-600 px-2.5 py-1 rounded-lg bg-white border border-red-200">限制交易</span>
                     </div>
                   </div>
@@ -67,7 +67,7 @@
                     <div class="space-y-1 task-hint-amber-body">
                       <div>
                         <span class="task-hint-amber-dot"></span>
-                        <span>检测到「博达全天候2号」限制交易，将发起圆桌会议协同多部门处置。</span>
+                        <span>检测到「灵均量化2号」限制交易，将发起圆桌会议协同多部门处置。</span>
                       </div>
                     </div>
                   </div>
@@ -127,8 +127,19 @@
 
       function scrollToBottom() {
         setTimeout(function () {
-          var el = document.getElementById("main-content");
-          if (el) el.scrollTo({ top: el.scrollHeight, behavior: "smooth" });
+          var list = document.getElementById("messageList");
+          var el = list ? list.parentElement : null;
+          while (el) {
+            var style = window.getComputedStyle(el);
+            var oy = style.overflowY || style.overflow;
+            if (oy === "auto" || oy === "scroll") {
+              el.scrollTo({ top: el.scrollHeight, behavior: "smooth" });
+              return;
+            }
+            el = el.parentElement;
+          }
+          var mainContent = document.getElementById("main-content");
+          if (mainContent) mainContent.scrollTo({ top: mainContent.scrollHeight, behavior: "smooth" });
         }, 100);
       }
 
@@ -180,7 +191,7 @@
                   '<div class="flex-1 min-w-0"><p class="text-xs font-bold text-slate-800 mb-1">风险管理组织者智能体</p><p class="text-xs text-slate-600 leading-relaxed">下一个交易日密切监测其交易行为，在保证交易策略的前提下，严格限制其交易速率和报单笔数。</p></div></div>' +
                   '<div class="flex items-start gap-3 p-3 bg-red-50 rounded-lg border border-red-100">' +
                   '<div class="flex-shrink-0 w-9 h-9 rounded-lg bg-gradient-to-br from-red-500 to-red-600 flex items-center justify-center text-white text-lg">📋</div>' +
-                  '<div class="flex-1 min-w-0"><p class="text-xs font-bold text-slate-800 mb-1">机构经纪组织者智能体</p><p class="text-xs text-slate-600 leading-relaxed">由客户经理与博达富通提前做好沟通，说明限制原因及后续安排。</p></div></div></div>'
+                  '<div class="flex-1 min-w-0"><p class="text-xs font-bold text-slate-800 mb-1">机构经纪组织者智能体</p><p class="text-xs text-slate-600 leading-relaxed">由客户经理与灵均投资提前做好沟通，说明限制原因及后续安排。</p></div></div></div>'
               )
             );
 
@@ -211,7 +222,7 @@
                       '<ul class="space-y-2 text-sm text-slate-600">' +
                       '<li class="flex items-start gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-indigo-500 flex-shrink-0 mt-1.5"></span>下一个交易日密切监测其交易行为</li>' +
                       '<li class="flex items-start gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-indigo-500 flex-shrink-0 mt-1.5"></span>在保证交易策略的前提下，严格限制其交易速率和报单笔数</li>' +
-                      '<li class="flex items-start gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-indigo-500 flex-shrink-0 mt-1.5"></span>由客户经理与博达富通提前做好沟通</li></ul>'
+                      '<li class="flex items-start gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-indigo-500 flex-shrink-0 mt-1.5"></span>由客户经理与灵均投资提前做好沟通</li></ul>'
                   )
                 );
 
@@ -247,7 +258,7 @@
                           '<div class="flex items-center gap-2">' +
                           '<svg class="w-5 h-5 text-green-600 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>' +
                           '<span class="font-medium text-green-700 text-sm">风险处置流程已完成</span></div>' +
-                          '<p class="text-sm text-slate-600 mt-2">圆桌会议已结束，处置意见已确认并发送。客户经理将按会议决策与博达富通沟通。</p>' +
+                          '<p class="text-sm text-slate-600 mt-2">圆桌会议已结束，处置意见已确认并发送。客户经理将按会议决策与灵均投资沟通。</p>' +
                           '</div></div></div>'
                       );
                     }, 800);

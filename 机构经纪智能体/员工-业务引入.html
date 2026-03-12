@@ -38,7 +38,7 @@
                       <div
                         class="font-bold text-slate-900 text-sm leading-tight truncate"
                       >
-                        北京博达富通基金管理有限公司
+                        九坤投资
                       </div>
                       <div class="mt-1 flex flex-wrap items-center gap-1.5">
                         <span
@@ -476,7 +476,7 @@
                       </svg>
                       <div class="flex-1">
                         <div class="text-sm font-medium text-[#1E293B]">
-                          （初版）北京博达富通基金管理有限公司综合服务方案.docx
+                          （初版）九坤投资综合服务方案.docx
                         </div>
                         <div class="text-xs text-[#64748B]">
                           Word文档 · 2.1MB
@@ -525,32 +525,27 @@
 
       function scrollToBottom() {
         try {
-          // 在独立打开子页面时：滚动 subpage-main 自己
           var container = document.querySelector(".subpage-main");
-
-          // 在通过 index.html 手机壳打开时：真实滚动容器是手机壳里的 main
           if (!container) {
-            var phoneMain = document.querySelector(".phone-screen main");
-            if (phoneMain) container = phoneMain;
+            var anchor = document.querySelector(".message-list-column") || document.querySelector(".visit-page-root");
+            var el = anchor ? anchor.parentElement : null;
+            while (el) {
+              var style = window.getComputedStyle(el);
+              var oy = style.overflowY || style.overflow;
+              if (oy === "auto" || oy === "scroll") {
+                container = el;
+                break;
+              }
+              el = el.parentElement;
+            }
           }
-
-          // 兜底：页面本身的滚动容器
           if (!container) {
-            container =
-              document.scrollingElement ||
-              document.documentElement ||
-              document.body;
+            container = document.scrollingElement || document.documentElement || document.body;
           }
-
           if (!container) return;
-
-          // 等待一帧，让新消息完成渲染后再滚动
           setTimeout(function () {
             try {
-              container.scrollTo({
-                top: container.scrollHeight,
-                behavior: "smooth",
-              });
+              container.scrollTo({ top: container.scrollHeight, behavior: "smooth" });
             } catch (e2) {}
           }, 50);
         } catch (e) {}
@@ -603,7 +598,7 @@
         showUploadSuccess(file.name);
       };
       window.simulateAudioUpload = function () {
-        showUploadSuccess("北京博达富通基金拜访录音.mp3");
+        showUploadSuccess("九坤投资拜访录音.mp3");
       };
       window.showFeedbackForm = function () {
         fromEditMode = false;
