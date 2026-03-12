@@ -301,114 +301,129 @@
           var ul = document.getElementById("companyList");
           if (!ul) return;
 
-          // 交易服务：与跟踪服务类似，直接显示 2～3 张面板，每家公司不同任务
+          // 交易服务：与首页卡片 3 格式一致，直接显示 2～3 张面板
           if (stageId === "jiaoyi") {
             ul.innerHTML =
-              '<li class="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm hover:shadow-md hover:border-slate-300 transition-all">' +
-              '<a class="block" href="员工-交易服务.html">' +
-              '<div class="flex items-center justify-between mb-1.5">' +
+              '<li class="index-task-card index-card-uniform border-l-4 border-l-emerald-500">' +
+              '<div class="index-task-card-body">' +
+              '<div class="index-task-card-header">' +
               '<div class="flex items-center gap-2">' +
-              '<span class="index-card-stage-header bg-emerald-500 text-white">交易服务</span>' +
-              '<span class="font-bold text-slate-900 text-sm">明汯投资</span>' +
+              '<div class="index-card-stage-header bg-emerald-500 text-white">交易服务</div>' +
+              '<h2 class="index-task-card-title">明汯投资</h2>' +
               "</div>" +
-              '<span class="text-[11px] text-slate-500">今天</span>' +
+              '<span class="index-task-card-time">今天</span>' +
               "</div>" +
-              '<div class="index-task-card-subline mt-1">金融机构客户 | 已认可综合服务方案 | 业务办理</div>' +
+              '<div class="index-task-card-subline">金融机构客户 | 已认可综合服务方案 | 业务办理</div>' +
               '<div class="index-task-card-source">材料由公司自动驾驶大模型提供</div>' +
-              '<div class="text-slate-600 leading-relaxed text-sm mt-2 index-card-desc">' +
-              "明汯已认可综合服务方案，拟在华创开立机构账户并申请TradeX极速交易系统与算法交易系统，规模超500亿。" +
-              "</div>" +
-              '<div class="mt-3 text-emerald-600 text-xs font-medium">' +
-              "任务：办理开户及申请PB交易系统。智能体已准备好机构客户开户指引、PB交易系统申请指南，可协助推进开户与系统接入。" +
-              "</div>" +
-              '<div class="mt-3 flex justify-end">' +
-              '<span class="index-task-card-action text-emerald-600">立即处理 →</span>' +
-              "</div>" +
-              "</a>" +
-              "</li>" +
-              '<li class="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm hover:shadow-md hover:border-slate-300 transition-all">' +
-              '<a class="block" href="#" onclick="return false;">' +
-              '<div class="flex items-center justify-between mb-1.5">' +
+              '<div class="text-slate-600 leading-relaxed index-card-desc">明汯已认可综合服务方案，拟在华创开立机构账户并申请TradeX极速交易系统与算法交易系统，规模超500亿。</div>' +
+              '<div class="index-task-card-panel">' +
+              '<div class="index-card-task text-emerald-500">任务：办理开户及申请PB交易系统</div>' +
+              '<div class="flex items-center gap-1.5 text-slate-600 text-xs font-medium mb-1">' +
+              '<svg class="index-icon-small" aria-hidden="true"><use xlink:href="images/index-icons.svg#icon-bolt"></use></svg>' +
+              '<span>智能体已为您准备好：</span></div>' +
+              '<div class="flex flex-wrap items-center gap-1.5 text-slate-600 text-xs font-medium">' +
+              '<span class="index-material-pill index-material-pill--emerald" title="机构客户开户指引">机构客户开户指引</span>' +
+              '<span class="index-material-pill index-material-pill--emerald" title="PB交易系统申请指南">PB交易系统申请指南</span>' +
+              "</div></div>" +
+              '<div class="index-task-card-footer">' +
+              '<a href="员工-交易服务.html" class="index-task-card-action text-emerald-600">立即处理 →</a>' +
+              "</div></div></li>" +
+              '<li class="index-task-card index-card-uniform border-l-4 border-l-emerald-500">' +
+              '<div class="index-task-card-body">' +
+              '<div class="index-task-card-header">' +
               '<div class="flex items-center gap-2">' +
-              '<span class="index-card-stage-header bg-emerald-500 text-white">交易服务</span>' +
-              '<span class="font-bold text-slate-900 text-sm">弘玺投资</span>' +
+              '<div class="index-card-stage-header bg-emerald-500 text-white">交易服务</div>' +
+              '<h2 class="index-task-card-title">弘玺投资</h2>' +
               "</div>" +
-              '<span class="text-[11px] text-slate-500">昨天</span>' +
+              '<span class="index-task-card-time">昨天</span>' +
               "</div>" +
-              '<div class="index-task-card-subline mt-1">金融机构客户 | 开户材料准备中</div>' +
-              '<div class="text-slate-600 leading-relaxed text-sm mt-2 index-card-desc">' +
-              "弘玺正在补充机构客户开户资料，并评估PB交易系统对接方案。需协助客户梳理开户资料清单与内部流转节点，缩短开户周期。" +
-              "</div>" +
-              '<div class="mt-3 text-emerald-600 text-xs font-medium">' +
-              "任务：跟进开户材料齐备度与合规审核进度，智能体可生成资料清单与进度看板，便于与客户及内部同步。" +
-              "</div>" +
-              "</a>" +
-              "</li>" +
-              '<li class="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm hover:shadow-md hover:border-slate-300 transition-all">' +
-              '<a class="block" href="#" onclick="return false;">' +
-              '<div class="flex items-center justify-between mb-1.5">' +
+              '<div class="index-task-card-subline">金融机构客户 | 开户材料准备中</div>' +
+              '<div class="text-slate-600 leading-relaxed index-card-desc">弘玺正在补充机构客户开户资料，并评估PB交易系统对接方案。需协助客户梳理开户资料清单与内部流转节点，缩短开户周期。</div>' +
+              '<div class="index-task-card-panel">' +
+              '<div class="index-card-task text-emerald-500">任务：跟进开户材料齐备度与合规审核进度</div>' +
+              '<div class="text-slate-600 text-xs font-medium">' +
+              '<div class="flex items-center gap-1.5"><svg class="index-icon-small" aria-hidden="true"><use xlink:href="images/index-icons.svg#icon-bolt"></use></svg>' +
+              '<span>智能体可为您定制：</span></div>' +
+              '<div class="flex flex-wrap items-center gap-1.5 mt-1">' +
+              '<span class="index-material-pill index-material-pill--emerald" title="开户资料清单与进度看板">开户资料清单与进度看板</span>' +
+              "</div></div>" +
+              '<div class="index-task-card-footer">' +
+              '<span class="index-task-card-action text-emerald-600 text-opacity-70">立即处理 →</span>' +
+              "</div></div></li>" +
+              '<li class="index-task-card index-card-uniform border-l-4 border-l-emerald-500">' +
+              '<div class="index-task-card-body">' +
+              '<div class="index-task-card-header">' +
               '<div class="flex items-center gap-2">' +
-              '<span class="index-card-stage-header bg-emerald-500 text-white">交易服务</span>' +
-              '<span class="font-bold text-slate-900 text-sm">景腾量化</span>' +
+              '<div class="index-card-stage-header bg-emerald-500 text-white">交易服务</div>' +
+              '<h2 class="index-task-card-title">景腾量化</h2>' +
               "</div>" +
-              '<span class="text-[11px] text-slate-500">两天前</span>' +
+              '<span class="index-task-card-time">两天前</span>' +
               "</div>" +
-              '<div class="index-task-card-subline mt-1">金融机构客户 | 交易系统联测</div>' +
-              '<div class="text-slate-600 leading-relaxed text-sm mt-2 index-card-desc">' +
-              "景腾已完成账户开立，正与华创开展交易系统联测。需按联测计划推进环境配置、权限开通与试单验证。" +
-              "</div>" +
-              '<div class="mt-3 text-emerald-600 text-xs font-medium">' +
-              "任务：协调联测计划与问题记录，智能体可生成联测检查清单与问题跟踪表，支持正式切量与投产。" +
-              "</div>" +
-              "</a>" +
-              "</li>";
+              '<div class="index-task-card-subline">金融机构客户 | 交易系统联测</div>' +
+              '<div class="text-slate-600 leading-relaxed index-card-desc">景腾已完成账户开立，正与华创开展交易系统联测。需按联测计划推进环境配置、权限开通与试单验证。</div>' +
+              '<div class="index-task-card-panel">' +
+              '<div class="index-card-task text-emerald-500">任务：协调联测计划与问题记录</div>' +
+              '<div class="text-slate-600 text-xs font-medium">' +
+              '<div class="flex items-center gap-1.5"><svg class="index-icon-small" aria-hidden="true"><use xlink:href="images/index-icons.svg#icon-bolt"></use></svg>' +
+              '<span>智能体可为您定制：</span></div>' +
+              '<div class="flex flex-wrap items-center gap-1.5 mt-1">' +
+              '<span class="index-material-pill index-material-pill--emerald" title="联测检查清单与问题跟踪表">联测检查清单与问题跟踪表</span>' +
+              "</div></div>" +
+              '<div class="index-task-card-footer">' +
+              '<span class="index-task-card-action text-emerald-600 text-opacity-70">立即处理 →</span>' +
+              "</div></div></li>";
             return;
           }
 
-          // 跟踪服务：使用与首页卡片4类似的两条风险处置卡片，且仅首条可点击
+          // 跟踪服务：与首页卡片 4 格式一致，两条风险处置卡片，仅首条可点击
           if (stageId === "genzong") {
             ul.innerHTML =
-              '<li class="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm hover:shadow-md hover:border-slate-300 transition-all">' +
-              '<a class="block" href="员工-跟踪服务.html">' +
-              '<div class="flex items-center justify-between mb-1.5">' +
+              '<li class="index-task-card index-card-uniform border-l-4 border-l-violet-500">' +
+              '<div class="index-task-card-body">' +
+              '<div class="index-task-card-header">' +
               '<div class="flex items-center gap-2">' +
-              '<span class="index-card-stage-header bg-violet-500 text-white">跟踪服务</span>' +
-              '<span class="font-bold text-slate-900 text-sm">灵均投资</span>' +
+              '<div class="index-card-stage-header bg-violet-500 text-white">跟踪服务</div>' +
+              '<h2 class="index-task-card-title">灵均投资</h2>' +
               '<span class="inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-semibold bg-red-500/10 text-red-600 border border-red-200">紧急</span>' +
               "</div>" +
-              '<span class="text-[11px] text-slate-500">今天 09:00</span>' +
+              '<span class="index-task-card-time">今天 09:00</span>' +
               "</div>" +
-              '<div class="index-task-card-subline mt-1">风险处置 | 多部门协同处置</div>' +
-              '<div class="text-slate-600 leading-relaxed text-sm mt-2 index-card-desc">' +
-              "灵均部分产品因交易异常收到交易所关注函，部分账户面临限制交易。需尽快落实交易情况、梳理合规要点并协同多部门形成处置方案。" +
-              "</div>" +
-              '<div class="mt-3 text-violet-500 text-xs font-medium">' +
-              "处理方式：协调交易、合规、风控等多部门召开圆桌会议，形成书面处置方案并与交易所沟通，智能体可为您生成会议材料与风险处置方案初稿。" +
-              "</div>" +
-              '<div class="mt-3 flex justify-end">' +
-              '<span class="index-task-card-action text-violet-600">立即处理 →</span>' +
-              "</div>" +
-              "</a>" +
-              "</li>" +
-              '<li class="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm hover:shadow-md hover:border-slate-300 transition-all">' +
-              '<a class="block" href="#" onclick="return false;">' +
-              '<div class="flex items-center justify-between mb-1.5">' +
+              '<div class="index-task-card-subline">风险处置 | 多部门协同处置</div>' +
+              '<div class="text-slate-600 leading-relaxed index-card-desc">灵均部分产品因交易异常收到交易所关注函，部分账户面临限制交易。需尽快落实交易情况、梳理合规要点并协同多部门形成处置方案。</div>' +
+              '<div class="index-task-card-panel">' +
+              '<div class="index-card-task text-violet-500">任务：落实交易情况，申请圆桌会议，确定处置方案</div>' +
+              '<div class="text-slate-600 text-xs font-medium">' +
+              '<div class="flex items-center gap-1.5"><svg class="index-icon-small" aria-hidden="true"><use xlink:href="images/index-icons.svg#icon-bolt"></use></svg>' +
+              '<span>智能体可为您定制：</span></div>' +
+              '<div class="flex flex-wrap items-center gap-1.5 mt-1">' +
+              '<span class="index-material-pill index-material-pill--violet" title="风险处置方案">风险处置方案</span>' +
+              "</div></div>" +
+              '<div class="index-task-card-footer">' +
+              '<a href="员工-跟踪服务.html" class="index-task-card-action text-violet-600">立即处理 →</a>' +
+              "</div></div></li>" +
+              '<li class="index-task-card index-card-uniform border-l-4 border-l-violet-500">' +
+              '<div class="index-task-card-body">' +
+              '<div class="index-task-card-header">' +
               '<div class="flex items-center gap-2">' +
-              '<span class="index-card-stage-header bg-violet-500 text-white">跟踪服务</span>' +
-              '<span class="font-bold text-slate-900 text-sm">弘玺量化</span>' +
+              '<div class="index-card-stage-header bg-violet-500 text-white">跟踪服务</div>' +
+              '<h2 class="index-task-card-title">弘玺量化</h2>' +
               '<span class="inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-semibold bg-amber-500/10 text-amber-600 border border-amber-200">关注</span>' +
               "</div>" +
-              '<span class="text-[11px] text-slate-500">昨天 16:30</span>' +
+              '<span class="index-task-card-time">昨天 16:30</span>' +
               "</div>" +
-              '<div class="index-task-card-subline mt-1">跟踪服务 | 交易异常排查</div>' +
-              '<div class="text-slate-600 leading-relaxed text-sm mt-2 index-card-desc">' +
-              "弘玺部分账户在开盘阶段出现异常高频撤单，交易所发来口头问询。需尽快核查交易日志、还原交易路径并评估是否涉及异常交易。" +
-              "</div>" +
-              '<div class="mt-3 text-violet-500 text-xs font-medium">' +
-              "处理方式：由经纪与量化交易团队联合梳理交易记录，分类归因并形成书面说明，智能体可生成交易异常分析框架与问询回复模板供参考。" +
-              "</div>" +
-              "</a>" +
-              "</li>";
+              '<div class="index-task-card-subline">跟踪服务 | 交易异常排查</div>' +
+              '<div class="text-slate-600 leading-relaxed index-card-desc">弘玺部分账户在开盘阶段出现异常高频撤单，交易所发来口头问询。需尽快核查交易日志、还原交易路径并评估是否涉及异常交易。</div>' +
+              '<div class="index-task-card-panel">' +
+              '<div class="index-card-task text-violet-500">任务：落实交易情况，形成书面说明并回复问询</div>' +
+              '<div class="text-slate-600 text-xs font-medium">' +
+              '<div class="flex items-center gap-1.5"><svg class="index-icon-small" aria-hidden="true"><use xlink:href="images/index-icons.svg#icon-bolt"></use></svg>' +
+              '<span>智能体可为您定制：</span></div>' +
+              '<div class="flex flex-wrap items-center gap-1.5 mt-1">' +
+              '<span class="index-material-pill index-material-pill--violet" title="交易异常分析框架与问询回复模板">交易异常分析框架与问询回复模板</span>' +
+              "</div></div>" +
+              '<div class="index-task-card-footer">' +
+              '<span class="index-task-card-action text-violet-600 text-opacity-70">立即处理 →</span>' +
+              "</div></div></li>";
             return;
           }
 
