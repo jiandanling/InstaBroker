@@ -605,12 +605,44 @@
           e.preventDefault();
           var value = (input.value || "").trim();
           if (!value) return;
-          if (
-            value === "博达富通" ||
-            value.includes("博达富通") ||
-            value.includes("北京博达富通")
-          ) {
-            navigateToPage("员工-博达富通-客户详情.html?from=search");
+          if (value === "幻方量化" || value.includes("幻方量化")) {
+            navigateToPage("员工-拓客准备.html");
+            input.value = "";
+            updateSendVisual();
+            return;
+          }
+        });
+        form.addEventListener("submit", function (e) {
+          e.preventDefault();
+          var value = (input.value || "").trim();
+          if (!value) return;
+          if (value === "九坤投资" || value.includes("九坤投资")) {
+            navigateToPage("员工-业务引入.html");
+            input.value = "";
+            updateSendVisual();
+            return;
+          }
+        });
+        form.addEventListener("submit", function (e) {
+          e.preventDefault();
+          var value = (input.value || "").trim();
+          if (!value) return;
+          if (value === "明汯投资" || value.includes("明汯投资")) {
+            navigateToPage("员工-交易服务.html");
+            input.value = "";
+            updateSendVisual();
+            return;
+          }
+        });
+        form.addEventListener("submit", function (e) {
+          e.preventDefault();
+          var value = (input.value || "").trim();
+          if (!value) return;
+          if (value === "灵均投资" || value.includes("灵均投资")) {
+            navigateToPage("员工-跟踪服务.html");
+            input.value = "";
+            updateSendVisual();
+            return;
           }
         });
       })();
