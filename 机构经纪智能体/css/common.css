@@ -960,6 +960,11 @@ form.subpage-footer-input-wrap {
   transform: translateY(2px);
 }
 
+/* 更多页仅有一个「立即处理」时右对齐 */
+.index-task-card-footer.footer-right {
+  justify-content: flex-end;
+}
+
 .index-task-card-more {
   font-size: 12px;
   font-weight: 500;
