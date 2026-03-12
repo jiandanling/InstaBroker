@@ -19,174 +19,234 @@
   <body>
     <main class="subpage-main">
       <div class="visit-page-root flex flex-col gap-3">
-          <div class="message-list-column">
-        <section class="min-w-0">
-        <div class="message-row">
-          <div class="ai-avatar-wrap ai-avatar">
-            <img src="images/icons/icon-ai-avatar.png" alt="" class="ai-avatar-img" aria-hidden="true" />
-          </div>
-          <div class="flex-1">
-            <div class="chat-msg-shell">
-              <div class="flex flex-col gap-4">
-                <!-- 客户信息（参考拓客准备：标题 + 标签） -->
-                <header class="min-w-0">
-                  <div class="font-bold text-slate-900 text-sm leading-tight truncate">
-                    北京博达富通基金管理有限公司
-                  </div>
-                  <div class="mt-1 flex flex-wrap items-center gap-1.5">
-                    <span
-                      class="inline-flex items-center px-2 py-0.5 rounded-full bg-slate-50 border border-slate-200 text-[11px] font-medium text-slate-700"
-                    >
-                      金融机构客户
-                    </span>
-                    <span
-                      class="inline-flex items-center px-2 py-0.5 rounded-full bg-blue-50 border border-blue-200 text-[11px] font-medium text-blue-700"
-                    >
-                      首次拜访
-                    </span>
-                  </div>
-                </header>
-                <div class="task-hint-amber">
-                  <div class="space-y-1.5 task-hint-amber-body">
-                    <div>
-                      <span class="task-hint-amber-dot"></span>
-                      <span class="font-medium">请上传拜访纪要或录音</span>
+        <div class="message-list-column">
+          <section class="min-w-0">
+            <div class="message-row">
+              <div class="ai-avatar-wrap ai-avatar">
+                <img
+                  src="images/icons/icon-ai-avatar.png"
+                  alt=""
+                  class="ai-avatar-img"
+                  aria-hidden="true"
+                />
+              </div>
+              <div class="flex-1">
+                <div class="chat-msg-shell">
+                  <div class="flex flex-col gap-4">
+                    <!-- 客户信息（参考拓客准备：标题 + 标签） -->
+                    <header class="min-w-0">
+                      <div
+                        class="font-bold text-slate-900 text-sm leading-tight truncate"
+                      >
+                        北京博达富通基金管理有限公司
+                      </div>
+                      <div class="mt-1 flex flex-wrap items-center gap-1.5">
+                        <span
+                          class="inline-flex items-center px-2 py-0.5 rounded-full bg-slate-50 border border-slate-200 text-[11px] font-medium text-slate-700"
+                        >
+                          金融机构客户
+                        </span>
+                        <span
+                          class="inline-flex items-center px-2 py-0.5 rounded-full bg-blue-50 border border-blue-200 text-[11px] font-medium text-blue-700"
+                        >
+                          首次拜访
+                        </span>
+                      </div>
+                    </header>
+                    <div class="task-hint-amber">
+                      <div class="space-y-1.5 task-hint-amber-body">
+                        <div>
+                          <span class="task-hint-amber-dot"></span>
+                          <span class="font-medium">请上传拜访纪要或录音</span>
+                        </div>
+                        <div>
+                          <span class="task-hint-amber-dot"></span>
+                          <span
+                            >智能体将自动解析并更新客户情况，为后续方案沟通提供依据。</span
+                          >
+                        </div>
+                      </div>
                     </div>
-                    <div>
-                      <span class="task-hint-amber-dot"></span>
-                      <span>智能体将自动解析并更新客户情况，为后续方案沟通提供依据。</span>
-                    </div>
+
+                    <button
+                      id="btnFeedback"
+                      type="button"
+                      onclick="showFeedbackForm()"
+                      class="btn-secondary-blue"
+                    >
+                      <svg
+                        class="w-5 h-5"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                        aria-hidden="true"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2M8 11l4-4m0 0l4 4m-4-4v10"
+                        />
+                      </svg>
+                      上传拜访纪要
+                    </button>
                   </div>
                 </div>
-
-                <button
-                  id="btnFeedback"
-                  type="button"
-                  onclick="showFeedbackForm()"
-                  class="btn-secondary-blue"
-                >
-                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                      d="M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2M8 11l4-4m0 0l4 4m-4-4v10" />
-                  </svg>
-                  上传拜访纪要
-                </button>
               </div>
             </div>
-          </div>
-        </div>
-        </section>
+          </section>
 
-        <section id="feedbackForm" class="flow-step mt-4 min-w-0">
-          <div class="message-row">
-            <div class="ai-avatar-wrap ai-avatar">
-              <img src="images/icons/icon-ai-avatar.png" alt="" class="ai-avatar-img" aria-hidden="true" />
-            </div>
-            <div class="flex-1">
-              <div class="chat-msg-shell">
-                <div class="space-y-4">
-                  <div class="font-bold text-[#1E293B]">上传拜访纪要</div>
-                  <p class="text-sm text-[#64748B]">
-                    请上传拜访录音或填写访谈纪要，智能体将自动解析并更新客户情况。
-                  </p>
-                  <div class="space-y-3">
-                    <input
-                      type="file"
-                      id="audioUpload"
-                      accept="audio/*,.mp3,.wav,.m4a"
-                      class="hidden"
-                      onchange="handleAudioUpload(this)"
-                    />
-                    <div
-                      id="uploadZone"
-                      onclick="document.getElementById('audioUpload').click()"
-                      class="border-2 border-dashed border-gray-200 rounded-xl p-4 text-center cursor-pointer hover:border-blue-300 hover:bg-blue-50/30 transition-all"
-                    >
-                      <div id="uploadPlaceholder">
-                        <svg
-                          class="w-10 h-10 text-gray-400 mx-auto mb-2"
-                          fill="none"
-                          stroke="currentColor"
-                          viewBox="0 0 24 24"
-                        >
-                          <path
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            stroke-width="2"
-                            d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-4a4 4 0 01-4-4"
-                          />
-                        </svg>
-                        <div class="text-sm text-[#64748B]">
-                          点击上传拜访录音
-                        </div>
-                        <div class="text-xs text-gray-400 mt-1">
-                          支持 mp3、wav、m4a 等格式
-                        </div>
-                        <button
-                          type="button"
-                          onclick="
-                            event.stopPropagation();
-                            simulateAudioUpload();
-                          "
-                          class="mt-2 text-xs text-[#2563EB] hover:underline"
-                        >
-                          模拟上传
-                        </button>
-                      </div>
+          <section id="feedbackForm" class="flow-step mt-4 min-w-0">
+            <div class="message-row">
+              <div class="ai-avatar-wrap ai-avatar">
+                <img
+                  src="images/icons/icon-ai-avatar.png"
+                  alt=""
+                  class="ai-avatar-img"
+                  aria-hidden="true"
+                />
+              </div>
+              <div class="flex-1">
+                <div class="chat-msg-shell">
+                  <div class="space-y-4">
+                    <div class="font-bold text-[#1E293B]">上传拜访纪要</div>
+                    <p class="text-sm text-[#64748B]">
+                      请上传拜访录音或填写访谈纪要，智能体将自动解析并更新客户情况。
+                    </p>
+                    <div class="space-y-3">
+                      <input
+                        type="file"
+                        id="audioUpload"
+                        accept="audio/*,.mp3,.wav,.m4a"
+                        class="hidden"
+                        onchange="handleAudioUpload(this)"
+                      />
                       <div
-                        id="uploadProgress"
-                        class="hidden flex items-center justify-center gap-2 py-2"
+                        id="uploadZone"
+                        onclick="document.getElementById('audioUpload').click()"
+                        class="border-2 border-dashed border-gray-200 rounded-xl p-4 text-center cursor-pointer hover:border-blue-300 hover:bg-blue-50/30 transition-all"
                       >
+                        <div id="uploadPlaceholder">
+                          <svg
+                            class="w-10 h-10 text-gray-400 mx-auto mb-2"
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                          >
+                            <path
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                              stroke-width="2"
+                              d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-4a4 4 0 01-4-4"
+                            />
+                          </svg>
+                          <div class="text-sm text-[#64748B]">
+                            点击上传拜访录音
+                          </div>
+                          <div class="text-xs text-gray-400 mt-1">
+                            支持 mp3、wav、m4a 等格式
+                          </div>
+                          <button
+                            type="button"
+                            onclick="
+                              event.stopPropagation();
+                              simulateAudioUpload();
+                            "
+                            class="mt-2 text-xs text-[#2563EB] hover:underline"
+                          >
+                            模拟上传
+                          </button>
+                        </div>
                         <div
-                          class="w-4 h-4 border-2 border-blue-500 border-t-transparent rounded-full animate-spin"
-                        ></div>
-                        <span class="text-sm text-[#2563EB]">上传中...</span>
+                          id="uploadProgress"
+                          class="hidden flex items-center justify-center gap-2 py-2"
+                        >
+                          <div
+                            class="w-4 h-4 border-2 border-blue-500 border-t-transparent rounded-full animate-spin"
+                          ></div>
+                          <span class="text-sm text-[#2563EB]">上传中...</span>
+                        </div>
+                        <div
+                          id="uploadSuccess"
+                          class="hidden flex items-center justify-center gap-2 py-2 flex-wrap"
+                        >
+                          <svg
+                            class="w-5 h-5 text-green-500"
+                            fill="currentColor"
+                            viewBox="0 0 20 20"
+                          >
+                            <path
+                              fill-rule="evenodd"
+                              d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                              clip-rule="evenodd"
+                            />
+                          </svg>
+                          <span
+                            id="uploadFileName"
+                            class="text-sm text-[#059669] font-medium truncate max-w-[200px]"
+                          ></span>
+                          <span class="text-xs text-[#64748B]">已上传</span>
+                        </div>
                       </div>
-                      <div
-                        id="uploadSuccess"
-                        class="hidden flex items-center justify-center gap-2 py-2 flex-wrap"
+                      <div class="text-xs text-gray-400 text-center">或</div>
+                      <textarea
+                        id="feedbackText"
+                        class="w-full border border-gray-200 rounded-lg p-3 text-sm resize-none"
+                        rows="4"
+                        placeholder="在此输入访谈纪要内容..."
+                      ></textarea>
+                    </div>
+                    <div class="flex gap-2">
+                      <button
+                        onclick="cancelFeedbackForm()"
+                        class="flex-1 btn-secondary-gray"
+                      >
+                        取消
+                      </button>
+                      <button
+                        onclick="submitFeedback()"
+                        id="submitFeedbackBtn"
+                        class="flex-1 btn-secondary-blue opacity-60 cursor-not-allowed"
+                        disabled
                       >
                         <svg
-                          class="w-5 h-5 text-green-500"
+                          class="w-4 h-4"
                           fill="currentColor"
                           viewBox="0 0 20 20"
                         >
                           <path
                             fill-rule="evenodd"
-                            d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                            d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
                             clip-rule="evenodd"
                           />
                         </svg>
-                        <span
-                          id="uploadFileName"
-                          class="text-sm text-[#059669] font-medium truncate max-w-[200px]"
-                        ></span>
-                        <span class="text-xs text-[#64748B]">已上传</span>
-                      </div>
+                        提交并分析
+                      </button>
                     </div>
-                    <div class="text-xs text-gray-400 text-center">或</div>
-                    <textarea
-                      id="feedbackText"
-                      class="w-full border border-gray-200 rounded-lg p-3 text-sm resize-none"
-                      rows="4"
-                      placeholder="在此输入访谈纪要内容..."
-                    ></textarea>
                   </div>
-                  <div class="flex gap-2">
-                    <button
-                      onclick="cancelFeedbackForm()"
-                      class="flex-1 btn-secondary-gray"
-                    >
-                      取消
-                    </button>
-                    <button
-                      onclick="submitFeedback()"
-                      id="submitFeedbackBtn"
-                      class="flex-1 btn-secondary-blue opacity-60 cursor-not-allowed"
-                      disabled
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section id="stepParseComplete" class="flow-step mt-4 min-w-0">
+            <div class="message-row">
+              <div class="ai-avatar-wrap ai-avatar">
+                <img
+                  src="images/icons/icon-ai-avatar.png"
+                  alt=""
+                  class="ai-avatar-img"
+                  aria-hidden="true"
+                />
+              </div>
+              <div class="flex-1">
+                <div class="status-card rounded-xl px-4 py-3">
+                  <div class="flex items-center gap-2 mb-1">
+                    <div
+                      class="w-3 h-3 bg-gradient-to-br from-green-500 to-blue-600 rounded-full flex items-center justify-center"
                     >
                       <svg
-                        class="w-4 h-4"
+                        class="w-1.5 h-1.5 text-white"
                         fill="currentColor"
                         viewBox="0 0 20 20"
                       >
@@ -196,27 +256,183 @@
                           clip-rule="evenodd"
                         />
                       </svg>
-                      提交并分析
-                    </button>
+                    </div>
+                    <span class="text-sm font-medium text-[#1E293B]"
+                      >纪要解析完成</span
+                    >
+                  </div>
+                  <div class="text-xs text-[#64748B]">
+                    已自动生成拜访纪要与客户情况更新
+                  </div>
                 </div>
-              </div>
               </div>
             </div>
-        </section>
+          </section>
 
-        <section id="stepParseComplete" class="flow-step mt-4 min-w-0">
-              <div class="message-row">
-                <div class="ai-avatar-wrap ai-avatar">
-                  <img src="images/icons/icon-ai-avatar.png" alt="" class="ai-avatar-img" aria-hidden="true" />
-                </div>
-                <div class="flex-1">
-                  <div class="status-card rounded-xl px-4 py-3">
-                    <div class="flex items-center gap-2 mb-1">
-                      <div
-                        class="w-3 h-3 bg-gradient-to-br from-green-500 to-blue-600 rounded-full flex items-center justify-center"
+          <section id="stepVisitSummary" class="flow-step mt-4 min-w-0">
+            <div class="message-row">
+              <div class="ai-avatar-wrap ai-avatar">
+                <img
+                  src="images/icons/icon-ai-avatar.png"
+                  alt=""
+                  class="ai-avatar-img"
+                  aria-hidden="true"
+                />
+              </div>
+              <div class="flex-1">
+                <div class="chat-msg-shell">
+                  <div class="space-y-3">
+                    <div class="flex items-center justify-between gap-2">
+                      <span class="font-bold text-[#1E293B] text-sm">
+                        拜访纪要汇总
+                      </span>
+                      <span
+                        class="inline-flex items-center px-2 py-0.5 rounded-full bg-blue-50 text-[11px] text-[#1d4ed8] font-medium"
+                      >
+                        智能体分析
+                      </span>
+                    </div>
+                    <div class="flex items-center gap-2 text-xs text-slate-500">
+                      <svg
+                        class="w-3.5 h-3.5 text-slate-400"
+                        fill="currentColor"
+                        viewBox="0 0 20 20"
+                      >
+                        <path
+                          fill-rule="evenodd"
+                          d="M10 2a8 8 0 100 16 8 8 0 000-16zm.75 4a.75.75 0 00-1.5 0v4.25c0 .414.336.75.75.75H13a.75.75 0 000-1.5h-2.25V6z"
+                          clip-rule="evenodd"
+                        />
+                      </svg>
+                      <span>2025年7月19日 14:00-15:30</span>
+                    </div>
+                    <div
+                      class="border-t border-slate-100 pt-2 space-y-2.5 text-xs text-[#374151]"
+                    >
+                      <div>
+                        <div class="font-semibold text-slate-700 mb-1">
+                          一、客户现状
+                        </div>
+                        <ul class="space-y-0.5 list-disc list-inside">
+                          <li>策略调整：Q3增加港股多头头寸，降低A股暴露</li>
+                          <li>规模变化：本月新募5亿，总AUM接近百亿</li>
+                          <li>痛点披露：交易滑点吞噬约40%超额，急需解决</li>
+                        </ul>
+                      </div>
+                      <div>
+                        <div class="font-semibold text-slate-700 mb-1">
+                          二、客户需求
+                        </div>
+                        <ul class="space-y-0.5 list-disc list-inside">
+                          <li>交易执行：需API技术文档与测试环境</li>
+                          <li>研究支持：2周内提供定制深度报告</li>
+                          <li>资金需求：申请提升授信至1.2亿</li>
+                          <li>系统痛点：需托管服务器，直连极速系统</li>
+                        </ul>
+                      </div>
+                      <div>
+                        <div
+                          class="font-semibold text-slate-700 mb-1 flex items-center gap-1.5"
+                        >
+                          <span>三、业务评估</span>
+                          <span
+                            class="inline-flex items-center px-1.5 py-0.5 rounded-full bg-blue-50 text-[10px] text-[#4f46e5] font-medium"
+                          >
+                            来自公司自动驾驶大模型
+                          </span>
+                        </div>
+                        <ul class="space-y-0.5 list-disc list-inside">
+                          <li>综合评估：适合开展后续业务合作</li>
+                          <li>代销匹配：策略表现与风险收益比符合代销准入</li>
+                          <li>极速交易：滑点痛点与公司极速系统能力高度匹配</li>
+                          <li>两融需求：授信提升申请合理，建议推进审批</li>
+                        </ul>
+                      </div>
+                    </div>
+                    <div class="flex gap-2 mt-2">
+                      <button
+                        onclick="backToEditSummary()"
+                        class="flex-1 btn-secondary-gray"
                       >
                         <svg
-                          class="w-1.5 h-1.5 text-white"
+                          class="w-4 h-4"
+                          fill="currentColor"
+                          viewBox="0 0 20 20"
+                        >
+                          <path
+                            d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z"
+                          />
+                        </svg>
+                        修改
+                      </button>
+                      <button
+                        onclick="confirmVisitSummary()"
+                        class="flex-1 btn-primary-blue"
+                      >
+                        <svg
+                          class="w-4 h-4"
+                          fill="currentColor"
+                          viewBox="0 0 20 20"
+                        >
+                          <path
+                            fill-rule="evenodd"
+                            d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                            clip-rule="evenodd"
+                          />
+                        </svg>
+                        确认更新
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section id="stepGenerating" class="flow-step mt-4 min-w-0">
+            <div class="message-row">
+              <div class="ai-avatar-wrap ai-avatar">
+                <img
+                  src="images/icons/icon-ai-avatar.png"
+                  alt=""
+                  class="ai-avatar-img"
+                  aria-hidden="true"
+                />
+              </div>
+              <div class="flex-1">
+                <div class="status-card rounded-xl px-4 py-3">
+                  <div class="flex items-center gap-2">
+                    <div
+                      class="w-4 h-4 border-2 border-purple-500 border-t-transparent rounded-full animate-spin"
+                    ></div>
+                    <span class="text-sm font-medium text-[#1E293B]"
+                      >正在根据客户需求生成综合服务方案</span
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section id="stepResult" class="flow-step mt-4 min-w-0">
+            <div class="message-row">
+              <div class="ai-avatar-wrap ai-avatar">
+                <img
+                  src="images/icons/icon-ai-avatar.png"
+                  alt=""
+                  class="ai-avatar-img"
+                  aria-hidden="true"
+                />
+              </div>
+              <div class="flex-1">
+                <div class="chat-msg-shell">
+                  <div class="space-y-4">
+                    <div class="flex items-center gap-2">
+                      <div
+                        class="w-6 h-6 bg-green-500 rounded flex items-center justify-center"
+                      >
+                        <svg
+                          class="w-4 h-4 text-white"
                           fill="currentColor"
                           viewBox="0 0 20 20"
                         >
@@ -227,242 +443,80 @@
                           />
                         </svg>
                       </div>
-                      <span class="text-sm font-medium text-[#1E293B]"
-                        >纪要解析完成</span
+                      <span class="font-bold text-[#1E293B]"
+                        >客户情况已更新 · 已生成综合服务方案</span
                       >
                     </div>
-                    <div class="text-xs text-[#64748B]">
-                      已自动生成拜访纪要与客户情况更新
-                    </div>
-                  </div>
-                </div>
-              </div>
-        </section>
-
-        <section id="stepVisitSummary" class="flow-step mt-4 min-w-0">
-              <div class="message-row">
-                <div class="ai-avatar-wrap ai-avatar">
-                  <img src="images/icons/icon-ai-avatar.png" alt="" class="ai-avatar-img" aria-hidden="true" />
-                </div>
-                <div class="flex-1">
-                  <div class="chat-msg-shell">
-                    <div class="space-y-3">
-                      <div class="flex items-center justify-between gap-2">
-                        <span class="font-bold text-[#1E293B] text-sm">
-                          拜访纪要汇总
-                        </span>
-                        <span
-                          class="inline-flex items-center px-2 py-0.5 rounded-full bg-blue-50 text-[11px] text-[#1d4ed8] font-medium"
-                        >
-                        智能体分析
-                        </span>
+                    <div
+                      class="bg-gradient-to-r from-green-50 to-blue-50 rounded-lg p-3 border border-green-100"
+                    >
+                      <div class="text-sm font-medium text-[#1E293B] mb-2">
+                        方案涵盖：代销、极速交易、两融、投研
                       </div>
-                      <div class="flex items-center gap-2 text-xs text-slate-500">
-                        <svg
-                          class="w-3.5 h-3.5 text-slate-400"
-                          fill="currentColor"
-                          viewBox="0 0 20 20"
-                        >
-                          <path
-                            fill-rule="evenodd"
-                            d="M10 2a8 8 0 100 16 8 8 0 000-16zm.75 4a.75.75 0 00-1.5 0v4.25c0 .414.336.75.75.75H13a.75.75 0 000-1.5h-2.25V6z"
-                            clip-rule="evenodd"
-                          />
-                        </svg>
-                        <span>2025年7月19日 14:00-15:30</span>
-                      </div>
-                      <div
-                        class="border-t border-slate-100 pt-2 space-y-2.5 text-xs text-[#374151]"
-                      >
-                        <div>
-                          <div class="font-semibold text-slate-700 mb-1">
-                            一、客户现状
-                          </div>
-                          <ul class="space-y-0.5 list-disc list-inside">
-                            <li>策略调整：Q3增加港股多头头寸，降低A股暴露</li>
-                            <li>规模变化：本月新募5亿，总AUM接近百亿</li>
-                            <li>痛点披露：交易滑点吞噬约40%超额，急需解决</li>
-                          </ul>
-                        </div>
-                        <div>
-                          <div class="font-semibold text-slate-700 mb-1">
-                            二、客户需求
-                          </div>
-                          <ul class="space-y-0.5 list-disc list-inside">
-                            <li>交易执行：需API技术文档与测试环境</li>
-                            <li>研究支持：2周内提供定制深度报告</li>
-                            <li>资金需求：申请提升授信至1.2亿</li>
-                            <li>系统痛点：需托管服务器，直连极速系统</li>
-                          </ul>
-                        </div>
-                        <div>
-                          <div class="font-semibold text-slate-700 mb-1 flex items-center gap-1.5">
-                            <span>三、业务评估</span>
-                            <span class="inline-flex items-center px-1.5 py-0.5 rounded-full bg-blue-50 text-[10px] text-[#4f46e5] font-medium">
-                              来自公司自动驾驶大模型
-                            </span>
-                          </div>
-                          <ul class="space-y-0.5 list-disc list-inside">
-                            <li>综合评估：适合开展后续业务合作</li>
-                            <li>代销匹配：策略表现与风险收益比符合代销准入</li>
-                            <li>极速交易：滑点痛点与公司极速系统能力高度匹配</li>
-                            <li>两融需求：授信提升申请合理，建议推进审批</li>
-                          </ul>
-                        </div>
-                      </div>
-                      <div class="flex gap-2 mt-2">
-                        <button
-                          onclick="backToEditSummary()"
-                          class="flex-1 btn-secondary-gray"
-                        >
-                          <svg
-                            class="w-4 h-4"
-                            fill="currentColor"
-                            viewBox="0 0 20 20"
-                          >
-                            <path
-                              d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z"
-                            />
-                          </svg>
-                          修改
-                        </button>
-                        <button
-                          onclick="confirmVisitSummary()"
-                          class="flex-1 btn-primary-blue"
-                        >
-                          <svg
-                            class="w-4 h-4"
-                            fill="currentColor"
-                            viewBox="0 0 20 20"
-                          >
-                            <path
-                              fill-rule="evenodd"
-                              d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                              clip-rule="evenodd"
-                            />
-                          </svg>
-                          确认更新
-                        </button>
+                      <div class="text-xs text-[#64748B]">
+                        待确认方案任务已发送至相关解决方案经理
                       </div>
                     </div>
-                  </div>
-                </div>
-              </div>
-        </section>
-
-        <section id="stepGenerating" class="flow-step mt-4 min-w-0">
-              <div class="message-row">
-                <div class="ai-avatar-wrap ai-avatar">
-                  <img src="images/icons/icon-ai-avatar.png" alt="" class="ai-avatar-img" aria-hidden="true" />
-                </div>
-                <div class="flex-1">
-                  <div class="status-card rounded-xl px-4 py-3">
-                    <div class="flex items-center gap-2">
-                      <div
-                        class="w-4 h-4 border-2 border-purple-500 border-t-transparent rounded-full animate-spin"
-                      ></div>
-                      <span class="text-sm font-medium text-[#1E293B]"
-                        >正在根据客户需求生成综合服务方案</span
+                    <a
+                      href="#"
+                      class="flex items-center gap-3 bg-blue-50 rounded-xl px-3 py-2 border border-blue-100"
+                    >
+                      <svg
+                        class="w-6 h-6 text-[#2563EB]"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
                       >
-                    </div>
-                  </div>
-                </div>
-              </div>
-        </section>
-
-        <section id="stepResult" class="flow-step mt-4 min-w-0">
-              <div class="message-row">
-                <div class="ai-avatar-wrap ai-avatar">
-                  <img src="images/icons/icon-ai-avatar.png" alt="" class="ai-avatar-img" aria-hidden="true" />
-                </div>
-                <div class="flex-1">
-                  <div class="chat-msg-shell">
-                    <div class="space-y-4">
-                      <div class="flex items-center gap-2">
-                        <div
-                          class="w-6 h-6 bg-green-500 rounded flex items-center justify-center"
-                        >
-                          <svg
-                            class="w-4 h-4 text-white"
-                            fill="currentColor"
-                            viewBox="0 0 20 20"
-                          >
-                            <path
-                              fill-rule="evenodd"
-                              d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                              clip-rule="evenodd"
-                            />
-                          </svg>
-                        </div>
-                        <span class="font-bold text-[#1E293B]"
-                          >客户情况已更新 · 已生成综合服务方案</span
-                        >
-                      </div>
-                      <div
-                        class="bg-gradient-to-r from-green-50 to-blue-50 rounded-lg p-3 border border-green-100"
-                      >
-                        <div class="text-sm font-medium text-[#1E293B] mb-2">
-                          方案涵盖：代销、极速交易、两融、投研
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+                        />
+                      </svg>
+                      <div class="flex-1">
+                        <div class="text-sm font-medium text-[#1E293B]">
+                          （初版）北京博达富通基金管理有限公司综合服务方案.docx
                         </div>
                         <div class="text-xs text-[#64748B]">
-                          待确认方案任务已发送至相关解决方案经理
+                          Word文档 · 2.1MB
                         </div>
                       </div>
-                      <a
-                        href="#"
-                        class="flex items-center gap-3 bg-blue-50 rounded-xl px-3 py-2 border border-blue-100"
+                      <span class="text-[#2563EB] text-sm font-medium"
+                        >下载</span
                       >
-                        <svg
-                          class="w-6 h-6 text-[#2563EB]"
-                          fill="none"
-                          stroke="currentColor"
-                          viewBox="0 0 24 24"
-                        >
-                          <path
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            stroke-width="2"
-                            d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
-                          />
-                        </svg>
-                        <div class="flex-1">
-                          <div class="text-sm font-medium text-[#1E293B]">
-                            （初版）北京博达富通基金管理有限公司综合服务方案.docx
-                          </div>
-                          <div class="text-xs text-[#64748B]">
-                            Word文档 · 2.1MB
-                          </div>
-                        </div>
-                        <span class="text-[#2563EB] text-sm font-medium"
-                          >下载</span
-                        >
-                      </a>
-                    </div>
+                    </a>
                   </div>
                 </div>
               </div>
-        </section>
+            </div>
+          </section>
 
-        <section id="stepCustomerConfirm" class="flow-step mt-4 min-w-0">
-              <div class="message-row">
-                <div class="ai-avatar-wrap ai-avatar">
-                  <img src="images/icons/icon-ai-avatar.png" alt="" class="ai-avatar-img" aria-hidden="true" />
-                </div>
-                <div class="flex-1">
-                  <div class="status-card rounded-xl px-4 py-3">
-                    <div class="flex items-center gap-2">
-                      <span class="text-sm font-medium text-[#1E293B]"
-                        >客户已确认方案</span
-                      >
-                    </div>
-                    <div class="text-xs text-[#64748B] mt-1">
-                      已记录客户确认结果，后续将进入办理任务与交易服务等下一步流程。
-                    </div>
+          <section id="stepCustomerConfirm" class="flow-step mt-4 min-w-0">
+            <div class="message-row">
+              <div class="ai-avatar-wrap ai-avatar">
+                <img
+                  src="images/icons/icon-ai-avatar.png"
+                  alt=""
+                  class="ai-avatar-img"
+                  aria-hidden="true"
+                />
+              </div>
+              <div class="flex-1">
+                <div class="status-card rounded-xl px-4 py-3">
+                  <div class="flex items-center gap-2">
+                    <span class="text-sm font-medium text-[#1E293B]"
+                      >客户已确认方案</span
+                    >
+                  </div>
+                  <div class="text-xs text-[#64748B] mt-1">
+                    已记录客户确认结果，后续将进入办理任务与交易服务等下一步流程。
                   </div>
                 </div>
               </div>
-        </section>
-          </div>
+            </div>
+          </section>
+        </div>
       </div>
     </main>
 
@@ -507,8 +561,7 @@
         if (!btn) return;
         var textEl = document.getElementById("feedbackText");
         var success = document.getElementById("uploadSuccess");
-        var hasText =
-          textEl && textEl.value && textEl.value.trim().length > 0;
+        var hasText = textEl && textEl.value && textEl.value.trim().length > 0;
         var hasUpload = success && !success.classList.contains("hidden");
         var enabled = hasText || hasUpload;
         btn.disabled = !enabled;
@@ -574,8 +627,7 @@
         // 双保险：无上传且无文本时不提交
         var textEl = document.getElementById("feedbackText");
         var success = document.getElementById("uploadSuccess");
-        var hasText =
-          textEl && textEl.value && textEl.value.trim().length > 0;
+        var hasText = textEl && textEl.value && textEl.value.trim().length > 0;
         var hasUpload = success && !success.classList.contains("hidden");
         if (!hasText && !hasUpload) {
           return;
