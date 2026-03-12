@@ -1,0 +1,470 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>拓客准备</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="css/common.css" />
+    <script src="js/spa-wrapper.js"></script>
+    <script>
+      if (
+        window.__InstaBrokerSPA__ &&
+        window.__InstaBrokerSPA__.ensureWrappedInIndex
+      ) {
+        window.__InstaBrokerSPA__.ensureWrappedInIndex("拓客准备.html");
+      }
+    </script>
+  </head>
+  <body>
+    <main class="subpage-main">
+      <div
+        class="visit-page-root flex flex-col gap-4 max-w-[var(--layout-max-width)] mx-auto"
+      >
+        <!-- 上方：当前阶段任务卡片（无公司信息） -->
+        <section
+          id="stageTaskCard"
+        >
+          <div id="stageTaskHeader" class="flex items-center gap-2 mb-3"></div>
+          <div id="stageTaskPanel" class="index-task-card-panel"></div>
+        </section>
+
+        <!-- 下方：公司列表 -->
+        <section class="more-company-list">
+          <ul id="companyList" class="space-y-3"></ul>
+        </section>
+      </div>
+    </main>
+
+    <script>
+      (function () {
+        var stageMap = {
+          tuoke: {
+            label: "拓客准备",
+            theme: "indigo",
+            task: "任务：访前准备，了解客户基本信息，熟悉机构经纪业务",
+            materialLabel: "智能体已为您准备好：",
+            materials: ["华创机构经纪一页纸", "客户分析报告", "拜访提纲"],
+          },
+          yewu: {
+            label: "业务引入",
+            theme: "blue",
+            task: "任务：拜访客户，了解需求，确认服务方案",
+            materialLabel: "智能体可为您定制：",
+            materials: ["综合服务方案"],
+          },
+          jiaoyi: {
+            label: "交易服务",
+            theme: "emerald",
+            task: "任务：办理开户及申请PB交易系统",
+            materialLabel: "智能体已为您准备好：",
+            materials: ["机构客户开户指引", "PB交易系统申请指南"],
+          },
+          genzong: {
+            label: "跟踪服务",
+            theme: "violet",
+            task: "任务：落实交易情况，申请圆桌会议，确定处置方案",
+            materialLabel: "智能体可为您定制：",
+            materials: ["风险处置方案"],
+          },
+        };
+
+        var companiesByStage = {
+          // 拓客准备：首个与首页卡片1一致，其余为不同公司
+          tuoke: [
+            {
+              name: "幻方量化",
+              subline: "金融机构客户 | 未合作 | 线索跟进",
+              source: "商机线索由公司自动驾驶大模型推荐",
+              desc: "管理规模超600亿，国内量化私募第一梯队。多策略与指数增强并重，代表产品近三年收益稳健、回撤控制良好。",
+              link: "员工-拓客准备.html",
+            },
+            {
+              name: "因诺资产",
+              subline: "金融机构客户 | 未合作 | 线索跟进",
+              source: "商机线索由公司自动驾驶大模型推荐",
+              desc: "百亿级CTA与量化多策略私募，以期货、期权策略见长。智能体已生成因诺客户画像与拜访提纲，可提供华创机构经纪一页纸与客户分析报告。",
+              link: "",
+            },
+            {
+              name: "乾象投资",
+              subline: "金融机构客户 | 新线索 | 待初次接触",
+              source: "",
+              desc: "偏量化多头策略的新锐私募，近期产品净值表现亮眼。智能体已整理乾象产品及风格要点，并生成访前准备清单，便于首次沟通铺垫合作基础。",
+              link: "",
+            },
+            {
+              name: "天演资本",
+              subline: "金融机构客户 | 待拜访",
+              source: "",
+              desc: "以指数增强与多因子策略见长，管理规模快速增长。智能体可为您生成天演客户分析报告与拓客话术建议，用于支持访前准备。",
+              link: "",
+            },
+          ],
+          // 业务引入：首个与首页卡片2一致，其余为不同公司
+          yewu: [
+            {
+              name: "九坤投资",
+              subline: "金融机构客户 | 待拜访",
+              source: "",
+              desc: "智能体已根据线索生成九坤客户画像与拜访要点。可为您定制综合服务方案初版，供首次拜访时呈现，涵盖代销、极速交易、两融、投研。",
+              link: "员工-业务引入.html",
+            },
+            {
+              name: "国琨投资",
+              subline: "金融机构客户 | 方案沟通中",
+              source: "",
+              desc: "偏量化中性与套利策略的私募机构，已对华创极速交易与算法系统表现出兴趣。智能体可根据国琨需求生成差异化综合服务方案，支持您与投研及交易团队沟通。",
+              link: "",
+            },
+            {
+              name: "尚融资产",
+              subline: "金融机构客户 | 多家券商对比中",
+              source: "",
+              desc: "尚融正在评估券商机构经纪与PB服务能力。智能体已整理华创与竞品对比要点，可为您生成拜访材料与方案路演提纲，提升竞标成功率。",
+              link: "",
+            },
+            {
+              name: "睿策量化",
+              subline: "金融机构客户 | 初步表达合作意向",
+              source: "",
+              desc: "专注量化多策略，拟引入新的主经纪商以优化交易与融资成本。智能体可为您定制包含极速交易、两融、投研服务在内的联合服务方案草案。",
+              link: "",
+            },
+          ],
+          // 交易服务：首个与首页卡片3一致，其余为不同公司
+          jiaoyi: [
+            {
+              name: "明汯投资",
+              subline: "金融机构客户 | 已认可综合服务方案 | 业务办理",
+              source: "材料由公司自动驾驶大模型提供",
+              desc: "明汯已认可综合服务方案，拟在华创开立机构账户并申请TradeX极速交易系统与算法交易系统，规模超500亿。",
+              link: "员工-交易服务.html",
+            },
+            {
+              name: "弘玺投资",
+              subline: "金融机构客户 | 开户材料准备中",
+              source: "",
+              desc: "弘玺正在补充机构客户开户资料，并评估PB交易系统对接方案。智能体已为您准备开户资料清单与内部流转节点提示，协助缩短开户周期。",
+              link: "",
+            },
+            {
+              name: "景腾量化",
+              subline: "金融机构客户 | 交易系统联测",
+              source: "",
+              desc: "景腾已完成账户开立，正与华创开展交易系统联测。智能体可为您生成联测计划与问题记录模板，帮助推进正式切量与投产。",
+              link: "",
+            },
+            {
+              name: "华锐资产",
+              subline: "金融机构客户 | 算法交易接入",
+              source: "",
+              desc: "华锐拟在华创部署多条算法交易策略，对接多市场与多品种。智能体可提供算法交易申请流程说明及风控要点梳理，用于内部沟通与客户答疑。",
+              link: "",
+            },
+          ],
+          // 跟踪服务：单独样式，不走通用列表渲染（见 renderCompanyList 中特殊处理）
+          genzong: [],
+        };
+
+        var themeClass = {
+          indigo: {
+            header: "bg-indigo-500 text-white",
+            task: "text-indigo-500",
+            pill: "index-material-pill--indigo",
+          },
+          blue: {
+            header: "bg-blue-500 text-white",
+            task: "text-blue-500",
+            pill: "index-material-pill--blue",
+          },
+          emerald: {
+            header: "bg-emerald-500 text-white",
+            task: "text-emerald-500",
+            pill: "index-material-pill--emerald",
+          },
+          violet: {
+            header: "bg-violet-500 text-white",
+            task: "text-violet-500",
+            pill: "index-material-pill--violet",
+          },
+        };
+
+        function getStage() {
+          var s = "";
+
+          // ① 优先从 SPA 记录的当前子页面 URL 中解析（例如 "更多公司.html?stage=yewu"）
+          var rawUrl = (window.__InstaBrokerCurrentPageUrl || "").toString();
+          if (rawUrl) {
+            var qIndex = rawUrl.indexOf("?");
+            if (qIndex >= 0) {
+              var innerSearch = rawUrl.slice(qIndex + 1);
+              var innerParams = new URLSearchParams(innerSearch);
+              s = (innerParams.get("stage") || "").toLowerCase();
+            }
+          }
+
+          // ② 如果还没有，尝试从外层 URL 的 search 中解析（兼容直接访问更多公司.html?stage=xxx）
+          if (!s) {
+            var params = new URLSearchParams(window.location.search || "");
+            s = (params.get("stage") || "").toLowerCase();
+
+            // ③ 如果仍然没有，再从 page 参数里解析（例如 page=更多公司.html%3Fstage%3Dyewu）
+            if (!s) {
+              var pageParam = params.get("page") || "";
+              if (pageParam) {
+                try {
+                  // 一次或多次解码，兼容被多重 encode 的情况
+                  var decoded = decodeURIComponent(pageParam);
+                  if (decoded !== pageParam) {
+                    try {
+                      decoded = decodeURIComponent(decoded);
+                    } catch (e2) {
+                      // 二次解码失败则忽略，继续用第一次结果
+                    }
+                  }
+
+                  var qIndex2 = decoded.indexOf("?");
+                  if (qIndex2 >= 0) {
+                    var innerSearch2 = decoded.slice(qIndex2 + 1);
+                    var innerParams2 = new URLSearchParams(innerSearch2);
+                    s = (innerParams2.get("stage") || "").toLowerCase();
+                  }
+
+                  if (!s) {
+                    var regex = /stage(?:%3D|=)([a-zA-Z]+)/i;
+                    var m = decoded.match(regex) || pageParam.match(regex);
+                    if (m && m[1]) {
+                      s = m[1].toLowerCase();
+                    }
+                  }
+                } catch (e) {
+                  // ignore decode errors, fallback to default
+                }
+              }
+            }
+          }
+
+          return stageMap[s] ? s : "tuoke";
+        }
+
+        function renderTaskCard(stageId) {
+          var stage = stageMap[stageId];
+          var stageCardEl = document.getElementById("stageTaskCard");
+          if (!stage || !stageCardEl) return;
+
+          // 跟踪服务、交易服务：不显示顶部任务卡片，直接显示下方面板
+          if (stageId === "genzong" || stageId === "jiaoyi") {
+            stageCardEl.style.display = "none";
+            return;
+          }
+
+          var theme = themeClass[stage.theme] || themeClass.indigo;
+          var headerEl = document.getElementById("stageTaskHeader");
+          var panelEl = document.getElementById("stageTaskPanel");
+          if (!headerEl || !panelEl) return;
+          // 拓客准备、业务引入：不显示阶段标签，只显示任务内容
+          headerEl.innerHTML = "";
+          var pills = (stage.materials || [])
+            .map(function (m) {
+              return (
+                '<span class="index-material-pill ' +
+                theme.pill +
+                ' flex-shrink-0" title="' +
+                m +
+                '">' +
+                m +
+                "</span>"
+              );
+            })
+            .join("");
+          panelEl.innerHTML =
+            '<div class="index-card-task ' +
+            theme.task +
+            '">' +
+            stage.task +
+            "</div>" +
+            '<div class="text-slate-600 text-xs font-medium mt-2">' +
+            '<div class="flex items-center gap-1.5">' +
+            '<svg class="index-icon-small" aria-hidden="true"><use xlink:href="images/index-icons.svg#icon-bolt"></use></svg>' +
+            "<span>" +
+            stage.materialLabel +
+            "</span>" +
+            "</div>" +
+            '<div class="flex flex-wrap items-center gap-1.5 mt-1">' +
+            pills +
+            "</div>" +
+            "</div>";
+        }
+
+        function renderCompanyList(stageId) {
+          var ul = document.getElementById("companyList");
+          if (!ul) return;
+
+          // 交易服务：与跟踪服务类似，直接显示 2～3 张面板，每家公司不同任务
+          if (stageId === "jiaoyi") {
+            ul.innerHTML =
+              '<li class="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm hover:shadow-md hover:border-slate-300 transition-all">' +
+              '<a class="block" href="员工-交易服务.html">' +
+              '<div class="flex items-center justify-between mb-1.5">' +
+              '<div class="flex items-center gap-2">' +
+              '<span class="index-card-stage-header bg-emerald-500 text-white">交易服务</span>' +
+              '<span class="font-bold text-slate-900 text-sm">明汯投资</span>' +
+              "</div>" +
+              '<span class="text-[11px] text-slate-500">今天</span>' +
+              "</div>" +
+              '<div class="index-task-card-subline mt-1">金融机构客户 | 已认可综合服务方案 | 业务办理</div>' +
+              '<div class="index-task-card-source">材料由公司自动驾驶大模型提供</div>' +
+              '<div class="text-slate-600 leading-relaxed text-sm mt-2 index-card-desc">' +
+              "明汯已认可综合服务方案，拟在华创开立机构账户并申请TradeX极速交易系统与算法交易系统，规模超500亿。" +
+              "</div>" +
+              '<div class="mt-3 text-emerald-600 text-xs font-medium">' +
+              "任务：办理开户及申请PB交易系统。智能体已准备好机构客户开户指引、PB交易系统申请指南，可协助推进开户与系统接入。" +
+              "</div>" +
+              '<div class="mt-3 flex justify-end">' +
+              '<span class="index-task-card-action text-emerald-600">立即处理 →</span>' +
+              "</div>" +
+              "</a>" +
+              "</li>" +
+              '<li class="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm hover:shadow-md hover:border-slate-300 transition-all">' +
+              '<a class="block" href="#" onclick="return false;">' +
+              '<div class="flex items-center justify-between mb-1.5">' +
+              '<div class="flex items-center gap-2">' +
+              '<span class="index-card-stage-header bg-emerald-500 text-white">交易服务</span>' +
+              '<span class="font-bold text-slate-900 text-sm">弘玺投资</span>' +
+              "</div>" +
+              '<span class="text-[11px] text-slate-500">昨天</span>' +
+              "</div>" +
+              '<div class="index-task-card-subline mt-1">金融机构客户 | 开户材料准备中</div>' +
+              '<div class="text-slate-600 leading-relaxed text-sm mt-2 index-card-desc">' +
+              "弘玺正在补充机构客户开户资料，并评估PB交易系统对接方案。需协助客户梳理开户资料清单与内部流转节点，缩短开户周期。" +
+              "</div>" +
+              '<div class="mt-3 text-emerald-600 text-xs font-medium">' +
+              "任务：跟进开户材料齐备度与合规审核进度，智能体可生成资料清单与进度看板，便于与客户及内部同步。" +
+              "</div>" +
+              "</a>" +
+              "</li>" +
+              '<li class="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm hover:shadow-md hover:border-slate-300 transition-all">' +
+              '<a class="block" href="#" onclick="return false;">' +
+              '<div class="flex items-center justify-between mb-1.5">' +
+              '<div class="flex items-center gap-2">' +
+              '<span class="index-card-stage-header bg-emerald-500 text-white">交易服务</span>' +
+              '<span class="font-bold text-slate-900 text-sm">景腾量化</span>' +
+              "</div>" +
+              '<span class="text-[11px] text-slate-500">两天前</span>' +
+              "</div>" +
+              '<div class="index-task-card-subline mt-1">金融机构客户 | 交易系统联测</div>' +
+              '<div class="text-slate-600 leading-relaxed text-sm mt-2 index-card-desc">' +
+              "景腾已完成账户开立，正与华创开展交易系统联测。需按联测计划推进环境配置、权限开通与试单验证。" +
+              "</div>" +
+              '<div class="mt-3 text-emerald-600 text-xs font-medium">' +
+              "任务：协调联测计划与问题记录，智能体可生成联测检查清单与问题跟踪表，支持正式切量与投产。" +
+              "</div>" +
+              "</a>" +
+              "</li>";
+            return;
+          }
+
+          // 跟踪服务：使用与首页卡片4类似的两条风险处置卡片，且仅首条可点击
+          if (stageId === "genzong") {
+            ul.innerHTML =
+              '<li class="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm hover:shadow-md hover:border-slate-300 transition-all">' +
+              '<a class="block" href="员工-跟踪服务.html">' +
+              '<div class="flex items-center justify-between mb-1.5">' +
+              '<div class="flex items-center gap-2">' +
+              '<span class="index-card-stage-header bg-violet-500 text-white">跟踪服务</span>' +
+              '<span class="font-bold text-slate-900 text-sm">灵均投资</span>' +
+              '<span class="inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-semibold bg-red-500/10 text-red-600 border border-red-200">紧急</span>' +
+              "</div>" +
+              '<span class="text-[11px] text-slate-500">今天 09:00</span>' +
+              "</div>" +
+              '<div class="index-task-card-subline mt-1">风险处置 | 多部门协同处置</div>' +
+              '<div class="text-slate-600 leading-relaxed text-sm mt-2 index-card-desc">' +
+              "灵均部分产品因交易异常收到交易所关注函，部分账户面临限制交易。需尽快落实交易情况、梳理合规要点并协同多部门形成处置方案。" +
+              "</div>" +
+              '<div class="mt-3 text-violet-500 text-xs font-medium">' +
+              "处理方式：协调交易、合规、风控等多部门召开圆桌会议，形成书面处置方案并与交易所沟通，智能体可为您生成会议材料与风险处置方案初稿。" +
+              "</div>" +
+              '<div class="mt-3 flex justify-end">' +
+              '<span class="index-task-card-action text-violet-600">立即处理 →</span>' +
+              "</div>" +
+              "</a>" +
+              "</li>" +
+              '<li class="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm hover:shadow-md hover:border-slate-300 transition-all">' +
+              '<a class="block" href="#" onclick="return false;">' +
+              '<div class="flex items-center justify-between mb-1.5">' +
+              '<div class="flex items-center gap-2">' +
+              '<span class="index-card-stage-header bg-violet-500 text-white">跟踪服务</span>' +
+              '<span class="font-bold text-slate-900 text-sm">弘玺量化</span>' +
+              '<span class="inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-semibold bg-amber-500/10 text-amber-600 border border-amber-200">关注</span>' +
+              "</div>" +
+              '<span class="text-[11px] text-slate-500">昨天 16:30</span>' +
+              "</div>" +
+              '<div class="index-task-card-subline mt-1">跟踪服务 | 交易异常排查</div>' +
+              '<div class="text-slate-600 leading-relaxed text-sm mt-2 index-card-desc">' +
+              "弘玺部分账户在开盘阶段出现异常高频撤单，交易所发来口头问询。需尽快核查交易日志、还原交易路径并评估是否涉及异常交易。" +
+              "</div>" +
+              '<div class="mt-3 text-violet-500 text-xs font-medium">' +
+              "处理方式：由经纪与量化交易团队联合梳理交易记录，分类归因并形成书面说明，智能体可生成交易异常分析框架与问询回复模板供参考。" +
+              "</div>" +
+              "</a>" +
+              "</li>";
+            return;
+          }
+
+          var list = companiesByStage[stageId] || companiesByStage.tuoke;
+          ul.innerHTML = list
+            .map(function (c) {
+              var sourceHtml = c.source
+                ? '<div class="index-task-card-source">' + c.source + "</div>"
+                : "";
+              var href = c.link
+                ? ' href="' + c.link + '"'
+                : ' href="#" onclick="return false;"';
+              return (
+                '<li class="more-company-item rounded-xl border border-slate-200 bg-white p-4 shadow-sm hover:shadow-md hover:border-slate-300 transition-all">' +
+                '<a class="block" ' +
+                href +
+                ">" +
+                '<div class="font-bold text-slate-900 text-sm">' +
+                c.name +
+                "</div>" +
+                '<div class="index-task-card-subline mt-1">' +
+                c.subline +
+                "</div>" +
+                sourceHtml +
+                '<div class="text-slate-600 leading-relaxed text-sm mt-2 index-card-desc">' +
+                c.desc +
+                "</div>" +
+                '<div class="mt-3 flex justify-end">' +
+                '<span class="index-task-card-action text-indigo-600">立即处理 →</span>' +
+                "</div>" +
+                "</a></li>"
+              );
+            })
+            .join("");
+        }
+
+        var stage = getStage();
+
+        // 根据阶段动态设置页面标题、列表标题和外层头部标题
+        if (stageMap[stage]) {
+          document.title = stageMap[stage].label;
+          // 顶部导航栏显示当前阶段对应文案；延迟执行以免被 index 的 updateHeaderTitle 覆盖
+          var label = stageMap[stage].label;
+          var headerTitleEl = document.getElementById("pageHeaderTitle");
+          if (headerTitleEl) {
+            headerTitleEl.textContent = label;
+          }
+          setTimeout(function () {
+            var el = document.getElementById("pageHeaderTitle");
+            if (el) el.textContent = label;
+          }, 0);
+        }
+
+        renderTaskCard(stage);
+        renderCompanyList(stage);
+      })();
+    </script>
+  </body>
+</html>

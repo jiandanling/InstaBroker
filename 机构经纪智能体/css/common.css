@@ -537,7 +537,9 @@ form.subpage-footer-input-wrap {
   flex-direction: column;
   gap: 0.75rem;
   box-shadow: 0 1px 3px rgba(15, 23, 42, 0.06);
-  transition: transform 0.2s ease, box-shadow 0.25s ease;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.25s ease;
 }
 
 .chat-msg-shell:hover {
@@ -588,7 +590,9 @@ form.subpage-footer-input-wrap {
   color: #2563eb;
   background-color: #eff6ff; /* blue-50 */
   border: 1px solid #bfdbfe; /* blue-200 */
-  transition: background-color 0.15s ease, border-color 0.15s ease;
+  transition:
+    background-color 0.15s ease,
+    border-color 0.15s ease;
 }
 
 .btn-secondary-blue:hover {
@@ -947,15 +951,31 @@ form.subpage-footer-input-wrap {
   margin-bottom: 6px; /* mb-1.5 */
 }
 
+.index-task-card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: auto;
+  padding-top: 0px;
+  transform: translateY(2px);
+}
+
+.index-task-card-more {
+  font-size: 12px;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.index-task-card-more:hover {
+  text-decoration: underline;
+}
+
 .index-task-card-action {
   display: inline-flex;
   align-items: center;
   gap: 4px;
   font-weight: 500;
   font-size: 12px; /* text-xs */
-  margin-top: auto;
-  align-self: flex-end;
-  transform: translateY(2px); /* translate-y-0.5 */
 }
 
 .index-card-uniform {
@@ -1014,6 +1034,20 @@ form.subpage-footer-input-wrap {
 .index-quick-entry-card:hover {
   box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
   transform: translateY(-2px);
+}
+
+/* 更多公司页：上方任务卡片、下方公司列表 */
+.more-company-task-card {
+  flex-shrink: 0;
+}
+
+.more-company-item a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.more-company-item a[href="#"] {
+  cursor: default;
 }
 
 .index-avatar-ring {
