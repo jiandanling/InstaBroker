@@ -413,14 +413,20 @@
                     </a>
                     <a
                       href="数字人-我的任务.html"
-                      class="flex flex-col items-center gap-2"
+                      class="flex flex-col items-center gap-2 relative"
                       title="我的任务"
                     >
-                      <img
-                        src="images/avatar/avatar_102.jpg"
-                        alt="我的任务"
-                        class="w-16 h-16 rounded-full object-cover border-2 border-amber-200/80 index-avatar-ring"
-                      />
+                      <span class="relative inline-block">
+                        <img
+                          src="images/avatar/avatar_102.jpg"
+                          alt="我的任务"
+                          class="w-16 h-16 rounded-full object-cover border-2 border-amber-200/80 index-avatar-ring"
+                        />
+                        <span
+                          class="absolute -top-0.5 -right-0.5 min-w-[20px] h-5 px-1 flex items-center justify-center rounded-full bg-red-500 text-white text-xs font-semibold"
+                          aria-label="8 个任务"
+                        >8</span>
+                      </span>
                       <span class="text-xs text-slate-500">我的任务</span>
                     </a>
                     <a
@@ -433,7 +439,7 @@
                         alt="圆桌会议"
                         class="w-16 h-16 rounded-full object-cover border-2 border-emerald-200/80 index-avatar-ring"
                       />
-                      <span class="text-xs text-slate-500">圆桌会议</span>
+                      <span class="text-xs text-slate-500">前端发起</span>
                     </a>
                     <a
                       href="数字人-开户服务.html"
