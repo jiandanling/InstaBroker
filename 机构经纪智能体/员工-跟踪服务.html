@@ -19,10 +19,6 @@
   <body>
     <main id="main-content" class="subpage-main">
       <div class="visit-page-root flex flex-col gap-3">
-        <div class="flex items-center justify-center text-xs text-[#64748B] mt-0.5 bg-white/50 backdrop-blur-sm rounded-full px-3 py-1 shadow-sm w-fit mx-auto">
-          北京博达富通基金 · 跟踪服务
-        </div>
-
         <div id="messageList" class="message-list-column">
           <section class="min-w-0">
             <div class="flex items-center justify-center text-xs text-slate-500 bg-white/80 backdrop-blur-sm rounded-full px-3 py-1.5 shadow-sm w-fit mx-auto border border-slate-100">
@@ -30,13 +26,11 @@
             </div>
           </section>
 
-          <!-- 1. 超级数字员工：发起查询 -->
+          <!-- 1. 超级数字员工：发起查询（使用数字员工头像） -->
           <section class="min-w-0">
             <div class="flex items-start gap-2 message-enter flex-row-reverse">
-              <div class="w-8 h-8 rounded-full bg-slate-400 flex items-center justify-center flex-shrink-0 mt-0.5">
-                <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20">
-                  <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd" />
-                </svg>
+              <div class="ai-avatar-wrap ai-avatar flex-shrink-0">
+                <img src="images/icons/icon-ai-avatar.png" alt="" class="ai-avatar-img" aria-hidden="true" />
               </div>
               <div class="flex-1 flex flex-col items-end min-w-0">
                 <div class="text-xs text-slate-500 mb-1 mr-1">机构经纪超级数字员工</div>
@@ -47,11 +41,13 @@
             </div>
           </section>
 
-          <!-- 2. 公司自动驾驶大模型：返回交易情况 -->
+          <!-- 2. 公司自动驾驶大模型：返回交易情况（大模型图标） -->
           <section class="min-w-0">
             <div class="message-row message-enter">
-              <div class="ai-avatar-wrap ai-avatar">
-                <img src="images/icons/icon-ai-avatar.png" alt="" class="ai-avatar-img" aria-hidden="true" />
+              <div class="ai-avatar-wrap ai-avatar-wrap--small flex-shrink-0 rounded-full bg-violet-500 flex items-center justify-center overflow-hidden">
+                <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd" />
+                </svg>
               </div>
               <div class="flex-1 min-w-0">
                 <div class="text-xs text-slate-500 mb-1 ml-1">公司自动驾驶大模型</div>
@@ -87,18 +83,28 @@
       var mainContent = document.getElementById("main-content");
       var messageList = document.getElementById("messageList");
 
-      function aiAvatar() {
+      function modelAvatar() {
         return (
-          '<div class="ai-avatar-wrap ai-avatar">' +
-          '<img src="images/icons/icon-ai-avatar.png" alt="" class="ai-avatar-img" aria-hidden="true" />' +
-          "</div>"
+          '<div class="ai-avatar-wrap ai-avatar-wrap--small flex-shrink-0 rounded-full bg-violet-500 flex items-center justify-center overflow-hidden">' +
+          '<svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">' +
+          '<path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd"/>' +
+          "</svg></div>"
+        );
+      }
+
+      function organizerAvatar() {
+        return (
+          '<div class="ai-avatar-wrap ai-avatar-wrap--small flex-shrink-0 rounded-full bg-indigo-600 flex items-center justify-center overflow-hidden">' +
+          '<svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">' +
+          '<path d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3zM6 8a2 2 0 11-4 0 2 2 0 014 0zM16 18v-3a5.972 5.972 0 00-.75-2.906A3.005 3.005 0 0119 15v3h-3zM4.75 12.094A5.973 5.973 0 004 15v3H1v-3a3 3 0 013.75-2.906z"/>' +
+          "</svg></div>"
         );
       }
 
       function msgWrap(label, content) {
         return (
           '<div class="message-row message-enter">' +
-          aiAvatar() +
+          organizerAvatar() +
           '<div class="flex-1 min-w-0">' +
           '<div class="text-xs text-slate-500 mb-1 ml-1">' + label + "</div>" +
           '<div class="chat-msg-shell text-sm text-slate-600 leading-relaxed">' + content + "</div>" +
@@ -109,8 +115,8 @@
       function userMsgWrap(label, content) {
         return (
           '<div class="flex items-start gap-2 message-enter flex-row-reverse">' +
-          '<div class="w-8 h-8 rounded-full bg-slate-400 flex items-center justify-center flex-shrink-0 mt-0.5">' +
-          '<svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"/></svg>' +
+          '<div class="ai-avatar-wrap ai-avatar flex-shrink-0">' +
+          '<img src="images/icons/icon-ai-avatar.png" alt="" class="ai-avatar-img" aria-hidden="true" />' +
           "</div>" +
           '<div class="flex-1 flex flex-col items-end min-w-0">' +
           '<div class="text-xs text-slate-500 mb-1 mr-1">' + label + "</div>" +
@@ -234,7 +240,7 @@
                     setTimeout(function () {
                       addMsg(
                         '<div class="message-row message-enter">' +
-                          aiAvatar() +
+                          organizerAvatar() +
                           '<div class="flex-1 min-w-0">' +
                           '<div class="text-xs text-slate-500 mb-1 ml-1">机构经纪组织者智能体</div>' +
                           '<div class="chat-msg-shell border-green-200 bg-gradient-to-r from-green-50 to-emerald-50">' +

@@ -634,12 +634,22 @@ form.subpage-footer-input-wrap {
   margin-top: 0.25rem;
 }
 
-/* 智能体头像图片 */
+/* 智能体头像图片（略大以便识别） */
 .ai-avatar-img {
-  width: 1.5rem;
-  height: 1.5rem;
+  width: 1.75rem;
+  height: 1.75rem;
   border-radius: 9999px;
   object-fit: cover;
+}
+
+/* 左侧带背景的头像（大模型、组织者等）缩小，与无背景的数字员工头像视觉一致 */
+.ai-avatar-wrap--small {
+  width: 1.6rem;
+  height: 1.6rem;
+}
+.ai-avatar-wrap--small svg {
+  width: 1rem;
+  height: 1rem;
 }
 
 .user-avatar {
@@ -1105,8 +1115,13 @@ form.subpage-footer-input-wrap {
 }
 
 .phone-screen #pageContent .ai-avatar-img {
-  width: 1.45rem;
-  height: 1.45rem;
+  width: 1.65rem;
+  height: 1.65rem;
+}
+
+.phone-screen #pageContent .ai-avatar-wrap--small {
+  width: 1.6rem;
+  height: 1.6rem;
 }
 
 /* 对话列表：减少上下留白，提高信息密度 */
