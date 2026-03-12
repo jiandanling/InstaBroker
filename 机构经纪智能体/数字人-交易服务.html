@@ -18,166 +18,114 @@
   </head>
   <body>
     <main class="subpage-main">
-      <!-- 数字人头像 -->
-      <div class="flex flex-col items-center mb-6">
-        <img
-          src="images/交易服务数字人.jpg"
-          alt="交易服务数字人"
-          class="w-24 h-24 rounded-full object-cover border-4 border-violet-200 shadow-lg"
-        />
-        <p class="text-sm text-[#64748B] mt-2">
-          交易服务智能体 · PB系统、算法交易、极速通道
-        </p>
-      </div>
-
-      <h2
-        class="text-base font-semibold text-[#1e293b] mb-4 flex items-center gap-2"
-      >
-        <span class="w-1 h-4 rounded-full bg-violet-500"></span>
-        服务入口
-      </h2>
-      <div class="text-xs text-[#64748B] text-center mb-5">
-        PB系统申请 · 算法交易 · 极速通道 · 交易咨询
-      </div>
-
-      <div class="space-y-3">
-        <a
-          href="员工-标准化业务.html"
-          class="block bg-white rounded-xl subpage-card-shadow overflow-hidden hover:shadow-lg transition-shadow"
-        >
-          <div class="p-4 flex items-center gap-4">
-            <div
-              class="w-12 h-12 rounded-xl bg-violet-50 flex items-center justify-center flex-shrink-0"
-            >
-              <svg
-                class="w-6 h-6 text-violet-600"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
+      <div class="visit-page-root flex flex-col gap-3">
+        <div class="message-list-column">
+          <!-- 交易服务智能体：首条消息（数字人头像 + 服务卡片） -->
+          <section class="min-w-0">
+            <div class="message-row message-enter w-full">
+              <div class="ai-avatar-wrap ai-avatar flex-shrink-0 overflow-hidden">
+                <img
+                  src="images/交易服务数字人.jpg"
+                  alt="交易服务智能体"
+                  class="ai-avatar-img w-full h-full object-cover"
+                  aria-hidden="true"
                 />
-              </svg>
-            </div>
-            <div class="flex-1 min-w-0">
-              <div class="font-semibold text-[#1E293B] text-sm">
-                PB交易系统申请
               </div>
-              <div class="text-xs text-[#64748B] mt-0.5">
-                TradeX、FixStation、恒生PB等
-              </div>
-            </div>
-            <svg
-              class="w-5 h-5 text-[#94A3B8] flex-shrink-0"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M9 5l7 7-7 7"
-              />
-            </svg>
-          </div>
-        </a>
+              <div class="flex-1 min-w-0">
+                <div class="chat-msg-shell">
+                  <header class="min-w-0">
+                    <div class="font-bold text-slate-900 text-sm leading-tight">
+                      交易服务智能体
+                    </div>
+                    <p class="text-xs text-slate-500 mt-0.5">
+                      PB系统、算法交易、极速通道 — 开户申请、材料协同与进度跟踪
+                    </p>
+                  </header>
 
-        <a
-          href="员工-标准化业务.html"
-          class="block bg-white rounded-xl subpage-card-shadow overflow-hidden hover:shadow-lg transition-shadow"
-        >
-          <div class="p-4 flex items-center gap-4">
-            <div
-              class="w-12 h-12 rounded-xl bg-violet-50 flex items-center justify-center flex-shrink-0"
-            >
-              <svg
-                class="w-6 h-6 text-violet-600"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M13 10V3L4 14h7v7l9-11h-7z"
-                />
-              </svg>
-            </div>
-            <div class="flex-1 min-w-0">
-              <div class="font-semibold text-[#1E293B] text-sm">
-                算法交易系统申请
-              </div>
-              <div class="text-xs text-[#64748B] mt-0.5">
-                量化交易、智能算法接入
-              </div>
-            </div>
-            <svg
-              class="w-5 h-5 text-[#94A3B8] flex-shrink-0"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M9 5l7 7-7 7"
-              />
-            </svg>
-          </div>
-        </a>
+                  <div class="task-hint-amber">
+                    <div class="space-y-1 task-hint-amber-body">
+                      <div>
+                        <span class="task-hint-amber-dot"></span>
+                        <span>支持私募产品户开户、PB系统申请、材料上传与多部门协同。</span>
+                      </div>
+                      <div>
+                        <span class="task-hint-amber-dot"></span>
+                        <span>全部校验通过后并行下达任务，可跟踪账户开立与PB开通进度。</span>
+                      </div>
+                    </div>
+                  </div>
 
-        <a
-          href="#"
-          class="block bg-white rounded-xl subpage-card-shadow overflow-hidden hover:shadow-lg transition-shadow"
-        >
-          <div class="p-4 flex items-center gap-4">
-            <div
-              class="w-12 h-12 rounded-xl bg-violet-50 flex items-center justify-center flex-shrink-0"
-            >
-              <svg
-                class="w-6 h-6 text-violet-600"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"
-                />
-              </svg>
-            </div>
-            <div class="flex-1 min-w-0">
-              <div class="font-semibold text-[#1E293B] text-sm">
-                极速通道咨询
+                  <a
+                    href="员工-交易服务.html"
+                    class="btn-primary-blue inline-flex no-underline"
+                  >
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                    </svg>
+                    办理交易服务
+                  </a>
+
+                  <div class="border-t border-slate-100 pt-3 mt-1">
+                    <div class="text-xs font-semibold text-slate-600 mb-2">按服务类型进入</div>
+                    <div class="space-y-2">
+                      <a
+                        href="员工-交易服务.html"
+                        class="flex items-center gap-3 p-2.5 rounded-lg border border-slate-100 bg-slate-50/50 hover:bg-violet-50/50 hover:border-violet-100 transition-colors no-underline text-inherit"
+                      >
+                        <div class="w-9 h-9 rounded-lg bg-violet-100 flex items-center justify-center flex-shrink-0">
+                          <svg class="w-4 h-4 text-violet-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                          </svg>
+                        </div>
+                        <div class="flex-1 min-w-0">
+                          <div class="font-medium text-slate-800 text-sm">PB交易系统申请</div>
+                          <div class="text-xs text-slate-500">TradeX、FixStation、恒生PB等</div>
+                        </div>
+                        <svg class="w-4 h-4 text-slate-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                        </svg>
+                      </a>
+                      <a
+                        href="员工-交易服务.html"
+                        class="flex items-center gap-3 p-2.5 rounded-lg border border-slate-100 bg-slate-50/50 hover:bg-violet-50/50 hover:border-violet-100 transition-colors no-underline text-inherit"
+                      >
+                        <div class="w-9 h-9 rounded-lg bg-violet-100 flex items-center justify-center flex-shrink-0">
+                          <svg class="w-4 h-4 text-violet-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                          </svg>
+                        </div>
+                        <div class="flex-1 min-w-0">
+                          <div class="font-medium text-slate-800 text-sm">算法交易系统申请</div>
+                          <div class="text-xs text-slate-500">量化交易、智能算法接入</div>
+                        </div>
+                        <svg class="w-4 h-4 text-slate-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                        </svg>
+                      </a>
+                      <a
+                        href="#"
+                        class="flex items-center gap-3 p-2.5 rounded-lg border border-slate-100 bg-slate-50/50 hover:bg-violet-50/50 hover:border-violet-100 transition-colors no-underline text-inherit"
+                      >
+                        <div class="w-9 h-9 rounded-lg bg-violet-100 flex items-center justify-center flex-shrink-0">
+                          <svg class="w-4 h-4 text-violet-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+                          </svg>
+                        </div>
+                        <div class="flex-1 min-w-0">
+                          <div class="font-medium text-slate-800 text-sm">极速通道咨询</div>
+                          <div class="text-xs text-slate-500">低延迟通道、托管接入说明</div>
+                        </div>
+                        <svg class="w-4 h-4 text-slate-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                        </svg>
+                      </a>
+                    </div>
+                  </div>
+                </div>
               </div>
-              <div class="text-xs text-[#64748B] mt-0.5">
-                低延迟通道、托管接入说明
-              </div>
             </div>
-            <svg
-              class="w-5 h-5 text-[#94A3B8] flex-shrink-0"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M9 5l7 7-7 7"
-              />
-            </svg>
-          </div>
-        </a>
+          </section>
+        </div>
       </div>
     </main>
   </body>
