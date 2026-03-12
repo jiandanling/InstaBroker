@@ -12,16 +12,13 @@
         window.__InstaBrokerSPA__ &&
         window.__InstaBrokerSPA__.ensureWrappedInIndex
       ) {
-        window.__InstaBrokerSPA__.ensureWrappedInIndex("员工-风险处理.html");
+        window.__InstaBrokerSPA__.ensureWrappedInIndex("员工-跟踪服务.html");
       }
     </script>
   </head>
   <body>
     <!-- 对话区 -->
-    <main
-      id="main-content"
-      class="subpage-main"
-    >
+    <main id="main-content" class="subpage-main">
       <div class="visit-page-root flex flex-col gap-3">
         <div id="messageList" class="message-list-column">
           <!-- 时间戳 -->
@@ -143,11 +140,11 @@
         return (
           '<div class="message-row message-enter">' +
           aiAvatar() +
-          '<div class="flex-1">' +
+          '<div class="flex-1 min-w-0">' +
           '<div class="text-xs text-slate-500 mb-1 ml-1">' +
           label +
           "</div>" +
-          '<div class="bg-white rounded-xl px-4 py-3 msg-card-shadow max-w-[90%] sm:max-w-[85%] text-sm text-slate-600 leading-relaxed border border-slate-100">' +
+          '<div class="chat-msg-shell text-sm text-slate-600 leading-relaxed">' +
           content +
           "</div>" +
           "</div>" +

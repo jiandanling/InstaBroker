@@ -9,7 +9,7 @@
   <script src="js/spa-wrapper.js"></script>
   <script>
     if (window.__InstaBrokerSPA__ && window.__InstaBrokerSPA__.ensureWrappedInIndex) {
-      window.__InstaBrokerSPA__.ensureWrappedInIndex("员工-办理任务.html");
+      window.__InstaBrokerSPA__.ensureWrappedInIndex("员工-交易服务.html");
     }
   </script>
 </head>
@@ -29,9 +29,6 @@
           <div class="chat-msg-shell">
             <div class="space-y-4">
               <div class="flex items-center gap-2">
-                <div class="w-6 h-6 bg-gradient-to-br from-blue-500 to-purple-600 rounded flex items-center justify-center">
-                  <svg class="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M3 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"/></svg>
-                </div>
                 <span class="font-bold text-[#1E293B]">开户与申请PB系统流程</span>
               </div>
               <!-- 流程图 -->
@@ -71,11 +68,15 @@
           <img src="images/icons/icon-ai-avatar.png" alt="" class="ai-avatar-img" aria-hidden="true" />
         </div>
         <div class="flex-1 min-w-0">
-          <div class="bg-white rounded-xl shadow-lg border border-gray-100 overflow-hidden">
-            <div class="bg-gradient-to-r from-blue-500 to-indigo-600 text-white px-4 py-3">
-              <span class="font-bold text-base">上传所需材料</span>
+          <div class="chat-msg-shell">
+            <div class="space-y-4">
+            <div class="flex items-center justify-between">
+              <span class="font-bold text-sm text-[#1E293B]">上传所需材料</span>
+              <div class="w-6 h-6 rounded-full bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center text-white text-sm font-semibold flex-shrink-0">
+                协
+              </div>
             </div>
-            <div class="p-4 space-y-4">
+            <div class="space-y-4">
               <!-- 公司自动驾驶大模型获取 -->
               <div class="space-y-2">
                 <div class="flex items-center gap-2 text-sm font-medium text-[#1E293B]">
@@ -132,7 +133,12 @@
                 </div>
               </div>
               <div id="submitArea">
-                <button id="btnSubmit" onclick="handleSubmitMaterials()" disabled class="w-full py-3 bg-gray-300 text-gray-500 rounded-xl font-medium cursor-not-allowed">
+                <button
+                  id="btnSubmit"
+                  onclick="handleSubmitMaterials()"
+                  disabled
+                  class="btn-primary-blue opacity-60 cursor-not-allowed"
+                >
                   材料未齐，请完成上传
                 </button>
               </div>
@@ -278,7 +284,7 @@
         var btn = document.getElementById('btnSubmit');
         if (!btn) return;
         btn.disabled = false;
-        btn.className = 'w-full py-3 bg-gradient-to-r from-[#059669] to-[#047857] text-white rounded-xl font-medium shadow-md hover:shadow-lg transition-all';
+        btn.className = 'btn-primary-blue';
         btn.textContent = '提交材料并校验';
       }
     };
@@ -288,7 +294,7 @@
       if (!btn || btn.disabled) return;
       btn.disabled = true;
       btn.textContent = '校验中...';
-      btn.className = 'w-full py-3 bg-gray-300 text-gray-500 rounded-xl font-medium cursor-not-allowed';
+      btn.className = 'btn-primary-blue opacity-60 cursor-not-allowed';
       setTimeout(function() {
         var area = document.getElementById('submitArea');
         if (!area) return;
