@@ -1168,12 +1168,15 @@ form.subpage-footer-input-wrap {
   }
 }
 
-/* 子页统一外层容器：main.subpage-main 内唯一根节点，版心宽度 + 可选 flex/gap（如 flex flex-col gap-3） */
+/* 子页统一外层容器：main.subpage-main 内唯一根节点，版心 + 纵向 flex、默认 gap-3 */
 .visit-page-root {
   max-width: var(--layout-max-width);
   margin: 0 auto;
   width: 100%;
   box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem; /* gap-3 */
 }
 
 /* 手机壳内注入子页：对话容器铺满，减少左侧空白 */
