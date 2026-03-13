@@ -1,4 +1,6 @@
-/* 机构经纪智能体 - 统一设计系统 */
+/* 机构经纪智能体 - 统一设计系统
+ * 结构：设计变量 → 全局/布局 → 子页通用 → 底部/输入栏 → 组件(卡片/按钮/头像/任务提示等) → index 主页专用 → 适应性布局
+ */
 :root {
   --color-primary: #4f46e5;
   --color-primary-light: #6366f1;
@@ -778,7 +780,7 @@ form.subpage-footer-input-wrap {
   margin: -0.25rem;
 }
 
-/* 消息卡片（博达富通风险处理等） */
+/* 消息卡片（与 .subpage-card-shadow / .index-card-shadow 数值一致） */
 .msg-card-shadow {
   box-shadow:
     0 1px 3px rgba(0, 0, 0, 0.06),
