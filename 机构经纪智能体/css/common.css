@@ -1168,7 +1168,7 @@ form.subpage-footer-input-wrap {
   }
 }
 
-/* 独立打开子页面时，使用与手机壳一致的版心宽度 */
+/* 子页统一外层容器：main.subpage-main 内唯一根节点，版心宽度 + 可选 flex/gap（如 flex flex-col gap-3） */
 .visit-page-root {
   max-width: var(--layout-max-width);
   margin: 0 auto;
