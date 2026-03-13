@@ -746,6 +746,34 @@ form.subpage-footer-input-wrap {
   margin-right: 0.25rem;
 }
 
+/* 已完成/已通过类通知：统一图标 + 绿色成功态 */
+.status-done {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #059669; /* emerald-600 */
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+.status-done-icon {
+  width: 1.25rem;
+  height: 1.25rem;
+  flex-shrink: 0;
+  color: inherit;
+}
+/* 小标签：已完成/已发送/已通过/已确认 等 */
+.status-done-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.125rem 0.5rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: #fff;
+  background: #059669; /* emerald-600 */
+  border-radius: 0.5rem;
+}
+
 /* 流程图 */
 .flow-diagram-svg {
   max-height: 200px;

@@ -176,7 +176,7 @@
                 "机构经纪组织者智能体",
                 '<div class="flex items-center gap-2 mb-3">' +
                   '<span class="font-semibold text-slate-800 text-sm">🔄 圆桌会议 · 风险处置意见</span>' +
-                  '<span class="bg-indigo-500 text-white text-xs font-medium px-2 py-0.5 rounded-lg">已反馈</span></div>' +
+                  '<span class="status-done-badge">已反馈</span></div>' +
                   '<div class="space-y-2.5">' +
                   '<div class="flex items-start gap-3 p-3 bg-red-50 rounded-lg border border-red-100">' +
                   '<div class="flex-shrink-0 w-9 h-9 rounded-lg bg-gradient-to-br from-red-500 to-red-600 flex items-center justify-center text-white text-lg">⚠️</div>' +
@@ -193,7 +193,7 @@
                   "机构经纪组织者智能体",
                   '<div class="flex items-center gap-2 mb-3">' +
                     '<span class="font-semibold text-slate-800 text-sm">📞 易信会议</span>' +
-                    '<span class="bg-indigo-500 text-white text-xs font-medium px-2 py-0.5 rounded-lg">已创建</span></div>' +
+                    '<span class="status-done-badge">已创建</span></div>' +
                     '<div class="text-sm text-slate-600 mb-2">已创建易信会议，通知以下部门相关负责人及经办人召开线上会议，对风险处置意见进行确认：</div>' +
                     '<ul class="space-y-1.5 text-sm text-slate-600">' +
                     deps.map(function (d) {
@@ -209,7 +209,7 @@
                     "机构经纪组织者智能体",
                     '<div class="flex items-center gap-2 mb-2">' +
                       '<span class="font-semibold text-slate-800 text-sm">✅ 风险处置意见确认</span>' +
-                      '<span class="bg-emerald-500 text-white text-xs font-medium px-2 py-0.5 rounded-lg">已确认</span></div>' +
+                      '<span class="status-done-badge">已确认</span></div>' +
                       '<div class="text-sm text-slate-600 mb-2">参会部门已对风险处置意见进行确认，会议决策如下：</div>' +
                       '<ul class="space-y-2 text-sm text-slate-600">' +
                       '<li class="flex items-start gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-indigo-500 flex-shrink-0 mt-1.5"></span>下一个交易日密切监测其交易行为</li>' +
@@ -224,7 +224,7 @@
                       "机构经纪组织者智能体",
                       '<div class="flex items-center gap-2 mb-2">' +
                         '<span class="font-semibold text-slate-800 text-sm">📝 会议纪要</span>' +
-                        '<span class="bg-indigo-500 text-white text-xs font-medium px-2 py-0.5 rounded-lg">已完成</span></div>' +
+                        '<span class="status-done-badge">已完成</span></div>' +
                         '<div class="text-sm text-slate-600">机构经纪组织者智能体已完成会议纪要，记录风险处置意见及会议决策。</div>'
                     )
                   );
@@ -235,7 +235,7 @@
                         "机构经纪组织者智能体",
                         '<div class="flex items-center gap-2 mb-2">' +
                           '<span class="font-semibold text-slate-800 text-sm">📤 发送参会人确认</span>' +
-                          '<span class="bg-emerald-500 text-white text-xs font-medium px-2 py-0.5 rounded-lg">已发送</span></div>' +
+                          '<span class="status-done-badge">已发送</span></div>' +
                           '<div class="text-sm text-slate-600">会议纪要已同步发送参会人确认，抄送公司分管领导。</div>'
                       )
                     );
@@ -247,9 +247,9 @@
                           '<div class="flex-1 min-w-0">' +
                           '<div class="text-xs text-slate-500 mb-1 ml-1">机构经纪组织者智能体</div>' +
                           '<div class="chat-msg-shell border-green-200 bg-gradient-to-r from-green-50 to-emerald-50">' +
-                          '<div class="flex items-center gap-2">' +
-                          '<svg class="w-5 h-5 text-green-600 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>' +
-                          '<span class="font-medium text-green-700 text-sm">风险处置流程已完成</span></div>' +
+                          '<div class="status-done">' +
+                          '<svg class="status-done-icon" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>' +
+                          '<span>风险处置流程已完成</span></div>' +
                           '<p class="text-sm text-slate-600 mt-2">圆桌会议已结束，处置意见已确认并发送。客户经理将按会议决策与灵均投资沟通。</p>' +
                           '</div></div></div>'
                       );
