@@ -419,8 +419,18 @@ body {
   align-items: center;
   gap: 8px;
   border-radius: 16px;
-  border: 1px solid rgba(226, 232, 240, 0.6);
-  padding: 4px 12px;
+  padding: 4px 8px;
+}
+
+.bottom-input-inner {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  border-radius: 9999px;
+  border: 1px solid rgba(226, 232, 240, 0.9);
+  padding: 4px 10px;
+  background: rgba(248, 250, 252, 0.95);
 }
 
 form.subpage-footer-input-wrap {
@@ -428,8 +438,7 @@ form.subpage-footer-input-wrap {
 }
 
 .subpage-footer-input {
-  flex: 1;
-  min-width: 0;
+  width: 100%;
   background: transparent;
   border: 0;
   outline: none;
@@ -439,6 +448,13 @@ form.subpage-footer-input-wrap {
 
 .subpage-footer-input::placeholder {
   color: #64748b;
+}
+
+/* 语音模式：按住说话 居中显示 */
+.bottom-input-voice,
+.bottom-input-voice::placeholder {
+  text-align: center;
+  color: #475569;
 }
 
 .subpage-footer-send-btn {
@@ -454,7 +470,21 @@ form.subpage-footer-input-wrap {
   justify-content: center;
 }
 
-.subpage-footer-send-btn:hover {
+.subpage-footer-mode-btn {
+  width: 2.4rem;
+  height: 2.4rem;
+  color: #94a3b8;
+  background: transparent;
+}
+
+/* 键盘与麦克风图标：线条细一点、同色，无填充避免出现块状背景 */
+#bottomModeIconKeyboard path,
+#bottomModeIconMic path {
+  stroke-width: 1.5;
+  fill: none;
+}
+
+.subpage-footer-send-btn:hover:not(.subpage-footer-mode-btn) {
   color: #334155;
   background: rgba(203, 213, 225, 0.5);
 }

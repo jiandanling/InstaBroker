@@ -519,13 +519,66 @@
                   </a>
                 </div>
                 <form id="bottomInputForm" class="subpage-footer-input-wrap">
-                  <input
-                    id="bottomInput"
-                    type="text"
-                    class="subpage-footer-input"
-                    placeholder="请输入您的问题或选择智能体"
-                    autocomplete="off"
-                  />
+                  <button
+                    type="button"
+                    id="bottomModeToggle"
+                    class="subpage-footer-send-btn subpage-footer-mode-btn"
+                    aria-label="语音输入"
+                    title="语音输入"
+                  >
+                    <svg
+                      id="bottomModeIconMic"
+                      class="w-5 h-5"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                      aria-hidden="true"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M12 1a3 3 0 00-3 3v8a3 3 0 006 0V4a3 3 0 00-3-3z"
+                      />
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M19 10v2a7 7 0 01-14 0v-2"
+                      />
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M12 19v4m-4 0h8"
+                      />
+                    </svg>
+                    <svg
+                      id="bottomModeIconKeyboard"
+                      class="w-5 h-5 hidden"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                      aria-hidden="true"
+                    >
+                      <path
+                        fill="none"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M4 5h16a1 1 0 011 1v12a1 1 0 01-1 1H4a1 1 0 01-1-1V6a1 1 0 011-1zm3 4h1m2 0h1m2 0h1m-8 3h1m2 0h1m2 0h1m-8 3h8"
+                      />
+                    </svg>
+                  </button>
+                  <div class="flex-1 min-w-0 bottom-input-inner">
+                    <input
+                      id="bottomInput"
+                      type="text"
+                      class="subpage-footer-input"
+                      placeholder="请输入您的问题或选择智能体"
+                      autocomplete="off"
+                    />
+                  </div>
                   <button
                     type="submit"
                     id="bottomSendButton"
@@ -581,10 +634,13 @@
         });
       })();
 
-      // 底部输入框：输入"北京博达富通"或"博达富通"跳转到博达富通客户详情页（带模拟交互）
+      // 底部输入框：支持文本输入 + 语音模式外观（语音不实际识别，仅为交互样式）
       (function () {
         var form = document.getElementById("bottomInputForm");
         var input = document.getElementById("bottomInput");
+        var modeBtn = document.getElementById("bottomModeToggle");
+        var modeIconMic = document.getElementById("bottomModeIconMic");
+        var modeIconKb = document.getElementById("bottomModeIconKeyboard");
         var plusEl = document.getElementById("bottomSendPlus");
         var textEl = document.getElementById("bottomSendText");
 
@@ -601,50 +657,69 @@
         // 初始化一次
         updateSendVisual();
 
-        form.addEventListener("submit", function (e) {
-          e.preventDefault();
-          var value = (input.value || "").trim();
-          if (!value) return;
-          if (value === "幻方量化" || value.includes("幻方量化")) {
+        function navigateByKeyword(value) {
+          var v = (value || "").trim();
+          if (!v) return false;
+          if (v === "幻方量化" || v.includes("幻方量化")) {
             navigateToPage("员工-拓客准备.html");
-            input.value = "";
-            updateSendVisual();
-            return;
+            return true;
           }
-        });
-        form.addEventListener("submit", function (e) {
-          e.preventDefault();
-          var value = (input.value || "").trim();
-          if (!value) return;
-          if (value === "九坤投资" || value.includes("九坤投资")) {
+          if (v === "九坤投资" || v.includes("九坤投资")) {
             navigateToPage("员工-业务引入.html");
-            input.value = "";
-            updateSendVisual();
-            return;
+            return true;
           }
-        });
-        form.addEventListener("submit", function (e) {
-          e.preventDefault();
-          var value = (input.value || "").trim();
-          if (!value) return;
-          if (value === "明汯投资" || value.includes("明汯投资")) {
+          if (v === "明汯投资" || v.includes("明汯投资")) {
             navigateToPage("员工-交易服务.html");
-            input.value = "";
-            updateSendVisual();
-            return;
+            return true;
           }
-        });
+          if (v === "灵均投资" || v.includes("灵均投资")) {
+            navigateToPage("员工-跟踪服务.html");
+            return true;
+          }
+          return false;
+        }
+
+        // 发送文本：与四个首页卡片的“立即处理”保持一致
         form.addEventListener("submit", function (e) {
           e.preventDefault();
+          if (form.classList.contains("voice-mode")) {
+            // 语音模式下点击发送不做跳转，仅保留“看起来支持语音”的体验
+            return;
+          }
           var value = (input.value || "").trim();
           if (!value) return;
-          if (value === "灵均投资" || value.includes("灵均投资")) {
-            navigateToPage("员工-跟踪服务.html");
+          if (navigateByKeyword(value)) {
             input.value = "";
             updateSendVisual();
             return;
           }
         });
+
+        // 语音/文字模式切换（仅视觉效果，不做真实语音识别）
+        if (modeBtn && modeIconMic && modeIconKb && input) {
+          modeBtn.addEventListener("click", function () {
+            var isVoice = form.classList.toggle("voice-mode");
+            modeBtn.classList.toggle("is-voice", isVoice);
+            modeIconMic.classList.toggle("hidden", isVoice);
+            modeIconKb.classList.toggle("hidden", !isVoice);
+            // 语音模式下隐藏“发送”文案，只保留 "+"
+            if (isVoice) {
+              if (textEl) textEl.style.display = "none";
+              if (plusEl) plusEl.style.display = "inline";
+              input.value = "";
+              input.blur();
+              input.readOnly = true;
+              input.classList.add("bottom-input-voice");
+              input.placeholder = "按住 说话";
+            } else {
+              updateSendVisual();
+              input.focus();
+              input.readOnly = false;
+              input.classList.remove("bottom-input-voice");
+              input.placeholder = "请输入您的问题或选择智能体";
+            }
+          });
+        }
       })();
     </script>
     <script>
