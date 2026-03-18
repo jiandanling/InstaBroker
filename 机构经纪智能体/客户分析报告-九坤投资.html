@@ -1,301 +1,281 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="zh-CN">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>客户分析报告 - 九坤投资</title>
-  <link rel="stylesheet" href="css/common.css" />
-  <script src="js/spa-wrapper.js"></script>
-  <style>
-    .report-root { padding: 12px 16px 16px; background: #f8fafc; min-height: 100%; }
-    .report-shell {
-      background: #ffffff;
-      border-radius: 18px;
-      box-shadow:
-        0 4px 18px rgba(15, 23, 42, 0.06),
-        0 12px 30px rgba(15, 23, 42, 0.05);
-      padding: 14px 14px 16px;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-    .report-header {
-      padding: 10px 10px 12px;
-      border-bottom: 1px solid #e2e8f0;
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-    }
-    .report-header-title {
-      font-size: 16px;
-      font-weight: 700;
-      color: #0f172a;
-    }
-    .report-header-sub {
-      font-size: 11px;
-      color: #64748b;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-      align-items: center;
-    }
-    .report-badge {
-      display: inline-flex;
-      align-items: center;
-      padding: 2px 8px;
-      border-radius: 999px;
-      font-size: 11px;
-      font-weight: 600;
-      background: rgba(59, 130, 246, 0.12);
-      color: #1d4ed8;
-    }
-    .report-main {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 10px;
-    }
-    @media (min-width: 380px) {
-      .report-main {
-        grid-template-columns: 1fr 1fr;
-      }
-    }
-    .report-card {
-      background: #f9fafb;
-      border-radius: 14px;
-      padding: 10px 10px 12px;
-      border: 1px solid #e5e7eb;
-      transition: background 0.15s ease;
-    }
-    .report-card-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 6px;
-      padding-left: 6px;
-      border-left: 3px solid #1d4ed8;
-    }
-    .report-card-title {
-      font-size: 13px;
-      font-weight: 600;
-      color: #111827;
-      display: flex;
-      align-items: center;
-      gap: 4px;
-    }
-    .report-card-title span.icon { font-size: 13px; }
-    .report-tag-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-      margin-bottom: 6px;
-    }
-    .report-tag {
-      font-size: 10px;
-      padding: 2px 6px;
-      border-radius: 999px;
-      background: #dbeafe;
-      color: #1d4ed8;
-      font-weight: 500;
-    }
-    .report-tag--soft { background: #e0f2fe; color: #0369a1; }
-    .report-metrics {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 8px;
-      margin-bottom: 6px;
-    }
-    .metric-item { display: flex; flex-direction: column; gap: 2px; }
-    .metric-label { font-size: 10px; color: #6b7280; }
-    .metric-value { font-size: 14px; font-weight: 700; color: #111827; }
-    .metric-value--primary { color: #2563eb; }
-    .metric-value--accent { color: #ea580c; }
-    .report-text { font-size: 12px; color: #1f2933; line-height: 1.6; }
-    .report-list { font-size: 12px; color: #1f2933; padding-left: 16px; margin: 4px 0 0; line-height: 1.6; }
-    .report-list li { margin-bottom: 2px; }
-    .report-footer-note {
-      margin-top: 4px;
-      padding: 8px 10px;
-      border-radius: 10px;
-      background: #f3f4f6;
-      border: 1px dashed #e5e7eb;
-      font-size: 11px;
-      color: #4b5563;
-    }
-    .report-cta {
-      margin-top: 8px;
-      padding: 10px 10px;
-      border-radius: 12px;
-      background: #eef2ff;
-      border: 1px solid #e0e7ff;
-      font-size: 11px;
-      color: #4338ca;
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-    }
-    .report-cta a {
-      align-self: flex-start;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 6px 12px;
-      border-radius: 999px;
-      background: #1d4ed8;
-      color: #ffffff;
-      font-size: 11px;
-      font-weight: 600;
-      text-decoration: none;
-    }
-  </style>
-</head>
-<body>
-<main class="subpage-main">
-  <div class="report-root">
-    <div class="report-shell">
-      <header class="report-header">
-        <div class="report-header-title">客户分析报告 - 九坤投资</div>
-        <div class="report-header-sub">
-          <span>九坤投资 · 头部量化私募 · 2026年3月</span>
-          <span class="report-badge">重点开拓客户</span>
-        </div>
-      </header>
-
-      <div class="report-main">
-        <!-- 一、客户画像 -->
-        <section class="report-card">
-          <div class="report-card-header">
-            <div class="report-card-title">
-              <span class="icon">👤</span>
-              <span>客户画像</span>
-            </div>
-          </div>
-          <div class="report-tag-row">
-            <!-- 保留原标签信息 -->
-            <span class="report-tag">百亿量化</span>
-            <span class="report-tag">多市场多策略</span>
-            <span class="report-tag report-tag--soft">自研量化交易平台</span>
-          </div>
-          <div class="report-metrics">
-            <div class="metric-item">
-              <div class="metric-label">管理规模</div>
-              <div class="metric-value metric-value--primary">约 500–600 亿</div>
-            </div>
-            <div class="metric-item">
-              <div class="metric-label">客户类型</div>
-              <div class="metric-value">金融机构客户</div>
-            </div>
-            <div class="metric-item">
-              <div class="metric-label">团队背景</div>
-              <div class="metric-value">清华 / 北大 / 海外名校</div>
-            </div>
-          </div>
-          <ul class="report-list">
-            <li>属于百亿量化私募，量化“新四大天王”之一。</li>
-            <li>采用多市场、多品种、多周期的量化套利、趋势、对冲等组合策略。</li>
-            <li>创始人与核心成员具备海外对冲基金经验，技术与风控体系成熟。</li>
-          </ul>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>客户分析报告 - 九坤投资</title>
+    <link rel="stylesheet" href="css/common.css" />
+    <script src="js/spa-wrapper.js"></script>
+  </head>
+  <body>
+    <main class="subpage-main">
+      <div
+        class="report-container"
+        style="
+          max-width: 960px;
+          margin: 0 auto;
+          padding: 16px 14px 32px;
+          box-sizing: border-box;
+        "
+      >
+        <!-- 顶部标题区 -->
+        <section class="report-header" style="margin-bottom: 20px; text-align: center">
+          <h1
+            style="
+              font-size: 22px;
+              line-height: 1.4;
+              margin: 0 0 10px;
+              font-weight: 700;
+            "
+          >
+            客户分析报告 - 九坤投资
+          </h1>
+          <div style="font-size: 12px; color: #999999">报告日期：2026 年 3 月</div>
         </section>
 
-        <!-- 二、当前阶段与需求判断 -->
-        <section class="report-card">
-          <div class="report-card-header">
-            <div class="report-card-title">
-              <span class="icon">📊</span>
-              <span>交易与合作情况</span>
+        <!-- 一、整体概览 -->
+        <section class="report-section" style="margin-bottom: 20px">
+          <div style="margin-bottom: 10px">
+            <h2 style="font-size: 18px; margin: 0; font-weight: 600">一、整体概览</h2>
+          </div>
+          <div style="font-size: 12px; line-height: 1.6; color: #666666; margin-bottom: 6px">
+            <span
+              style="
+                display: inline-block;
+                padding: 2px 10px;
+                border-radius: 999px;
+                background: #f5f5f5;
+                color: #333333;
+                margin: 0 4px 4px 0;
+              "
+            >
+              重点开拓客户
+            </span>
+            <span
+              style="
+                display: inline-block;
+                padding: 2px 10px;
+                border-radius: 999px;
+                background: #f5f5f5;
+                color: #333333;
+                margin: 0 4px 4px 0;
+              "
+            >
+              合作阶段：待拜访
+            </span>
+            <span
+              style="
+                display: inline-block;
+                padding: 2px 10px;
+                border-radius: 999px;
+                background: #f5f5f5;
+                color: #333333;
+                margin: 0 4px 4px 0;
+              "
+            >
+              关注：综合服务方案
+            </span>
+          </div>
+          <div
+            style="
+              border-radius: 10px;
+              padding: 10px 12px;
+              background: #fafafa;
+              border: 1px solid #f0f0f0;
+              font-size: 13px;
+              line-height: 1.7;
+              color: #444444;
+              margin-bottom: 6px;
+            "
+          >
+            <ul style="margin: 0; padding-left: 18px; list-style-type: disc">
+              <li>
+                客户为头部量化私募（百亿规模），多市场多策略，具备自研量化交易平台与成熟风控体系。
+              </li>
+              <li>
+                当前与我司<strong>暂无存量合作</strong>，处于前期沟通阶段，重点在于尽快完成首访与需求澄清。
+              </li>
+              <li>
+                建议以“机构经纪综合服务方案”作为首次材料，突出 PB 架构、极速 / 算法交易、两融与代销协同能力。
+              </li>
+            </ul>
+          </div>
+        </section>
+
+        <!-- 二、客户画像 -->
+        <section class="report-section" style="margin-bottom: 20px">
+          <div style="margin-bottom: 10px">
+            <h2 style="font-size: 18px; margin: 0; font-weight: 600">二、客户画像</h2>
+          </div>
+
+          <div
+            style="
+              border-radius: 10px;
+              padding: 10px 12px;
+              background: #ffffff;
+              border: 1px solid #f0f0f0;
+              margin-bottom: 12px;
+            "
+          >
+            <div style="font-size: 14px; margin-bottom: 4px; color: #333333; font-weight: 600">
+              客户基本情况
+            </div>
+            <div style="font-size: 13px; line-height: 1.7; color: #555555">
+              九坤投资为头部量化私募机构，采用多市场、多品种、多周期的套利、趋势、对冲等组合策略；团队背景强、技术与风控体系成熟，具备自研量化交易平台。
             </div>
           </div>
-          <div class="report-tag-row">
-            <span class="report-tag">合作阶段：待拜访</span>
-            <span class="report-tag report-tag--soft">意向了解综合服务方案</span>
+
+          <div
+            style="
+              display: grid;
+              grid-template-columns: repeat(2, minmax(0, 1fr));
+              gap: 8px;
+              margin-bottom: 10px;
+            "
+          >
+            <div style="border-radius: 10px; padding: 10px 12px; background: #fafafa">
+              <div style="font-size: 12px; color: #8c8c8c; margin-bottom: 4px">管理规模（AUM）</div>
+              <div style="font-size: 16px; font-weight: 600; color: #262626">约 500–600 亿</div>
+            </div>
+            <div style="border-radius: 10px; padding: 10px 12px; background: #fafafa">
+              <div style="font-size: 12px; color: #8c8c8c; margin-bottom: 4px">策略覆盖</div>
+              <div style="font-size: 14px; font-weight: 600; color: #262626">多市场多策略</div>
+            </div>
+            <div style="border-radius: 10px; padding: 10px 12px; background: #fafafa">
+              <div style="font-size: 12px; color: #8c8c8c; margin-bottom: 4px">交易偏好</div>
+              <div style="font-size: 14px; font-weight: 600; color: #262626">系统性能与稳定性敏感</div>
+            </div>
+            <div style="border-radius: 10px; padding: 10px 12px; background: #fafafa">
+              <div style="font-size: 12px; color: #8c8c8c; margin-bottom: 4px">团队背景</div>
+              <div style="font-size: 13px; color: #595959">清华 / 北大 / 海外名校</div>
+            </div>
           </div>
-          <div class="report-metrics">
-            <div class="metric-item">
-              <div class="metric-label">合作阶段</div>
-              <div class="metric-value">待拜访</div>
+
+          <div style="border-radius: 10px; padding: 10px 12px; background: #fafafa">
+            <ul style="margin: 0; padding-left: 18px; font-size: 13px; line-height: 1.7; color: #4a4a4a; list-style-type: disc">
+              <li>属于百亿量化私募，市场影响力与品牌认知度较高。</li>
+              <li>策略多元，对交易通道质量、撮合效率与风控工具有持续诉求。</li>
+              <li>规模扩张阶段可能带来融资融券与 PB 杠杆需求。</li>
+            </ul>
+          </div>
+        </section>
+
+        <!-- 三、合作现状与需求判断 -->
+        <section class="report-section" style="margin-bottom: 20px">
+          <div style="margin-bottom: 10px">
+            <h2 style="font-size: 18px; margin: 0; font-weight: 600">三、合作现状与需求判断</h2>
+          </div>
+
+          <div
+            style="
+              border-radius: 10px;
+              padding: 10px 12px;
+              background: #ffffff;
+              border: 1px solid #f0f0f0;
+              margin-bottom: 12px;
+            "
+          >
+            <div style="font-size: 14px; margin-bottom: 4px; color: #333333; font-weight: 600">
+              当前状态
             </div>
-            <div class="metric-item">
-              <div class="metric-label">关键诉求</div>
-              <div class="metric-value metric-value--accent">代销 / 极速 / 两融 / 投研</div>
-            </div>
-            <div class="metric-item">
-              <div class="metric-label">客户等级</div>
-              <div class="metric-value metric-value--primary">重点开拓</div>
+            <div style="font-size: 13px; line-height: 1.7; color: #555555">
+              目前处于<strong>待拜访</strong>阶段，尚未形成稳定存量合作。客户对综合服务方案存在明确兴趣，适合以结构化材料快速建立专业认知与沟通框架。
             </div>
           </div>
-          <table class="report-kv-table">
-            <tr><th>合作阶段</th><td>待拜访 · 有明确意向了解综合服务方案</td></tr>
-            <tr><th>关键诉求</th><td>代销合作、极速交易、两融额度、投研支持</td></tr>
-          </table>
-          <p class="report-text">
-            客户处于<strong>前期沟通与方案评估</strong>阶段，更关注我司在 PB 架构、极速交易能力以及财富渠道代销方面的综合实力，
-            适合通过一份结构化的「机构经纪综合服务方案」进行整体呈现。
-          </p>
+
+          <div style="border-radius: 10px; padding: 10px 12px; background: #fafafa; margin-bottom: 10px">
+            <div style="display: flex; flex-direction: column; gap: 8px; font-size: 13px; color: #333333">
+              <div style="display: flex; justify-content: space-between; gap: 10px">
+                <span style="color: #8c8c8c">合作阶段</span>
+                <span style="font-weight: 600">待拜访</span>
+              </div>
+              <div style="display: flex; justify-content: space-between; gap: 10px">
+                <span style="color: #8c8c8c">关键诉求</span>
+                <span style="font-weight: 600">代销 / 极速 / 两融 / 投研</span>
+              </div>
+              <div style="display: flex; justify-content: space-between; gap: 10px">
+                <span style="color: #8c8c8c">切入方式</span>
+                <span style="font-weight: 600">综合服务方案 + 对标案例</span>
+              </div>
+            </div>
+          </div>
+
+          <div style="border-radius: 10px; padding: 10px 12px; background: #fafafa">
+            <ul style="margin: 0; padding-left: 18px; font-size: 13px; line-height: 1.7; color: #4a4a4a; list-style-type: disc">
+              <li>首次拜访建议对齐：PB 架构、极速柜台性能指标、算法交易能力与可支持的两融 / 融券空间。</li>
+              <li>若客户关注代销与路演，建议同步引入财富条线共同拜访，形成“机构 + 财富”联动叙事。</li>
+            </ul>
+          </div>
+        </section>
+
+        <!-- 四、机会点与行动建议 -->
+        <section class="report-section" style="margin-bottom: 24px">
+          <div style="margin-bottom: 10px">
+            <h2 style="font-size: 18px; margin: 0; font-weight: 600">四、机会点与行动建议</h2>
+          </div>
+
+          <div
+            style="
+              border-radius: 10px;
+              padding: 10px 12px;
+              background: #ffffff;
+              border: 1px solid #f0f0f0;
+              margin-bottom: 12px;
+            "
+          >
+            <div style="font-size: 14px; margin-bottom: 6px; color: #333333; font-weight: 600">
+              重点机会与推进路径
+            </div>
+            <ul style="margin: 0; padding-left: 18px; font-size: 13px; line-height: 1.7; color: #4a4a4a; list-style-type: disc">
+              <li><strong>定位：</strong>开拓型重点客户，以“从 0 到 1”建立交易关系并打开 PB / 两融合作空间。</li>
+              <li><strong>抓手：</strong>极速 / 算法交易能力展示、PB 架构与风控工具、两融 / 融券可得性、代销与路演协同。</li>
+              <li><strong>节奏：</strong>先完成首访与需求清单，再输出定制化两页纸方案，随后推动试交易与系统对接。</li>
+            </ul>
+          </div>
+
+          <div
+            style="
+              border-radius: 10px;
+              padding: 10px 12px;
+              background: #fafafa;
+              border-left: 3px solid #1890ff;
+              margin-bottom: 12px;
+            "
+          >
+            <div style="font-size: 13px; line-height: 1.7; color: #444444">
+              <strong>结论：</strong>九坤投资为具备品牌与规模优势的重点开拓型量化客户，建议以综合服务方案切入，形成“交易（极速/算法）+ 融资（两融/融券）+ 渠道（代销/路演）”联动推进。
+            </div>
+          </div>
+
+          <div style="border-radius: 10px; padding: 10px 12px; background: #f5f5f5; border: 1px solid #f0f0f0">
+            <div style="font-size: 13px; line-height: 1.7; color: #4a4a4a; margin-bottom: 6px">
+              建议结合《机构经纪业务服务方案》，为九坤投资准备首次 / 二次拜访的一体化呈现材料，并补充竞品对比与成功案例作为佐证。
+            </div>
+            <a
+              href="机构经纪业务服务方案(1).html"
+              style="
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                width: 100%;
+                margin-top: 4px;
+                padding: 10px 12px;
+                border-radius: 999px;
+                border: none;
+                background: linear-gradient(135deg, #1890ff, #40a9ff);
+                color: #fff;
+                font-size: 14px;
+                font-weight: 500;
+                text-align: center;
+                text-decoration: none;
+              "
+            >
+              查看《机构经纪业务服务方案》
+            </a>
+          </div>
         </section>
       </div>
-
-      <!-- 三、机构经纪机会洞察（原文字全部保留） -->
-      <section class="report-card">
-        <div class="report-card-header">
-          <div class="report-card-title">
-            <span class="icon">💡</span>
-            <span>机构经纪机会洞察</span>
-          </div>
-        </div>
-        <ul class="report-list">
-          <li>量化多策略+多品种的特征，决定其对<strong>交易系统性能与稳定性</strong>敏感，是极速交易与算法交易的重点对象。</li>
-          <li>具备较强品牌与业绩基础，有望通过<strong>产品代销+联合路演</strong>导入公募渠道和高净值客群，形成多方共赢。</li>
-          <li>未来规模扩张带来更大融资与融券需求，是<strong>两融额度与 PB 杠杆服务</strong>的重要潜在客户。</li>
-        </ul>
-        <div class="report-score-box">
-          <div class="report-score-main">4.5 / 5.0</div>
-          <div class="report-score-sub">重点开拓客户 · 适合作为综合服务方案样板</div>
-        </div>
-      </section>
-
-      <!-- 四、机构经纪服务建议（原文字全部保留） -->
-      <section class="report-card">
-        <div class="report-card-header">
-          <div class="report-card-title">
-            <span class="icon">🧩</span>
-            <span>机构经纪服务建议</span>
-          </div>
-        </div>
-        <p class="report-text"><strong>建议组合：综合服务方案 + 极速交易 / 算法 + 两融 / PB + 产品代销</strong></p>
-        <ul class="report-list">
-          <li><strong>综合服务方案：</strong>围绕“交易 + 融资 + 代销 + 研究”四个模块，设计一份两页纸方案作为首次拜访材料。</li>
-          <li><strong>极速交易 / 算法：</strong>重点展示我司极速柜台性能指标、可用算法类型（TWAP / VWAP / POV 等）及成功案例。</li>
-          <li><strong>两融 / PB 杠杆：</strong>为其量化多空与增强策略预留专项两融及 PB 杠杆额度，增强合作预期。</li>
-          <li><strong>产品代销与路演：</strong>结合我司财富渠道，为其代表性产品设计联合路演与代销方案，提升合作粘性。</li>
-        </ul>
-      </section>
-
-      <!-- 五、建议行动计划（原文字全部保留） -->
-      <section class="report-card">
-        <div class="report-card-header">
-          <div class="report-card-title">
-            <span class="icon">🚀</span>
-            <span>建议行动计划</span>
-          </div>
-        </div>
-        <ul class="report-list">
-          <li><strong>T+7 天内：</strong>由机构经纪与财富条线联合完成九坤画像与竞品对比一页纸。</li>
-          <li><strong>T+14 天内：</strong>拜访投资总监 / 交易负责人，介绍我司 PB 架构与极速交易能力，获取具体需求。</li>
-          <li><strong>T+1 个月内：</strong>输出定制版《九坤投资机构经纪综合服务方案》，包括交易、融资、代销与研究合作路径。</li>
-        </ul>
-      </section>
-
-      <div class="report-footer-note">
-        结论：九坤投资是具备品牌与规模优势的<strong>重点开拓型量化客户</strong>，适合通过一体化机构经纪综合服务方案切入，
-        在交易、融资与代销三条线上形成协同。
-      </div>
-
-      <div class="report-cta">
-        <span>💡 建议结合《机构经纪业务服务方案》，为九坤投资定制可在首次 / 二次拜访中使用的一体化呈现材料。</span>
-        <a href="机构经纪业务服务方案(1).html">查看机构经纪业务服务方案 →</a>
-      </div>
-    </div>
-  </div>
-</main>
-</body>
+    </main>
+  </body>
 </html>
 

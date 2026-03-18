@@ -385,11 +385,11 @@ body {
 
 /* 固定首页任务卡片区域高度，减少切换时底部内容跳动感（略微放大以展示完整内容） */
 .task-cards-wrapper {
-  min-height: 260px;
+  min-height: 220px;
 }
 
 .phone-screen .task-cards-wrapper {
-  height: 260px;
+  height: 220px;
   display: flex;
   flex-direction: column;
 }
@@ -949,7 +949,7 @@ form.subpage-footer-input-wrap {
 /* 首页任务卡片：四张卡片共用布局 */
 .index-task-card {
   background: #ffffff;
-  border: 1px solid rgba(241, 245, 249, 0.8); /* slate-100/80 */
+  border: 1px solid rgba(226, 232, 240, 0.9); /* slate-200/90 */
   overflow: hidden;
 }
 
@@ -960,6 +960,7 @@ form.subpage-footer-input-wrap {
   gap: 6px; /* space-y-1.5 */
   flex: 1 1 auto;
   min-height: 0;
+  height: 100%;
 }
 
 .index-task-card-header {
@@ -984,6 +985,9 @@ form.subpage-footer-input-wrap {
 .index-task-card-subline {
   font-size: 12px; /* text-xs */
   color: #64748b; /* slate-500 */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 /* 卡片来源说明：紧接 subline 下方，弱化展示 */
@@ -1050,7 +1054,7 @@ form.subpage-footer-input-wrap {
   overflow: hidden;
   box-shadow:
     0 2px 6px rgba(15, 23, 42, 0.06),
-    0 10px 24px rgba(15, 23, 42, 0.06);
+    0 6px 12px rgba(15, 23, 42, 0.04);
   transition:
     box-shadow 0.25s ease,
     transform 0.2s ease;
@@ -1066,7 +1070,7 @@ form.subpage-footer-input-wrap {
 
 /* 推荐客户卡片：整卡可点、层次结构 */
 .index-card-recommend {
-  min-height: 260px;
+  min-height: 220px;
 }
 
 .index-card-link {
@@ -1076,6 +1080,7 @@ form.subpage-footer-input-wrap {
   flex-direction: column;
   gap: 6px;
   min-height: 0;
+  height: 100%;
 }
 
 .index-card-badge {
@@ -1103,6 +1108,7 @@ form.subpage-footer-input-wrap {
 
 .index-card-block {
   margin-top: 2px;
+  flex: 1 1 auto;
 }
 
 .index-card-block-title {
@@ -1118,6 +1124,7 @@ form.subpage-footer-input-wrap {
   flex-wrap: wrap;
   gap: 6px;
   margin-top: 6px;
+  margin-bottom: auto;
 }
 
 .index-card-tag {
@@ -1156,6 +1163,10 @@ form.subpage-footer-input-wrap {
 .index-card-desc {
   font-size: 13px;
   line-height: 1.5;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 /* 任务行：用字重与主题色强调，无竖线（在物料卡片内时置顶） */
