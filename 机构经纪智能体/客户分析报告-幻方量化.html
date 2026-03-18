@@ -1,283 +1,464 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="zh-CN">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>客户分析报告 - 幻方量化</title>
-  <link rel="stylesheet" href="css/common.css" />
-  <script src="js/spa-wrapper.js"></script>
-  <style>
-    .report-root {
-      padding: 12px 16px 16px;
-      background: #f8fafc;
-      min-height: 100%;
-    }
-    .report-shell {
-      background: #ffffff;
-      border-radius: 18px;
-      box-shadow:
-        0 4px 18px rgba(15, 23, 42, 0.06),
-        0 12px 30px rgba(15, 23, 42, 0.05);
-      padding: 14px 14px 16px;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-    .report-header {
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-      padding: 10px 10px 12px;
-      border-bottom: 1px solid #e2e8f0;
-    }
-    .report-header-title {
-      font-size: 15px;
-      font-weight: 700;
-      color: #0f172a;
-    }
-    .report-header-sub {
-      font-size: 11px;
-      color: #64748b;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-      align-items: center;
-    }
-    .report-badge {
-      display: inline-flex;
-      align-items: center;
-      padding: 2px 8px;
-      border-radius: 999px;
-      font-size: 11px;
-      font-weight: 600;
-      background: rgba(129, 140, 248, 0.12);
-      color: #4f46e5;
-    }
-    .report-main {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 10px;
-    }
-    @media (min-width: 380px) {
-      .report-main {
-        grid-template-columns: 1fr 1fr;
-        gap: 10px;
-      }
-    }
-    .report-card {
-      background: #f9fafb;
-      border-radius: 14px;
-      padding: 10px 10px 12px;
-      border: 1px solid #e5e7eb;
-    }
-    .report-card-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 6px;
-    }
-    .report-card-title {
-      font-size: 13px;
-      font-weight: 600;
-      color: #111827;
-      display: flex;
-      align-items: center;
-      gap: 4px;
-    }
-    .report-card-title span.icon {
-      font-size: 13px;
-    }
-    .report-tag-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-      margin-bottom: 6px;
-    }
-    .report-tag {
-      font-size: 10px;
-      padding: 2px 6px;
-      border-radius: 999px;
-      background: #eef2ff;
-      color: #4338ca;
-      font-weight: 500;
-    }
-    .report-tag--soft {
-      background: #e0f2fe;
-      color: #0369a1;
-    }
-    .report-tag--success {
-      background: #dcfce7;
-      color: #15803d;
-    }
-    .report-metrics {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 8px;
-      margin-bottom: 6px;
-    }
-    .metric-item {
-      display: flex;
-      flex-direction: column;
-      gap: 2px;
-    }
-    .metric-label {
-      font-size: 10px;
-      color: #6b7280;
-    }
-    .metric-value {
-      font-size: 14px;
-      font-weight: 700;
-      color: #111827;
-    }
-    .metric-value--primary {
-      color: #2563eb;
-    }
-    .metric-value--success {
-      color: #16a34a;
-    }
-    .report-kv-list {
-      font-size: 11px;
-      color: #374151;
-      line-height: 1.6;
-      margin-top: 4px;
-    }
-    .report-kv-list li {
-      margin-left: 12px;
-      margin-bottom: 2px;
-      list-style-type: disc;
-    }
-    .report-footer-note {
-      margin-top: 8px;
-      padding: 8px 10px;
-      border-radius: 10px;
-      background: #f3f4f6;
-      border: 1px dashed #e5e7eb;
-      font-size: 11px;
-      color: #4b5563;
-    }
-    .report-cta {
-      margin-top: 10px;
-      padding: 10px 10px;
-      border-radius: 12px;
-      background: #eef2ff;
-      border: 1px solid #e0e7ff;
-      font-size: 11px;
-      color: #4338ca;
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-    }
-    .report-cta a {
-      align-self: flex-start;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 6px 12px;
-      border-radius: 999px;
-      background: #4f46e5;
-      color: #ffffff;
-      font-size: 11px;
-      font-weight: 600;
-      text-decoration: none;
-    }
-  </style>
-</head>
-<body>
-<main class="subpage-main">
-  <div class="report-root">
-    <div class="report-shell">
-      <!-- 标题区 -->
-      <header class="report-header">
-        <div class="report-header-title">客户分析报告 - 幻方量化</div>
-        <div class="report-header-sub">
-          <span>宁波幻方量化 · 量化私募第一梯队 · 2026年3月</span>
-          <span class="report-badge">战略级客户 · 存量深耕</span>
-        </div>
-      </header>
-
-      <!-- 主体两大模块：客户画像 + 交易与合作情况 -->
-      <div class="report-main">
-        <!-- 客户画像 -->
-        <section class="report-card">
-          <div class="report-card-header">
-            <div class="report-card-title">
-              <span class="icon">👤</span>
-              <span>客户画像</span>
-            </div>
-          </div>
-          <div class="report-tag-row">
-            <span class="report-tag">百亿量化</span>
-            <span class="report-tag">量化私募第一梯队</span>
-            <span class="report-tag report-tag--soft">多策略矩阵</span>
-          </div>
-          <div class="report-metrics">
-            <div class="metric-item">
-              <div class="metric-label">管理规模</div>
-              <div class="metric-value metric-value--primary">约 600 亿</div>
-            </div>
-            <div class="metric-item">
-              <div class="metric-label">核心策略</div>
-              <div class="metric-value">多头 / 对冲</div>
-            </div>
-            <div class="metric-item">
-              <div class="metric-label">风格特点</div>
-              <div class="metric-value metric-value--success">高换手 · AI 驱动</div>
-            </div>
-          </div>
-          <ul class="report-kv-list">
-            <li>高度依赖数据与 AI 模型，在多因子、机器学习等方向持续投入。</li>
-            <li>策略覆盖指数增强、市场中性、高频交易等多个维度。</li>
-            <li>对交易系统时延、稳定性及券源质量有较高要求。</li>
-          </ul>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>客户分析报告 - 幻方量化</title>
+    <link rel="stylesheet" href="css/common.css" />
+    <script src="js/spa-wrapper.js"></script>
+  </head>
+  <body>
+    <main class="subpage-main">
+      <div
+        class="report-container"
+        style="
+          max-width: 960px;
+          margin: 0 auto;
+          padding: 16px 14px 32px;
+          box-sizing: border-box;
+        "
+      >
+        <!-- 顶部标题区 -->
+        <section class="report-header" style="margin-bottom: 20px; text-align: center">
+          <h1
+            style="
+              font-size: 22px;
+              line-height: 1.4;
+              margin: 0 0 10px;
+              font-weight: 700;
+            "
+          >
+            客户分析报告 - 幻方量化
+          </h1>
+          <div style="font-size: 12px; color: #999999">报告日期：2026 年 3 月</div>
         </section>
 
-        <!-- 交易与合作情况 -->
-        <section class="report-card">
-          <div class="report-card-header">
-            <div class="report-card-title">
-              <span class="icon">📊</span>
-              <span>交易与合作情况</span>
+        <!-- 执行摘要：整体概览 -->
+        <section class="report-section" style="margin-bottom: 20px">
+          <div style="margin-bottom: 10px">
+            <h2 style="font-size: 18px; margin: 0; font-weight: 600">
+              一、整体概览
+            </h2>
+          </div>
+          <div
+            style="
+              font-size: 12px;
+              line-height: 1.6;
+              color: #666666;
+              margin-bottom: 6px;
+            "
+          >
+            <span
+              style="
+                display: inline-block;
+                padding: 2px 10px;
+                border-radius: 999px;
+                background: #f5f5f5;
+                color: #333333;
+                margin: 0 4px 4px 0;
+              "
+            >
+              量化私募第一梯队
+            </span>
+            <span
+              style="
+                display: inline-block;
+                padding: 2px 10px;
+                border-radius: 999px;
+                background: #f5f5f5;
+                color: #333333;
+                margin: 0 4px 4px 0;
+              "
+            >
+              战略级客户
+            </span>
+            <span
+              style="
+                display: inline-block;
+                padding: 2px 10px;
+                border-radius: 999px;
+                background: #f5f5f5;
+                color: #333333;
+                margin: 0 4px 4px 0;
+              "
+            >
+              存量深耕
+            </span>
+          </div>
+          <div
+            style="
+              border-radius: 10px;
+              padding: 10px 12px;
+              background: #fafafa;
+              border: 1px solid #f0f0f0;
+              font-size: 13px;
+              line-height: 1.7;
+              color: #444;
+              margin-bottom: 6px;
+            "
+          >
+            <ul
+              style="
+                margin: 0;
+                padding-left: 18px;
+                list-style-type: disc;
+              "
+            >
+              <li>
+                客户为百亿规模量化私募，交易频率高、技术与交易要求双高，是我司重点深耕的战略级客户。
+              </li>
+              <li>
+                目前已与我司保持稳定合作，但整体分仓格局分散，我司份额存在明显提升空间。
+              </li>
+              <li>
+                建议围绕 PB 主经纪商、极速 / 算法交易及融券支持，构建一体化综合服务方案，分阶段提升合作深度。
+              </li>
+            </ul>
+          </div>
+        </section>
+
+        <!-- 二、客户画像概览 -->
+        <section class="report-section" style="margin-bottom: 20px">
+          <div style="margin-bottom: 10px">
+            <h2 style="font-size: 18px; margin: 0; font-weight: 600">
+              二、客户画像
+            </h2>
+          </div>
+
+          <!-- 基本信息卡片 -->
+          <div
+            style="
+              border-radius: 10px;
+              padding: 10px 12px;
+              background: #ffffff;
+              border: 1px solid #f0f0f0;
+              margin-bottom: 12px;
+            "
+          >
+            <div
+              style="
+                font-size: 14px;
+                margin-bottom: 4px;
+                color: #333333;
+                font-weight: 600;
+              "
+            >
+              客户基本情况
+            </div>
+            <div style="font-size: 13px; line-height: 1.7; color: #555555">
+              百亿量化私募，处于量化私募第一梯队，采用多策略矩阵布局，管理规模约 600
+              亿，在多因子与机器学习方向持续投入，是典型的数据与技术驱动型机构客户。
             </div>
           </div>
-          <div class="report-tag-row">
-            <span class="report-tag report-tag--success">与我司已有合作</span>
-            <span class="report-tag report-tag--soft">分仓分散 · 有提升空间</span>
+
+          <!-- 关键指标栅格：适配手机单列展示 -->
+          <div
+            class="key-metrics-grid"
+            style="
+              display: grid;
+              grid-template-columns: repeat(2, minmax(0, 1fr));
+              gap: 8px;
+              margin-bottom: 10px;
+            "
+          >
+            <div
+              style="
+                border-radius: 10px;
+                padding: 10px 12px;
+                background: #fafafa;
+              "
+            >
+              <div style="font-size: 12px; color: #8c8c8c; margin-bottom: 4px">
+                管理规模（AUM）
+              </div>
+              <div style="font-size: 16px; font-weight: 600; color: #262626">
+                约 600 亿
+              </div>
+            </div>
+            <div
+              style="
+                border-radius: 10px;
+                padding: 10px 12px;
+                background: #fafafa;
+              "
+            >
+              <div style="font-size: 12px; color: #8c8c8c; margin-bottom: 4px">
+                核心策略
+              </div>
+              <div style="font-size: 14px; font-weight: 600; color: #262626">
+                多头 / 对冲
+              </div>
+            </div>
+            <div
+              style="
+                border-radius: 10px;
+                padding: 10px 12px;
+                background: #fafafa;
+              "
+            >
+              <div style="font-size: 12px; color: #8c8c8c; margin-bottom: 4px">
+                风格特点
+              </div>
+              <div style="font-size: 14px; font-weight: 600; color: #262626">
+                高换手 · AI 驱动
+              </div>
+            </div>
+            <div
+              style="
+                border-radius: 10px;
+                padding: 10px 12px;
+                background: #fafafa;
+              "
+            >
+              <div style="font-size: 12px; color: #8c8c8c; margin-bottom: 4px">
+                技术 / 交易要求
+              </div>
+              <div style="font-size: 13px; color: #595959">
+                对时延、稳定性、券源质量要求极高
+              </div>
+            </div>
           </div>
-          <div class="report-metrics">
-            <div class="metric-item">
-              <div class="metric-label">年交易规模</div>
-              <div class="metric-value metric-value--primary">约 2,000 亿</div>
+
+          <!-- 特征描述列表 -->
+          <div
+            style="
+              border-radius: 10px;
+              padding: 10px 12px;
+              background: #fafafa;
+            "
+          >
+            <ul
+              style="
+                margin: 0;
+                padding-left: 18px;
+                font-size: 13px;
+                line-height: 1.7;
+                color: #4a4a4a;
+                list-style-type: disc;
+              "
+            >
+              <li>
+                高度依赖数据与 AI 模型，在多因子、机器学习等方向持续投入。
+              </li>
+              <li>
+                策略覆盖指数增强、市场中性、高频交易等多个维度，交易频率与资金利用率高。
+              </li>
+              <li>
+                对交易系统时延、稳定性及券源质量有较高要求，是典型的技术与交易双高要求客户。
+              </li>
+            </ul>
+          </div>
+        </section>
+
+        <!-- 三、与我司合作全景 -->
+        <section class="report-section" style="margin-bottom: 20px">
+          <div style="margin-bottom: 10px">
+            <h2 style="font-size: 18px; margin: 0; font-weight: 600">
+              三、与我司合作全景
+            </h2>
+          </div>
+
+          <!-- 合作概览卡片 -->
+          <div
+            style="
+              border-radius: 10px;
+              padding: 10px 12px;
+              background: #ffffff;
+              border: 1px solid #f0f0f0;
+              margin-bottom: 12px;
+            "
+          >
+            <div
+              style="
+                font-size: 14px;
+                margin-bottom: 4px;
+                color: #333333;
+                font-weight: 600;
+              "
+            >
+              合作现状概览
             </div>
-            <div class="metric-item">
-              <div class="metric-label">佣金贡献</div>
-              <div class="metric-value metric-value--success">5,000 万+/年</div>
-            </div>
-            <div class="metric-item">
-              <div class="metric-label">在我司产品数</div>
-              <div class="metric-value">3 只</div>
+            <div style="font-size: 13px; line-height: 1.7; color: #555555">
+              幻方量化已与我司建立稳定交易关系，在我司持有 3 只产品并保持持续交易；整体分仓分散，单家券商集中度不高，我司仍有较大提升空间。
             </div>
           </div>
-          <ul class="report-kv-list">
-            <li>已在我司开户并保持交易的产品 3 只，贡献稳定。</li>
-            <li>整体分仓格局分散，单家券商占比不高，我司仍有提升空间。</li>
-            <li>适合作为「交易 + PB + 融券」一体化合作的重点对象。</li>
-          </ul>
+
+          <!-- 核心合作指标（表格风卡片，适配手机） -->
+          <div
+            style="
+              border-radius: 10px;
+              padding: 10px 12px;
+              background: #fafafa;
+              margin-bottom: 10px;
+            "
+          >
+            <div
+              style="
+                display: flex;
+                flex-direction: column;
+                gap: 8px;
+                font-size: 13px;
+                color: #333;
+              "
+            >
+              <div
+                style="display: flex; justify-content: space-between; gap: 10px"
+              >
+                <span style="color: #8c8c8c">年交易规模（全市场）</span>
+                <span style="font-weight: 600">约 2,000 亿</span>
+              </div>
+              <div
+                style="display: flex; justify-content: space-between; gap: 10px"
+              >
+                <span style="color: #8c8c8c">佣金贡献</span>
+                <span style="font-weight: 600">5,000 万+/年</span>
+              </div>
+              <div
+                style="display: flex; justify-content: space-between; gap: 10px"
+              >
+                <span style="color: #8c8c8c">在我司产品数</span>
+                <span style="font-weight: 600">3 只</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 文字说明 -->
+          <div
+            style="
+              border-radius: 10px;
+              padding: 10px 12px;
+              background: #fafafa;
+            "
+          >
+            <ul
+              style="
+                margin: 0;
+                padding-left: 18px;
+                font-size: 13px;
+                line-height: 1.7;
+                color: #4a4a4a;
+                list-style-type: disc;
+              "
+            >
+              <li>已在我司开户并保持交易的产品 3 只，贡献稳定。</li>
+              <li>整体分仓格局分散，单家券商占比不高，我司提升空间明显。</li>
+              <li>
+                适合作为「交易 + PB +
+                融券」一体化合作的重点对象，可通过综合服务争取提升份额。
+              </li>
+            </ul>
+          </div>
+        </section>
+
+        <!-- 四、机会点与行动建议 -->
+        <section class="report-section" style="margin-bottom: 24px">
+          <div style="margin-bottom: 10px">
+            <h2 style="font-size: 18px; margin: 0; font-weight: 600">
+              四、机会点与行动建议
+            </h2>
+          </div>
+
+          <!-- 重点机会与推进路径 -->
+          <div
+            style="
+              border-radius: 10px;
+              padding: 10px 12px;
+              background: #ffffff;
+              border: 1px solid #f0f0f0;
+              margin-bottom: 12px;
+            "
+          >
+            <div
+              style="
+                font-size: 14px;
+                margin-bottom: 6px;
+                color: #333333;
+                font-weight: 600;
+              "
+            >
+              重点机会与推进路径
+            </div>
+            <ul
+              style="
+                margin: 0;
+                padding-left: 18px;
+                font-size: 13px;
+                line-height: 1.7;
+                color: #4a4a4a;
+                list-style-type: disc;
+              "
+            >
+              <li>
+                <strong>定位：</strong
+                >将幻方量化界定为「存量深耕型战略客户」，以提升分仓占比为核心目标。
+              </li>
+              <li>
+                <strong>关键抓手：</strong>PB 主经纪商服务、极速 /
+                算法交易能力、稳定且充足的融券额度。
+              </li>
+              <li>
+                <strong>推进节奏：</strong
+                >短期以交易系统与撮合效率切入，中期叠加 PB
+                与融券支持，长期争取成为其核心合作券商之一。
+              </li>
+            </ul>
+          </div>
+
+          <!-- 结论与方案建议 -->
+          <div
+            style="
+              border-radius: 10px;
+              padding: 10px 12px;
+              background: #fafafa;
+              border-left: 3px solid #1890ff;
+              margin-bottom: 12px;
+            "
+          >
+            <div style="font-size: 13px; line-height: 1.7; color: #444444">
+              <strong>结论：</strong>
+              幻方量化是典型的存量深耕型战略客户，在保持现有交易关系的基础上，建议以 PB 主经纪商、极速 / 算法交易与融券额度为核心抓手，分阶段推进合作深度，逐步提升我司在其分仓中的占比。
+            </div>
+          </div>
+
+          <div
+            style="
+              border-radius: 10px;
+              padding: 10px 12px;
+              background: #f5f5f5;
+              border: 1px solid #f0f0f0;
+            "
+          >
+            <div
+              style="
+                font-size: 13px;
+                line-height: 1.7;
+                color: #4a4a4a;
+                margin-bottom: 6px;
+              "
+            >
+              建议结合《机构经纪业务服务方案》，为幻方量化定制一份涵盖
+              PB、极速交易、算法交易与融券额度的一揽子服务方案。
+            </div>
+            <button
+              type="button"
+              style="
+                width: 100%;
+                margin-top: 4px;
+                padding: 10px 12px;
+                border-radius: 999px;
+                border: none;
+                background: linear-gradient(135deg, #1890ff, #40a9ff);
+                color: #fff;
+                font-size: 14px;
+                font-weight: 500;
+                text-align: center;
+              "
+            >
+              查看《机构经纪业务服务方案》
+            </button>
+          </div>
         </section>
       </div>
-
-      <!-- 底部总结与引导 -->
-      <div class="report-footer-note">
-        结论：幻方量化是典型的<strong>存量深耕型战略客户</strong>，在保持现有交易关系的基础上，
-        建议通过 PB 主经纪商、极速 / 算法交易、融券额度等模块，逐步提升我司在其分仓中的占比。
-      </div>
-
-      <div class="report-cta">
-        <span>💡 建议结合《机构经纪业务服务方案》，为幻方量化定制一份涵盖 PB、极速交易、算法交易与融券额度的一揽子服务方案。</span>
-        <a href="机构经纪业务服务方案(1).html">查看机构经纪业务服务方案 →</a>
-      </div>
-    </div>
-  </div>
-</main>
-</body>
+    </main>
+  </body>
 </html>
-
