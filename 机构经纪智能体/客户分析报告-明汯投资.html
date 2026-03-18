@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>客户分析报告 - 明汯投资</title>
+  <link rel="stylesheet" href="css/common.css" />
+  <script src="js/spa-wrapper.js"></script>
+  <style>
+    .report-root { padding: 12px 16px 16px; background: #f8fafc; min-height: 100%; }
+    .report-shell {
+      background: #ffffff;
+      border-radius: 18px;
+      box-shadow:
+        0 4px 18px rgba(15, 23, 42, 0.06),
+        0 12px 30px rgba(15, 23, 42, 0.05);
+      padding: 14px 14px 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .report-header {
+      padding: 10px 10px 12px;
+      border-bottom: 1px solid #e2e8f0;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .report-header-title {
+      font-size: 16px;
+      font-weight: 700;
+      color: #0f172a;
+    }
+    .report-header-sub {
+      font-size: 11px;
+      color: #64748b;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      align-items: center;
+    }
+    .report-badge {
+      display: inline-flex;
+      align-items: center;
+      padding: 2px 8px;
+      border-radius: 999px;
+      font-size: 11px;
+      font-weight: 600;
+      background: rgba(16, 185, 129, 0.12);
+      color: #047857;
+    }
+    .report-main {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 10px;
+    }
+    @media (min-width: 380px) {
+      .report-main { grid-template-columns: 1fr 1fr; }
+    }
+    .report-card {
+      background: #f9fafb;
+      border-radius: 14px;
+      padding: 10px 10px 12px;
+      border: 1px solid #e5e7eb;
+    }
+    .report-card-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 6px;
+      padding-left: 6px;
+      border-left: 3px solid #059669;
+    }
+    .report-card-title {
+      font-size: 13px;
+      font-weight: 600;
+      color: #111827;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .report-card-title span.icon { font-size: 13px; }
+    .report-tag-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 6px;
+    }
+    .report-tag {
+      font-size: 10px;
+      padding: 2px 6px;
+      border-radius: 999px;
+      background: #dcfce7;
+      color: #15803d;
+      font-weight: 500;
+    }
+    .report-metrics {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 8px;
+      margin-bottom: 6px;
+    }
+    .metric-item { display: flex; flex-direction: column; gap: 2px; }
+    .metric-label { font-size: 10px; color: #6b7280; }
+    .metric-value { font-size: 14px; font-weight: 700; color: #111827; }
+    .metric-value--primary { color: #047857; }
+    .metric-value--accent { color: #ea580c; }
+    .report-text { font-size: 12px; color: #1f2933; line-height: 1.6; }
+    .report-list { font-size: 12px; color: #1f2933; padding-left: 16px; margin: 4px 0 0; line-height: 1.6; }
+    .report-list li { margin-bottom: 2px; }
+    .report-footer-note {
+      margin-top: 4px;
+      padding: 8px 10px;
+      border-radius: 10px;
+      background: #f3f4f6;
+      border: 1px dashed #e5e7eb;
+      font-size: 11px;
+      color: #4b5563;
+    }
+    .report-cta {
+      margin-top: 8px;
+      padding: 10px 10px;
+      border-radius: 12px;
+      background: #eef2ff;
+      border: 1px solid #e0e7ff;
+      font-size: 11px;
+      color: #4338ca;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .report-cta a {
+      align-self: flex-start;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 6px 12px;
+      border-radius: 999px;
+      background: #4f46e5;
+      color: #ffffff;
+      font-size: 11px;
+      font-weight: 600;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+<main class="subpage-main">
+  <div class="report-root">
+    <div class="report-shell">
+      <header class="report-header">
+        <div class="report-header-title">客户分析报告 - 明汯投资</div>
+        <div class="report-header-sub">
+          <span>明汯投资 · 全周期多策略量化 · 2026年3月</span>
+          <span class="report-badge">高价值在办客户</span>
+        </div>
+      </header>
+
+      <div class="report-main">
+        <!-- 一、客户画像 -->
+        <section class="report-card">
+          <div class="report-card-header">
+            <div class="report-card-title">
+              <span class="icon">👤</span>
+              <span>客户画像</span>
+            </div>
+          </div>
+          <div class="report-tag-row">
+            <span class="report-tag">全周期多策略</span>
+            <span class="report-tag">千亿量化梯队</span>
+            <span class="report-tag">风险控制体系完善</span>
+          </div>
+          <div class="report-metrics">
+            <div class="metric-item">
+              <div class="metric-label">管理规模</div>
+              <div class="metric-value metric-value--primary">500 亿+</div>
+            </div>
+            <div class="metric-item">
+              <div class="metric-label">客户类型</div>
+              <div class="metric-value">超百亿量化私募</div>
+            </div>
+            <div class="metric-item">
+              <div class="metric-label">策略特征</div>
+              <div class="metric-value metric-value--accent">多头 / 对冲 / CTA</div>
+            </div>
+          </div>
+          <table class="report-kv-table">
+            <tr><th>客户类型</th><td>超百亿量化私募 · 金融机构客户</td></tr>
+            <tr><th>管理规模</th><td>规模已突破 500 亿，并曾迈向千亿级别</td></tr>
+            <tr><th>核心策略</th><td>全周期、多策略、多品种：量化多头、对冲、CTA 等组合</td></tr>
+            <tr><th>策略特点</th><td>强调长期 Alpha 能力，逐步从高换手短周期向中周期统计套利过渡</td></tr>
+          </table>
+        </section>
+
+        <!-- 二、当前阶段与合作状态 -->
+        <section class="report-card">
+          <div class="report-card-header">
+            <div class="report-card-title">
+              <span class="icon">📊</span>
+              <span>交易与合作情况</span>
+            </div>
+          </div>
+          <div class="report-tag-row">
+            <span class="report-tag">合作阶段：业务办理中</span>
+            <span class="report-tag">已认可综合服务方案</span>
+          </div>
+          <div class="report-metrics">
+            <div class="metric-item">
+              <div class="metric-label">合作阶段</div>
+              <div class="metric-value">业务办理</div>
+            </div>
+            <div class="metric-item">
+              <div class="metric-label">核心需求</div>
+              <div class="metric-value metric-value--accent">开户 / 极速 / 算法 / 融券</div>
+            </div>
+            <div class="metric-item">
+              <div class="metric-label">客户等级</div>
+              <div class="metric-value metric-value--primary">高价值在办</div>
+            </div>
+          </div>
+          <table class="report-kv-table">
+            <tr><th>合作阶段</th><td>已认可综合服务方案，处于业务办理阶段</td></tr>
+            <tr><th>核心需求</th><td>机构账户开立、TradeX 极速交易与算法系统接入、后续融券与研究支持</td></tr>
+          </table>
+          <p class="report-text">
+            客户已在方案层面认可我司整体能力，当前重心在于<strong>尽快推动开户与系统接入落地</strong>，并为后续追加交易与增量业务预留空间。
+          </p>
+        </section>
+      </div>
+
+      <!-- 三、机构经纪机会洞察 -->
+      <section class="report-card">
+        <div class="report-card-header">
+          <div class="report-card-title">
+            <span class="icon">💡</span>
+            <span>机构经纪机会洞察</span>
+          </div>
+        </div>
+        <ul class="report-list">
+          <li>全周期多策略特征，意味着其对<strong>交易系统稳定性与风控工具</strong>有持续需求，可通过 PB 平台一体化承接。</li>
+          <li>规模大且产品线丰富，具备成为我司<strong>旗舰 PB 客户与案例</strong>的潜力，有助于对外品牌展示。</li>
+          <li>中长期可在融券、场外衍生品、结构性产品等方面拓展合作，形成<strong>多维度经纪收入来源</strong>。</li>
+        </ul>
+        <div class="report-score-box">
+          <div class="report-score-main">4.7 / 5.0</div>
+          <div class="report-score-sub">高价值在办客户 · 重点保障落地节奏</div>
+        </div>
+      </section>
+
+      <!-- 四、机构经纪服务建议 -->
+      <section class="report-card">
+        <div class="report-card-header">
+          <div class="report-card-title">
+            <span class="icon">🧩</span>
+            <span>机构经纪服务建议</span>
+          </div>
+        </div>
+        <p class="report-text"><strong>建议组合：开户 + 极速 / 算法交易 + PB 融券 / 杠杆 + 后续增值服务</strong></p>
+        <ul class="report-list">
+          <li><strong>账户与 PB 结构搭建：</strong>优先完成机构账户开立及 PB 架构确认，明确保证金、托管与清算流程。</li>
+          <li><strong>TradeX 极速 / 算法接入：</strong>为其多策略组合开通专用极速柜台及算法通道，保障策略执行效率与稳定性。</li>
+          <li><strong>融券与杠杆额度：</strong>根据其对冲与增强策略规模预估所需融券与杠杆额度，并形成年度配额计划。</li>
+          <li><strong>增值服务：</strong>后续可引入场外衍生品、结构性产品及定制化研究服务，提升综合服务深度。</li>
+        </ul>
+      </section>
+
+      <!-- 五、建议行动计划 -->
+      <section class="report-card">
+        <div class="report-card-header">
+          <div class="report-card-title">
+            <span class="icon">🚀</span>
+            <span>建议行动计划</span>
+          </div>
+        </div>
+        <ul class="report-list">
+          <li><strong>近期（T+7 天）：</strong>完成开户资料清单确认与内部流程梳理，安排专人跟进开户全流程。</li>
+          <li><strong>短期（T+1 个月内）：</strong>完成账户开立与 TradeX 系统对接测试，确保核心策略可在我司顺利跑通。</li>
+          <li><strong>中期（T+3 个月内）：</strong>评估首阶段交易表现与系统稳定性，协商后续融券额度与增量策略导入节奏。</li>
+        </ul>
+      </section>
+
+      <div class="report-footer-note">
+        结论：明汯投资是具备示范效应的<strong>高价值在办客户</strong>，当前需要优先保障开户与系统落地的节奏，
+        并规划好后续融券与衍生品业务的逐步导入。
+      </div>
+
+      <div class="report-cta">
+        <span>💡 建议结合《机构经纪业务服务方案》，将明汯投资打造为我司 PB / 机构经纪业务的重点示范客户。</span>
+        <a href="机构经纪业务服务方案(1).html">查看机构经纪业务服务方案 →</a>
+      </div>
+    </div>
+  </div>
+</main>
+</body>
+</html>
+

@@ -25,10 +25,21 @@
     } catch (e) {}
   }
 
-  /** 子页被直接打开时：根据当前 pathname 自动重定向到 index.html?page=当前文件名 */
+  /** 子页被直接打开时：根据当前 pathname 自动重定向到 index.html?page=当前文件名
+   * 注意：仅在 http(s) 场景下启用，避免本地 file:// 下与首页循环跳转。
+   */
   function redirectIfStandalone() {
     try {
       if (typeof window === "undefined" || window.top !== window.self) return;
+      // 本地 file:// 或其他非 http(s) 协议下，不做重定向，子页独立打开即可
+      if (
+        typeof window.location !== "undefined" &&
+        window.location.protocol &&
+        window.location.protocol !== "http:" &&
+        window.location.protocol !== "https:"
+      ) {
+        return;
+      }
       var path = window.location.pathname || "";
       var raw = path.split("/").pop() || "";
       if (!raw || raw === "index.html") return;

@@ -1064,6 +1064,95 @@ form.subpage-footer-input-wrap {
   transform: translateY(-1px);
 }
 
+/* 推荐客户卡片：整卡可点、层次结构 */
+.index-card-recommend {
+  min-height: 260px;
+}
+
+.index-card-link {
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-height: 0;
+}
+
+.index-card-badge {
+  font-size: 10px;
+  font-weight: 600;
+  padding: 3px 8px;
+  border-radius: 6px;
+  flex-shrink: 0;
+}
+
+.index-card-badge--indigo {
+  background: rgba(99, 102, 241, 0.15);
+  color: #4338ca;
+}
+
+.index-card-badge--blue {
+  background: rgba(59, 130, 246, 0.15);
+  color: #1d4ed8;
+}
+
+.index-card-badge--emerald {
+  background: rgba(16, 185, 129, 0.15);
+  color: #047857;
+}
+
+.index-card-block {
+  margin-top: 2px;
+}
+
+.index-card-block-title {
+  font-size: 11px;
+  font-weight: 600;
+  color: #64748b;
+  margin-bottom: 4px;
+  letter-spacing: 0.02em;
+}
+
+.index-card-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 6px;
+}
+
+.index-card-tag {
+  font-size: 11px;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: 500;
+}
+
+.index-card-tag--indigo {
+  background: rgba(238, 242, 255, 0.9);
+  color: #4338ca;
+}
+
+.index-card-tag--blue {
+  background: rgba(239, 246, 255, 0.9);
+  color: #1d4ed8;
+}
+
+.index-card-tag--emerald {
+  background: rgba(236, 253, 245, 0.9);
+  color: #047857;
+}
+
+.index-card-footer-single {
+  margin-top: auto;
+  padding-top: 8px;
+  justify-content: flex-end;
+}
+
+.index-card-footer-single .index-task-card-action {
+  font-weight: 600;
+  font-size: 13px;
+}
+
 .index-card-desc {
   font-size: 13px;
   line-height: 1.5;

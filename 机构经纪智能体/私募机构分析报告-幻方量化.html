@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>私募机构分析报告 - 幻方量化</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: "Microsoft YaHei", "PingFang SC", sans-serif; line-height: 1.7; color: #333; background: #f0f2f5; }
+        .container { max-width: 800px; margin: 0 auto; padding: 20px; }
+        
+        .header { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 24px; border-radius: 12px; margin-bottom: 20px; }
+        .header h1 { font-size: 20px; margin-bottom: 6px; }
+        .header .subtitle { font-size: 13px; opacity: 0.9; }
+        
+        /* Part */
+        .part { background: white; border-radius: 12px; margin-bottom: 16px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); overflow: hidden; }
+        .part-header { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 16px 20px; font-size: 16px; font-weight: 600; cursor: pointer; display: flex; justify-content: space-between; align-items: center; }
+        .part-header .arrow { transition: transform 0.3s; font-size: 12px; }
+        .part-header.active .arrow { transform: rotate(180deg); }
+        
+        .part-content { display: none; padding: 0; }
+        .part-content.active { display: block; }
+        
+        .section { padding: 16px 20px; border-bottom: 1px solid #eee; }
+        .section:last-child { border-bottom: none; }
+        .section h3 { font-size: 14px; color: #667eea; margin-bottom: 12px; font-weight: 600; }
+        
+        /* Mini折叠 */
+        .mini-fold { background: #f8f9fa; border-radius: 8px; margin-bottom: 12px; overflow: hidden; }
+        .mini-fold-header { padding: 10px 14px; font-size: 13px; font-weight: 600; cursor: pointer; display: flex; justify-content: space-between; color: #333; }
+        .mini-fold-header .arrow { color: #667eea; font-size: 10px; transition: transform 0.3s; }
+        .mini-fold-header.active .arrow { transform: rotate(180deg); }
+        .mini-fold-content { display: none; padding: 0 14px 14px; font-size: 13px; }
+        .mini-fold-content.active { display: block; }
+        
+        table { width: 100%; border-collapse: collapse; margin-bottom: 10px; font-size: 13px; }
+        th { background: #f8f9fa; color: #667eea; font-weight: 600; text-align: left; padding: 8px 6px; border: 1px solid #eee; }
+        td { padding: 6px; border: 1px solid #eee; }
+        tr:nth-child(even) { background: #fafafa; }
+        
+        .tag { display: inline-block; padding: 1px 6px; border-radius: 3px; font-size: 11px; margin-right: 2px; }
+        .tag-primary { background: #e3f2fd; color: #1565c0; }
+        .tag-success { background: #e8f5e9; color: #388e3c; }
+        .tag-warning { background: #fff3e0; color: #f57c00; }
+        
+        .box { padding: 10px 12px; background: #f8f9fa; border-radius: 6px; margin: 10px 0; border-left: 3px solid #667eea; font-size: 13px; }
+        .box-success { border-left-color: #4caf50; background: #e8f5e9; }
+        .box-warning { border-left-color: #ff9800; background: #fff8e1; }
+        
+        .highlight-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; margin: 10px 0; }
+        .highlight-item { background: rgba(255,255,255,0.15); padding: 8px; border-radius: 6px; }
+        .highlight-item h4 { font-size: 11px; margin-bottom: 4px; opacity: 0.9; }
+        .highlight-item p { font-size: 12px; font-weight: 600; }
+        
+        .score-box { text-align: center; padding: 20px; background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); color: white; border-radius: 10px; margin: 12px 0; }
+        .score-box .score { font-size: 32px; font-weight: bold; }
+        .score-box .label { font-size: 14px; margin-top: 4px; }
+        
+        .action-item { display: flex; align-items: center; padding: 8px 0; border-bottom: 1px solid #eee; }
+        .action-item:last-child { border-bottom: none; }
+        .action-num { width: 20px; height: 20px; background: #667eea; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 11px; margin-right: 10px; }
+        
+        .footer { text-align: center; padding: 16px; color: #999; font-size: 12px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        
+        <!-- Header -->
+        <div class="header">
+            <h1>🏢 私募机构分析报告</h1>
+            <div class="subtitle">宁波幻方量化 | 2026年3月</div>
+        </div>
+
+        <!-- ==================== 第一大部分：私募核心信息 ==================== -->
+        <div class="part">
+            <div class="part-header active" onclick="togglePart(this)">
+                <span>📊 第一部分：私募核心信息</span>
+                <span class="arrow">▼</span>
+            </div>
+            <div class="part-content active">
+                
+                <!-- 筛选理由 -->
+                <div class="section" style="padding:0;">
+                    <div class="mini-fold" style="margin:16px 20px 0;">
+                        <div class="mini-fold-header active" onclick="toggleFold(this)">
+                            <span>🎯 为什么要选择这个私募展业？</span>
+                            <span class="arrow">▼</span>
+                        </div>
+                        <div class="mini-fold-content active">
+                            <div class="box box-warning" style="margin:0 0 10px 0;">
+                                <strong>筛选理由：</strong>
+                            </div>
+                            <table>
+                                <tr><th>筛选维度</th><th>客户情况</th><th>选择理由</th></tr>
+                                <tr><td>交易贡献</td><td>年交易2000亿+</td><td><strong>佣金贡献可达5000万+/年</strong>，是极高价值客户</td></tr>
+                                <tr><td>已有基础</td><td>3只产品已在我司交易</td><td><strong>存量客户深耕</strong>，比新开客户更容易切入</td></tr>
+                                <tr><td>规模增长</td><td>600亿，年增40%</td><td>处于快速扩张期，<strong>未来交易量会更大</strong></td></tr>
+                                <tr><td>策略匹配</td><td>量化高频策略</td><td>需要极速通道+算法+融券，<strong>我司服务能力强</strong></td></tr>
+                                <tr><td>竞争机会</td><td>分仓极度分散</td><td>最大券商仅占10%，<strong>有切入机会</strong></td></tr>
+                            </table>
+                            <div class="box" style="margin-top:10px;">
+                                <strong>结论：</strong>已有合作基础 + 高交易量 + 增长潜力大 = <strong>必须重点深耕的战略级客户</strong>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 核心观点摘要 -->
+                <div class="section">
+                    <h3>📌 核心观点</h3>
+                    <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 12px; border-radius: 8px; margin-bottom: 10px;">
+                        <strong>结论：</strong>战略级客户，已有3只产品在我司交易，是存量深耕机会，建议通过PB服务深化合作。
+                    </div>
+                    <div class="highlight-grid">
+                        <div class="highlight-item">
+                            <h4>📊 交易贡献</h4>
+                            <p>年2000亿+，佣金5000万+/年</p>
+                        </div>
+                        <div class="highlight-item">
+                            <h4>📈 规模</h4>
+                            <p>600亿，量化TOP3</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 折叠：策略与产品特点 -->
+                <div class="section" style="padding:0;">
+                    <div class="mini-fold" style="margin:16px 20px;">
+                        <div class="mini-fold-header active" onclick="toggleFold(this)">
+                            <span>🧠 策略与产品特点</span>
+                            <span class="arrow">▼</span>
+                        </div>
+                        <div class="mini-fold-content active">
+                            <table>
+                                <tr><th>指标</th><th>数据</th><th>说明</th></tr>
+                                <tr><td>管理规模</td><td>600亿</td><td>量化TOP3</td></tr>
+                                <tr><td>策略类型</td><td><span class="tag tag-primary">量化多头</span><span class="tag tag-primary">量化对冲</span></td><td>多策略</td></tr>
+                                <tr><td>年换手率</td><td>约100倍</td><td>高频交易</td></tr>
+                                <tr><td>代表产品</td><td>幻方量化对冲基金</td><td>规模100亿</td></tr>
+                            </table>
+                            <div class="box">
+                                <strong>策略特点：</strong>以量化模型驱动，高频交易为主，换手率远高于行业平均
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 折叠：与我司业务往来 -->
+                <div class="section" style="padding:0;">
+                    <div class="mini-fold" style="margin:0 20px 16px;">
+                        <div class="mini-fold-header active" onclick="toggleFold(this)">
+                            <span>🤝 与我司业务往来</span>
+                            <span class="arrow">▼</span>
+                        </div>
+                        <div class="mini-fold-content active">
+                            <table>
+                                <tr><th>合作类型</th><th>内容</th><th>状态</th><th>起始</th></tr>
+                                <tr><td>研究服务</td><td>年度研究报告</td><td><span class="tag tag-success">执行中</span></td><td>2025-03</td></tr>
+                                <tr><td>代销合作</td><td>幻方指数增强1号</td><td><span class="tag tag-success">代销中</span></td><td>2025-06</td></tr>
+                                <tr><td>产品交易</td><td>3只产品开户</td><td><span class="tag tag-success">交易中</span></td><td>2025-08</td></tr>
+                            </table>
+                            
+                            <h4 style="font-size:12px;color:#666;margin:10px 0 6px;">已有产品交易数据</h4>
+                            <table>
+                                <tr><th>产品</th><th>规模</th><th>换手</th><th>月交易量</th><th>月佣金</th></tr>
+                                <tr><td>幻方量化对冲</td><td>100亿</td><td>80倍</td><td>67亿</td><td>17万</td></tr>
+                                <tr><td>幻方指数增强</td><td>60亿</td><td>60倍</td><td>30亿</td><td>7.5万</td></tr>
+                                <tr><td>幻方多头精选</td><td>40亿</td><td>50倍</td><td>17亿</td><td>4.2万</td></tr>
+                                <tr style="background:#fff3e0;"><td><strong>合计</strong></td><td><strong>200亿</strong></td><td><strong>65倍</strong></td><td><strong>114亿</strong></td><td><strong>28.7万</strong></td></tr>
+                            </table>
+                            
+                            <div class="box box-success">
+                                <strong>现状：</strong>月均佣金28.7万（年344万），年换手率65倍
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- ==================== 第二大部分：服务方案 ==================== -->
+        <div class="part">
+            <div class="part-header active" onclick="togglePart(this)">
+                <span>💼 第二部分：服务方案</span>
+                <span class="arrow">▼</span>
+            </div>
+            <div class="part-content active">
+                
+                <!-- AI预测客户需求 -->
+                <div class="section">
+                    <h3>🤖 AI预测：客户需求</h3>
+                    <div class="box">
+                        <strong>基于客户画像和交易特征，预测核心需求：</strong>
+                    </div>
+                    <table>
+                        <tr><th>需求类型</th><th>优先级</th><th>预测依据</th></tr>
+                        <tr><td>PB主经纪商</td><td>★★★★★</td><td>当前仅交易通道，需深化</td></tr>
+                        <tr><td>算法交易</td><td>★★★★★</td><td>高频交易，100倍换手</td></tr>
+                        <tr><td>融券供给</td><td>★★★★★</td><td>量化对冲需大量券源</td></tr>
+                        <tr><td>极速通道</td><td>★★★★★</td><td>高频对延迟敏感</td></tr>
+                        <tr><td>低佣金</td><td>★★★★</td><td>交易量大，佣金敏感</td></tr>
+                    </table>
+                </div>
+
+                <!-- 我司服务类别 -->
+                <div class="section">
+                    <h3>🎯 我司服务类别与特点</h3>
+                    <table>
+                        <tr><th>服务</th><th>内容</th><th>我司特点</th><th>报价</th></tr>
+                        <tr><td>PB主经纪商</td><td>交易+清算+估值+杠杆</td><td>系统稳定，服务专业</td><td>佣金万1.2</td></tr>
+                        <tr><td>算法交易</td><td>MiniAlpha/VWAP/TWAP</td><td>自主研发，效果好</td><td>免费3个月</td></tr>
+                        <tr><td>极速通道</td><td>专属交易单元+FPGA</td><td>行业领先低延迟</td><td>10万/年</td></tr>
+                        <tr><td>融券供给</td><td>专项50亿额度</td><td>券源丰富</td><td>3.8%起</td></tr>
+                    </table>
+                    
+                    <div class="box box-warning">
+                        <strong>💡 差异化竞争力：</strong>算法交易+极速通道一体化方案，专注服务量化客户
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- ==================== 第三大部分：服务支持 ==================== -->
+        <div class="part">
+            <div class="part-header active" onclick="togglePart(this)">
+                <span>📚 第三部分：服务支持</span>
+                <span class="arrow">▼</span>
+            </div>
+            <div class="part-content active">
+                
+                <!-- 聊什么：专业内容 -->
+                <div class="section">
+                    <h3>💬 聊什么：专业话题</h3>
+                    <div class="box">
+                        <strong>建议与客户沟通的专业内容：</strong>
+                    </div>
+                    
+                    <div class="mini-fold">
+                        <div class="mini-fold-header active" onclick="toggleFold(this)">
+                            <span>📈 近期市场与策略判断</span>
+                            <span class="arrow">▼</span>
+                        </div>
+                        <div class="mini-fold-content active">
+                            <ul style="padding-left:16px;margin:0;">
+                                <li>近期量化策略表现与超额收益归因</li>
+                                <li>市场波动率变化对策略的影响</li>
+                                <li>风格轮动下的策略调整建议</li>
+                                <li>2026年量化策略展望</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="mini-fold">
+                        <div class="mini-fold-header active" onclick="toggleFold(this)">
+                            <span>📊 同类产品表现</span>
+                            <span class="arrow">▼</span>
+                        </div>
+                        <div class="mini-fold-content active">
+                            <ul style="padding-left:16px;margin:0;">
+                                <li>我司服务的同类量化私募业绩表现</li>
+                                <li>不同策略的夏普比率对比</li>
+                                <li>最大回撤控制较好的案例</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="mini-fold">
+                        <div class="mini-fold-header active" onclick="toggleFold(this)">
+                            <span>🔔 行业主要变化</span>
+                            <span class="arrow">▼</span>
+                        </div>
+                        <div class="mini-fold-content active">
+                            <ul style="padding-left:16px;margin:0;">
+                                <li>监管政策变化对量化的影响</li>
+                                <li>融券政策收紧下的券源获取</li>
+                                <li>行业竞争格局与差异化方向</li>
+                                <li>技术发展趋势（AI、机器学习）</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 我司服务案例 -->
+                <div class="section">
+                    <h3>🏆 服务案例与特色</h3>
+                    
+                    <div class="mini-fold">
+                        <div class="mini-fold-header active" onclick="toggleFold(this)">
+                            <span>📋 同类产品服务案例</span>
+                            <span class="arrow">▼</span>
+                        </div>
+                        <div class="mini-fold-content active">
+                            <table>
+                                <tr><th>客户</th><th>规模</th><th>服务内容</th><th>合作效果</th></tr>
+                                <tr><td>明汯投资</td><td>400亿</td><td>PB+算法+融券</td><td>年交易量800亿</td></tr>
+                        </table>
+                            <div class="box">
+                                <strong>案例亮点：</strong>通过算法交易服务切入，目前已是核心客户
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mini-fold">
+                        <div class="mini-fold-header active" onclick="toggleFold(this)">
+                            <span>⭐ 我司服务特色</span>
+                            <span class="arrow">▼</span>
+                        </div>
+                        <div class="mini-fold-content active">
+                            <ul style="padding-left:16px;margin:0;">
+                                <li><strong>极速通道：</strong>FPGA加速，行业领先低延迟</li>
+                                <li><strong>算法交易：</strong>自主研发MiniAlpha，效果优于市场</li>
+                                <li><strong>融券额度：</strong>专项50亿额度，头部券商中具竞争力</li>
+                                <li><strong>研究支持：</strong>量化研究团队专属对接</li>
+                                <li><strong>服务响应：</strong>7×24小时客服，专属客户经理</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- 综合评估 -->
+        <div class="part">
+            <div class="part-header active" onclick="togglePart(this)">
+                <span>📊 综合评估</span>
+                <span class="arrow">▼</span>
+            </div>
+            <div class="part-content active">
+                <div class="section">
+                    <table>
+                        <tr><th>维度</th><th>评分</th><th>说明</th></tr>
+                        <tr><td>交易贡献</td><td>★★★★★</td><td>年交易2000亿+</td></tr>
+                        <tr><td>规模潜力</td><td>★★★★★</td><td>年增40%</td></tr>
+                        <tr><td>品牌价值</td><td>★★★★★</td><td>量化TOP3</td></tr>
+                        <tr><td>合作粘性</td><td>★★★★</td><td>已有基础</td></tr>
+                        <tr><td>合规风险</td><td>★★★★★</td><td>无不良记录</td></tr>
+                    </table>
+                    
+                    <div class="score-box">
+                        <div class="score">4.8/5.0</div>
+                        <div class="label">🏆 战略级客户</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 行动计划 -->
+        <div class="part">
+            <div class="part-header active" onclick="togglePart(this)">
+                <span>🚀 行动计划</span>
+                <span class="arrow">▼</span>
+            </div>
+            <div class="part-content active">
+                <div class="section">
+                    <div class="action-item">
+                        <span class="action-num">1</span>
+                        <div><strong>1周内</strong>：与运营总监张某联系，了解近期需求</div>
+                    </div>
+                    <div class="action-item">
+                        <span class="action-num">2</span>
+                        <div><strong>2周内</strong>：邀请总经理陆某参观，演示算法+极速通道</div>
+                    </div>
+                    <div class="action-item">
+                        <span class="action-num">3</span>
+                        <div><strong>1个月内</strong>：提交PB一体化服务方案</div>
+                    </div>
+                    <div class="action-item">
+                        <span class="action-num">4</span>
+                        <div><strong>2个月内</strong>：完成PB签约，新增产品入场</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>报告日期：2026年3月17日 | 注：数据为模拟示例</p>
+        </div>
+
+    </div>
+
+    <script>
+        function togglePart(el) {
+            el.classList.toggle('active');
+            el.nextElementSibling.classList.toggle('active');
+        }
+        function toggleFold(el) {
+            el.classList.toggle('active');
+            el.nextElementSibling.classList.toggle('active');
+        }
+    </script>
+</body>
+</html>
