@@ -10,14 +10,14 @@
         html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
         body { font-family: "Microsoft YaHei", "PingFang SC", sans-serif; line-height: 1.65; color: #101828; background: radial-gradient(900px 520px at 10% 0%, rgba(102,126,234,0.16) 0%, rgba(118,75,162,0.06) 35%, rgba(240,242,245,1) 70%); }
         /* 外边距（屏幕边缘留白）更小：外紧内松 */
-        .container { max-width: 440px; margin: 0 auto; padding: 4px !important; }
+        .container { max-width: 440px; margin: 0 auto; padding: 4px; }
         
-        .header { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 20px !important; border-radius: 16px; margin-bottom: 8px !important; box-shadow: 0 10px 24px rgba(102,126,234,0.18); }
+        .header { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 20px; border-radius: 16px; margin-bottom: 8px; box-shadow: 0 10px 24px rgba(102,126,234,0.18); }
         .header h1 { font-size: clamp(18px, 4.6vw, 22px); margin-bottom: 6px; font-weight: 900; letter-spacing: 0.3px; }
         .header .subtitle { font-size: 12px; opacity: 0.92; }
         
-        .part { background: white; border-radius: 16px; margin-bottom: 8px !important; box-shadow: 0 2px 10px rgba(0,0,0,0.06); overflow: hidden; border: 1px solid rgba(238,240,255,0.9); }
-        .part-header { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 16px 16px !important; font-size: clamp(14px, 3.8vw, 15px); font-weight: 900; cursor: pointer; display: flex; flex-wrap: nowrap; justify-content: flex-start; align-items: center; letter-spacing: 0.2px; min-height: 48px; gap: 10px; -webkit-tap-highlight-color: transparent; user-select: none; }
+        .part { background: white; border-radius: 16px; margin-bottom: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.06); overflow: hidden; border: 1px solid rgba(238,240,255,0.9); }
+        .part-header { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 16px 16px; font-size: clamp(14px, 3.8vw, 15px); font-weight: 900; cursor: pointer; display: flex; flex-wrap: nowrap; justify-content: flex-start; align-items: center; letter-spacing: 0.2px; min-height: 48px; gap: 10px; -webkit-tap-highlight-color: transparent; user-select: none; border-radius: 16px 16px 0 0; }
         .part-header > span:first-child { flex: 1 1 auto; min-width: 0; }
         .part-header .arrow { flex: 0 0 auto; margin-left: auto; }
         .part-header .arrow {
@@ -37,19 +37,22 @@
         .part-header .arrow svg { width: 12px; height: 12px; display: block; }
         .part-header .arrow path { stroke: currentColor; stroke-width: 2.25; stroke-linecap: round; stroke-linejoin: round; fill: none; }
         .part-header:active .arrow { background: rgba(255,255,255,0.26); box-shadow: 0 3px 8px rgba(0,0,0,0.10); }
-        .part-header.active .arrow { transform: rotate(180deg); }
+        /* 箭头旋转由 JS 统一控制（兼容兜底样式模式） */
         
         .part-content { display: block; padding: 0; }
-        .part-content.active { display: block; }
         
         /* 内容区 padding 更大（覆盖内联样式） */
-        .section { padding: 20px 18px !important; border-bottom: 1px solid #eee; }
+        .section { padding: 20px 18px; border-bottom: 1px solid #eee; }
         .section:last-child { border-bottom: none; }
         .section h3 { font-size: clamp(13px, 3.5vw, 14px); color: #4f46e5; margin-bottom: 8px; font-weight: 900; }
+        .section h3 + h3 { margin-top: 14px; }
         
-        .table-wrap { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; border-radius: 12px; margin: 10px 0 4px; }
+        .table-wrap { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; border-radius: 12px; margin: 10px 0 4px; border: 1px solid #eceef6; background: #fff; }
+        .table-wrap::-webkit-scrollbar { height: 6px; }
+        .table-wrap::-webkit-scrollbar-thumb { background: rgba(16,24,40,0.18); border-radius: 999px; }
+        .table-wrap::-webkit-scrollbar-track { background: rgba(16,24,40,0.06); border-radius: 999px; }
         .table-wrap table { min-width: 520px; }
-        table { width: 100%; border-collapse: collapse; margin-bottom: 10px; font-size: 12px; table-layout: fixed; }
+        table { width: 100%; border-collapse: collapse; margin-bottom: 0; font-size: 12px; table-layout: fixed; }
         th { background: #f6f7ff; color: #4f46e5; font-weight: 900; text-align: left; padding: 10px 8px; border: 1px solid #eceef6; word-break: break-word; }
         td { padding: 10px 8px; border: 1px solid #eceef6; vertical-align: top; word-break: break-word; }
         tr:nth-child(even) { background: #fbfbff; }
@@ -57,55 +60,52 @@
         .table-3 th:nth-child(1), .table-3 td:nth-child(1) { width: 26%; }
         .table-3 th:nth-child(3), .table-3 td:nth-child(3) { width: 24%; }
         
-        .tag { display: inline-block; padding: 1px 6px; border-radius: 3px; font-size: 11px; margin-right: 2px; }
-        .tag-primary { background: #e3f2fd; color: #1565c0; }
-        .tag-success { background: #e8f5e9; color: #388e3c; }
-        
-        .box { padding: 14px 16px !important; background: #f8f9fa; border-radius: 12px; margin: 12px 0; border-left: 3px solid #667eea; font-size: 13px; }
+        .box { padding: 14px 16px; background: #f8f9fa; border-radius: 12px; margin: 12px 0; border-left: 3px solid #667eea; font-size: 13px; }
         
         ul { padding-left: 18px; margin: 8px 0; }
         li { margin-bottom: 4px; font-size: 13px; }
         
-        .footer { text-align: center; padding: 16px; color: #999; font-size: 12px; }
+        .footer { text-align: center; padding: 14px 10px; color: #667085; font-size: 12px; }
 
         /* 窄屏进一步优化 */
         @media (max-width: 360px) {
-            .container { padding: 2px !important; }
-            .header { padding: 18px !important; border-radius: 14px; margin-bottom: 6px !important; }
+            .container { padding: 2px; }
+            .header { padding: 18px; border-radius: 14px; margin-bottom: 6px; }
             .part { border-radius: 14px; }
-            .part { margin-bottom: 6px !important; }
-            .section { padding: 18px 16px !important; }
+            .part { margin-bottom: 6px; }
+            .part-header { border-radius: 14px 14px 0 0; }
+            .section { padding: 18px 16px; }
             th, td { padding: 9px 7px; }
         }
     </style>
 </head>
-<body style="font-family: Microsoft YaHei, PingFang SC, sans-serif; line-height: 1.65; color: #101828; background: #f0f2f5; margin: 0;">
-    <div class="container" style="max-width: 440px; margin: 0 auto; padding: 12px 2px;">
+<body>
+    <div class="container">
         <!-- Header -->
-        <div class="header" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: #fff; padding: 18px; border-radius: 16px; margin-bottom: 12px; box-shadow: 0 10px 24px rgba(102,126,234,0.18);">
-            <h1 style="font-size: 22px; margin: 0 0 6px; font-weight: 900; letter-spacing: 0.4px;">机构经纪业务服务方案</h1>
-            <div class="subtitle" style="font-size: 12px; opacity: 0.92;">PB综合服务 | 2026年</div>
+        <div class="header">
+            <h1>机构经纪业务服务方案</h1>
+            <div class="subtitle">PB综合服务 | 2026年</div>
         </div>
 
         <!-- 什么是PB -->
-        <div class="part" style="background: #fff; border-radius: 16px; margin-bottom: 12px; box-shadow: 0 2px 10px rgba(0,0,0,0.06); overflow: hidden; border: 1px solid rgba(238,240,255,0.9);">
-            <div class="part-header active" onclick="togglePart(this)" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: #fff; padding: 16px 16px; display: flex; align-items: center; gap: 10px; min-height: 48px; border-radius: 16px 16px 0 0;">
-                <span style="flex: 1 1 auto; min-width: 0;">一、PB综合服务简介 📖</span>
-                <span class="arrow" aria-hidden="true" style="margin-left:auto;display:inline-flex;align-items:center;justify-content:center;width:20px;height:20px;border-radius:999px;background:rgba(255,255,255,0.18);border:1px solid rgba(255,255,255,0.22);box-shadow:0 4px 10px rgba(0,0,0,0.10);color:rgba(255,255,255,0.95);transition:transform 200ms ease, background 200ms ease, box-shadow 200ms ease;">
+        <div class="part">
+            <div class="part-header active">
+                <span>一、PB综合服务简介 📖</span>
+                <span class="arrow" aria-hidden="true">
                     <svg viewBox="0 0 24 24" width="12" height="12" fill="none" focusable="false" aria-hidden="true">
                         <path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round"></path>
                     </svg>
                 </span>
             </div>
             <div class="part-content active">
-                <div class="section" style="padding: 12px 14px; border-bottom: 1px solid #eee;">
-                    <h3 style="font-size: 14px; color: #4f46e5; margin: 0 0 8px; font-weight: 900;">1.1 什么是PB业务</h3>
-                    <div class="box" style="padding: 10px 12px; background: #f8f9fa; border-radius: 10px; margin: 10px 0; border-left: 3px solid #667eea; font-size: 13px;">
+                <div class="section">
+                    <h3>1.1 什么是PB业务</h3>
+                    <div class="box">
                         <strong>主经纪商（PB, Prime Brokerage）服务</strong>，是指券商向私募证券投资基金、基金专户、券商资管等专业机构投资者提供的综合金融服务。
                     </div>
                     
-                    <h3 style="font-size: 14px; color: #4f46e5; margin: 14px 0 8px; font-weight: 900;">1.2 服务对象</h3>
-                    <ul style="padding-left: 18px; margin: 8px 0;">
+                    <h3>1.2 服务对象</h3>
+                    <ul>
                         <li>私募证券投资基金</li>
                         <li>基金专户</li>
                         <li>券商资管</li>
@@ -117,59 +117,59 @@
         </div>
 
         <!-- 核心服务 -->
-        <div class="part" style="background: #fff; border-radius: 16px; margin-bottom: 12px; box-shadow: 0 2px 10px rgba(0,0,0,0.06); overflow: hidden; border: 1px solid rgba(238,240,255,0.9);">
-            <div class="part-header active" onclick="togglePart(this)" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: #fff; padding: 16px 16px; display: flex; align-items: center; gap: 10px; min-height: 48px; border-radius: 16px 16px 0 0;">
-                <span style="flex: 1 1 auto; min-width: 0;">二、核心服务模块 🔧</span>
-                <span class="arrow" aria-hidden="true" style="margin-left:auto;display:inline-flex;align-items:center;justify-content:center;width:20px;height:20px;border-radius:999px;background:rgba(255,255,255,0.18);border:1px solid rgba(255,255,255,0.22);box-shadow:0 4px 10px rgba(0,0,0,0.10);color:rgba(255,255,255,0.95);transition:transform 200ms ease, background 200ms ease, box-shadow 200ms ease;">
+        <div class="part">
+            <div class="part-header active">
+                <span>二、核心服务模块 🔧</span>
+                <span class="arrow" aria-hidden="true">
                     <svg viewBox="0 0 24 24" width="12" height="12" fill="none" focusable="false" aria-hidden="true">
                         <path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round"></path>
                     </svg>
                 </span>
             </div>
             <div class="part-content active">
-                <div class="section" style="padding: 12px 14px; border-bottom: 1px solid #eee;">
-                    <h3 style="font-size: 14px; color: #4f46e5; margin: 0 0 8px; font-weight: 900;">2.1 基础服务</h3>
+                <div class="section">
+                    <h3>2.1 基础服务</h3>
                     <div class="table-wrap">
-                        <table class="table-2" border="1" cellspacing="0" cellpadding="8" style="width: 100%; border-collapse: collapse; font-size: 12px; table-layout: fixed; border-color: #eceef6; margin-bottom: 10px;">
+                        <table class="table-2">
                         <tr>
-                            <th style="background:#f6f7ff;color:#4f46e5;font-weight:900;text-align:left;word-break:break-word;width:34%;">服务类型</th>
-                            <th style="background:#f6f7ff;color:#4f46e5;font-weight:900;text-align:left;word-break:break-word;">内容说明</th>
+                            <th>服务类型</th>
+                            <th>内容说明</th>
                         </tr>
-                        <tr><td style="vertical-align:top;word-break:break-word;">证券经纪</td><td style="vertical-align:top;word-break:break-word;">股票、债券、ETF、期权、期货等交易通道</td></tr>
-                        <tr><td style="vertical-align:top;word-break:break-word;">产品备案</td><td style="vertical-align:top;word-break:break-word;">产品设立、备案、变更等合规支持</td></tr>
-                        <tr><td style="vertical-align:top;word-break:break-word;">交易系统</td><td style="vertical-align:top;word-break:break-word;">极速交易通道、算法交易系统</td></tr>
-                        <tr><td style="vertical-align:top;word-break:break-word;">估值核算</td><td style="vertical-align:top;word-break:break-word;">T+0估值、净值计算、会计核算</td></tr>
+                        <tr><td>证券经纪</td><td>股票、债券、ETF、期权、期货等交易通道</td></tr>
+                        <tr><td>产品备案</td><td>产品设立、备案、变更等合规支持</td></tr>
+                        <tr><td>交易系统</td><td>极速交易通道、算法交易系统</td></tr>
+                        <tr><td>估值核算</td><td>T+0估值、净值计算、会计核算</td></tr>
                         </table>
                     </div>
                 </div>
                 
-                <div class="section" style="padding: 12px 14px; border-bottom: 1px solid #eee;">
-                    <h3 style="font-size: 14px; color: #4f46e5; margin: 0 0 8px; font-weight: 900;">2.2 特色增值服务</h3>
+                <div class="section">
+                    <h3>2.2 特色增值服务</h3>
                     <div class="table-wrap">
-                        <table class="table-2" border="1" cellspacing="0" cellpadding="8" style="width: 100%; border-collapse: collapse; font-size: 12px; table-layout: fixed; border-color: #eceef6; margin-bottom: 10px;">
+                        <table class="table-2">
                         <tr>
-                            <th style="background:#f6f7ff;color:#4f46e5;font-weight:900;text-align:left;word-break:break-word;width:34%;">服务</th>
-                            <th style="background:#f6f7ff;color:#4f46e5;font-weight:900;text-align:left;word-break:break-word;">说明</th>
+                            <th>服务</th>
+                            <th>说明</th>
                         </tr>
-                        <tr><td style="vertical-align:top;word-break:break-word;">电子合同</td><td style="vertical-align:top;word-break:break-word;">在线签约，电子化管理</td></tr>
-                        <tr><td style="vertical-align:top;word-break:break-word;">T+0估值系统</td><td style="vertical-align:top;word-break:break-word;">实时估值，快速准确</td></tr>
-                        <tr><td style="vertical-align:top;word-break:break-word;">投资运作系统</td><td style="vertical-align:top;word-break:break-word;">多产品管理，业绩归因</td></tr>
-                        <tr><td style="vertical-align:top;word-break:break-word;">多管理人架构</td><td style="vertical-align:top;word-break:break-word;">支持多策略、多产品线</td></tr>
+                        <tr><td>电子合同</td><td>在线签约，电子化管理</td></tr>
+                        <tr><td>T+0估值系统</td><td>实时估值，快速准确</td></tr>
+                        <tr><td>投资运作系统</td><td>多产品管理，业绩归因</td></tr>
+                        <tr><td>多管理人架构</td><td>支持多策略、多产品线</td></tr>
                         </table>
                     </div>
                 </div>
                 
-                <div class="section" style="padding: 12px 14px;">
-                    <h3 style="font-size: 14px; color: #4f46e5; margin: 0 0 8px; font-weight: 900;">2.3 杠杆与融资服务</h3>
+                <div class="section">
+                    <h3>2.3 杠杆与融资服务</h3>
                     <div class="table-wrap">
-                        <table class="table-2" border="1" cellspacing="0" cellpadding="8" style="width: 100%; border-collapse: collapse; font-size: 12px; table-layout: fixed; border-color: #eceef6; margin-bottom: 0;">
+                        <table class="table-2">
                         <tr>
-                            <th style="background:#f6f7ff;color:#4f46e5;font-weight:900;text-align:left;word-break:break-word;width:34%;">服务</th>
-                            <th style="background:#f6f7ff;color:#4f46e5;font-weight:900;text-align:left;word-break:break-word;">说明</th>
+                            <th>服务</th>
+                            <th>说明</th>
                         </tr>
-                        <tr><td style="vertical-align:top;word-break:break-word;">融资融券</td><td style="vertical-align:top;word-break:break-word;">杠杆交易支持</td></tr>
-                        <tr><td style="vertical-align:top;word-break:break-word;">收益互换</td><td style="vertical-align:top;word-break:break-word;">场外衍生品</td></tr>
-                        <tr><td style="vertical-align:top;word-break:break-word;">授信支持</td><td style="vertical-align:top;word-break:break-word;">综合授信、经营/项目融资支持等（按合规与资质要求）</td></tr>
+                        <tr><td>融资融券</td><td>杠杆交易支持</td></tr>
+                        <tr><td>收益互换</td><td>场外衍生品</td></tr>
+                        <tr><td>授信支持</td><td>综合授信、经营/项目融资支持等（按合规与资质要求）</td></tr>
                         </table>
                     </div>
                 </div>
@@ -177,71 +177,71 @@
         </div>
 
         <!-- 服务方案 -->
-        <div class="part" style="background: #fff; border-radius: 16px; margin-bottom: 12px; box-shadow: 0 2px 10px rgba(0,0,0,0.06); overflow: hidden; border: 1px solid rgba(238,240,255,0.9);">
-            <div class="part-header active" onclick="togglePart(this)" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: #fff; padding: 16px 16px; display: flex; align-items: center; gap: 10px; min-height: 48px; border-radius: 16px 16px 0 0;">
-                <span style="flex: 1 1 auto; min-width: 0;">三、服务方案类型 📋</span>
-                <span class="arrow" aria-hidden="true" style="margin-left:auto;display:inline-flex;align-items:center;justify-content:center;width:20px;height:20px;border-radius:999px;background:rgba(255,255,255,0.18);border:1px solid rgba(255,255,255,0.22);box-shadow:0 4px 10px rgba(0,0,0,0.10);color:rgba(255,255,255,0.95);transition:transform 200ms ease, background 200ms ease, box-shadow 200ms ease;">
+        <div class="part">
+            <div class="part-header active">
+                <span>三、服务方案类型 📋</span>
+                <span class="arrow" aria-hidden="true">
                     <svg viewBox="0 0 24 24" width="12" height="12" fill="none" focusable="false" aria-hidden="true">
                         <path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round"></path>
                     </svg>
                 </span>
             </div>
             <div class="part-content active">
-                <div class="section" style="padding: 12px 14px; border-bottom: 1px solid #eee;">
-                    <h3 style="font-size: 14px; color: #4f46e5; margin: 0 0 8px; font-weight: 900;">3.1 量化私募服务方案</h3>
-                    <div class="box" style="padding: 10px 12px; background: #f8f9fa; border-radius: 10px; margin: 10px 0; border-left: 3px solid #667eea; font-size: 13px;">
+                <div class="section">
+                    <h3>3.1 量化私募服务方案</h3>
+                    <div class="box">
                         <strong>适用客户：</strong>高频量化、程序化交易
                     </div>
                     <div class="table-wrap">
-                        <table class="table-3" border="1" cellspacing="0" cellpadding="8" style="width: 100%; border-collapse: collapse; font-size: 12px; table-layout: fixed; border-color: #eceef6; margin-bottom: 0;">
+                        <table class="table-3">
                         <tr>
-                            <th style="background:#f6f7ff;color:#4f46e5;font-weight:900;text-align:left;word-break:break-word;width:26%;">服务</th>
-                            <th style="background:#f6f7ff;color:#4f46e5;font-weight:900;text-align:left;word-break:break-word;">内容</th>
-                            <th style="background:#f6f7ff;color:#4f46e5;font-weight:900;text-align:left;word-break:break-word;width:24%;">报价参考</th>
+                            <th>服务</th>
+                            <th>内容</th>
+                            <th>报价参考</th>
                         </tr>
-                        <tr><td style="vertical-align:top;word-break:break-word;">极速通道</td><td style="vertical-align:top;word-break:break-word;">专属交易单元+FPGA加速</td><td style="vertical-align:top;word-break:break-word;">10万/年</td></tr>
-                        <tr><td style="vertical-align:top;word-break:break-word;">算法交易</td><td style="vertical-align:top;word-break:break-word;">VWAP/TWAP/MiniAlpha</td><td style="vertical-align:top;word-break:break-word;">免费试用</td></tr>
-                        <tr><td style="vertical-align:top;word-break:break-word;">融券供给</td><td style="vertical-align:top;word-break:break-word;">专项额度</td><td style="vertical-align:top;word-break:break-word;">3.8%起</td></tr>
-                        <tr><td style="vertical-align:top;word-break:break-word;">佣金</td><td style="vertical-align:top;word-break:break-word;">交易佣金</td><td style="vertical-align:top;word-break:break-word;">万1.2起</td></tr>
+                        <tr><td>极速通道</td><td>专属交易单元+FPGA加速</td><td>10万/年</td></tr>
+                        <tr><td>算法交易</td><td>VWAP/TWAP/MiniAlpha</td><td>免费试用</td></tr>
+                        <tr><td>融券供给</td><td>专项额度</td><td>3.8%起</td></tr>
+                        <tr><td>佣金</td><td>交易佣金</td><td>万1.2起</td></tr>
                         </table>
                     </div>
                 </div>
                 
-                <div class="section" style="padding: 12px 14px; border-bottom: 1px solid #eee;">
-                    <h3 style="font-size: 14px; color: #4f46e5; margin: 0 0 8px; font-weight: 900;">3.2 主观多头服务方案</h3>
-                    <div class="box" style="padding: 10px 12px; background: #f8f9fa; border-radius: 10px; margin: 10px 0; border-left: 3px solid #667eea; font-size: 13px;">
+                <div class="section">
+                    <h3>3.2 主观多头服务方案</h3>
+                    <div class="box">
                         <strong>适用客户：</strong>价值投资、长期持有
                     </div>
                     <div class="table-wrap">
-                        <table class="table-3" border="1" cellspacing="0" cellpadding="8" style="width: 100%; border-collapse: collapse; font-size: 12px; table-layout: fixed; border-color: #eceef6; margin-bottom: 0;">
+                        <table class="table-3">
                         <tr>
-                            <th style="background:#f6f7ff;color:#4f46e5;font-weight:900;text-align:left;word-break:break-word;width:26%;">服务</th>
-                            <th style="background:#f6f7ff;color:#4f46e5;font-weight:900;text-align:left;word-break:break-word;">内容</th>
-                            <th style="background:#f6f7ff;color:#4f46e5;font-weight:900;text-align:left;word-break:break-word;width:24%;">报价参考</th>
+                            <th>服务</th>
+                            <th>内容</th>
+                            <th>报价参考</th>
                         </tr>
-                        <tr><td style="vertical-align:top;word-break:break-word;">PB服务</td><td style="vertical-align:top;word-break:break-word;">交易+清算+估值</td><td style="vertical-align:top;word-break:break-word;">佣金万2.0起</td></tr>
-                        <tr><td style="vertical-align:top;word-break:break-word;">研究服务</td><td style="vertical-align:top;word-break:break-word;">行业研究、组合建议</td><td style="vertical-align:top;word-break:break-word;">合作权益（可赠）</td></tr>
-                        <tr><td style="vertical-align:top;word-break:break-word;">产品代销</td><td style="vertical-align:top;word-break:break-word;">财富渠道代销</td><td style="vertical-align:top;word-break:break-word;">按协议约定</td></tr>
-                        <tr><td style="vertical-align:top;word-break:break-word;">融资支持</td><td style="vertical-align:top;word-break:break-word;">优惠融资利率</td><td style="vertical-align:top;word-break:break-word;">一事一议</td></tr>
+                        <tr><td>PB服务</td><td>交易+清算+估值</td><td>佣金万2.0起</td></tr>
+                        <tr><td>研究服务</td><td>行业研究、组合建议</td><td>合作权益（可赠）</td></tr>
+                        <tr><td>产品代销</td><td>财富渠道代销</td><td>按协议约定</td></tr>
+                        <tr><td>融资支持</td><td>优惠融资利率</td><td>一事一议</td></tr>
                         </table>
                     </div>
                 </div>
                 
-                <div class="section" style="padding: 12px 14px;">
-                    <h3 style="font-size: 14px; color: #4f46e5; margin: 0 0 8px; font-weight: 900;">3.3 CTA/期货服务方案</h3>
-                    <div class="box" style="padding: 10px 12px; background: #f8f9fa; border-radius: 10px; margin: 10px 0; border-left: 3px solid #667eea; font-size: 13px;">
+                <div class="section">
+                    <h3>3.3 CTA/期货服务方案</h3>
+                    <div class="box">
                         <strong>适用客户：</strong>管理期货、量化CTA
                     </div>
                     <div class="table-wrap">
-                        <table class="table-3" border="1" cellspacing="0" cellpadding="8" style="width: 100%; border-collapse: collapse; font-size: 12px; table-layout: fixed; border-color: #eceef6; margin-bottom: 0;">
+                        <table class="table-3">
                         <tr>
-                            <th style="background:#f6f7ff;color:#4f46e5;font-weight:900;text-align:left;word-break:break-word;width:26%;">服务</th>
-                            <th style="background:#f6f7ff;color:#4f46e5;font-weight:900;text-align:left;word-break:break-word;">内容</th>
-                            <th style="background:#f6f7ff;color:#4f46e5;font-weight:900;text-align:left;word-break:break-word;width:24%;">报价参考</th>
+                            <th>服务</th>
+                            <th>内容</th>
+                            <th>报价参考</th>
                         </tr>
-                        <tr><td style="vertical-align:top;word-break:break-word;">期货通道</td><td style="vertical-align:top;word-break:break-word;">股指/商品期货</td><td style="vertical-align:top;word-break:break-word;">佣金万1.0起</td></tr>
-                        <tr><td style="vertical-align:top;word-break:break-word;">保证金管理</td><td style="vertical-align:top;word-break:break-word;">资金调拨</td><td style="vertical-align:top;word-break:break-word;">免费</td></tr>
-                        <tr><td style="vertical-align:top;word-break:break-word;">夜盘交易</td><td style="vertical-align:top;word-break:break-word;">夜盘支持</td><td style="vertical-align:top;word-break:break-word;">免费</td></tr>
+                        <tr><td>期货通道</td><td>股指/商品期货</td><td>佣金万1.0起</td></tr>
+                        <tr><td>保证金管理</td><td>资金调拨</td><td>免费</td></tr>
+                        <tr><td>夜盘交易</td><td>夜盘支持</td><td>免费</td></tr>
                         </table>
                     </div>
                 </div>
@@ -249,44 +249,44 @@
         </div>
 
         <!-- 合作案例 -->
-        <div class="part" style="background: #fff; border-radius: 16px; margin-bottom: 12px; box-shadow: 0 2px 10px rgba(0,0,0,0.06); overflow: hidden; border: 1px solid rgba(238,240,255,0.9);">
-            <div class="part-header active" onclick="togglePart(this)" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: #fff; padding: 16px 16px; display: flex; align-items: center; gap: 10px; min-height: 48px; border-radius: 16px 16px 0 0;">
-                <span style="flex: 1 1 auto; min-width: 0;">四、合作案例 🏆</span>
-                <span class="arrow" aria-hidden="true" style="margin-left:auto;display:inline-flex;align-items:center;justify-content:center;width:20px;height:20px;border-radius:999px;background:rgba(255,255,255,0.18);border:1px solid rgba(255,255,255,0.22);box-shadow:0 4px 10px rgba(0,0,0,0.10);color:rgba(255,255,255,0.95);transition:transform 200ms ease, background 200ms ease, box-shadow 200ms ease;">
+        <div class="part">
+            <div class="part-header active">
+                <span>四、合作案例 🏆</span>
+                <span class="arrow" aria-hidden="true">
                     <svg viewBox="0 0 24 24" width="12" height="12" fill="none" focusable="false" aria-hidden="true">
                         <path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round"></path>
                     </svg>
                 </span>
             </div>
             <div class="part-content active">
-                <div class="section" style="padding: 12px 14px; border-bottom: 1px solid #eee;">
-                    <h3 style="font-size: 14px; color: #4f46e5; margin: 0 0 8px; font-weight: 900;">案例一：某头部量化私募</h3>
+                <div class="section">
+                    <h3>案例一：某头部量化私募</h3>
                     <div class="table-wrap">
-                        <table class="table-2" border="1" cellspacing="0" cellpadding="8" style="width: 100%; border-collapse: collapse; font-size: 12px; table-layout: fixed; border-color: #eceef6; margin-bottom: 0;">
+                        <table class="table-2">
                         <tr>
-                            <th style="background:#f6f7ff;color:#4f46e5;font-weight:900;text-align:left;word-break:break-word;width:34%;">项目</th>
-                            <th style="background:#f6f7ff;color:#4f46e5;font-weight:900;text-align:left;word-break:break-word;">内容</th>
+                            <th>项目</th>
+                            <th>内容</th>
                         </tr>
-                        <tr><td style="vertical-align:top;word-break:break-word;">客户规模</td><td style="vertical-align:top;word-break:break-word;">600亿</td></tr>
-                        <tr><td style="vertical-align:top;word-break:break-word;">合作内容</td><td style="vertical-align:top;word-break:break-word;">PB+算法+融券</td></tr>
-                        <tr><td style="vertical-align:top;word-break:break-word;">年交易量</td><td style="vertical-align:top;word-break:break-word;">2000亿+</td></tr>
-                        <tr><td style="vertical-align:top;word-break:break-word;">合作效果</td><td style="vertical-align:top;word-break:break-word;">成为核心合作客户</td></tr>
+                        <tr><td>客户规模</td><td>600亿</td></tr>
+                        <tr><td>合作内容</td><td>PB+算法+融券</td></tr>
+                        <tr><td>年交易量</td><td>2000亿+</td></tr>
+                        <tr><td>合作效果</td><td>成为核心合作客户</td></tr>
                         </table>
                     </div>
                 </div>
                 
-                <div class="section" style="padding: 12px 14px;">
-                    <h3 style="font-size: 14px; color: #4f46e5; margin: 0 0 8px; font-weight: 900;">案例二：某主观多头私募</h3>
+                <div class="section">
+                    <h3>案例二：某主观多头私募</h3>
                     <div class="table-wrap">
-                        <table class="table-2" border="1" cellspacing="0" cellpadding="8" style="width: 100%; border-collapse: collapse; font-size: 12px; table-layout: fixed; border-color: #eceef6; margin-bottom: 0;">
+                        <table class="table-2">
                         <tr>
-                            <th style="background:#f6f7ff;color:#4f46e5;font-weight:900;text-align:left;word-break:break-word;width:34%;">项目</th>
-                            <th style="background:#f6f7ff;color:#4f46e5;font-weight:900;text-align:left;word-break:break-word;">内容</th>
+                            <th>项目</th>
+                            <th>内容</th>
                         </tr>
-                        <tr><td style="vertical-align:top;word-break:break-word;">客户规模</td><td style="vertical-align:top;word-break:break-word;">200亿</td></tr>
-                        <tr><td style="vertical-align:top;word-break:break-word;">合作内容</td><td style="vertical-align:top;word-break:break-word;">PB+研究+代销</td></tr>
-                        <tr><td style="vertical-align:top;word-break:break-word;">产品代销</td><td style="vertical-align:top;word-break:break-word;">首募10亿</td></tr>
-                        <tr><td style="vertical-align:top;word-break:break-word;">合作效果</td><td style="vertical-align:top;word-break:break-word;">持续深化合作</td></tr>
+                        <tr><td>客户规模</td><td>200亿</td></tr>
+                        <tr><td>合作内容</td><td>PB+研究+代销</td></tr>
+                        <tr><td>产品代销</td><td>首募10亿</td></tr>
+                        <tr><td>合作效果</td><td>持续深化合作</td></tr>
                         </table>
                     </div>
                 </div>
@@ -294,37 +294,37 @@
         </div>
 
         <!-- 服务优势 -->
-        <div class="part" style="background: #fff; border-radius: 16px; margin-bottom: 12px; box-shadow: 0 2px 10px rgba(0,0,0,0.06); overflow: hidden; border: 1px solid rgba(238,240,255,0.9);">
-            <div class="part-header active" onclick="togglePart(this)" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: #fff; padding: 16px 16px; display: flex; align-items: center; gap: 10px; min-height: 48px; border-radius: 16px 16px 0 0;">
-                <span style="flex: 1 1 auto; min-width: 0;">五、服务优势 ⭐</span>
-                <span class="arrow" aria-hidden="true" style="margin-left:auto;display:inline-flex;align-items:center;justify-content:center;width:20px;height:20px;border-radius:999px;background:rgba(255,255,255,0.18);border:1px solid rgba(255,255,255,0.22);box-shadow:0 4px 10px rgba(0,0,0,0.10);color:rgba(255,255,255,0.95);transition:transform 200ms ease, background 200ms ease, box-shadow 200ms ease;">
+        <div class="part">
+            <div class="part-header active">
+                <span>五、服务优势 ⭐</span>
+                <span class="arrow" aria-hidden="true">
                     <svg viewBox="0 0 24 24" width="12" height="12" fill="none" focusable="false" aria-hidden="true">
                         <path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round"></path>
                     </svg>
                 </span>
             </div>
             <div class="part-content active">
-                <div class="section" style="padding: 12px 14px; border-bottom: 1px solid #eee;">
-                    <h3 style="font-size: 14px; color: #4f46e5; margin: 0 0 8px; font-weight: 900;">系统优势</h3>
-                    <ul style="padding-left: 18px; margin: 8px 0;">
+                <div class="section">
+                    <h3>系统优势</h3>
+                    <ul>
                         <li><strong>极速交易：</strong>FPGA加速，行业领先低延迟</li>
                         <li><strong>算法交易：</strong>自主研发，支持多算法与参数优化</li>
                         <li><strong>T+0估值：</strong>实时净值，快速准确</li>
                     </ul>
                 </div>
                 
-                <div class="section" style="padding: 12px 14px; border-bottom: 1px solid #eee;">
-                    <h3 style="font-size: 14px; color: #4f46e5; margin: 0 0 8px; font-weight: 900;">资源优势</h3>
-                    <ul style="padding-left: 18px; margin: 8px 0;">
+                <div class="section">
+                    <h3>资源优势</h3>
+                    <ul>
                         <li><strong>融券额度：</strong>专项50亿额度</li>
                         <li><strong>研究支持：</strong>专业研究团队</li>
                         <li><strong>渠道代销：</strong>财富网点覆盖广</li>
                     </ul>
                 </div>
                 
-                <div class="section" style="padding: 12px 14px;">
-                    <h3 style="font-size: 14px; color: #4f46e5; margin: 0 0 8px; font-weight: 900;">服务优势</h3>
-                    <ul style="padding-left: 18px; margin: 8px 0;">
+                <div class="section">
+                    <h3>服务优势</h3>
+                    <ul>
                         <li><strong>7×24小时响应：</strong>全天候服务保障</li>
                         <li><strong>专属经理：</strong>一对一服务</li>
                         <li><strong>快速响应：</strong>问题及时解决</li>
@@ -334,57 +334,92 @@
         </div>
 
         <!-- 联系我们 -->
-        <div class="part" style="background: #fff; border-radius: 16px; margin-bottom: 12px; box-shadow: 0 2px 10px rgba(0,0,0,0.06); overflow: hidden; border: 1px solid rgba(238,240,255,0.9);">
-            <div class="part-header active" onclick="togglePart(this)" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: #fff; padding: 16px 16px; display: flex; align-items: center; gap: 10px; min-height: 48px; border-radius: 16px 16px 0 0;">
-                <span style="flex: 1 1 auto; min-width: 0;">六、联系我们 📞</span>
-                <span class="arrow" aria-hidden="true" style="margin-left:auto;display:inline-flex;align-items:center;justify-content:center;width:20px;height:20px;border-radius:999px;background:rgba(255,255,255,0.18);border:1px solid rgba(255,255,255,0.22);box-shadow:0 4px 10px rgba(0,0,0,0.10);color:rgba(255,255,255,0.95);transition:transform 200ms ease, background 200ms ease, box-shadow 200ms ease;">
+        <div class="part">
+            <div class="part-header active">
+                <span>六、联系我们 📞</span>
+                <span class="arrow" aria-hidden="true">
                     <svg viewBox="0 0 24 24" width="12" height="12" fill="none" focusable="false" aria-hidden="true">
                         <path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round"></path>
                     </svg>
                 </span>
             </div>
             <div class="part-content active">
-                <div class="section" style="padding: 12px 14px;">
+                <div class="section">
                     <div class="table-wrap">
-                        <table class="table-3" border="1" cellspacing="0" cellpadding="8" style="width: 100%; border-collapse: collapse; font-size: 12px; table-layout: fixed; border-color: #eceef6; margin-bottom: 0;">
+                        <table class="table-3">
                         <tr>
-                            <th style="background:#f6f7ff;color:#4f46e5;font-weight:900;text-align:left;word-break:break-word;width:34%;">部门</th>
-                            <th style="background:#f6f7ff;color:#4f46e5;font-weight:900;text-align:left;word-break:break-word;width:20%;">联系人</th>
-                            <th style="background:#f6f7ff;color:#4f46e5;font-weight:900;text-align:left;word-break:break-word;">电话</th>
+                            <th>部门</th>
+                            <th>联系人</th>
+                            <th>电话</th>
                         </tr>
-                        <tr><td style="vertical-align:top;word-break:break-word;">机构业务部</td><td style="vertical-align:top;word-break:break-word;">李经理</td><td style="vertical-align:top;word-break:break-word;">138-xxxx-xxxx</td></tr>
-                        <tr><td style="vertical-align:top;word-break:break-word;">PB服务</td><td style="vertical-align:top;word-break:break-word;">王经理</td><td style="vertical-align:top;word-break:break-word;">139-xxxx-xxxx</td></tr>
-                        <tr><td style="vertical-align:top;word-break:break-word;">研究服务</td><td style="vertical-align:top;word-break:break-word;">刘首席</td><td style="vertical-align:top;word-break:break-word;">137-xxxx-xxxx</td></tr>
+                        <tr><td>机构业务部</td><td>李经理</td><td>138-xxxx-xxxx</td></tr>
+                        <tr><td>PB服务</td><td>王经理</td><td>139-xxxx-xxxx</td></tr>
+                        <tr><td>研究服务</td><td>刘首席</td><td>137-xxxx-xxxx</td></tr>
                         </table>
                     </div>
                 </div>
             </div>
         </div>
 
-        <div class="footer" style="text-align: center; padding: 14px 10px; color: #667085; font-size: 12px;">
-            <p style="margin: 0;">本方案仅供参考，具体以实际签订合同为准</p>
+        <div class="footer">
+            <p>本方案仅供参考，具体以实际签订合同为准</p>
         </div>
 
     </div>
 
     <script>
-        function setArrowState(headerEl, isActive) {
+        function setArrowRot(headerEl, expanded) {
             const arrow = headerEl.querySelector('.arrow');
-            if (arrow) arrow.style.transform = isActive ? 'rotate(180deg)' : 'rotate(0deg)';
-            if (arrow) arrow.style.marginLeft = 'auto';
-            if (arrow) arrow.style.display = 'inline-flex';
-            if (arrow) {
-                arrow.style.alignItems = 'center';
-                arrow.style.justifyContent = 'center';
-                arrow.style.width = '20px';
-                arrow.style.height = '20px';
-                arrow.style.borderRadius = '999px';
-                arrow.style.background = 'rgba(255,255,255,0.18)';
-                arrow.style.border = '1px solid rgba(255,255,255,0.22)';
-                arrow.style.boxShadow = '0 4px 10px rgba(0,0,0,0.10)';
-                arrow.style.color = 'rgba(255,255,255,0.95)';
-                arrow.style.transition = 'transform 200ms ease, background 200ms ease, box-shadow 200ms ease';
-            }
+            if (!arrow) return;
+            arrow.style.transform = expanded ? 'rotate(180deg)' : 'rotate(0deg)';
+        }
+
+        function applyInlineStyleFallback() {
+            // 当宿主环境未正确应用 <style> 时，使用 inline 样式兜底
+            const cssText = {
+                body: 'font-family:"Microsoft YaHei","PingFang SC",sans-serif;line-height:1.65;color:#101828;background:#f0f2f5;margin:0;',
+                container: 'max-width:440px;margin:0 auto;padding:4px;',
+                header: 'background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);color:#fff;padding:20px;border-radius:16px;margin-bottom:8px;box-shadow:0 10px 24px rgba(102,126,234,0.18);',
+                part: 'background:#fff;border-radius:16px;margin-bottom:8px;box-shadow:0 2px 10px rgba(0,0,0,0.06);overflow:hidden;border:1px solid rgba(238,240,255,0.9);',
+                partHeader: 'background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);color:#fff;padding:16px 16px;font-weight:900;display:flex;align-items:center;gap:10px;min-height:48px;cursor:pointer;border-radius:16px 16px 0 0;',
+                arrow: 'margin-left:auto;display:inline-flex;align-items:center;justify-content:center;width:20px;height:20px;border-radius:999px;background:rgba(255,255,255,0.18);border:1px solid rgba(255,255,255,0.22);box-shadow:0 4px 10px rgba(0,0,0,0.10);color:rgba(255,255,255,0.95);transition:transform 200ms ease;',
+                section: 'padding:20px 18px;border-bottom:1px solid #eee;',
+                sectionLast: 'border-bottom:none;',
+                sectionH3: 'color:#4f46e5;font-weight:900;margin:0 0 8px;',
+                box: 'padding:14px 16px;background:#f8f9fa;border-radius:12px;margin:12px 0;border-left:3px solid #667eea;font-size:13px;',
+                tableWrap: 'overflow-x:auto;-webkit-overflow-scrolling:touch;border-radius:12px;margin:10px 0 4px;border:1px solid #eceef6;background:#fff;',
+                table: 'width:100%;border-collapse:collapse;font-size:12px;table-layout:fixed;',
+                th: 'background:#f6f7ff;color:#4f46e5;font-weight:900;text-align:left;padding:10px 8px;border:1px solid #eceef6;word-break:break-word;',
+                td: 'padding:10px 8px;border:1px solid #eceef6;vertical-align:top;word-break:break-word;',
+                footer: 'text-align:center;padding:14px 10px;color:#667085;font-size:12px;'
+            };
+
+            document.body.style.cssText = cssText.body;
+
+            const container = document.querySelector('.container');
+            if (container) container.style.cssText += cssText.container;
+
+            const header = document.querySelector('.header');
+            if (header) header.style.cssText += cssText.header;
+
+            document.querySelectorAll('.part').forEach((p) => { p.style.cssText += cssText.part; });
+            document.querySelectorAll('.part-header').forEach((h) => { h.style.cssText += cssText.partHeader; });
+            document.querySelectorAll('.part-header .arrow').forEach((a) => { a.style.cssText += cssText.arrow; });
+
+            const sections = document.querySelectorAll('.section');
+            sections.forEach((s) => { s.style.cssText += cssText.section; });
+            const lastSections = document.querySelectorAll('.part-content .section:last-child');
+            lastSections.forEach((s) => { s.style.cssText += cssText.sectionLast; });
+            document.querySelectorAll('.section h3').forEach((h3) => { h3.style.cssText += cssText.sectionH3; });
+
+            document.querySelectorAll('.box').forEach((b) => { b.style.cssText += cssText.box; });
+            document.querySelectorAll('.table-wrap').forEach((tw) => { tw.style.cssText += cssText.tableWrap; });
+            document.querySelectorAll('table').forEach((t) => { t.style.cssText += cssText.table; });
+            document.querySelectorAll('th').forEach((th) => { th.style.cssText += cssText.th; });
+            document.querySelectorAll('td').forEach((td) => { td.style.cssText += cssText.td; });
+
+            const footer = document.querySelector('.footer');
+            if (footer) footer.style.cssText += cssText.footer;
         }
 
         function togglePart(el) {
@@ -395,11 +430,22 @@
             content.classList.toggle('active');
             const isActive = content.classList.contains('active');
             content.style.display = isActive ? 'block' : 'none';
-            setArrowState(el, isActive);
+            setArrowRot(el, isActive);
         }
 
         // 初始化：确保内容显示与 active 状态一致
         (function initParts() {
+            // 检测关键样式是否生效（若未生效则启用 inline fallback）
+            try {
+                const header = document.querySelector('.header');
+                if (header) {
+                    const bg = getComputedStyle(header).backgroundImage;
+                    if (!bg || bg === 'none') applyInlineStyleFallback();
+                }
+            } catch (e) {
+                applyInlineStyleFallback();
+            }
+
             const headers = document.querySelectorAll('.part-header');
             headers.forEach((h) => {
                 if (!h.dataset.bound) {
@@ -410,7 +456,7 @@
                 if (!content) return;
                 const isActive = h.classList.contains('active') && content.classList.contains('active');
                 content.style.display = isActive ? 'block' : 'none';
-                setArrowState(h, isActive);
+                setArrowRot(h, isActive);
             });
         })();
     </script>
