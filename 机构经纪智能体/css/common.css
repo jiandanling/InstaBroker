@@ -939,6 +939,53 @@ form.subpage-footer-input-wrap {
   color: rgba(124, 58, 237, 0.9); /* violet-600/90 */
 }
 
+/* 智能体已准备好：浅绿底 + 左侧圆形勾选（与物料示意一致） */
+.index-material-pill--ready {
+  background: #ecfdf5; /* emerald-50 */
+  border-color: #a7f3d0; /* emerald-200 */
+  color: #047857; /* emerald-700 */
+  padding: 3px 10px 3px 5px;
+  gap: 5px;
+}
+
+/* 物料 pill 作为链接：保持外观、可点击、键盘可达 */
+a.index-material-pill-link {
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+a.index-material-pill-link:hover {
+  filter: brightness(0.97);
+}
+
+a.index-material-pill-link:focus-visible {
+  outline: 2px solid #10b981;
+  outline-offset: 2px;
+}
+
+.index-material-pill-check {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 14px;
+  height: 14px;
+  border-radius: 9999px;
+  background: #059669; /* emerald-600 */
+  color: #ffffff;
+  font-size: 9px;
+  font-weight: 700;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+/* 首页客户推荐卡：智能体物料浅灰底块 */
+.index-card-agent-panel {
+  background: #f7f8fa;
+  border-color: #e8eaed;
+}
+
 .index-card-stage-header {
   font-size: 11px;
   font-weight: 600;
@@ -971,10 +1018,39 @@ form.subpage-footer-input-wrap {
   flex-wrap: wrap;
 }
 
+.index-task-card-title-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  min-width: 0;
+}
+
 .index-task-card-title {
   font-weight: 600;
   color: #1e293b; /* slate-800 */
   font-size: 14px; /* text-sm */
+}
+
+/* 首页客户报告卡片：客户名旁 存量 / 新增 */
+.index-customer-type-badge {
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 1.25;
+  padding: 2px 7px;
+  border-radius: 6px;
+  flex-shrink: 0;
+  letter-spacing: 0.02em;
+}
+
+.index-customer-type-badge--stock {
+  background: #e0e7ff; /* indigo-100 */
+  color: #3730a3; /* indigo-800 */
+}
+
+.index-customer-type-badge--new {
+  background: #fef3c7; /* amber-100 */
+  color: #92400e; /* amber-800 */
 }
 
 .index-task-card-time {
@@ -1004,6 +1080,11 @@ form.subpage-footer-input-wrap {
   padding: 8px 10px; /* px-2.5 py-2 */
   border: 1px solid #f1f5f9; /* slate-100 */
   flex-shrink: 0;
+}
+
+/* 智能体物料区：左侧与卡片主内容顶格对齐（不再额外左缩进） */
+.index-task-card-panel.index-card-agent-panel {
+  padding: 8px 10px 8px 0;
 }
 
 .index-task-card-panel-topline {
@@ -1068,9 +1149,25 @@ form.subpage-footer-input-wrap {
   transform: translateY(-1px);
 }
 
-/* 推荐客户卡片：整卡可点、层次结构 */
+/* 推荐客户卡片：高度随内容；智能体物料区下留 2px，避免大块底部留白 */
 .index-card-recommend {
-  min-height: 220px;
+  min-height: 0;
+}
+
+.index-card-recommend > .index-task-card-body {
+  flex: 0 1 auto;
+  min-height: 0;
+  height: auto;
+  padding-bottom: 2px;
+  cursor: default;
+}
+
+.index-card-recommend .index-card-block {
+  flex: 0 1 auto;
+}
+
+.index-card-recommend .index-card-tags {
+  margin-bottom: 0;
 }
 
 .index-card-link {
